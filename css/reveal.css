@@ -1,0 +1,63 @@
+.reveal section img,
+.reveal section video {
+    /* vertically centered with about the same padding top and bottom (e.g. slide 3) */
+    max-height: 93vh;
+}
+.reveal section > p + figure video,
+.reveal section > p + figure img {
+    /* make space for figcaption and header (e.g. slide 2) */
+    max-height: 82vh;
+}
+
+.reveal section > h2 + figure video,
+.reveal section > h3 + figure video,
+.reveal section > h2 + figure img,
+.reveal section > h3 + figure img {
+    /* make space for figcaption and header (e.g. slide 2) */
+    max-height: 72vh;
+}
+.reveal section > h2 + figure video:only-child,
+.reveal section > h3 + figure video:only-child,
+.reveal section > h2 + figure img:only-child
+.reveal section > h3 + figure img:only-child {
+    /* use the figcaption space (e.g. slide 2 but without <figcaption>) */
+    max-height: 82vh;
+}
+
+.reveal section {
+    height: 100vh;
+}
+
+.slide-number span {
+    font-size: 2.4em;
+    margin-right: 0.1em;
+}
+
+.background-credit {
+    position: absolute;
+    right: 0vw;
+    top: 0vh;
+    font-size: 0.5em;
+}
+.slide-logo {
+    position: absolute;
+    left: 0vw;
+    top: 0vh;
+}
+.slide-logo img {
+    width: 3em;
+    filter: invert(1);
+}
+.logo {
+    max-height: 12vh!important;
+    width: auto!important;
+    padding: 3vw;
+}
+.title-logo {
+    max-height: 20vh!important;
+    width: auto!important;
+    padding: 3vw;
+}
+#irf-logo {
+    width: 40vw; 
+}

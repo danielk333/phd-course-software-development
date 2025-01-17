@@ -1,0 +1,29 @@
+/**
+ * Black theme with custom changes
+ *
+ * By Daniel Kastinen
+ */
+@import url("black.css");
+
+:root {
+    --r-background-color: #000000;
+    --blue: #5658d4;
+    --green: #57de57;
+    --red: #FF8484;
+    --purple: #a33dc8;
+    --orange: #FF9A45;
+    --base: #ffffff;
+    --nord-red: #BF616A;
+    --nord-green: #A3BE8C;
+    --nord-orange: #EBCB8B;
+    --nord-teal: #81A1C1;
+    --nord-purple: #B48EAD;
+    --nord-blue: #88C0D0;
+}
+
+.original_dark {
+    filter: invert(0);
+}
+.original_light {
+    filter: invert(1);
+}

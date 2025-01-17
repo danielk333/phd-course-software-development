@@ -1,0 +1,28 @@
+/**
+ * White theme with custom changes
+ *
+ * By Daniel Kastinen
+ */
+@import url("white.css");
+
+:root {
+    --blue: #5658d4;
+    --green: #57de57;
+    --red: #FF8484;
+    --purple: #a33dc8;
+    --orange: #FF9A45;
+    --base: #000000;
+    --nord-red: #bf3845;
+    --nord-green: #4b7f21;
+    --nord-orange: #c48f24;
+    --nord-teal: #426b93;
+    --nord-purple: #a33f91;
+    --nord-blue: #4599b0;
+}
+
+.original_dark {
+    filter: invert(1);
+}
+.original_light {
+    filter: invert(0);
+}

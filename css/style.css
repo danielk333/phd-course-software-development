@@ -1,0 +1,166 @@
+/**
+ * common presentation components
+ *
+ * By Daniel Kastinen
+ */
+ @import url("reveal.css");
+ @import url("containers.css");
+
+ul.ul-green {
+    color: var(--nord-green);
+}
+ul.ul-green ul {
+    color: var(--base);
+}
+
+ul.ul-teal {
+    color: var(--nord-teal);
+}
+ul.ul-teal ul {
+    color: var(--base);
+}
+
+.uline {
+    text-decoration: underline;
+}
+.mark {
+    color: var(--nord-teal)!important;
+}
+.select {
+    color: var(--nord-red)!important;
+}
+.highlight {
+    color: var(--nord-green)!important;
+}
+.fade {
+    filter: brightness(0.2);
+}
+.dimmed {
+    filter: brightness(0.6);
+}
+
+.emph-red {
+    color: var(--red);
+}
+
+.title {
+    text-transform: inherit !important;
+}
+.authors {
+    color: #97C9C5;
+}
+.author-me {
+    color: #A2E871;
+    display: inline;
+}
+
+p.paper-number {
+    color: #FF6B6B;
+    padding-right: 0.5em;
+}
+.paper-title {
+    display: flex;
+    flex-direction: row;
+}
+
+ul.narrow,
+ol.narrow {
+    max-width: 40vw;
+}
+ul.wide, 
+ol.wide {
+    max-width: 80vw;
+}
+ol.roman {
+    list-style: upper-roman;
+}
+ol.roman-lower {
+    list-style: lower-roman;
+}
+ol.category {
+    list-style: upper-latin;
+}
+ol.category li::marker {
+    color: red;
+}
+ul.list-sep li {
+    margin-top: 1em;
+}
+ul.no-list-sep li {
+    margin-top: 0em!important;
+}
+ul.list-sep-below li {
+    margin-bottom: 1em;
+}
+ul.list-sep-small li {
+    margin-top: 0.5em;
+}
+p.figure-credit {
+    color: var(--nord-orange);
+    font-size: 0.75em;
+}
+p.figure-credit > em {
+    color: var(--orange);
+}
+p.paper {
+    font-size: 0.8em;
+}
+p.r-stack-group {
+    position: absolute;
+    left: 0vw;
+    top: 0vh;
+    font-size: 1em;
+}
+p.r-stack-mid {
+    position: absolute;
+    left: 40vw;
+    top: 20vh;
+    font-size: 1em;
+}
+
+table.listtable th, 
+table.listtable td {
+  padding: 35px;
+  border-bottom: none;
+}
+
+table.fixed {
+    table-layout: fixed; 
+    width: 90vw;
+}
+table.fixed td {
+    vertical-align: top;
+    overflow:hidden;
+    border-bottom: none;
+    font-size: 0.9em;
+}
+table.noborder td {
+    vertical-align: top;
+    border-bottom: none;
+}
+
+.stackss {
+    height: 80vh;
+    width: auto;
+    object-fit: contain;
+}
+.full-stacks {
+    height: 85vh;
+    width: auto;
+    object-fit: contain;
+}
+.full {
+    height: 95vh; 
+    width: auto; 
+    object-fit: contain;
+}
+
+.overlaytext {
+    color: red;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+    font-size: 4em;
+}
+

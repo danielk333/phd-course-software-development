@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+    <head>
+        <base href="../../" />
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Software development for researchers - Lecture 0: Setup</title>
+
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/my_black.css" id="theme">
+        <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+        <!-- My custom styles -->
+        <link rel="stylesheet" href="css/style.css">
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!--
+                    ***************************** 
+                    TITLE
+                    *****************************
+                 -->
+
+                <section 
+                data-background-image="media/leonid_server.jpg"
+                data-background-opacity="0.6"
+                data-auto-animate
+                data-auto-animate-id="title"
+                >
+                    <div class="title-container">
+                        <p class="background-credit">IRF server room Photo: Daniel Kastinen/IRF</p>
+                    </div>
+                </section> 
+
+                <section data-auto-animate>
+                    <div class="margin-top">
+                        <h3 class="title">Lets dig into the math!</h3>
+                        <div class="col-flex-c">
+                            <h4 class="title">Hamiltonian mechanics</h4>
+                            <p>My tip:</p>
+                            <span class="highlight">Try it yourself practically:</span>
+                            <p>$<$ 10 lines of code</p>
+                            <div class="fragment row-flex">
+                                <pre>
+<code class="python" style="width: 45vw;">import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.linspace(-1, 1, 100)  # List of t-values
+
+f = np.stack([t + 2, t**2])
+df = np.stack([np.full_like(t, 1), 2*t])
+
+# Plot results!
+fig, axes = plt.subplots(1, 2)
+axes[0].plot(f_values[0, :], f_values[1, :])
+axes[1].plot(df_values[0, :], df_values[1, :])
+plt.show()
+</code>
+                                </pre>
+                                <img class="original_light" style="width: 45vw; padding-left: 2vw;" src="media/2024/irf-math/example_python.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-logo"><img src="static/irflogo_vektortransp_svart.svg"></div>
+                </section>
+
+                <section data-auto-animate>
+                    <div class="margin-top">
+                        <h3 class="title">Lets dig into the math!</h3>
+                        <div class="col-flex-c">
+                            <h4 class="title">Hamiltonian mechanics</h4>
+                            <p><span class="select">Now we go bananas</span> (lets skip some details)</p>
+                            <div class="row-flex">
+                            <div class="fragment">
+                                <p>Poisson brackets</p>
+                                $$
+                                    \{f ,g \} = \sum_{i=1}^N \left ( \frac{\partial f}{\partial q_i} \frac{\partial g}{\partial p_i} -  \frac{\partial f}{\partial p_i} \frac{\partial g}{\partial q_i} \right )
+                                $$
+                                <span class="fragment">
+                                <p>if $\bar{x}$ is a solution to Hamiltons equations</p>
+                                $$
+                                    \frac{\mathrm{d}\bar{x}}{\mathrm{d}t} = \{\bar{x},H\} \\
+                                $$
+                                </span>
+                            </div>
+                            <div class="fragment" style="padding-left: 2em;">
+                                <p>"same" differential equation as before</p>
+                                $$
+                                \frac{\mathrm{d} x_i}{\mathrm{d}t} = \{x_i,H\} = \{\cdot,H\} x_i \Leftrightarrow \\
+                                \Leftrightarrow x_i(t) = e^{t\{\cdot,H\}}x_i(0)
+                                $$
+                                <div class="fragment">
+                                <p>This is in itself a differential equation</p>
+                                <p class="select">Generally no analytic solution! :(</p>
+                                </div>
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-logo"><img src="static/irflogo_vektortransp_svart.svg"></div>
+                </section>
+
+            </div>
+        </div>
+
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script src="plugin/math/math.js"></script>
+        <script src="plugin/zoom/zoom.js"></script>
+        <script src="plugin/spotlight/spotlight.js"></script>
+
+        <script src="js/fix-hash.js"></script>
+        
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true, // permalinkable urls
+                controls: false, // hide arrows
+                autoPlayMedia: true, 
+                progress: false, // no spoilers on number of slides
+                width: "100%",
+                height: "100%", //to allow intuitive scaling factor of full screen images
+                slideNumber: "c", // just the current slide number, again no spoilers
+                menu: {
+                    themes: [
+                        { name: 'Black', theme: 'dist/theme/my_black.css' },
+                        { name: 'White', theme: 'dist/theme/my_white.css' },
+                    ],
+                },
+                spotlight: {
+                    size: 80,
+                    spotlightCursor: 'crosshair',
+                    presentingCursor: 'default', 
+                    // true: initially in presentation mode, will also be ture if this is not set and toggleSpotlightOnMouseDown is true
+                    initialPresentationMode: false,
+                    // toggle spotlight by holding down the mouse key
+                    toggleSpotlightOnMouseDown: true,
+                    // enable pointer mode
+                    useAsPointer: false,
+                    // pointer color (If pointer mode enabled)
+                    pointerColor: 'red'
+                },
+                keyboard: {	
+                    // toggle spotlight by pressing key 'c'
+                    67: function() { RevealSpotlight.toggleSpotlight() },
+
+                    // enter/leave presentation mode by pressing key 'p'
+                    80: function() { 
+                        RevealSpotlight.togglePresentationMode(); 
+                    },
+                },
+                plugins: [ 
+                    RevealMarkdown, RevealHighlight, 
+                    RevealNotes, RevealMath.KaTeX, 
+                    RevealZoom, RevealMenu, 
+                ]
+            });
+
+            enable_hash('/presentations/lecture-0.html');
+        </script>
+    </body>
+</html>
