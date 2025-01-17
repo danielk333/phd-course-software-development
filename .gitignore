@@ -1,0 +1,25 @@
+#Editor files
+*.code*
+
+.idea/
+*.iml
+*.iws
+*.eml
+out/
+.DS_Store
+.svn
+log/*.log
+tmp/**
+node_modules/
+.sass-cache
+public
+
+# Folder used by download script
+media/
+
+# Revealjs installation
+dist/
+plugin/
+package-lock.json
+package.json
+gulpfile.js
