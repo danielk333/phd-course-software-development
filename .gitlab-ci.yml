@@ -6,7 +6,7 @@ default:
 
 pages:
   script:
-    - apk add --no-cache bash wget iputils tar
+    - apk add --no-cache bash wget iputils tar go hugo
     - ./install-revealjs
     - mkdir -p public
     - ./fix-hash
