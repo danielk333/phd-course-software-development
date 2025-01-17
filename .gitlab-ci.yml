@@ -4,14 +4,17 @@ default:
   tags:
     - internal
 
-pages:
-  script:
-    - apk add --no-cache bash wget iputils tar go hugo
-    - ./install-revealjs
-    - mkdir -p public
-    - ./fix-hash
-    - cp -rv presentations static media dist plugin css js index.html public/
+# pages:
+#   script:
+#     - apk add --no-cache bash wget iputils tar go hugo
+#     - ./install-revealjs
+#     - mkdir -p public
+#     - ./fix-hash
+#     - cp -rv presentations static media dist plugin css js index.html public/
 
-  artifacts:
-    paths:
-      - public
+#   artifacts:
+#     paths:
+#       - public
+
+
+#!/bin/bash
