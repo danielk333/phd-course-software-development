@@ -1,0 +1,31 @@
+<div class="byline">
+    {{ if .Params.author }}
+        {{ $contactPages := where .Site.RegularPages "Section" "=" "kontakt" }}
+        {{ $authorByName := where $contactPages "Title" "=" .Params.author }}
+        {{ $authorPage := index $authorByName 0 }}
+        <address class="date">
+            {{ i18n "byAuthor" }}
+            {{ if $authorPage.Params.inactive }}
+                <span rel="author">{{ .Params.author }}</span>
+            {{ else }}
+                <a rel="author" href='{{ $authorPage.Permalink }}'>{{ .Params.author }}</a>
+            {{ end }}
+            {{ if .Date }}
+                {{ i18n "atTime" }} <time datetime="{{ .Date }}">{{ dateFormat "2006-01-02 15:04" .Date.Local }}</time>
+            {{ end }}
+        </address>
+    {{ end }}
+    {{ if .GitInfo }}
+        <address class="lastmod">
+            {{ i18n "lastModified" }}
+            {{ i18n "atTime" }} 
+            <time datetime="{{ .Lastmod }}">
+                {{ dateFormat "2006-01-02 15:04" .Lastmod.Local }}
+            </time>
+        </address>
+        {{ $slug := strings.TrimPrefix "/en" .RelPermalink }}
+        {{ $slug = strings.TrimPrefix (printf "/%s/" .Section) $slug }}
+        {{ $slug = strings.TrimSuffix "/" $slug }}
+        <a class="edit" href="admin/#/collections/{{ .Section }}/entries/{{ $slug | safeURL }}">{{ i18n "edit" }}</a>
+    {{ end }}
+</div>

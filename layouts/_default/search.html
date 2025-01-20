@@ -1,0 +1,111 @@
+{{ define "main" }}
+<main id="main" class="search" tabindex="-1">
+<form action='{{ relLangURL "sok"}}/' method="GET" class="search">
+    <input type="search" name="q" id="search-query" autofocus>
+    <button type="submit">{{ i18n "search" }}</button>
+    <label for="search-query">
+        <p>{{ i18n "searchInstruction" }}
+            <a href='{{ relLangURL "tags" }}'>{{ i18n "allTags" }}</a>
+        </p>
+    </label>
+</form>
+<p id="search-loading" style="display: none">{{ i18n "loading" }}</p>
+<p id="search-results-empty" style="display: none"><strong>{{ i18n "noMatches" }}</strong></p>
+<ol id="search-results">
+
+</ol>
+</main>
+{{ end }}
+
+{{ define "scripts" }}
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    const fuseOptions = {
+        shouldSort: true,
+        includeMatches: true,
+        includeScore: true,
+        ignoreLocation: true,
+        tokenize: true,
+        minMatchCharLength: 3,
+        keys: [
+            {name: "title"},
+            {name: "contents"},
+            {name: "tags"},
+            {name: "category"}
+        ]
+    };
+
+    async function executeSearch(searchQuery) {
+        show(document.getElementById('search-loading'));
+
+        const response = await fetch('index.json')
+        if (!response.ok) {
+            return;
+        }
+
+        const pages = await response.json();
+        const fuse = new Fuse(pages, fuseOptions);
+        const result = fuse.search(searchQuery);
+        if (result.length > 0) {
+            populateResults(result);
+        } else {
+            show(document.getElementById('search-results-empty'))
+        }
+        hide(document.getElementById('search-loading'));
+    }
+
+    function populateResults(results) {
+        const container = document.getElementById('search-results');
+        const template = document.getElementById('search-result');
+        console.log(results);
+        results.slice(0, 20).forEach(function (hit) {
+            const clone = template.content.cloneNode(true);
+
+            const article = clone.querySelector("article");
+            article.setAttribute('lang', hit.item.lang);
+            const permaLink = article.querySelector("h2 a");
+            permaLink.textContent = hit.item.title;
+            permaLink.setAttribute('href', hit.item.href);
+            const summary = article.querySelector("p");
+            summary.textContent = hit.item.contents.substr(0, hit.item.len);
+
+            // sort the best hits in the order of relevance
+            container.append(clone);
+        });
+    }
+
+    function show(elem) {
+        // default to whatever the site css file wants the articles to be displayed as
+        elem.style.display = '';
+    }
+
+    function hide(elem) {
+        elem.style.display = 'none';
+    }
+
+    const searchField = document.getElementById('search-query');
+    const searchQuery = new URLSearchParams(window.location.search).get('q')
+    if (searchField !== null) {
+        searchField.value = searchQuery || "";
+    }
+    if (searchQuery) {
+        executeSearch(searchQuery, false);
+    } else {
+        hide(document.getElementById('search-loading'));
+        hide(document.getElementById('search-results-empty'))
+    }
+</script>
+
+<template id="search-result">
+<li class="search-result">
+    <article lang="">
+        <h2><a href="#"></a></h2>
+        <p></p>        
+    </article>
+</li>
+</template>
+
+{{ end }}

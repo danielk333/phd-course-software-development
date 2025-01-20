@@ -1,0 +1,15 @@
+<nav aria-label="Breadcrumb" class="breadcrumb short">
+    <ol>
+        {{ $parents := first 1 .Ancestors }}
+        {{- range $parents.Reverse }}
+            {{ with partial "prefer-page-translation" . }}
+            <li>{{ .Title }}</li>
+            {{ end }}
+        {{ end }}
+        <li>
+            <a href="{{ .Permalink}}">
+                {{ .Title }}
+            </a>
+        </li>
+    </ol>
+</nav>

@@ -1,0 +1,11 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+<ul>
+{{ range .Site.Sections }}
+    <li>
+    <a href="{{.Permalink}}">{{ .Title }}</a>
+    {{ partial "menu/recursive-submenu" . }}
+    </li>
+{{ end }}
+</ul>
+{{ end }}

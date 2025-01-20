@@ -1,0 +1,9 @@
+<ul class="sub-menu">
+    {{ $items := union .Pages .Sections }}
+    {{ $byTitle := sort $items "Title" "asc" }}
+    {{ range $byTitle }}
+        {{ with partial "prefer-page-translation" . }}
+            {{ .Render "li" }}
+        {{ end }}
+    {{ end }}
+</ul>

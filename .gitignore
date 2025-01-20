@@ -12,7 +12,7 @@ log/*.log
 tmp/**
 node_modules/
 .sass-cache
-public
+public/
 *.lock
 resources/*
 

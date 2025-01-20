@@ -1,0 +1,23 @@
+{{ $skipRoot := last 1 .Ancestors }}
+{{ $reverse := .Ancestors.Reverse }}
+{{ $ancestors := collections.Complement $skipRoot $reverse }}
+{{ if gt ($ancestors | len) 0 }}
+<nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>        
+        {{- range $ancestors }}
+            {{ with partial "prefer-page-translation" . }}
+            <li>
+                <a href="{{ .Permalink }}">
+                    {{ .Title }}
+                </a>
+            </li>
+            {{ end }}
+        {{ end }}
+        <li>
+            <a href="#" aria-current="page">
+                {{ .Title }}
+            </a>
+        </li>
+    </ol>
+</nav>
+{{ end }}

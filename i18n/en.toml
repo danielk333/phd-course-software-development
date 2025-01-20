@@ -1,0 +1,221 @@
+[byAuthor]
+other = 'By'
+[by]
+other = 'by'
+[scienceBy]
+other = 'Responsible for content'
+[atDate]
+other = 'at'
+[lastModified]
+other = 'Last modified'
+[published]
+other = 'Published'
+[category]
+one = 'Category'
+other = 'Categories'
+[tags]
+one = 'Tag'
+other = 'Tags'
+[skipToMain]
+other = 'Skip to main content'
+[search]
+other = 'Search'
+[loading]
+other = 'Searching, please wait...'
+[noMatches]
+other = 'No search results.'
+[searchInstruction]
+other = 'Searches the content of irf.se (websites only, not linked pdf documents). You may instead browse'
+[allTags]
+other = 'all tags'
+[office]
+one = 'Office'
+other = 'Offices'
+[menu]
+other = 'Menu'
+[showSubmenu]
+other = 'Show submenu {{ .Name }}'
+[toc]
+other = 'Table of contents'
+[subpages]
+other = 'Subpages'
+[toEveryoneIn]
+other = 'To everyone in {{ . }}'
+[Event]
+one = 'Event'
+other = 'Events'
+[eventToday]
+other = 'Events today'
+[January]
+other = 'January'
+[February]
+other = 'February'
+[March]
+other = 'March'
+[April]
+other = 'April'
+[May]
+other = 'May'
+[June]
+other = 'June'
+[July]
+other = 'July'
+[August]
+other = 'August'
+[September]
+other = 'September'
+[October]
+other = 'October'
+[November]
+other = 'November'
+[December]
+other = 'December'
+[vacancies]
+other = 'Vacancies'
+[archiveJobAds]
+other = 'Archive, closed for applications'
+[moreNews]
+other = 'More news items'
+[newsListingExplanation]
+other = 'older than 10 days, the above list always has at least the latest five'
+[restaurant]
+other = 'Restaurant'
+[noLunchToday]
+other = 'No lunch served today'
+[InMedia]
+other = 'IRF in media'
+[News]
+other = 'News'
+[PressRelease]
+one = 'Press release'
+other = 'Press releases'
+[Rymdcampus]
+other = 'Rymdcampus'
+[Staff]
+other = 'Staff'
+[Activity]
+other = 'Activity'
+[Economy]
+other = 'Economy'
+[IT]
+other = 'IT'
+[Communication]
+other = 'Communication'
+[Research]
+other = 'Research'
+[KAGO]
+other='Kiruna Atmospheric and Geophysical Observatory'
+[STAR]
+other='Solar Terrestrial and Atmospheric Research'
+[RPF]
+other='Space Plasma Physics'
+[SSPT]
+other='Solar System Physics and Space Technology'
+[headOf]
+other = 'head of'
+[mention]
+other = 'Mentioned'
+[latestChanges]
+other = 'Recently updated pages'
+[favorite]
+other = 'Mark as favorite'
+[showAllTools]
+other = 'Show all available tools'
+[seeAlso]
+other = 'See also'
+[edit]
+other = 'Redigera'
+[applicationDeadline]
+other = 'Application deadline'
+[contact]
+other='Contact'
+[moreInfo]
+other='For further information, please contact'
+[unionReps]
+other='Trade union representatives'
+[jobType]
+other='Type of employment'
+[hours]
+other='Contract type'
+[jobAdmission]
+other='Admission'
+[paymentType]
+other='Löneform'
+[workingHours]
+other='Full time equivalent'
+[location]
+other='Location'
+[pleaseApply]
+other='We look forward to hear from you!'
+[applyOnline]
+other='Apply online'
+[applyEmail]
+other='or via e-mail, to'
+[applyMail]
+other='or via mail, to'
+[quoteRef]
+other='Please quote reference number'
+[onFailContactRegistrar]
+other='If your application is sent by e-mail you should get a confirmation that we have received it. If you do not get the confirmation within three days, please contact the registrar'
+[recentContent]
+other='Recent content'
+[in]
+other='in'
+[on]
+other='on'
+[map]
+other='Map'
+[largerMap]
+other='Larger map'
+[mainOffice]
+other="The main office i Kiruna"
+[postalAddress]
+one='Postal address'
+other='Postal, '
+[visitingAddress]
+one='Visiting address'
+other='visiting, '
+[deliveryAddress]
+one='Delivery address'
+other='and delivery address'
+[administration]
+other='Administration'
+[registrar]
+other='Registrar'
+[dataProtectionOfficer]
+other='Data protection officer'
+[observera]
+other='Caution'
+[viktigt]
+other='Important'
+[notera]
+other='Note'
+[tips]
+other='Tip'
+[varning]
+other='Warning'
+[missingSomething]
+other='Missing something?'
+[destination]
+other='Destination'
+[launch]
+other='Launch'
+[instruments]
+one='Instrument'
+other='Instruments'
+[status]
+other='Status'
+[transit]
+other='In transit'
+[active]
+other='Transmitting data'
+[failure]
+other='Failure'
+[completed]
+other='Completed'
+[development]
+other='Under development'
+[legend]
+other='Legend'
+[credit]
+other='Credit'

@@ -1,0 +1,58 @@
+{{/* requrires goldmark wrapStandAloneImageWithinParagraph: false */}}
+{{/* allows setting css classes with *.png#className */}}
+{{ $url := split .Destination "#" }}
+{{ $file := index $url 0 }}
+{{ $hash := index $url 1 }}
+{{- if strings.HasPrefix $file "http" -}}
+  {{- if and .IsBlock .Title -}}
+    <figure>
+      <img src="{{ $file | safeURL }}" class="{{ $hash }}"
+        {{- with .Text }} alt="{{ . }}"{{ end -}}
+      >
+      <figcaption>{{ .Title }}</figcaption>
+    </figure>
+  {{- else -}}
+    <img src="{{ $file | safeURL }}" class="{{ $hash }}"
+      {{- with .Text }} alt="{{ . }}"{{ end -}}
+      {{- with .Title }} title="{{ . }}"{{ end -}}
+    >
+  {{- end -}}
+{{- else -}}  
+  {{ $image := resources.Get $file }}
+  {{ $filters := slice
+    images.AutoOrient
+    (images.Process "fit 750x1500 webp Center q90")
+  }}
+  {{- if $image -}}
+    {{- if strings.HasSuffix $file ".svg" -}}
+      {{- if and .IsBlock .Title -}}
+        <figure class="{{ $hash }}">
+          {{ readFile (printf "assets/%s" $file) | safeHTML }}
+          <figcaption>{{ .Title }}</figcaption>
+        </figure>
+      {{- else -}}
+        <figure class="{{ $hash }}">
+          {{ readFile (printf "assets/%s" $file) | safeHTML }}
+        </figure>
+      {{- end -}}
+    {{- else -}}
+      {{ $fitted := images.Filter $filters $image }}
+      {{ (resources.Get $fitted).Publish }}    
+      {{- if and .IsBlock .Title -}}
+        <figure>
+          <img src="{{ $fitted.RelPermalink | safeURL }}" class="{{ $hash }}"
+            {{- with .Text }} alt="{{ . }}"{{ end -}}
+          >
+          <figcaption>{{ .Title }}</figcaption>
+        </figure>
+      {{- else -}}
+        <img src="{{ $fitted.RelPermalink | safeURL }}" class="{{ $hash }}"
+          {{- with .Text }} alt="{{ . }}"{{ end -}}
+          {{- with .Title }} title="{{ . }}"{{ end -}}
+        >
+      {{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{ warnf "Could not find image: %s" .Destination }}
+  {{- end -}}
+{{- end -}}  

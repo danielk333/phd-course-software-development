@@ -1,0 +1,88 @@
+{{ define "title" }}
+{{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+<main id="main" tabindex="-1" lang="{{ .Language }}">
+{{ if .Content }}
+    <div class="not-sidebar">
+        {{ partial "breadcrumb" . }}
+        <article class="single {{ .Section | lower }}">
+            <header>
+                {{ if .Params.cover }}
+                    {{ $image := resources.Get .Params.cover.image }}
+                    {{ $filters := slice
+                        images.AutoOrient
+                        (images.Process "fit 750x750 webp Center q90")
+                    }}                      
+                    {{ $fitted := images.Filter $filters $image }}
+                    <img src="{{ $fitted.RelPermalink | safeURL }}" 
+                            alt="{{ .Params.cover.alt }}" title="{{ .Params.cover.alt }}">
+                {{ end }}
+                <h1>{{ .Title }}</h1>
+                {{ partial "byline" . }}
+            </header>
+            <div>
+                {{ $headers := strings.Count "li" .TableOfContents }}
+                {{ $longEnough := gt .WordCount 400 }}
+                {{ $hasHeaders := gt $headers 0 }}
+                {{ $showTOC := or .Params.numberedHeadings (and $hasHeaders $longEnough) }}
+                {{ if $showTOC }}
+                <a href="{{ .Permalink }}#TableOfContents" class="sr-only sr-only-focusable">{{ i18n "toc" }}</a>
+                {{ end }}        
+                <div class="content">
+                    {{ .Content }}
+                </div>
+            </div>
+        </article>
+    </div>
+    <aside class="sidebar">
+    {{ if $showTOC }}
+        <section>
+            <h2>{{ i18n "toc" }}</h2>
+            {{ replace .TableOfContents `href="#` (printf `href="%s#` .Permalink) | safeHTML }}
+        </section>
+    {{ end }}
+
+    <nav>
+        <h2>{{ .Site.Title }}</h2>
+        {{ partial "menu/recursive-submenu" (.Site.GetPage "") }}
+    </nav>
+
+    {{ $related := .Site.RegularPages.Related . }}
+    {{ $verktyg := where $related "Section" "=" "verktyg" }}
+    {{ $nonVerktyg := collections.Complement $verktyg .Pages $related }}
+    {{ with $nonVerktyg | first 5 }}
+        <section>
+            <h2>{{ i18n "seeAlso" }}</h2>
+            <ul>
+                {{ range . }}
+                {{ .Render "li" }}
+                {{ end }}
+            </ul>
+        </section>
+        {{ end }}
+        {{ with $verktyg }}
+        <nav class="tools">
+            <ul>
+                {{ range . }}
+                {{ .Render "li" }}
+                {{ end }}
+            </ul>
+        </nav>
+    {{ end }}
+    </aside>
+{{ else }}
+    <div class="not-sidebar">
+        <header>
+            {{ with partial "prefer-page-translation" . }}
+            <h1 lang="{{ .Language }}">{{ .Title }}</h1>
+            {{ end }}
+        </header>
+        <nav>
+            {{ partial "menu/recursive-submenu" . }}
+        </nav>        
+    </div>
+{{ end }}
+</main>
+{{ end }}

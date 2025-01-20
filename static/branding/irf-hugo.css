@@ -1,0 +1,1216 @@
+body.hugo {
+    /* display logo with inline svg image instead */
+    --logo-y-offset: -9999px;
+    --content-width: 750px;
+    --container-width: calc(710px * 2 + var(--logo-whitespace));
+}
+
+body > header,
+body > main,
+/* decapCMS editor preview */
+.frame-content {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    margin-top: var(--logo-whitespace);
+}
+
+body > header {
+    /* 
+        make sure there is space between header and main 
+        even when all elements inside header are absolute positioned,
+        e.g. when showing a closed hamburger menu
+    */
+    min-height: calc(var(--header-height) - var(--logo-whitespace));
+}
+
+body > footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5em;
+}
+
+body > footer h2 {
+    margin-top: .5em;
+}
+
+a.home {
+    display: block;
+    margin: var(--logo-whitespace);
+    height: var(--logo-height);
+    width: var(--logo-width);
+}
+
+a.home svg {
+    display: block;
+    height: var(--logo-height);
+    width: auto;
+}
+
+a.edit {
+    margin-left: auto;
+    color: var(--fg-muted-color) !important;
+}
+
+footer address a {
+    padding: .25em 0;
+    display: block;
+}
+
+/* 
+when several addresses are the same, 
+list the keys on the same line, i.e.
+"post-, besöks- och leveransadress"
+although they are separate <dt> elements
+*/
+dt.address {
+    display: inline;
+}
+
+dt.address ~ dd {
+    margin-bottom: 1em;    
+}
+
+/* 
+some translation strings might be lowercase 
+captialise "besöks-" when listed together 
+with "leveransaddress" when they are the same
+*/
+dd + dt.address {
+    text-transform: capitalize;
+}
+
+main details {
+    padding: .5em;
+}
+
+form.search {
+    padding-top: var(--logo-height);
+}
+
+.carousel-tablist {
+    /*  as padding increases width with box sizing: content-box,
+        it negates the body padding for nice 100% width... */
+    box-sizing: content-box;
+    margin-top: calc(var(--logo-whitespace) * -1);
+    margin-left: calc(var(--logo-whitespace) * -1);
+    margin-right: calc(var(--logo-whitespace) * -1);
+    max-width: none;
+}
+
+.heroes {    
+    width: 100%;
+    display: block;        
+}
+
+.hero {
+    /* overlay the background transition line between header and main*/
+    margin-top: -1px;
+    max-width: var(--container-width);
+    max-height: 500px;    
+}
+
+.hero.hero-layout {
+    max-width: none;
+    margin-left: calc(var(--logo-whitespace) * -1);
+    margin-right: calc(var(--logo-whitespace) * -1);
+    box-sizing: content-box;        
+    display: flex;
+    justify-content: center;
+}
+
+.hero.hero-layout img {
+    max-width: 1500px;
+}
+
+.hero h2, 
+.hero p, 
+.hero a {
+    margin: 0;
+}
+
+h2.heroic {
+    margin-bottom: .3em;
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    min-height: 180px;
+    max-height: 500px;
+    max-width: 100%;
+}
+
+.hero article {
+    width: 100%;
+    display: block;
+}
+
+.hero-content {
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    bottom: -400px;
+    left: -170px;
+    padding-left: 190px;
+    line-height: 1.5em;
+}
+
+.hero-content.mirror {
+    left: initial;
+    right: -170px;
+    padding-left: 0;
+}
+
+.hero-content.mirror .hero-text {    
+    position: absolute;
+    right: 190px;
+    text-align: right;
+}
+
+.hero-content.mirror p,
+.hero-content.mirror h2 {
+    text-align: right;
+}
+
+.hero-text {
+    position: absolute;
+    bottom: 410px;    
+    max-height: 200px;    
+}
+
+.hero-text p {
+    width: 300px;
+}
+
+a.call-to-action {
+    background-color: var(--irf-blue);
+    border: 3px double var(--bg-color);
+    color: white;
+    border-radius: .3em;
+    padding: .5em;
+    display: inline-block;
+    max-width: 320px;
+}
+
+a.call-to-action:focus {
+    border-style: dashed;
+}
+
+body > header {
+    margin-top: calc(var(--header-height) * -1 - 10px);        
+}
+
+.desktop {
+    display: none;
+}
+
+body > header nav ul {
+    list-style-type: none;    
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+body > header nav ul.sub-menu {
+    font-weight: normal;
+}
+
+.mobile.search {
+    position: absolute;
+    top: calc(var(--header-height) / 2 - .5em);
+    right: 8em;
+}
+
+.hamburger summary {
+    position: absolute;
+    cursor: pointer;
+    list-style: none;
+}
+
+/* remove default arrow styling */
+.hamburger summary::marker, /* Chrome, Edge, Firefox */
+.hamburger summary::-webkit-details-marker /* Safari */ {
+    display: none;
+}
+
+.hamburger > summary {
+    top: calc(var(--header-height) / 2 - .5em);
+    right: var(--logo-x-offset);
+    color: white;
+    text-transform: uppercase;    
+}
+
+.hamburger > summary::after {
+    content: '☰';
+    display: inline-block;
+    text-align: right;
+    width: 1.2em;
+    font-weight: bold;
+}
+
+.hamburger[open] > summary::after {
+    content: '⨯';
+}
+
+.hamburger > summary + nav,
+.hamburger nav details {
+    background-color: var(--bg-alt-color);
+    /*  as padding increases width with box sizing: content-box,
+        it negates the body padding for nice 100% width... */
+    box-sizing: content-box;
+    padding: 0;
+    /* but we still need to compensate with a negative left margin */
+    margin: 0 calc(var(--logo-whitespace) * -1);
+}
+
+.hamburger nav details.sub-menu {
+    background-color: var(--bg-color);
+    border: 1px solid var(--soft-divider-color);
+    border-left-width: 4px;
+    border-right-color: var(--bg-color);
+    border-bottom: none;
+    border-top: none;
+    margin-right: -1px;
+}
+
+.hamburger nav summary {
+    position: absolute;
+    right: 0;
+    top: 0;
+    vertical-align: top;
+    color: var(--link-color);
+    border-left: 2px solid var(--bg-color);
+}
+
+.hamburger nav summary::after {
+    content: 'ᐯ';
+    display: block;
+    text-align: center;
+    padding-top: .7em;
+    width: 2.6em;
+    height: 2.4em;
+}
+
+.hamburger nav [open] > summary::after {
+    background-color: var(--bg-color);
+    color: var(--fg-highlight-color);
+    content: 'ᐱ';
+}
+
+.hamburger ul {
+    padding: 0;
+    margin: 0;
+}
+
+.hamburger li {
+    max-width: none;
+    padding: 0 0 0 var(--logo-whitespace);
+    position: relative;
+    border-bottom: 2px solid var(--bg-color);
+}
+
+.hamburger li li {
+    border-bottom: none;
+    padding-left: calc(var(--logo-whitespace) + 1em);
+}
+
+.hamburger a {
+    padding: .7em 0;
+    color: var(--link-color);
+    display: block;
+}
+
+.hamburger a:hover {
+    color: var(--link-color-hover);
+    text-decoration: underline;
+}
+
+body > header nav.desktop ul {
+    display: flex;
+    margin: 0;    
+}
+
+body > header a:hover {
+    color: white;
+}
+
+body > header .sub-menu a:hover {
+    color: var(--link-color-hover);
+    text-decoration: underline;
+}
+
+body > header nav.desktop > ul > li  {
+    position: relative;
+    display: flex;
+    margin-left: .5em;
+    padding: 0 .5em;
+    height: var(--header-cutoff);
+    min-width: 3em;
+    z-index: 1000;
+}
+
+a.search,
+body > header nav.desktop > ul > li > a {
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+}
+
+body > header nav.desktop > ul > li > a {
+    margin: auto;
+}
+
+body > header nav.desktop > ul > li:hover {
+    background-color: var(--header-bg-alt-color);
+}
+
+body > header nav.desktop > ul > li:hover > a::before {
+    content: '__';
+    font-weight: bold;
+    position: absolute;
+    bottom: -.5em;
+    left: 0;
+}
+
+body > header nav.desktop .sub-menu {
+    display: none;
+}
+
+body > header nav.desktop li:hover > .sub-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: -10px;
+    z-index: 100;
+    border: 10px solid var(--bg-color);
+    border-top: none;
+}
+
+body > header nav.desktop .sub-menu {
+    padding-left: 0;    
+}
+
+body > header nav.desktop .sub-menu li {
+    background-color: var(--bg-alt-color);
+    white-space: nowrap;
+    padding: 0;
+}
+
+body > header nav.desktop .sub-menu li:not(:last-child) {
+    border-bottom: 4px solid var(--bg-color);
+}
+
+body > header nav.desktop .sub-menu a {
+    display: block;
+    padding: .5em 1em;
+    text-transform: none;
+    color: var(--link-color);
+}
+  
+ol.date-sorted,
+nav.breadcrumb ol {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.date-sorted li {
+    padding: .3em 0;
+}
+  
+nav.breadcrumb li {
+    display: inline;
+}
+  
+nav.breadcrumb li + li::before {
+    display: inline-block;
+    margin: 0 0.25em;
+    content: "/";
+}
+  
+nav.breadcrumb [aria-current="page"] {
+    color: var(--fg-color);
+    text-decoration: none;
+}
+  
+
+nav.explore {
+    width: 100%;    
+}
+
+nav.explore ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+nav.explore svg + * {
+    display: inline-block;
+}
+
+nav.explore svg {
+    width: 3em;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+nav.explore a {
+    position: relative;
+    font-weight: bold;   
+    color: var(--hN-color); 
+}
+
+nav.explore p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+nav.explore a,
+nav.explore p {
+    padding-left: 3.5em;
+}
+
+/* redefine colors to work in both light and dark mode */
+nav.explore svg [stroke*='currentColor'] {
+    stroke: var(--link-color-hover);
+}
+
+nav.explore svg [stroke*='#f1b434'i] {
+    stroke: var(--irf-yellow);
+}
+
+/* change color of icons when links/clickable */
+nav.explore a:hover svg [stroke*='currentColor'i] {
+    stroke: var(--link-color);
+}
+
+nav.explore a:hover svg [stroke*='#f1b434' i] {
+    stroke: var(--irf-yellow-60);
+}
+
+article.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+article img,
+.frame-content img {
+    max-width: min(100%, var(--content-width));
+    max-height: 750px;    
+    width: auto;
+    object-fit: contain;
+    object-position: top;
+}
+
+img.placeholder {
+    filter: sepia(1) saturate(0.5);
+}
+
+article header img,
+[class*=WidgetPreviewContainer] img {
+    object-fit: cover;
+    /* reduce height of large featured media to keep the hN above the fold */    
+    max-height: 410px;
+    object-position: top center;
+    aspect-ratio: 750 / 410;
+}
+
+article > footer,
+article > header {
+    width: 100%;
+    justify-content: normal;
+}
+
+article:not(.featured) .meta,
+article .byline {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.byline,
+.meta {
+    font-size: .8em;
+}
+
+.byline {
+    padding-top: 4rem;
+}
+
+.byline a {
+    display: inline;
+}
+
+article .meta {
+    margin: 0;
+    width: 100%;
+}
+
+article .meta dd {
+    margin-left: 0;
+    margin-right: .3em;
+    /* break on entire tags, not inside them */
+    white-space: nowrap;
+}
+
+article .meta dt {
+    margin-right: .3em;
+}
+
+article .meta dd + dt {
+    margin-left: 1em;
+}
+
+.byline address:not(:only-child) {
+    margin-right: 1em;
+}
+
+article:has(img):has(.credit) {
+    position: relative;
+}
+
+article img + address.credit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+    color: white;
+    background-color: black;
+    opacity: .5;
+    padding: .3em;
+    font-size: .8em;
+}
+
+.hero article:has(img):has(.credit) {
+    line-height: .7em;
+}
+
+article .meta dt::after {
+    content: ':';
+}
+
+article .meta dd~dd:not(:last-child)::after {
+    content: ',';
+}
+
+article.single .content,
+article.single header {
+    max-width: var(--content-width);
+}
+
+/* avoid narrow elements taking up space where an sidebar would have been */
+article.single > .content:only-child {
+    margin-right: auto;
+}
+
+/* to easily position image credit overlay bottom right on top of of image */
+article header article {
+    height: 410px;
+}
+
+/* ingress */
+/* decapcms wraps each paragraph/header in divs */
+div:has(h1) + div p:first-child:not(:only-of-type),
+article.single .content > p:first-child:not(:only-of-type) {
+    font-family: "Roboto", "Arial", sans-serif;    
+    font-weight: bold;
+}
+
+/* exceptions: pages with no ingress */
+article.single.completed-projects .content > p:first-child:not(:only-of-type) {
+    font-family: "Roboto Serif", "Times New Roman", "Times", serif;
+    font-weight: normal;
+}
+
+article.featured {
+    width: calc(50% - var(--logo-whitespace));
+    flex-grow: 999;
+    min-width: min(400px, 100%);    
+    background-color: var(--bg-alt-color);
+    position: relative;
+    z-index: 10;    
+}
+
+article.featured video {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+}
+
+/* Do not show an orphan third row on max width when featured + pinned > 8 */
+article.featured:nth-of-type(n+9) {
+    display: none;
+}
+
+article h1,
+article h2 {
+    width: 100%;
+}
+
+article h1 {
+    margin: .5em 0;
+}
+
+h1:first-letter,
+h2:first-letter {
+    text-transform: uppercase;
+}
+
+article.list h2 {
+    font-size: 1.1em;
+    margin-top: .5em;
+    margin-bottom: 0;
+}
+
+article.single h2 {
+    font-size: 1.2em;
+}
+
+article.single h3 {
+    font-size: 1.1em;
+}
+
+article.single h4 {
+    font-size: 1.0em;
+}
+
+article.list p {
+    margin-top: .5em;
+}
+
+article.list h2 {
+    /* wrap to second and third line if needed */
+    white-space: normal;
+}
+
+article.single p:first-child {
+    /* align vertically top */
+    margin-top: 0;
+}
+
+article.featured header a {
+    display: block;
+}
+
+article.featured .content {
+    padding: .5em;
+}
+
+
+.grouped.medarbetare ul,
+.list-layout.kontakt {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--logo-whitespace);
+    align-items: baseline;    
+}
+
+.grouped.medarbetare ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.grouped.medarbetare li.medarbetare {
+    width: 30%;
+    min-width: min(200px, 100%);    
+    font-size: .9em;
+}
+
+.medarbetare h3,
+.medarbetare p {
+    margin: 0;    
+}
+
+.medarbetare a[href^=mailto] {
+    font-size: .9em;
+}
+
+.medarbetare.card + .medarbetare.card {
+    margin-top: 1em;
+}
+
+.list-layout.kontakt article {
+    width: 190px;
+    flex-direction: column;
+    font-size: .9em;
+}
+
+.grouped.medarbetare li.medarbetare:last-of-type,
+.list-layout.kontakt article:last-of-type {
+    /* push the last item to the "left" instead of maximising space between portraits on the last line */
+    /* this avoids a a center gap in the last line of portraits */
+    /* e.g. o---o => oo--- */
+    margin-inline-end: auto;
+}
+
+article.kontakt.single header {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: var(--logo-whitespace);
+    gap: var(--logo-whitespace);
+}
+
+article.kontakt .portrait {
+    background-color: var(--bg-alt-color);
+    height: 190px;
+    width: 190px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 5%;
+}
+
+.not-sidebar:only-child {
+    max-width: none;
+}
+
+.satellites ul {
+    list-style-type: none;
+    padding-left: 0 !important;
+}
+
+main .satellites li {
+    font-size: 1.2em;
+}
+
+aside .satellites li {
+    font-size: 1em;
+}
+
+.destination {
+    font-style: italic;
+}
+
+.status svg {
+    color: var(--link-color);
+}
+
+.status.development svg {
+    color: var(--irf-yellow);
+}
+
+.status.completed svg {
+    color: var(--irf-green);
+}
+
+.status.failure svg {
+    color: var(--irf-red);
+}
+
+body > footer {
+    /*  as padding increases width with box sizing: content-box,
+        it negates the body padding for nice 100% width... */
+    box-sizing: content-box;
+    padding: var(--logo-whitespace);
+    /* but we still need to compensate with a negative left margin */
+    margin-left: calc(var(--logo-whitespace) * -1);
+    width: 100%;
+    background-color: var(--bg-alt-color);
+    flex-direction: column;
+    max-width: none;
+    border-top: none;
+    margin-top: var(--logo-whitespace);
+}
+
+body > footer:last-of-type {
+    background-color: black;
+    color: white;
+    margin-top: 0;        
+}
+
+body>footer:last-of-type a {
+    color: var(--irf-yellow);    
+}
+
+body>footer:last-of-type a:hover {
+    color: var(--irf-yellow-40);
+}
+
+body>footer:last-of-type h2 {
+    color: white;
+}
+
+body > footer h2 {
+    font-size: 1.1em;
+    color: var(--fg-color);
+}
+
+body > footer a.home {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+body > header a.home {
+    margin-left: 0;
+}
+
+body > footer .row {
+    width: 100%;        
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;    
+}
+
+body > footer article {
+    min-width: min(100%, 150px);
+    align-self: flex-start;
+}
+
+/* each row of page footer */
+body > footer > div {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+body > footer .contact,
+body > footer .menu {
+    align-items: flex-start;
+}
+
+body > footer .menu nav {    
+    margin-right: calc(var(--logo-whitespace) * 2);
+}
+
+body > footer .menu ul,
+body > footer .menu li {
+    padding-left: 0;
+}
+
+body > footer .menu ul {
+    list-style-type: none;    
+}
+
+body > footer a,
+body > footer a:hover,
+body > header a,
+body > header a:hover,
+article.featured a {
+    /* links that are obvious given their position on the page */
+    border-bottom: none;
+    text-decoration: none;
+}
+
+.policy ul,
+.social ul {
+    list-style-type: none;
+    display: flex;
+    padding-left: 0;    
+}
+
+.policy ul {
+    gap: 1em;    
+}
+
+.social ul {
+    margin-left: 1em;
+    gap: .5em;
+}
+
+.social svg {
+    height: 1.5em;
+    width: auto;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.sidebar :is(h2,h3,h4,h5,h6) {        
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    margin-bottom: .5em;
+}
+
+.sidebar p {
+    padding: .5em 0;
+}
+
+.sidebar>section,
+.sidebar>article,
+.sidebar>nav:not(.tools) {
+    padding: 1em;
+    background-color: var(--bg-alt-color);
+}
+
+.sidebar nav,
+.sidebar :is(h2,h3,h4,h5,h6) ~ :not(:is(h2,h3,h4,h5,h6)) {
+    margin: 0;
+}
+
+.sidebar ul {
+    padding-top: .5em;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    list-style-type: none;
+}
+
+.sidebar ul ul {
+    padding-top: 0;
+    padding-left: 1em;
+    padding-bottom: .5em;
+}
+
+.sidebar nav ul {
+    margin: 0;    
+}
+
+/* hide generated empty elements in TOC and menus */
+.sidebar li:empty {
+    display: none;
+}
+
+.calendar-day {
+    --calendar-border-radius: .3em;
+    color: var(--fg-color);
+    border: 1px solid var(--hard-divider-color);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    font-weight: bold;
+    /* do not fill all vertical space */
+    align-self: flex-start;
+    border-radius: var(--calendar-border-radius);
+    position: relative;
+    margin-right: 1em;
+    width: 2.3em;
+    text-align: center;
+}
+
+.calendar-day + .calendar-day {
+    margin-left: -1em;
+}
+
+a[href$=".ics"] + .calendar-day::before,
+.calendar-day + .calendar-day::before {
+    content: '–';
+    position: absolute;
+    left: -.9em;
+    top: 1em;
+}
+
+.calendar-day .month {
+    text-transform: uppercase;
+    font-size: .7em;
+    background-color: var(--irf-red);
+    border-bottom: 1px solid var(--hard-divider-color);
+    color: white;
+    padding: .3em;
+    display: block;
+    border-top-left-radius: var(--calendar-border-radius);
+    border-top-right-radius: var(--calendar-border-radius);
+}
+
+.calendar-day .day {
+    font-size: 1.2em;
+    display: block;
+    background-color: var(--bg-color);
+    border-radius: var(--calendar-border-radius);
+}
+
+.past .calendar-day .month {
+    background-color: var(--irf-grey);
+}
+
+a[href$=".ics"] {
+    border-bottom: none;
+}
+a[href$=".ics"]:hover .month {
+    background-color: var(--irf-blue);
+}
+
+article .publications .authors {
+    list-style-type: none;
+    display: flex;
+    gap: 0 .5em;
+    flex-wrap: wrap;
+    color: var(--fg-muted-color);
+    padding-left: 0;
+    font-size: .8em;
+}
+
+article .publications .authors a {
+    font-weight: bold;
+}
+
+article .publications .authors li:not(:last-child) > *::after {
+    content: ';';
+}
+
+main {    
+    display: flex;    
+    flex-wrap: wrap;
+    gap: var(--logo-whitespace);
+    justify-content: space-around;    
+}
+
+main .sidebars {
+    flex-basis: 30%;
+    flex-grow: 1;
+    min-width: min(20em, 100%);
+    max-width: 700px;
+}
+
+main .sidebar {
+    flex-basis: 30%;
+    flex-grow: 1;
+    min-width: min(20em, 100%);
+    max-width: 350px;
+}
+
+main .not-sidebar {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-inline-size: 50%;
+    min-width: min(40em, 100%);
+    max-width: var(--content-width);
+    display: flex;
+    flex-direction: column;
+    gap: var(--logo-whitespace);    
+}
+
+main .not-sidebar:only-child {
+    max-width: 100%;
+}
+
+.vacancy-application-options {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.vacancy-application-options li {
+    padding-top: 1em;
+}
+
+.vacancy-application-options .apply-online {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: .5em;
+    border: 1px solid var(--hard-divider-color);
+    border-radius: .2em;
+}
+
+@media (max-width: 450px) {
+    /* smaller logo to not overlap hamburger menu in 400% zoom (or tiny windows)*/
+    body > header a.home {
+        width: var(--logo-width);
+        overflow: clip;
+    }
+
+    main .sidebar {
+        max-width: 100%;
+    }
+
+    .hero-text,
+    .hero-content {
+        border-radius: 0;
+        position: static !important;        
+        height: auto;
+        text-align: left !important;        
+    }
+
+    .hero-content {
+        padding: 0 var(--logo-whitespace) !important;
+        width: 100%;
+    }
+
+    .hero-text h2,
+    .hero-text p {
+        text-align: left !important;        
+        width: 100%;
+    }
+
+    .carousel-tablist .controls {
+        top: 130px !important;
+    }
+}
+
+@media (max-width: 770px) {
+    address a {
+        display: inline-block;
+        padding: .2em 0;
+    }
+
+    /* avoid long link texts causing horizontal scroll */
+    .policy ul {
+        flex-wrap: wrap;
+    }
+}
+
+@media (min-width: 1100px) {
+    .desktop {
+        display: block;
+    }
+    .mobile {
+        display: none;
+    }
+
+    /*  push whatever comes directly after the logo link element
+        as far to the right as possible */
+    body > header a.home {
+        margin-right: auto;
+    }
+
+    body > header {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+    }
+
+    nav.explore ul {
+        display: flex;
+        text-align: center;
+        flex-wrap: wrap;
+        justify-content: center;        
+        gap: var(--logo-whitespace);
+    }
+
+    nav.explore li {
+        position: static;
+        max-width: 17%;
+        flex-grow: 1;
+    }
+
+    nav.explore svg {
+        position: static;
+        display: block;
+        margin: 0 auto 1em auto;
+        width: 90px;
+    }
+
+    nav.explore a,
+    nav.explore p {
+        padding-left: 0;
+    }
+
+    nav.explore p {
+        margin-top: .5em;
+    }
+
+    nav.explore a {
+        padding-left: 0;
+        display: inline-block;
+        font-weight: bold;
+        border-bottom: 2px solid var(--link-color);
+    }
+
+    nav.explore a:hover {
+        border-bottom-color: var(--link-color-hover);
+    }
+}

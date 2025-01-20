@@ -1,0 +1,16 @@
+{{- $.Scratch.Add "index" slice -}}
+{{ $pages := .Site.AllPages }}
+{{ $sections := slice "handouts" }}
+{{ $ofInterest := where $pages "Section" "in" $sections }}
+{{- range $ofInterest -}}
+  {{- if .File -}}
+  {{- $.Scratch.Add "index" (dict
+    "title" .Title
+    "contents" .Plain    
+    "lang" .Language.Lang
+    "href" .Permalink
+    "len" (.Summary | len)
+  ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

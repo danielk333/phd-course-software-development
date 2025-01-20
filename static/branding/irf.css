@@ -1,0 +1,1045 @@
+@import "irf-obsidian.css";
+
+@font-face {
+  font-family: Roboto;
+  src: url('/fonts/roboto.woff2') format('woff2'),
+       url('/fonts/roboto.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto Serif';
+  src: url('/fonts/roboto-serif.woff2') format('woff2'),
+       url('/fonts/roboto-serif.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/fonts/roboto-mono.woff2') format('woff2'),
+       url('/fonts/roboto-mono.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url('/fonts/roboto-condensed.woff2') format('woff2'),
+       url('/fonts/roboto-condensed.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  /* padding should not increase box size (as default) */
+  box-sizing: border-box;
+}
+
+:root {
+  --irf-blue: #002d72;
+  --irf-blue-80: #3360a5;
+  --irf-blue-60: #6693d8;
+  --irf-blue-40: #99c6ff;
+  --irf-blue-20: #ccf9ff;
+  --irf-black: #000000;
+  --irf-black-80: #333333;
+  --irf-black-60: #666666;
+  --irf-black-40: #999999;
+  --irf-black-20: #cccccc;
+  /* defined as 80% black, but that is too bright for good screen contrast */
+  --irf-grey: var(--irf-black-80);
+  --irf-red: #af272f;
+  --irf-red-80: #bf5259;
+  --irf-red-60: #cf7d82;
+  --irf-red-40: #dfa9ac;
+  --irf-red-20: #efd4d5;
+  --irf-green: #257226;
+  --irf-green-80: #518e51;
+  --irf-green-60: #7caa7d;
+  --irf-green-40: #a8c7a8;
+  --irf-green-20: #d3e3d4;
+  --irf-yellow: #f1b434;
+  --irf-yellow-80: #f4c35d;
+  --irf-yellow-60: #f7d285;
+  --irf-yellow-40: #f9e1ae;
+  --irf-yellow-20: #fcf0d6;
+  --irf-orange: #dc6b2f;
+  --irf-orange-80: #e38959;
+  --irf-orange-60: #eaa682;
+  --irf-orange-40: #f1c4ac;
+  --irf-orange-20: #f8e1d5;
+  --logo-fg: white;
+  --logo-height: 60px;
+  --logo-width: 275px;
+  --logo-url: url("https://www.irf.se/branding/irf-neg.svg");
+  /* Minimum whitespace around logo is half its height in all directions */
+  --logo-whitespace: calc(var(--logo-height) / 2);
+  --header-height: calc(var(--logo-height) * 2);
+  /* allow override with other values, e.g. hiding with negative values */
+  --logo-x-offset: var(--logo-whitespace);
+  --logo-y-offset: var(--logo-whitespace);
+  /* To avoid blurry subpixel edge when colors end/start on the same pixel */
+  --header-cutoff: calc(var(--header-height) + 1px);
+  --header-bg-color: black;
+  --header-bg-alt-color: var(--irf-blue);
+  --content-start: calc(var(--header-height) + 10px);
+
+  /* alerts */
+  --bg-tip: var(--irf-green);
+  --fg-tip: var(--fg-color);
+  --divider-tip: var(--irf-green-40);
+  --bg-warning: var(--irf-orange);
+  --fg-warning: var(--bg-color);
+  --divider-warning: var(--irf-orange-40);
+  --bg-note: var(--irf-blue);
+  --fg-note: var(--fg-color);
+  --divider-note: var(--irf-blue-80);
+  --bg-caution: var(--irf-red);
+  --fg-caution: var(--fg-color);
+  --divider-caution: var(--irf-red-40);
+  --bg-important: var(--irf-yellow);
+  --fg-important: var(--fg-color);
+  --divider-important: var(--irf-yellow-40);
+}
+
+@media only screen {
+    /* Default to darkmode to prevent loading flash */
+    :root,
+    body.darkmode {
+      /* for greater contrast than irf-grey, material design recommendation */
+      --bg-color: #121212;
+      --fg-color: white;
+      --hN-color: var(--irf-blue-60);
+      --link-color: var(--irf-blue-40);
+      --link-color-hover: var(--irf-blue-20);
+      --bg-alt-color: #1c1c1c;
+      --soft-divider-color: var(--irf-grey);
+      --hard-divider-color: white;
+      --bg-highlight-color: #1c1c1c;
+      --fg-highlight-color: white;
+      --fg-muted-color: #999;
+      --logo-fg: white;
+      --header-bg-color: black;
+      --header-bg-alt-color: var(--irf-blue);
+
+      /* alerts */
+      --bg-tip: var(--irf-green);
+      --fg-tip: var(--fg-color);
+      --divider-tip: var(--irf-green-40);
+      --bg-warning: var(--irf-orange);
+      --fg-warning: var(--bg-color);
+      --divider-warning: var(--irf-orange-40);
+      --bg-note: var(--irf-blue);
+      --fg-note: var(--fg-color);
+      --divider-note: var(--irf-blue-80);
+      --bg-caution: var(--irf-red);
+      --fg-caution: var(--fg-color);
+      --divider-caution: var(--irf-red-40);
+      --bg-important: var(--irf-yellow);
+      --fg-important: var(--bg-color);
+      --divider-important: var(--irf-yellow-40);
+    }    
+}
+
+body {
+  color: var(--fg-color);
+  margin: 0;
+  padding: var(--content-start) var(--logo-whitespace) 0 var(--logo-whitespace);
+  height: calc(95vh - var(--content-start));
+  font-family: "Roboto", "Arial", sans-serif;
+  line-height: 1.5;
+}
+
+svg [style*="fill:#002d72"i] {
+  fill: var(--logo-fg) !important;
+}
+
+svg [style*="stroke:#002d72"i] {
+  stroke: var(--logo-fg) !important;
+}
+
+@media only screen and (prefers-color-scheme: light) {
+  :root {
+    --bg-color: white;
+    --fg-color: black;
+    --hN-color: var(--irf-blue);
+    --link-color: var(--irf-blue-80);
+    --link-color-hover: var(--irf-blue);
+    --bg-alt-color: #f6f6f6;
+    --soft-divider-color: #ccc;
+    --hard-divider-color: black;
+    --bg-highlight-color: var(--irf-blue-20);
+    --fg-highlight-color: black;
+    --fg-muted-color: #555;
+    --logo-fg: var(--irf-blue);
+    --header-bg-color: var(--irf-blue);
+    --header-bg-alt-color: black;
+
+    /* alerts */
+    --bg-tip: var(--irf-green-20);
+    --fg-tip: var(--fg-color);
+    --divider-tip: var(--irf-green);
+    --bg-warning: var(--irf-yellow-20);
+    --fg-warning: var(--fg-color);
+    --divider-warning: var(--irf-yellow);
+    --bg-note: var(--irf-blue-20);
+    --fg-note: var(--fg-color);
+    --divider-note: var(--irf-blue-80);
+    --bg-caution: var(--irf-red-20);
+    --fg-caution: var(--fg-color);
+    --divider-caution: var(--irf-red);
+    --bg-important: var(--irf-orange-20);
+    --fg-important: var(--fg-color);
+    --divider-important: var(--irf-orange);
+  }
+
+  .dark {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  .light {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+
+body.darkmode .light,
+body.lightmode .dark {
+  filter: invert(1) hue-rotate(180deg);  
+}
+
+body.lightmode {
+  --bg-color: white;
+  --fg-color: black;
+  --hN-color: var(--irf-blue);
+  --link-color: var(--irf-blue-80);
+  --link-color-hover: var(--irf-blue);
+  --bg-alt-color: #f6f6f6;
+  --soft-divider-color: #ccc;
+  --hard-divider-color: black;
+  --bg-highlight-color: var(--irf-blue-20);
+  --fg-highlight-color: black;
+  --fg-muted-color: #555;
+  --logo-fg: var(--irf-blue);
+  --header-bg-color: var(--irf-blue);
+  --header-bg-alt-color: black;
+
+  /* alerts */
+  --bg-tip: var(--irf-green-20);
+  --fg-tip: var(--fg-color);
+  --divider-tip: var(--irf-green);
+  --bg-warning: var(--irf-yellow-20);
+  --fg-warning: var(--fg-color);
+  --divider-warning: var(--irf-yellow);
+  --bg-note: var(--irf-blue-20);
+  --fg-note: var(--fg-color);
+  --divider-note: var(--irf-blue-80);
+  --bg-caution: var(--irf-red-20);
+  --fg-caution: var(--fg-color);
+  --divider-caution: var(--irf-red);
+  --bg-important: var(--irf-orange-20);
+  --fg-important: var(--fg-color);
+  --divider-important: var(--irf-orange);
+}
+
+body:not(.lightmode) {
+  /* default to darkmode to prevent loading flash */
+  background: var(--logo-url)
+    var(--logo-x-offset) var(--logo-y-offset) no-repeat,
+    linear-gradient(
+        to bottom,
+        var(--header-bg-color) var(--header-height),
+        var(--bg-color) var(--header-cutoff)
+      )
+      no-repeat,
+    var(--bg-color);
+  background-size: auto var(--logo-height), cover;
+}
+
+p, 
+li {
+  font-family: "Roboto Serif", "Times New Roman", "Times", serif;  
+  line-height: 1.8em;
+}
+
+li > p {
+  margin-bottom: 0;
+}
+
+header :is(p, li), 
+footer :is(p, li), 
+dl, 
+nav :is(p, li),
+.sidebar :is(p, li),
+.summary,
+.alert-heading {
+  font-family: "Roboto", "Arial", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", "Arial", sans-serif;
+  color: var(--hN-color);
+  margin-top: 2em;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  margin-top: 3em;
+  font-size: 1.2em;  
+}
+
+h3 {
+  font-size: 1.1em;
+}
+
+h4, h5, h6 {
+  font-size: 1em;
+  margin-bottom: .5em;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid var(--hard-divider-color);
+  max-width: 30%;
+  margin-left: 0;
+}
+
+body > footer {
+  border-top: 1px solid var(--hN-color);
+  padding-top: 1em;
+  margin-top: 1em;
+}
+
+section.alert {
+  margin: 0;
+  padding: 1em;
+  background-color: var(--bg-alt-color);
+  border-left: 5px solid var(--soft-divider-color);
+}
+
+section.alert p,
+blockquote p {
+  margin: 0;
+  padding: 0;
+}
+
+blockquote {
+  background-color: transparent;
+  font-family: 'Roboto Serif', 'Times New Roman', Times, serif;  
+  position: relative;
+  font-style: italic;  
+  padding: 0 1em;
+  margin: 0;
+  padding-left: 3.5em;
+  min-height: 3em;
+  display: flex;
+  flex-direction: column;
+  /* align short quotes vertically with quote square*/
+  justify-content: center;
+}
+
+blockquote::before {
+  width: .8em;
+  background-color: var(--irf-yellow);
+  padding: 0 0 0 .1em;  
+  content: "”";
+  font-size: 3em;
+  color: white;
+  position: absolute;
+  top: 0;  
+  left: 0;
+  max-height: 1em;
+}
+
+blockquote em {
+  font-style: normal;
+}
+
+section.alert .alert-heading {
+  font-weight: bold;   
+}
+
+dt svg,
+a svg,
+li svg,
+h2 svg,
+address svg,
+section.alert .alert-heading img,
+section.alert .alert-heading svg {
+  height: 1.4em; 
+  margin-bottom: -.3em;
+}
+
+a:has(svg) {
+  border-bottom: none;
+}
+
+a:has(svg):hover {
+  border-bottom: none;
+  text-decoration: underline;
+}
+
+section.alert .alert-heading img {
+  width: 1.4em;
+}
+
+section.alert p {
+  margin: 0;
+}
+
+section.alert p a {
+  font-weight: normal;
+  color: var(--fg-color);
+}
+
+section.alert.alert-tips {
+  background-color: var(--bg-tip);
+  border-left-color: var(--divider-tip);
+  color: var(--fg-tip);
+}
+
+section.alert.alert-notera {
+  background-color: var(--bg-note);
+  border-left-color: var(--divider-note);
+  color: var(--fg-note);
+}
+
+section.alert.alert-varning {
+  background-color: var(--bg-warning);
+  border-left-color: var(--divider-warning);
+  color: var(--fg-warning);
+}
+
+section.alert.alert-observera {
+  background-color: var(--bg-caution);
+  border-left-color: var(--divider-caution);
+  color: var(--fg-caution);
+}
+
+section.alert.alert-viktigt {
+  background-color: var(--bg-important);
+  border-left-color: var(--divider-important);
+  color: var(--fg-important);
+}
+
+section.alert + section.alert {
+  margin-top: 1.2em;
+}
+
+[hidden] { display: none; }
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--link-color);
+}
+
+a[href^=mailto],
+a[href^=tel] {
+  white-space: nowrap;
+}
+
+a[href^=https]:not([href*='.irf.se/']):not(:has(svg))::after {
+  content: '';
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iY3VycmVudENvbG9yIiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI+PHBhdGggZD0iTTIyNCwxMDRhOCw4LDAsMCwxLTE2LDBWNTkuMzJsLTY2LjMzLDY2LjM0YTgsOCwwLDAsMS0xMS4zMi0xMS4zMkwxOTYuNjgsNDhIMTUyYTgsOCwwLDAsMSwwLTE2aDY0YTgsOCwwLDAsMSw4LDhabS00MCwyNGE4LDgsMCwwLDAtOCw4djcySDQ4VjgwaDcyYTgsOCwwLDAsMCwwLTE2SDQ4QTE2LDE2LDAsMCwwLDMyLDgwVjIwOGExNiwxNiwwLDAsMCwxNiwxNkgxNzZhMTYsMTYsMCwwLDAsMTYtMTZWMTM2QTgsOCwwLDAsMCwxODQsMTI4WiI+PC9wYXRoPjwvc3ZnPg==);
+  background-size: contain;  
+  display: inline-block;
+  margin-left: .2em;
+  color: var(--fg-color);
+  width: 1em;
+  height: 1em;
+}
+
+main article li a,
+main article blockquote a,
+main article section.alert a,
+p a {
+  font-weight: bold;
+}
+
+table a,
+[role="navigation"] a,
+nav a {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+a:hover {
+  color: var(--link-color-hover);
+  border-bottom: 1px solid var(--link-color-hover);
+}
+
+table,
+td,
+th,
+tr {
+  border: none;
+}
+
+tr:not(:only-of-type) {
+  border-bottom: 1px solid var(--soft-divider-color);
+}
+tr:nth-child(even) {
+  background-color: var(--bg-alt-color);
+}
+
+td,
+th {
+  padding: 0.3em;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 1em;
+}
+
+@counter-style ndash {
+  system: cyclic;
+  symbols: "–";
+  suffix: "  ";
+}
+
+ul,
+ol.date-sorted {
+  list-style-type: ndash;
+}
+
+address {
+  font-style: normal;
+}
+
+figure {
+  margin: 0;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  justify-content: space-around;
+  /* do not enlarge smaller than <figure> box images */
+  align-items: center;
+}
+
+figure svg,
+figure img {
+  /* do not overflow figure boundary */
+  width: 100%;
+}
+
+figcaption {  
+  font-family: "Roboto Serif", "Times New Roman", "Times", serif;
+  font-style: italic;
+  align-self: center;
+}
+
+button:focus,
+summary:focus,
+input:focus,
+select:focus,
+a:focus {
+  outline: dashed;
+}
+
+body>main {
+  padding-bottom: 4em;
+}
+
+textarea,
+input[type=text],
+input[type=password],
+input[type=password],
+input[type=number],
+input[type=email],
+input[type=search],
+input[type=submit],
+input[type=tel],
+input[type=url],
+button {
+  padding: .5em;
+  font-size: 1.1em;
+}
+
+/* hints */
+input+label {
+  font-size: .9em;
+  color: var(--fg-muted-color);
+}
+
+@media only screen and (min-width: 600px) {
+  p,
+  li,
+  dd,
+  dt,  
+  blockquote {
+    /* Blocks of text are hard to read when spanning horizontal space */
+    max-width: 80ch;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    /* Arial Narrow can be used where space is limited */
+    font-family: "Roboto Condensed", "Arial Narrow", "Arial", sans-serif;
+    /* Prevent long words causing horizontal scroll 
+    ref: https://stackoverflow.com/a/15137272/7986746
+    */
+    overflow-wrap: break-word;      
+    word-break: break-word;
+    font-size: 1em;
+  }
+
+  h1 {
+    font-size: 1.2em;
+  }
+
+  h2 {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 450px) {
+  body {
+    --logo-url: url("https://www.irf.se/branding/irf-symbol-neg.svg");
+    --logo-width: var(--logo-height);
+  }
+}
+
+@media only screen and (prefers-color-scheme: light) {
+  body:not(.lightmode):not(.darkmode) {
+    background: var(--logo-url)
+      var(--logo-x-offset) var(--logo-y-offset) no-repeat,
+      linear-gradient(
+              to bottom,
+              var(--header-bg-color) var(--header-height),
+              var(--bg-color) var(--header-cutoff)
+      )
+      no-repeat,
+      var(--bg-color);
+    background-size: auto var(--logo-height), cover;
+  }
+}
+
+body.lightmode {
+  background: var(--logo-url)
+    var(--logo-x-offset) var(--logo-y-offset) no-repeat,
+    linear-gradient(
+            to bottom,
+            var(--header-bg-color) var(--header-height),
+            var(--bg-color) var(--header-cutoff)
+    )
+    no-repeat,
+    var(--bg-color);
+  background-size: auto var(--logo-height), cover;
+}
+
+label.color-scheme {
+  position: absolute;
+  top: 15px;
+  right: 15px;    
+}
+
+label.color-scheme {
+  visibility: hidden;  
+}
+                  
+label.color-scheme input::before {                                                                                                                                          
+  content: '';
+  display: block;
+  background-color: white;
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0xMjAsNDBWMTZhOCw4LDAsMCwxLDE2LDBWNDBhOCw4LDAsMCwxLTE2LDBabTcyLDg4YTY0LDY0LDAsMSwxLTY0LTY0QTY0LjA3LDY0LjA3LDAsMCwxLDE5MiwxMjhabS0xNiwwYTQ4LDQ4LDAsMSwwLTQ4LDQ4QTQ4LjA1LDQ4LjA1LDAsMCwwLDE3NiwxMjhaTTU4LjM0LDY5LjY2QTgsOCwwLDAsMCw2OS42Niw1OC4zNGwtMTYtMTZBOCw4LDAsMCwwLDQyLjM0LDUzLjY2Wm0wLDExNi42OC0xNiwxNmE4LDgsMCwwLDAsMTEuMzIsMTEuMzJsMTYtMTZhOCw4LDAsMCwwLTExLjMyLTExLjMyWk0xOTIsNzJhOCw4LDAsMCwwLDUuNjYtMi4zNGwxNi0xNmE4LDgsMCwwLDAtMTEuMzItMTEuMzJsLTE2LDE2QTgsOCwwLDAsMCwxOTIsNzJabTUuNjYsMTE0LjM0YTgsOCwwLDAsMC0xMS4zMiwxMS4zMmwxNiwxNmE4LDgsMCwwLDAsMTEuMzItMTEuMzJaTTQ4LDEyOGE4LDgsMCwwLDAtOC04SDE2YTgsOCwwLDAsMCwwLDE2SDQwQTgsOCwwLDAsMCw0OCwxMjhabTgwLDgwYTgsOCwwLDAsMC04LDh2MjRhOCw4LDAsMCwwLDE2LDBWMjE2QTgsOCwwLDAsMCwxMjgsMjA4Wm0xMTItODhIMjE2YTgsOCwwLDAsMCwwLDE2aDI0YTgsOCwwLDAsMCwwLTE2WiI+PC9wYXRoPjwvc3ZnPg==");  
+  visibility: visible;  
+  width: 32px;
+  height: 32px;
+}
+
+label.color-scheme input:checked::before {
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yNDAsOTZhOCw4LDAsMCwxLTgsOEgyMTZ2MTZhOCw4LDAsMCwxLTE2LDBWMTA0SDE4NGE4LDgsMCwwLDEsMC0xNmgxNlY3MmE4LDgsMCwwLDEsMTYsMFY4OGgxNkE4LDgsMCwwLDEsMjQwLDk2Wk0xNDQsNTZoOHY4YTgsOCwwLDAsMCwxNiwwVjU2aDhhOCw4LDAsMCwwLDAtMTZoLThWMzJhOCw4LDAsMCwwLTE2LDB2OGgtOGE4LDgsMCwwLDAsMCwxNlptNzIuNzcsOTdhOCw4LDAsMCwxLDEuNDMsOEE5Niw5NiwwLDEsMSw5NS4wNywzNy44YTgsOCwwLDAsMSwxMC42LDkuMDZBODguMDcsODguMDcsMCwwLDAsMjA5LjE0LDE1MC4zMyw4LDgsMCwwLDEsMjE2Ljc3LDE1M1ptLTE5LjM5LDE0Ljg4Yy0xLjc5LjA5LTMuNTkuMTQtNS4zOC4xNEExMDQuMTEsMTA0LjExLDAsMCwxLDg4LDY0YzAtMS43OSwwLTMuNTkuMTQtNS4zOEE4MCw4MCwwLDEsMCwxOTcuMzgsMTY3Ljg2WiI+PC9wYXRoPjwvc3ZnPg==");  
+}
+
+/* --sh-: syntax highlighting */
+
+:root,
+body.darkmode {
+  --sh-strings: #629755;
+  --sh-reserved-punctuation: var(--irf-orange);
+  --sh-functions: var(--irf-yellow);
+  --sh-numbers-self: var(--irf-blue-60);
+  --sh-bg-color: black;
+}
+
+@media only screen and (prefers-color-scheme: light) {
+  :root {
+    --sh-strings: #296e2a;
+    --sh-reserved-punctuation: var(--irf-blue);
+    --sh-functions: var(--irf-red);
+    --sh-numbers-self: var(--irf-blue-80);
+    --sh-bg-color: var(--bg-color);
+  }
+}
+
+body.lightmode {
+  --sh-strings: #296e2a;
+  --sh-reserved-punctuation: var(--irf-blue);
+  --sh-functions: var(--irf-red);
+  --sh-numbers-self: var(--irf-blue-80);
+  --sh-bg-color: var(--bg-color);
+}
+
+code, pre {
+  font-family: "Roboto Mono", monospace;
+}
+
+pre {
+  border-radius: .3em;
+}
+
+.goat.svg-container text {
+  font-family: "Roboto Mono", monospace;
+  font-size: .7em !important;
+}
+
+:is(p, li, dd, dt) code {
+  background-color: var(--bg-alt-color);
+  border: 1px solid var(--soft-divider-color);
+  line-height: 1.2em;
+  font-size: .8em;
+  display: inline-block;
+  padding: 0 .2em;
+  border-radius: .3em;
+}
+
+code span.c1 {
+  opacity: 0.6;
+}
+
+code span.sd {
+  color: var(--sh-strings);
+}
+
+code span.kn,
+code span.kc,
+code span.p,
+code span.k {
+  color: var(--sh-reserved-punctuation);
+}
+
+code span.fu,
+code span.nf {
+  color: var(--sh-functions) !important;
+}
+
+code span.bp,
+code span.mi,
+code span.va {
+  color: var(--sh-numbers-self);
+}
+
+/*
+	Improved screen reader only CSS class
+	@author Gaël Poupard
+		@note Based on Yahoo!'s technique
+		@author Thierry Koblentz
+		@see https://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-53456.html
+	* 1.
+		@note `clip` is deprecated but works everywhere
+		@see https://developer.mozilla.org/en-US/docs/Web/CSS/clip
+	* 2.
+		@note `clip-path` is the future-proof version, but not very well supported yet
+		@see https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path
+		@see http://caniuse.com/#search=clip-path
+		@author Yvain Liechti
+		@see https://twitter.com/ryuran78/status/778943389819604992
+	* 3.
+		@note preventing text to be condensed
+		author J. Renée Beach
+		@see https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+		@note Drupal 8 goes with word-wrap: normal instead
+		@see https://www.drupal.org/node/2045151
+		@see http://cgit.drupalcode.org/drupal/commit/?id=5b847ea
+	* 4.
+		@note !important is important
+		@note Obviously you wanna hide something
+		@author Harry Roberts
+		@see https://csswizardry.com/2016/05/the-importance-of-important/
+*/
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;  /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;            /* 3 */
+}
+
+/*
+	Use in conjunction with .sr-only to only display content when it's focused.
+	@note Useful for skip links
+	@see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+	@note Based on a HTML5 Boilerplate technique, included in Bootstrap
+	@note Fixed a bug with position: static on iOS 10.0.2 + VoiceOver
+		@author Sylvain Pigeard
+		@see https://github.com/twbs/bootstrap/issues/20732
+*/
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  clip: auto !important;
+  -webkit-clip-path: none !important;
+  clip-path: none !important;
+  height: auto !important;
+  margin: auto !important;
+  overflow: visible !important;
+  width: auto !important;
+  white-space: normal !important;
+}
+
+.branding-box {
+  padding: 1em;
+  width: calc(50% - .5em);
+  min-width: 325px;
+}
+
+.branding-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.branding-box,
+.branding-box :is(h2, h3) {
+  color: white;
+  margin-top: 0;
+}
+
+.branding-box h3 {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+.branding-box h3::after,
+.branding-box dt::after {
+  content: ':';
+}
+
+.branding-box dl {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.branding-box .print {
+  max-width: 300px;
+}
+
+.branding-box .print dd {
+  width: 60%;
+}
+
+.branding-box .print dt {
+  width: 4em;
+}
+
+.branding-box .screen {
+  flex-direction: column;
+  max-height: 5em;
+  margin: 0 -1em -1em -1em;
+}
+
+.branding-box .screen dd,
+.branding-box .screen dt {
+  width: 20%;
+  margin-left: 0;
+  padding: .5em;
+}
+
+.branding-box .screen dd {
+  padding-top: 0;
+  font-family: "Roboto Mono", monospace;
+}
+
+.branding-box .screen dt {
+  padding-bottom: 0;
+}
+
+.branding-box h3 {
+  width: 100%;
+}
+
+.branding-box.irf-yellow :is(h2, h3, dt, dd),
+.branding-box.irf-orange :is(h2, h3, dt, dd),
+.percent-80,
+.percent-60, 
+.percent-40, 
+.percent-20 {
+  color: black;
+}
+
+.branding-box.irf-black :is(h2, h3),
+.irf-black .percent-80,
+.irf-black .percent-60,
+.irf-blue .percent-80 {
+  color: white;
+}
+
+.irf-blue,
+.irf-blue-100 {
+  background-color: var(--irf-blue) !important;
+  color: white !important;
+}
+.irf-blue-80 {
+  background-color: var(--irf-blue-80) !important;
+  color: white !important;
+}
+.irf-blue-60 {
+  background-color: var(--irf-blue-60) !important;
+  color: black !important;
+}
+.irf-blue-40 {
+  background-color: var(--irf-blue-40) !important;
+  color: black !important;
+}
+.irf-blue-20 {
+  background-color: var(--irf-blue-20) !important;
+  color: black !important;
+}
+
+.irf-green,
+.irf-green-100 {
+  background-color: var(--irf-green) !important;
+  color: white !important;
+}
+.irf-green-80 {
+  background-color: var(--irf-green-80) !important;
+  color: black !important;
+}
+.irf-green-60 {
+  background-color: var(--irf-green-60) !important;
+  color: black !important;
+}
+.irf-green-40 {
+  background-color: var(--irf-green-40) !important;
+  color: black !important;
+}
+.irf-green-20 {
+  background-color: var(--irf-green-20) !important;
+  color: black !important;
+}
+
+.irf-yellow,
+.irf-yellow-100 {
+  background-color: var(--irf-yellow) !important;
+  color: black !important;
+}
+.irf-yellow-80 {
+  background-color: var(--irf-yellow-80) !important;
+  color: black !important;
+}
+.irf-yellow-60 {
+  background-color: var(--irf-yellow-60) !important;
+  color: black !important;
+}
+.irf-yellow-40 {
+  background-color: var(--irf-yellow-40) !important;
+  color: black !important;
+}
+.irf-yellow-20 {
+  background-color: var(--irf-yellow-20) !important;
+  color: black !important;
+}
+
+.irf-orange,
+.irf-orange-100 {
+  background-color: var(--irf-orange) !important;
+  color: black !important;
+}
+.irf-orange-80 {
+  background-color: var(--irf-orange-80) !important;
+  color: black !important;
+}
+.irf-orange-60 {
+  background-color: var(--irf-orange-60) !important;
+  color: black !important;
+}
+.irf-orange-40 {
+  background-color: var(--irf-orange-40) !important;
+  color: black !important;
+}
+.irf-orange-20 {
+  background-color: var(--irf-orange-20) !important;
+  color: black !important;
+}
+
+.irf-black,
+.irf-black-100 {
+  background-color: var(--irf-black) !important;
+  color: white !important;
+}
+.irf-black-80 {
+  background-color: var(--irf-black-80) !important;
+  color: white !important;
+}
+.irf-black-60 {
+  background-color: var(--irf-black-60) !important;
+  color: white !important;
+}
+.irf-black-40 {
+  background-color: var(--irf-black-40) !important;
+  color: black !important;
+}
+.irf-black-20 {
+  background-color: var(--irf-black-20) !important;
+  color: black !important;
+}
+
+.irf-red,
+.irf-red-100 {
+  background-color: var(--irf-red) !important;
+  color: white !important;
+}
+.irf-red-80 {
+  background-color: var(--irf-red-80) !important;
+  color: black !important;
+}
+.irf-red-60 {
+  background-color: var(--irf-red-60) !important;
+  color: black !important;
+}
+.irf-red-40 {
+  background-color: var(--irf-red-40) !important;
+  color: black !important;
+}
+.irf-red-20 {
+  background-color: var(--irf-red-20) !important;
+  color: black !important;
+}
+
+.irf-grey,
+.irf-grey-100,
+.irf-black-80 {
+  background-color: var(--irf-grey) !important;
+  color: white !important;
+}

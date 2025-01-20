@@ -1,0 +1,416 @@
+:root {
+    --header-bg-color: var(--irf-grey);
+    --header-bg-alt-color: black;
+}
+
+a.home {
+    font-size: 2em;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+a.home svg {
+    margin-right: .5em;
+}
+
+article header {
+    margin-bottom: 1em;
+}
+
+.byline {
+    padding-top: 0;
+}
+
+.home article.list {
+    /* float images to the side instead of above/below as on www */
+    flex-direction: row;
+    /* disabled by media queries on higher resolutions */
+    flex-wrap: wrap;
+}
+
+article.list img.featured {
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    object-position: center center;
+}
+
+article.list:first-of-type img.featured {    
+    object-position: top center;
+}
+
+.home article.list:first-of-type {
+    flex-wrap: wrap;
+    gap: .5em;
+    margin-bottom: calc(2 * var(--logo-whitespace));
+}
+
+.home article.list:first-of-type .featured {
+    order: 0;
+    max-width: 100%;    
+    aspect-ratio: 750 / 410;
+}
+
+.home article.list > div:only-child {
+    background-color: var(--bg-alt-color);    
+    flex-grow: 1;
+}
+
+.home article.list > div:only-child header {
+    display: flex;    
+    margin-bottom: 0;
+}
+
+.home article.list > div:only-child h2 {
+    padding: .5em 1em;
+    margin: 0;
+}
+
+.home article.list > div:only-child .meta {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--irf-grey);
+    color: white;
+    padding: .5em;    
+    width: auto;
+}
+
+.home article.list > div:only-child .meta .published {    
+    display: none;
+}
+
+.home article.list > div:only-child .category a {
+    text-transform: uppercase;
+    color: white;
+}
+
+
+article.list img + div {
+    margin-right: var(--logo-whitespace);
+}
+
+body.home > header,
+body.home > main {
+    /* allow home page to be wider than others */
+    justify-content: space-between;
+}
+
+main pre {
+    padding: 1em .5em;
+    overflow-x: auto;
+}
+
+main.search {
+    flex-wrap: wrap;
+}
+
+main.search article {
+    min-width: 100%;
+}
+
+main.search .search-result h2 {
+    font-size: 1.1em;
+}
+
+.numbered-headings #TableOfContents ul {
+    counter-reset: item;
+    list-style-type: none;
+}
+
+.numbered-headings #TableOfContents ul>li::before {
+    content: counters(item, ".") ". "; 
+    counter-increment: item;
+}
+
+.numbered-headings .content {
+    counter-reset: h2 h3 h4 h5;
+}
+
+.numbered-headings .content > h2 {
+    counter-reset: h3 h4 h5;
+}
+.numbered-headings .content > h3 {
+    counter-reset: h4 h5;
+}
+.numbered-headings .content > h4 {
+    counter-reset: h5;
+}
+   
+.numbered-headings .content > h2::before {
+    content: counter(h2) ". ";
+    counter-increment: h2;        
+}
+  
+.numbered-headings .content > h3::before {
+    content: counter(h2) "." counter(h3) ". ";
+    counter-increment: h3;    
+}
+
+.numbered-headings .content > h4::before {
+    content: counter(h2) "." counter(h3) "." counter(h4) ". ";
+    counter-increment: h4;    
+}
+
+.numbered-headings .content > h5::before {
+    content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". ";    
+}
+
+
+a[rel=alternate][lang] {
+    font-size: .8em;
+    font-weight: normal;
+}
+
+a.more-news {
+    align-self: flex-start;
+}
+
+.sidebars {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;    
+    gap: 1em;
+}
+
+.sidebar .tools {
+    padding: 0;
+}
+
+.sidebar .tools ul {
+    list-style-type: none;
+    padding-left: .5em;
+}
+
+.tools li {
+    position: relative;
+    padding: .5em;
+    padding-left: calc(50px + 0.5em);        
+}
+
+.tools li p {
+    margin: 0;
+    padding: 0;
+}
+
+.offices article {
+    position: relative;
+}
+
+.tools .icon {
+    position: absolute;
+    left: 0;    
+    width: 40px;
+    height: 40px;    
+}
+
+.tools .icon svg,
+.tools .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+.tools .icon {
+    color: var(--irf-orange);
+}
+
+.tools .summary {
+    font-size: .8em;
+}
+
+.offices article label,
+.tools li label {
+    position: absolute;
+    width: 2em;
+    height: 3em;
+    right: 0;
+    top: 0;
+}
+
+.offices article label {
+    left: 60%;
+    top: 0;
+}
+
+.tools .show-all {
+    margin-top: 1em;
+    display: none;
+}
+
+.tools.limited .show-all {
+    display: block;
+}
+
+.tools.limited li {
+    display: none;
+}
+
+.tools.limited .favorite {
+    display: block;
+}
+
+.offices article label input,
+.tools li label input {
+    /* enable custom styles for checkbox
+    ref: https://stackoverflow.com/a/58480265/7986746 */
+    -moz-appearance: initial;
+    visibility:hidden;
+}
+.offices article input::before,
+.tools li input::before {
+    position: absolute; 
+    font-size: 2.0em;
+    visibility: visible;    
+    content: "☆";
+    color: var(--fg-color);   
+}
+.offices article input:checked::before,
+.tools li input:checked::before {
+    content: "★";
+    color: var(--irf-yellow);
+}
+
+.tools a::after {
+    /* don't show external link icon in tools */
+    content: none !important;
+}
+
+.sidebar :is(h2,h3,h4) {
+    /* reduce amount of blue as there is a lot of links in sidebars */
+    color: var(--fg-color);
+}
+
+.today:has(h2:only-child) {
+    display: none;
+}
+
+.sidebar .today {
+    position: relative;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;    
+    min-height: 4.5em;
+}
+
+.today h2 {
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: .5em;
+}
+
+.today h2 .calendar-day {
+    margin-right: 0;
+    top: .5em;
+    right: .5em;
+    position: absolute;
+}
+
+.today h3 {    
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.today .calendar:first-of-type h4 {
+    /* make space for .calendar-day */
+    margin-right: 3em;
+}
+
+.today .description {
+    font-size: .9em;
+}
+
+.today .calendar {
+    position: relative;        
+}
+
+.today .calendar article,
+.today .calendar h3 {
+    border-left: 6px solid var(--irf-blue);
+    padding-left: .5em;
+}
+
+.today .calendar h3 {
+    border-left-width: 12px;
+    /* limits border-left vertical height */
+    line-height: 6px;    
+}
+
+.today .calendar article {
+    margin-bottom: .3em;
+}
+
+.today .calendar h3 {
+    font-weight: normal;
+    font-size: .9em;
+    margin-top: 0;
+}
+
+/* first event after calendar name */
+.today .calendar h3 + article {
+    padding-top: .5em;
+}
+
+.today .calendar:not(:last-of-type) article:last-of-type {
+    padding-bottom: .5em;
+}
+
+.today p.description:last-child {
+    margin-bottom: 0;
+}
+
+.today .calendar h4 {
+    margin-top: 0;
+}
+
+.calendar address {
+    /* align on same line as zoom link */
+    display: inline;
+}
+
+@media (max-width: 450px) {
+    /* smaller logo already in use, override public theme */
+    body > header a.home {
+        width: auto;
+        overflow: visible;
+    }
+}
+
+@media (min-width: 600px) {
+    .home article.list:first-of-type h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 1100px) {
+    main {
+        flex-wrap: wrap;
+    }
+}
+
+@media (min-width: 770px) {
+    .home article.list {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    .home article.list img.featured {
+        max-width: 35%;
+        order: 1;
+    }
+
+
+    .list-layout article.list img.featured {
+        max-width: 20%;
+    }
+}
+
+@media print {
+    /* print the url after the link text (mimicing markdown), 
+       as it is not clickable/hoverable in print */
+       a:not([href^=http])::after {
+        content: " (https://tellus.irf.se/" attr(href) ")";
+    }
+
+}

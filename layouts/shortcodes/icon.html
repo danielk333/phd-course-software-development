@@ -1,0 +1,2 @@
+{{- $icon := (.Get 0) -}}
+{{- readFile (printf "static/icons/%s.svg" $icon) | safeHTML }}

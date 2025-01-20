@@ -1,0 +1,26 @@
+{{ $icons := dict
+    "observera" "warning-octagon"
+    "viktigt" "warning-circle"
+    "notera" "info"
+    "tips" "lightbulb"
+    "varning" "warning"
+}}
+
+{{ if eq .Type "alert" }}
+<section class="alert alert-{{ .AlertType }}">
+    <p class="alert-heading">
+        {{ $icon := index $icons .AlertType }}
+        {{ readFile (printf "static/icons/%s.svg" $icon) | safeHTML }}
+        {{ with .AlertTitle }}
+            {{ . }}
+        {{ else }}
+            {{ or (i18n .AlertType) (title .AlertType) }}!
+        {{ end }}
+    </p>
+    {{ .Text }}
+</section>
+{{ else }}
+<blockquote>    
+    {{ .Text }}
+</blockquote>
+{{ end }}

@@ -1,0 +1,53 @@
+baseURL: "https://danielk.developer.irf.se/phd-course-software-development"
+title: "Software development for researchers"
+contentdir: "content"
+layoutdir: "layouts"
+assetDir: "assets"
+publishdir: "public"
+themesDir: "themes"
+languageCode: "en-GB"
+
+# required for :git option in lastmod frontmatter
+enableGitInfo: true
+timeZone: "Europe/Stockholm"
+
+defaultContentLanguage: en
+enableRobotsTXT: true
+summaryLength: 20
+buildFuture: true
+buildExpired: false
+pluralizeListTitles: false
+timeout: 2m
+
+theme:
+  - book
+
+frontmatter:
+  date: ["date", "lastmod"]
+  lastmod: ["lastmod", ":git", "date"]
+
+markup:
+  goldmark:
+    parser:
+      # replace it with figure instead,
+      # see /layouts/_default/_markup/render-image.html
+      wrapStandAloneImageWithinParagraph: false
+      attribute:
+        # enables block level attributes such as
+        # {.warning} -> class="warning"
+        # {lang="en"} -> lang="en"
+        block: true
+        title: true
+    renderer:
+      unsafe: true
+  tableOfContents:
+    startLevel: 2
+
+menu:
+  main:
+    - name: handouts
+      weight: 1
+      params:
+        recursive: true
+    - name: lectures
+      weight: 2

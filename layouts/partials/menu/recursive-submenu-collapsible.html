@@ -1,0 +1,21 @@
+<details class="sub-menu">
+    <summary>
+        <span class="sr-only sr-only-focusable">{{ i18n "showSubmenu" . }}</span>
+    </summary>
+    <ul>
+        {{ $items := union .Pages .Sections }}
+        {{ $byTitle := sort $items "Title" "asc" }}
+        {{ range $byTitle }}
+            {{ with partial "prefer-page-translation" . }}
+            <li lang="{{ .Language }}">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                {{ if or .Sections .Pages }}
+                    {{ partial "menu/recursive-submenu-collapsible" . }}
+                {{ else }}
+                    {{ partial "menu/recursive-submenu" . }}
+                {{ end }}
+            </li>
+            {{ end }}
+        {{ end }}
+    </ul>
+</details>

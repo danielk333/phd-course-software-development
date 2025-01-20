@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+<head>
+    <meta charset="utf-8">
+    <title>
+        {{ block "title" . }}
+            {{ .Site.Title }}
+        {{ end }}
+    </title>
+    <base href="{{ .Site.BaseURL }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="branding/irf.css">
+    <link rel="stylesheet" href="branding/irf-hugo.css">
+    <link rel="stylesheet" href="branding/irf-intranet.css">
+    <link rel="stylesheet" href="branding/irf-book.css">
+    {{ range .Aliases }}
+        <link rel="alternate" href="{{ . }}">
+    {{ end }}
+</head>
+
+<body class="hugo">
+
+<a class="skip-main sr-only sr-only-focusable" href="{{ .Permalink }}#main">{{ i18n "skipToMain" }}</a>
+<header>
+    <a href='{{ relLangURL ""}}' class="home">
+        {{ readFile "static/branding/irf-symbol-neg.svg" | safeHTML }}
+        <span>{{ .Site.Title }}</span>
+    </a>
+    {{ partial "menu/main-menu" . }}
+</header>
+{{ block "main" . }}
+{{ end }}
+
+{{ block "scripts" . }}
+{{ end }}
+</body>
+</html>
