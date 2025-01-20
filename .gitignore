@@ -13,6 +13,8 @@ tmp/**
 node_modules/
 .sass-cache
 public
+*.lock
+resources/*
 
 # Revealjs installation
 dist/
