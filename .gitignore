@@ -5,20 +5,17 @@
 *.iml
 *.iws
 *.eml
-out/
+./out/
 .DS_Store
 .svn
 log/*.log
 tmp/**
-node_modules/
+./node_modules/
 .sass-cache
 public/
 *.lock
-resources/*
+./resources/*
 
 # Revealjs installation
-dist/
-plugin/
-package-lock.json
-package.json
-gulpfile.js
+static/revealjs/dist
+static/revealjs/plugin

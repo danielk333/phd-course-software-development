@@ -1,0 +1,11 @@
+<div class="byline">
+    {{ if .GitInfo }}
+        <address class="lastmod">
+            {{ i18n "lastModified" }}
+            {{ i18n "atTime" }} 
+            <time datetime="{{ .Lastmod }}">
+                {{ dateFormat "2006-01-02 15:04" .Lastmod.Local }}
+            </time>
+        </address>
+    {{ end }}
+</div>

@@ -2,32 +2,32 @@
 
 @font-face {
   font-family: Roboto;
-  src: url('/fonts/roboto.woff2') format('woff2'),
-       url('/fonts/roboto.woff') format('woff');
+  src: url('../fonts/roboto.woff2') format('woff2'),
+       url('../fonts/roboto.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Roboto Serif';
-  src: url('/fonts/roboto-serif.woff2') format('woff2'),
-       url('/fonts/roboto-serif.woff') format('woff');
+  src: url('../fonts/roboto-serif.woff2') format('woff2'),
+       url('../fonts/roboto-serif.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Roboto Mono';
-  src: url('/fonts/roboto-mono.woff2') format('woff2'),
-       url('/fonts/roboto-mono.woff') format('woff');
+  src: url('../fonts/roboto-mono.woff2') format('woff2'),
+       url('../fonts/roboto-mono.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Roboto Condensed';
-  src: url('/fonts/roboto-condensed.woff2') format('woff2'),
-       url('/fonts/roboto-condensed.woff') format('woff');
+  src: url('../fonts/roboto-condensed.woff2') format('woff2'),
+       url('../fonts/roboto-condensed.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -73,10 +73,10 @@
   --logo-fg: white;
   --logo-height: 60px;
   --logo-width: 275px;
-  --logo-url: url("https://www.irf.se/branding/irf-neg.svg");
+  --logo-url: url("irf-neg.svg");
   /* Minimum whitespace around logo is half its height in all directions */
-  --logo-whitespace: calc(var(--logo-height) / 2);
-  --header-height: calc(var(--logo-height) * 2);
+  --logo-whitespace: calc(var(--logo-height) * 0.1);
+  --header-height: calc(var(--logo-height) * 1.3);
   /* allow override with other values, e.g. hiding with negative values */
   --logo-x-offset: var(--logo-whitespace);
   --logo-y-offset: var(--logo-whitespace);

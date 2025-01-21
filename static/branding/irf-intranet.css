@@ -405,12 +405,3 @@ a.more-news {
         max-width: 20%;
     }
 }
-
-@media print {
-    /* print the url after the link text (mimicing markdown), 
-       as it is not clickable/hoverable in print */
-       a:not([href^=http])::after {
-        content: " (https://tellus.irf.se/" attr(href) ")";
-    }
-
-}

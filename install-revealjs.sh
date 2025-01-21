@@ -11,22 +11,19 @@ mkdir revealjs
 tar -xf "${reveal_version}.tar.gz" -C revealjs --strip-components 1
 
 # dist and plugin dirs are the only ones used in production
-mv -n revealjs/dist revealjs/plugin .
+mv -n revealjs/dist static/revealjs/dist
+mv -n revealjs/plugin static/revealjs/plugin
 
 echo "installing plugins"
 wget -q --show-progress https://raw.githubusercontent.com/denniskniep/reveal.js-plugin-spotlight/master/spotlight.js
-mkdir plugin/spotlight
-mv spotlight.js plugin/spotlight/
+mkdir static/revealjs/plugin/spotlight
+mv spotlight.js static/revealjs/plugin/spotlight/
 
-# support the npm start auto-reload use case
-mv -n revealjs/package.json revealjs/package-lock.json revealjs/gulpfile.js .
-cat custom-gulp.js >> gulpfile.js
-
-# tidy up source files not referred to from index.html
+# tidy up source files not referred to
 rm -rf revealjs
 rm -f ${reveal_version}.tar.gz
 echo "reveal.js Done"
 
 echo "installing custom CSS"
-cp -v css/theme/*.css dist/theme/
+cp -v static/revealjs/theme/*.css static/revealjs/dist/theme/
 echo "Done"

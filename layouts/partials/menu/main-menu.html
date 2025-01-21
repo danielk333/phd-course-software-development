@@ -46,16 +46,6 @@ are just two different ones.
                     {{ end }}
                 {{ end }}
             {{ end }}
-
-            {{ if .IsTranslated }}
-                {{ range .Translations}}
-                    <li>
-                        <a href="{{ .Permalink }}" class="translation desktop" rel="alternate">
-                            {{ .Language.LanguageName }}
-                        </a>
-                    </li>                    
-                {{ end }}
-            {{ end }}
         </ul>
     </nav>
 </details>
@@ -89,15 +79,6 @@ are just two different ones.
                     </ul>
                 {{ end }}
             </li>
-            {{ end }}
-        {{ end }}
-        {{ if .IsTranslated }}
-            {{ range .Translations }}
-                <li>
-                    <a href="{{ .Permalink }}" class="translation desktop" rel="alternate">
-                        {{ .Language.LanguageName }}
-                    </a>
-                </li>                
             {{ end }}
         {{ end }}
     </ul>

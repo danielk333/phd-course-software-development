@@ -1,0 +1,47 @@
+{{ define "title" }}
+{{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+{{ $pages := partial "pages" . }}
+<main tabindex="-1" class="{{ if .Params.numberedHeadings }}numbered-headings{{ end }}">
+    <div class="not-sidebar">
+        {{ partial "breadcrumb" . }}
+        <article class="single {{ .Section | lower }}" id="main">
+            <header>
+                <h1>{{ .Title }}</h1>
+                {{ partial "byline" .}}
+                {{ if .Params.Tags }}
+                <dl class="meta">
+                    {{ with .Params.Tags }}
+                        <dt>{{ i18n "tags" }}</dt>
+                        {{ range . }}
+                            <dd><a href='{{ relLangURL "tags" }}/{{ urlize . }}/'>{{ . }}</a></dd>
+                        {{ end }}
+                    {{ end }}
+                </dl>
+                {{ end }}
+            </header>
+            <div>
+                <a href="{{ .Permalink }}#TableOfContents" class="sr-only sr-only-focusable">{{ i18n "toc" }}</a>
+
+                {{ if .Content }}
+                    <div class="content">
+                        {{ .Content }}
+                    </div>
+                {{ end }}
+            </div>
+        </article>
+    </div>
+    <aside class="sidebar">
+        <nav>
+            <h2>{{ .Site.Title }}</h2>
+            {{ partial "menu/recursive-submenu" (.Site.GetPage "") }}
+        </nav>
+        <section>
+            <h2>{{ i18n "toc" }}</h2>
+            {{ replace .TableOfContents `href="#` (printf `href="%s#` .Permalink) | safeHTML }}
+        </section>
+    </aside>
+</main>
+{{ end }}

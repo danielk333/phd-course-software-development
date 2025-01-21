@@ -37,7 +37,7 @@ a.home {
     display: block;
     margin: var(--logo-whitespace);
     height: var(--logo-height);
-    width: var(--logo-width);
+    width: 80vw;
 }
 
 a.home svg {

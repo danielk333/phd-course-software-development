@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    <head>
+        <base href="../" />
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>
+            {{ block "title" . }}
+                {{ .Site.Title }}
+            {{ end }}
+        </title>
+
+        <link rel="stylesheet" href="revealjs/dist/reset.css">
+        <link rel="stylesheet" href="revealjs/dist/reveal.css">
+        <link rel="stylesheet" href="revealjs/dist/theme/my_black.css" id="theme">
+        <link rel="stylesheet" href="revealjs/plugin/highlight/monokai.css" id="highlight-theme">
+
+        <!-- My custom styles -->
+        <link rel="stylesheet" href="revealjs/style.css">
+        <link rel="stylesheet" href="revealjs/lecture.css">
+    </head>
+    <body>
+        {{ block "main" . }}
+        {{ end }}
+
+        <script src="revealjs/dist/reveal.js"></script>
+        <script src="revealjs/plugin/notes/notes.js"></script>
+        <script src="revealjs/plugin/markdown/markdown.js"></script>
+        <script src="revealjs/plugin/highlight/highlight.js"></script>
+        <script src="revealjs/plugin/math/math.js"></script>
+        <script src="revealjs/plugin/zoom/zoom.js"></script>
+        <script src="revealjs/plugin/spotlight/spotlight.js"></script>
+
+        <script src="revealjs/fix-hash.js"></script>
+
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true, // permalinkable urls
+                controls: false, // hide arrows
+                autoPlayMedia: true, 
+                progress: false, // no spoilers on number of slides
+                width: "100%",
+                height: "100%", //to allow intuitive scaling factor of full screen images
+                slideNumber: "c", // just the current slide number, again no spoilers
+                spotlight: {
+                    size: 80,
+                    spotlightCursor: 'crosshair',
+                    presentingCursor: 'default', 
+                    // true: initially in presentation mode, will also be ture if this is not set and toggleSpotlightOnMouseDown is true
+                    initialPresentationMode: false,
+                    // toggle spotlight by holding down the mouse key
+                    toggleSpotlightOnMouseDown: true,
+                    // enable pointer mode
+                    useAsPointer: false,
+                    // pointer color (If pointer mode enabled)
+                    pointerColor: 'red'
+                },
+                keyboard: {	
+                    // toggle spotlight by pressing key 'c'
+                    67: function() { RevealSpotlight.toggleSpotlight() },
+
+                    // enter/leave presentation mode by pressing key 'p'
+                    80: function() { 
+                        RevealSpotlight.togglePresentationMode(); 
+                    },
+                },
+                plugins: [ 
+                    RevealMarkdown, RevealHighlight, 
+                    RevealNotes, RevealMath.KaTeX, 
+                    RevealZoom, 
+                ]
+            });
+
+            enable_hash("{{ .Page.Permalink }}");
+        </script>
+    </body>
+</html>

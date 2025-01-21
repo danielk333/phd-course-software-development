@@ -20,7 +20,7 @@ pluralizeListTitles: false
 timeout: 2m
 
 theme:
-  - book
+  - course
 
 frontmatter:
   date: ["date", "lastmod"]

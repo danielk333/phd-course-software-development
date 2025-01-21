@@ -26,7 +26,6 @@
         {{ readFile "static/branding/irf-symbol-neg.svg" | safeHTML }}
         <span>{{ .Site.Title }}</span>
     </a>
-    {{ partial "menu/main-menu" . }}
 </header>
 {{ block "main" . }}
 {{ end }}

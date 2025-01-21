@@ -2,9 +2,10 @@
 title: Introduction
 ---
 
-# Acerbo datus maxime
+## Software development for researchers
 
-Estiokjyfgkjsyhdafrapta fiducia valuere litora _adicit cursu_, ad facies
+Overview of what this course is
 
+## Prerequisites
 
-[Lecture 0](lectures/presentations/lecture-0.html)
+## Learning goals

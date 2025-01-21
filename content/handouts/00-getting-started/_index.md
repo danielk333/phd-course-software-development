@@ -1,14 +1,9 @@
 ---
 title: Getting started
 numberedHeadings: true
+lecture: setup-env
 ---
 
-## Acerbo datus maxime
+## This is the first document
 
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
-modo arsit? Utinam rapta fiducia valuere litora _adicit cursu_, ad facies
-
-### Acsdf maxime
-
-[Lecture 0](lectures/presentations/lecture-0.html)
+stuff
