@@ -6,7 +6,8 @@ stages:
 pages:
   stage: deploy
   script:
-    - ./install-revealjs.sh
+    - apk add --no-cache bash wget iputils tar
+    - ./install-revealjs
     - hugo -b "https://danielk.developer.irf.se/phd-course-software-development"
   artifacts:
     expire_in: 5 minutes
