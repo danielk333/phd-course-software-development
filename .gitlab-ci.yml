@@ -1,20 +1,16 @@
-image: alpine:3.18.0
+image: registry.gitlab.com/pages/hugo/hugo_extended:0.139.3
 
-default:
-  tags:
-    - internal
+stages:
+  - deploy
 
-# pages:
-#   script:
-#     - apk add --no-cache bash wget iputils tar go hugo
-#     - ./install-revealjs
-#     - mkdir -p public
-#     - ./fix-hash
-#     - cp -rv presentations static media dist plugin css js index.html public/
-
-#   artifacts:
-#     paths:
-#       - public
-
-
-#!/bin/bash
+pages:
+  stage: deploy
+  script:
+    - ./install-revealjs.sh
+    - hugo -b "https://danielk.developer.irf.se/phd-course-software-development"
+  artifacts:
+    expire_in: 5 minutes
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
