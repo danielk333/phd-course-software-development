@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <base href="../" />
+        <base href="{{ .Site.BaseURL }}">
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -18,10 +18,16 @@
         <link rel="stylesheet" href="revealjs/plugin/highlight/monokai.css" id="highlight-theme">
 
         <!-- My custom styles -->
+        <link rel="stylesheet" href="branding/irf-course.css">
+        <link rel="stylesheet" href="branding/irf-hugo.css">
         <link rel="stylesheet" href="revealjs/style.css">
         <link rel="stylesheet" href="revealjs/lecture.css">
     </head>
     <body>
+        <header>
+            {{ partial "menu/main-menu" . }}
+        </header>
+
         {{ block "main" . }}
         {{ end }}
 

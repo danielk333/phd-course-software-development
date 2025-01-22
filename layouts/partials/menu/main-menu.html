@@ -1,83 +1,16 @@
-{{/*
-These two templates are fairly similar and could be more DRY,
-but that would be harder to read and edit. Thankfully they
-are just two different ones.
-*/}}
-<details class="hamburger mobile">
-    <summary>{{ i18n "menu" }}</summary>
-    <nav>
-        <ul>
-            {{ range .Site.Menus.main }}
-                {{ $recursive := .Params.recursive }}
-                {{ $mergeSections := .Params.sections }}
-                {{ with $.Site.GetPage .Name }}
-                    {{ with partial "prefer-page-translation" . }}
-                    <li>
-                        <a href="{{ .Permalink }}">{{ .Title }}</a>
-                        {{ if $recursive }}
-                            <details class="sub-menu">
-                                <summary>
-                                    <span class="sr-only sr-only-focusable">{{ i18n "showSubmenu" . }}</span>
-                                </summary>
-                                <ul>
-                                    {{ $otherSections := slice }}
-                                    {{ range $mergeSections }}
-                                        {{ $section := $.Site.GetPage . }}
-                                        {{ $otherSections = collections.Append $section $otherSections }}
-                                    {{ end }}
-                                    {{ $items := union (union .Pages .Sections) $otherSections }}
-                                    {{ $byTitle := sort $items "Title" "asc" }}
-                                    {{ range $byTitle }}
-                                    {{ with partial "prefer-page-translation" . }}
-                                    <li lang="{{ .Language }}">
-                                        <a href="{{ .Permalink }}">{{ .Title }}</a>
-                                        {{ if or .Sections .Pages }}
-                                            {{ partial "menu/recursive-submenu-collapsible" . }}
-                                        {{ else }}
-                                            {{ partial "menu/recursive-submenu" . }}
-                                        {{ end }}
-                                    </li>
-                                    {{ end }}
-                                    {{ end }}
-                                </ul>
-                            </details>
-                        {{ end }}
-                    </li>
-                    {{ end }}
-                {{ end }}
-            {{ end }}
-        </ul>
-    </nav>
-</details>
-
-<nav class="desktop">
+<nav class="presentation">
     <ul>
+        <li>
+            <a href="{{ .Site.BaseURL }}">
+            {{ .Site.Title }}
+            </a>
+        </li>
         {{ range .Site.Menus.main }}
-            {{ $recursive := .Params.recursive }}
-            {{ $mergeSections := .Params.sections }}
             {{ with $.Site.GetPage .Name }}
             <li>
                 <a href="{{ .Permalink }}">
                     {{ .Title }}
                 </a>
-                {{ if $recursive }}
-                    <ul class="sub-menu">
-                        {{ $otherSections := slice }}
-                        {{ range $mergeSections  }}
-                            {{ $section := $.Site.GetPage . }}
-                            {{ $otherSections = collections.Append $section $otherSections }}
-                        {{ end }}
-                        {{ $items := union (union .Pages .Sections) $otherSections }}
-                        {{ $byTitle := sort $items "Title" "asc" }}
-                        {{ range $byTitle }}
-                            {{ with partial "prefer-page-translation" .}}
-                            <li lang="{{ .Language }}">
-                                <a href="{{ .Permalink }}">{{ .Title }}</a>
-                            </li>
-                            {{ end }}
-                        {{ end }}
-                    </ul>
-                {{ end }}
             </li>
             {{ end }}
         {{ end }}

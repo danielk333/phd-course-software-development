@@ -1,0 +1,91 @@
+:root {
+    --header-bg-color: black;
+    --irf-blue-80: #3360a5;
+    --irf-blue: #002d72;
+    --header-bg-alt-color: var(--irf-blue);
+}
+
+.reveal {
+    height: 94%;
+}
+
+body > header {
+    height: 4em;
+}
+
+body > header nav.presentation {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+body > header nav.presentation ul {
+    display: flex;
+    height: 100%;
+    margin: 0;    
+}
+
+body > header nav.presentation > ul > li  {
+    position: relative;
+    display: flex;
+    margin: 0em;
+    padding: 0em;
+    height: var(--header-cutoff);
+    min-width: 3em;
+    z-index: 1000;
+}
+
+body > header nav.presentation > ul > li > a {
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+    padding: 0 1em;
+    margin: auto;
+}
+
+body > header nav.presentation > ul > li:hover {
+    background-color: var(--header-bg-alt-color);
+}
+
+body > header nav.presentation > ul > li:hover > a::before {
+    content: '__';
+    font-weight: bold;
+    position: absolute;
+    bottom: -.5em;
+    left: 0;
+}
+
+body > header nav.presentation .sub-menu {
+    display: none;
+}
+
+body > header nav.presentation li:hover > .sub-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: -10px;
+    z-index: 100;
+    border: 10px solid var(--bg-color);
+    border-top: none;
+}
+
+body > header nav.presentation .sub-menu {
+    padding-left: 0;    
+}
+
+body > header nav.presentation .sub-menu li {
+    background-color: var(--bg-alt-color);
+    white-space: nowrap;
+    padding: 0;
+}
+
+body > header nav.presentation .sub-menu li:not(:last-child) {
+    border-bottom: 4px solid var(--bg-color);
+}
+
+body > header nav.presentation .sub-menu a {
+    display: block;
+    padding: .5em 1em;
+    text-transform: none;
+    color: var(--link-color);
+}
