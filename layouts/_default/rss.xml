@@ -58,7 +58,6 @@
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end }}
     {{- range $pages }}
-        {{- with partial "prefer-page-translation" . }}
         <item xml:lang="{{ .Language }}">
         <title>{{ .Title }}</title>
         <link>{{ .Permalink }}</link>
@@ -67,7 +66,6 @@
         <guid>{{ .Permalink }}</guid>
         <description>{{ .Summary | transform.XMLEscape | safeHTML }}</description>
         </item>
-        {{- end }}
     {{- end }}
   </channel>
 </rss>

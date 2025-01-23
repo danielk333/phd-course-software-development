@@ -5,13 +5,11 @@
 <nav aria-label="Breadcrumb" class="breadcrumb">
     <ol>        
         {{- range $ancestors }}
-            {{ with partial "prefer-page-translation" . }}
             <li>
                 <a href="{{ .Permalink }}">
                     {{ .Title }}
                 </a>
             </li>
-            {{ end }}
         {{ end }}
         <li>
             <a href="#" aria-current="page">

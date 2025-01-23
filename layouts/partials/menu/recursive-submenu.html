@@ -2,13 +2,11 @@
     {{ $items := union .Pages .Sections }}
     {{ $byTitle := sort $items "Title" "asc" }}
     {{ range $byTitle }}
-        {{ with partial "prefer-page-translation" . }}
         <li lang="{{ .Language }}">
             <a href="{{ .Permalink }}">{{ .Title }}</a>
             {{ if or .Pages .Sections }}
                 {{ partial "menu/recursive-submenu" . }}
             {{ end }}
         </li>
-        {{ end }}
     {{ end }}
 </ul>
