@@ -2,6 +2,11 @@
     --header-bg-color: black;
     --irf-blue-80: #3360a5;
     --irf-blue: #002d72;
+    --irf-black: #000000;
+    --irf-black-80: #333333;
+    --irf-black-60: #666666;
+    --irf-black-40: #999999;
+    --irf-black-20: #cccccc;
     --header-bg-alt-color: var(--irf-blue);
 }
 
@@ -88,4 +93,46 @@ body > header nav.presentation .sub-menu a {
     padding: .5em 1em;
     text-transform: none;
     color: var(--link-color);
+}
+
+.course-tabs {
+  border: 1px solid var(--irf-black-40);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.course-tabs > input[type="radio"] {
+  appearance: none;
+  margin: 0;
+}
+
+.course-tabs > input[type="radio"]:checked + label {
+    border-bottom: 1px solid var(--color-link);
+}
+.course-tabs > input[type="radio"]:checked + label + .course-tab {
+    display: block;
+}
+
+.course-tabs > label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px transparent;
+    cursor: pointer;
+}
+
+.course-tabs > label:hover {
+    background-color: var(--irf-blue-80);
+}
+.course-tabs > input[type="radio"]:checked + label {
+    background-color: var(--irf-black-80);
+}
+
+.course-tab {
+    order: 999;
+    width: 100%;
+    border-top: 1px solid var(--irf-black-20);
+    padding: 1rem;
+    display: none;
 }

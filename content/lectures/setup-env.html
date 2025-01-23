@@ -1,5 +1,5 @@
 ---
-title: "Lecture 0: Setup environment"
+title: "Lecture 0: Environment and Hello World"
 ---
 
 <div class="reveal">
@@ -23,73 +23,7 @@ title: "Lecture 0: Setup environment"
 
         <section data-auto-animate>
             <div class="margin-top">
-                <!-- Lars Wirzenius, "40 years of programming"
-                Interesting and significant software is beyond the capacity of any one person to build alone in a reasonable time frame. This means that the fundamental, crucial, core skills in building software are communication and collaboration.
 
-                Even in the projects where I'm the only person, there are at least three people involved: past me, present me, and future me.
-                ...
-                Past me is a lazy and careless slob who always leaves a mess.
-                Present me does superb work, but has to cope with all the stupid stuff done by past me, and needs to placate future me.
-                Future me is an egotistic and opinionated snob for whom nothing is ever good enough.
-
-                add: maintinance
-                add: think about scope - who, why, when, what?
-                add: reporoducibility!!!
-                add: the right tool for the problem
-
-
-                lect 1 - philosophy
-                lect: basic programming
-                lect: your tools and environment
-                lect: solving problems
-                lect: styles of development
-                lect: automate away friction
-                lect: design
-                lect: writing code for humans to read and machines to run
-                lect: collaboration
-                lect: making it work - debugging, logging, profiling
-                lects: tools (numpy, mpi, ...)
-                lect: advanced concepts - paralellisation concepts, multi-programming language projects, FLIs, 
-
-                https://www.youtube.com/watch?v=EH12jHkQFQk -->
-
-            </div>
-            <div class="slide-logo"><img src="irflogo_vektortransp_svart.svg"></div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="margin-top">
-                <h3 class="title">Lets dig into the math!</h3>
-                <div class="col-flex-c">
-                    <h4 class="title">Hamiltonian mechanics</h4>
-                    <p><span class="select">Now we go bananas</span> (lets skip some details)</p>
-                    <div class="row-flex">
-                    <div class="fragment">
-                        <p>Poisson brackets st</p>
-                        $$
-                            \{f ,g \} = \sum_{i=1}^N \left ( \frac{\partial f}{\partial q_i} \frac{\partial g}{\partial p_i} -  \frac{\partial f}{\partial p_i} \frac{\partial g}{\partial q_i} \right )
-                        $$
-                        <span class="fragment">
-                        <p>if $\bar{x}$ is a solution to Hamiltons equations</p>
-                        $$
-                            \frac{\mathrm{d}\bar{x}}{\mathrm{d}t} = \{\bar{x},H\} \\
-                        $$
-                        </span>
-                    </div>
-                    <div class="fragment" style="padding-left: 2em;">
-                        <p>"same" differential equation as before</p>
-                        $$
-                        \frac{\mathrm{d} x_i}{\mathrm{d}t} = \{x_i,H\} = \{\cdot,H\} x_i \Leftrightarrow \\
-                        \Leftrightarrow x_i(t) = e^{t\{\cdot,H\}}x_i(0)
-                        $$
-                        <div class="fragment">
-                        <p>This is in itself a differential equation</p>
-                        <p class="select">Generally no analytic solution! :(</p>
-                        </div>
-
-                    </div>
-                    </div>
-                </div>
             </div>
             <div class="slide-logo"><img src="irflogo_vektortransp_svart.svg"></div>
         </section>

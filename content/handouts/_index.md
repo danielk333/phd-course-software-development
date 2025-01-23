@@ -2,11 +2,6 @@
 title: Handouts
 ---
 
-# Acerbo datus maxime
+These are all the handouts for each lecture and for the larger practical tasks.
 
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
-modo arsit? Utinam rapta fiducia valuere litora _adicit cursu_, ad facies
-
-
-[Lecture 0](lectures/presentations/lecture-0.html)
+Each lecture has an associated handout and these contain more detailed information and things that are not suitable for a presentation, such as link and large blocks of text. 

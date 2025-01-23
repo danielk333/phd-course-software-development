@@ -1,0 +1,10 @@
+{{- $group := printf "tabs-%d" .Parent.Ordinal -}}
+{{- $tab := printf "%s-%d" $group .Ordinal }}
+<input type="radio" class="toggle" name="{{ $group }}" id="{{ $tab }}" {{ if not .Ordinal }}checked="checked"{{ end }} />
+<label for="{{ $tab }}">
+  {{- .Get 0 -}}
+</label>
+<div class="course-tab markdown-inner">
+<h3>{{- .Get 0 -}}</h3>
+  {{- .Inner -}}
+</div>
