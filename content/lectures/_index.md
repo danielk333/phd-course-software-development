@@ -5,10 +5,11 @@ numberedHeadings: true
 
 ## Lecture outline
 
-- "Lecture 0: Setup environment"
-- "Lecture 0: Setup environment"
+{{< list-pages >}}
 
-lect 1 - philosophy
+## IDEA PLAN
+
+...
 lect: basic programming
 lect: your tools and environment
 lect: solving problems

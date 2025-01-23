@@ -152,3 +152,12 @@ body > header nav.presentation .sub-menu a {
 .course-lecture-notice > p {
     margin: 0em 1em;
 }
+
+.course-page-listing > dt {
+    font-family: monospace, monospace;
+    font-weight: normal;
+}
+.course-page-listing > dd {
+    margin-bottom: 1em;
+}
+

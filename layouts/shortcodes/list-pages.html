@@ -1,0 +1,11 @@
+{{ $items := .Page.Pages }}
+{{ $items = sort $items "Weight" "asc" }}
+
+<dl class="course-page-listing">
+{{ range $items }}
+    <dt lang="{{ .Language }}">
+        {{ .Weight }}. {{ .Title }}
+    </dt>
+    <dd>{{ .Params.description }}</dd>
+{{ end }}
+</dl>
