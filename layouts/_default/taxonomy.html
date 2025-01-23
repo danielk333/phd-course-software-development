@@ -6,9 +6,7 @@
 <main id="main" tabindex="-1" lang="{{ .Language }}">
     <div class="not-sidebar">
         <header>
-            {{ with partial "prefer-page-translation" . }}
             <h1 lang="{{ .Language }}">{{ .Title }}</h1>
-            {{ end }}
         </header>
         <nav>
             {{ partial "menu/submenu-sorted-by-date" . }}
