@@ -1,103 +1,25 @@
-:root {
-    --header-bg-color: black;
-    --irf-blue-80: #3360a5;
-    --irf-blue: #002d72;
-    --irf-black: #000000;
-    --irf-black-80: #333333;
-    --irf-black-60: #666666;
-    --irf-black-40: #999999;
-    --irf-black-20: #cccccc;
-    --header-bg-alt-color: var(--irf-blue);
+body > header nav.presentation > ul > li:first-child {
+    margin-left: calc(var(--logo-width) + 1em);
 }
 
-.reveal {
-    height: 94%;
-}
-
-body > header {
-    height: 4em;
-}
-
-body > header nav.presentation {
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-body > header nav.presentation ul {
-    display: flex;
-    height: 100%;
-    margin: 0;    
-}
-
-body > header nav.presentation > ul > li  {
-    position: relative;
-    display: flex;
-    margin: 0em;
-    padding: 0em;
-    height: var(--header-cutoff);
-    min-width: 3em;
-    z-index: 1000;
-}
-
-body > header nav.presentation > ul > li > a {
-    color: white;
-    text-transform: uppercase;
-    position: relative;
-    padding: 0 1em;
-    margin: auto;
-}
-
-body > header nav.presentation > ul > li:hover {
-    background-color: var(--header-bg-alt-color);
-}
-
-body > header nav.presentation > ul > li:hover > a::before {
-    content: '__';
-    font-weight: bold;
-    position: absolute;
-    bottom: -.5em;
-    left: 0;
-}
-
-body > header nav.presentation .sub-menu {
-    display: none;
-}
-
-body > header nav.presentation li:hover > .sub-menu {
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: -10px;
-    z-index: 100;
-    border: 10px solid var(--bg-color);
-    border-top: none;
-}
-
-body > header nav.presentation .sub-menu {
-    padding-left: 0;    
-}
-
-body > header nav.presentation .sub-menu li {
-    background-color: var(--bg-alt-color);
-    white-space: nowrap;
-    padding: 0;
-}
-
-body > header nav.presentation .sub-menu li:not(:last-child) {
-    border-bottom: 4px solid var(--bg-color);
-}
-
-body > header nav.presentation .sub-menu a {
-    display: block;
-    padding: .5em 1em;
-    text-transform: none;
-    color: var(--link-color);
+@media only screen and (prefers-color-scheme: light) {
+    body.presentation:not(.lightmode):not(.darkmode) {
+        background: var(--logo-url)
+        var(--logo-x-offset) var(--logo-y-offset) no-repeat,
+        linear-gradient(
+                to bottom,
+                var(--header-bg-color) var(--header-height),
+                var(--r-background-color) var(--header-cutoff)
+        )
+        no-repeat,
+        var(--r-background-color);
+        background-size: auto var(--logo-height), cover;
+    }
 }
 
 .course-tabs {
-  border: 1px solid var(--irf-black-40);
-  border-radius: 0.25rem;
+  border: 1px solid var(--fg-color);
+  border-radius: 0.5rem;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
@@ -105,6 +27,8 @@ body > header nav.presentation .sub-menu a {
 
 .course-tabs > input[type="radio"] {
   appearance: none;
+  border: 0;
+  outline: 0;
   margin: 0;
 }
 
@@ -123,16 +47,17 @@ body > header nav.presentation .sub-menu a {
 }
 
 .course-tabs > label:hover {
-    background-color: var(--irf-blue-80);
+    background-color: var(--bg-alt-color);
 }
 .course-tabs > input[type="radio"]:checked + label {
-    background-color: var(--irf-black-80);
+    background-color: var(--bg-alt-color);
+    font-weight: bold;
 }
 
 .course-tab {
     order: 999;
     width: 100%;
-    border-top: 1px solid var(--irf-black-20);
+    border-top: 1px solid var(--fg-color);
     padding: 1rem;
     display: none;
 }
@@ -142,9 +67,9 @@ body > header nav.presentation .sub-menu a {
     flex-direction: row;
     align-items: center;
     height: 3em;
-    border: 1px solid var(--irf-black-40);
-    border-radius: 0.25rem;
-    background-color: var(--irf-blue);
+    border: 1px solid var(--fg-color);
+    border-radius: 0.5rem;
+    background-color: var(--bg-note);
 }
 .course-lecture-notice > a {
     margin: 0em 1em;

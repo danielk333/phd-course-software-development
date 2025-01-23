@@ -1,4 +1,4 @@
-<nav class="presentation">
+<nav class="desktop presentation">
     <ul>
         <li>
             <a href="{{ .Site.BaseURL }}">
@@ -6,11 +6,26 @@
             </a>
         </li>
         {{ range .Site.Menus.main }}
+        {{ $mergeSections := .Params.sections }}
             {{ with $.Site.GetPage .Name }}
             <li>
                 <a href="{{ .Permalink }}">
                     {{ .Title }}
                 </a>
+                <ul class="sub-menu">
+                    {{ $otherSections := slice }}
+                    {{ range $mergeSections  }}
+                        {{ $section := $.Site.GetPage . }}
+                        {{ $otherSections = collections.Append $section $otherSections }}
+                    {{ end }}
+                    {{ $items := union (union .Pages .Sections) $otherSections }}
+                    {{ $byWeight := sort $items "Weight" "asc" }}
+                    {{ range $byWeight }}
+                        <li lang="{{ .Language }}">
+                            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                        </li>
+                    {{ end }}
+                </ul>
             </li>
             {{ end }}
         {{ end }}

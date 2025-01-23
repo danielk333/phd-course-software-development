@@ -51,3 +51,5 @@ menu:
         recursive: true
     - name: lectures
       weight: 2
+    - name: schedule
+      weight: 3
