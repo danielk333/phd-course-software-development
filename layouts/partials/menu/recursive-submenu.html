@@ -1,9 +1,16 @@
 <ul class="sub-menu">
     {{ $items := union .Pages .Sections }}
-    {{ $byTitle := sort $items "Title" "asc" }}
-    {{ range $byTitle }}
+    {{ $items = sort $items "Weight" "asc" }}
+
+    {{ $numberedHeadings := .Params.numberedHeadings }}
+    {{ range $items }}
         <li lang="{{ .Language }}">
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            <a href="{{ .Permalink }}">
+                {{ if $numberedHeadings }}
+                    {{ .Weight }}. 
+                {{ end }}
+                {{ .Title }}
+            </a>
             {{ if or .Pages .Sections }}
                 {{ partial "menu/recursive-submenu" . }}
             {{ end }}

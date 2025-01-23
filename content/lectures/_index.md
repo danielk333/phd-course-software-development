@@ -1,12 +1,26 @@
 ---
 title: Lectures
+numberedHeadings: true
 ---
 
-## Course outline
+## Lecture outline
 
 - "Lecture 0: Setup environment"
 - "Lecture 0: Setup environment"
 
+lect 1 - philosophy
+lect: basic programming
+lect: your tools and environment
+lect: solving problems
+lect: collaboration
+lect: styles of development
+lect: automate away friction
+lect: design
+lect: writing code for humans to read and machines to run
+lect: making it work - debugging, logging, profiling
+lects: tools smörgorsbord (numpy, mpi, ...)
+lect: advanced concepts - paralellisation concepts, multi-programming language projects, FLIs, 
+lect: final review
 
 ## Presentations
 

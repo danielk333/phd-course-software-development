@@ -1,6 +1,7 @@
 ---
-title: "Lecture 0: Environment and Hello World"
-lecture: setup-env
+title: "Development environment"
+lecture: "00-hello"
+weight: 0
 ---
 
 ## Installing python
@@ -41,9 +42,13 @@ Miseratus fonte Ditis conubia.
 
 ## Venv tools example
 
-{{< gist "danielk333/4f94152488f4db5449055ad1a2490799" "danielk333 venv tools for bash" >}}
+{{< details summary="danielk333 venv tools for bash shell" >}}
+{{< gist danielk333 4f94152488f4db5449055ad1a2490799 >}}
+{{< /details >}}
 
-{{< gist "danielk333/635fa22f43beffe614355a4902046212" "danielk333 venv tools for fish" >}}
+{{< details summary="danielk333 venv tools for fish shell" >}}
+{{< gist danielk333 635fa22f43beffe614355a4902046212 >}}
+{{< /details >}}
 
 ## Links
 

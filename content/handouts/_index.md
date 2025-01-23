@@ -1,5 +1,6 @@
 ---
 title: Handouts
+numberedHeadings: true
 ---
 
 These are all the handouts for each lecture and for the larger practical tasks.

@@ -21,6 +21,15 @@
                     {{ end }}
                 </dl>
                 {{ end }}
+                {{ if .Params.lecture }}
+                {{ $lectURL := printf "%s%s" "lectures/" (.Params.lecture) }}
+                    <div class="course-lecture-notice">
+                        <p>This handout is tied to the following lecture</p>
+                        {{ with .GetPage $lectURL }}
+                            <a href="{{ .Permalink }}">{{ .Weight }}. {{ .Title }}</a>
+                        {{ end }}
+                    </div>
+                {{ end }}
             </header>
             <div>
                 <a href="{{ .Permalink }}#TableOfContents" class="sr-only sr-only-focusable">{{ i18n "toc" }}</a>
