@@ -1,3 +1,8 @@
+details {
+    max-width: 80ch;
+    overflow-x: scroll;
+}
+
 body > header nav.presentation > ul > li:first-child {
     margin-left: calc(var(--logo-width) + 1em);
 }
