@@ -30,7 +30,13 @@
 {{ block "main" . }}
 {{ end }}
 
-{{ block "scripts" . }}
-{{ end }}
+<!-- div for displaying enlarged images -->
+<div class="zoom" id="image_zoom">
+    <span class="close" onclick="close_zoom()">&times;</span>
+    <img id="zoom_img" src="" alt="Zoomed Image">
+</div>
+
+<script src="course.js"></script>
+
 </body>
 </html>
