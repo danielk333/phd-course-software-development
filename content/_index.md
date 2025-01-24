@@ -8,7 +8,7 @@ The last 50 years have seen a staggering increase in the use of computers and av
 
 {{< columns "45% 45%" "1em">}}
 
-![Supercomputer performance since the 1990s](computer-performance.png#expandable#light "Supercomputer performance from www.top500.org.")
+![Supercomputer performance since the 1990s](computer-performance.png#expandable.light "Supercomputer performance from www.top500.org.")
 
 <--->
 
