@@ -14,7 +14,7 @@ tmp/**
 .sass-cache
 public/
 *.lock
-./resources/*
+resources/
 
 # Revealjs installation
 static/revealjs/dist

@@ -1,0 +1,11 @@
+{{ $widths := cond .IsNamedParams (.Get "widths") (.Get 0) }}
+{{ $pad := cond .IsNamedParams (.Get "padding") (.Get 1) }}
+{{ $widths = (split $widths " ") }}
+<div class="course-columns">
+{{ range $index, $content := split .InnerDeindent "<--->" }}
+  {{ $width := (index $widths $index) }}
+  <div class="course-column markdown-inner" style="width: {{ $width }}; padding: 0 {{ $pad }};">
+    {{ $content | markdownify }}
+  </div>
+{{ end }}
+</div>
