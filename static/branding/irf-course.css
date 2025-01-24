@@ -2,19 +2,8 @@ body > header nav.presentation > ul > li:first-child {
     margin-left: calc(var(--logo-width) + 1em);
 }
 
-@media only screen and (prefers-color-scheme: light) {
-    body.presentation:not(.lightmode):not(.darkmode) {
-        background: var(--logo-url)
-        var(--logo-x-offset) var(--logo-y-offset) no-repeat,
-        linear-gradient(
-                to bottom,
-                var(--header-bg-color) var(--header-height),
-                var(--r-background-color) var(--header-cutoff)
-        )
-        no-repeat,
-        var(--r-background-color);
-        background-size: auto var(--logo-height), cover;
-    }
+body.presentation {
+    background-color: var(--r-background-color)!important;
 }
 
 .course-tabs {
@@ -84,6 +73,17 @@ body > header nav.presentation > ul > li:first-child {
 }
 .course-page-listing > dd {
     margin-bottom: 1em;
+}
+
+.highlight > div:first-child {
+    background: none!important;
+}
+
+.course-columns {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
 }
 
 img.expandable {
