@@ -2,7 +2,7 @@
 {{/* allows setting css classes with *.png#className */}}
 {{ $url := split .Destination "#" }}
 {{ $file := index $url 0 }}
-{{ $hash := index $url 1 }}
+{{ $hash := delimit (after 1 $url) " " }}
 {{- if strings.HasPrefix $file "http" -}}
   {{- if and .IsBlock .Title -}}
     <figure>
