@@ -42,12 +42,13 @@ Miseratus fonte Ditis conubia.
 
 ## Venv tools example
 
-{{< details summary="danielk333 venv tools for bash shell" >}}
-{{< gist danielk333 4f94152488f4db5449055ad1a2490799 >}}
+
+{{< details summary="Example bash shell script function for working with python venv" >}}
+{{< include-code "fish" "code/shell-scripts/venv-tools.fish" "">}}
 {{< /details >}}
 
-{{< details summary="danielk333 venv tools for fish shell" >}}
-{{< gist danielk333 635fa22f43beffe614355a4902046212 >}}
+{{< details summary="Example fish shell script function for working with python venv" >}}
+{{< include-code "bash" "code/shell-scripts/venv-tools.sh" "">}}
 {{< /details >}}
 
 ## Links

@@ -42,6 +42,19 @@ markup:
       unsafe: true
   tableOfContents:
     startLevel: 2
+  highlight:
+    codeFences: true
+    lineNos: true
+    lineNumbersInTable: true
+    style: catppuccin-mocha
+    tabWidth: 4
+
+module:
+  mounts:
+  - source: 'static'
+    target: 'static'
+  - source: 'code'
+    target: 'static/code'
 
 menu:
   main:

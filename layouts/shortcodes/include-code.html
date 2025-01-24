@@ -1,0 +1,5 @@
+{{ $language := cond .IsNamedParams (.Get "language") (.Get 0) }}
+{{ $file := cond .IsNamedParams (.Get "file") (.Get 1) | readFile }}
+{{ $options := cond .IsNamedParams (.Get "options") (.Get 2) }}
+
+{{ (print "```" $language " {" $options "}\n" $file "\n```") | markdownify }}
