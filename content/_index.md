@@ -47,10 +47,29 @@ The goal is that by the end of the course the participant should be able to:
 - Implement strategies and tools for efficient development and for producing reliable software
 - Be able to competently discuss software development with researchers and professional software developers
 
+## Course philosophy
+
+I firmly believe that programming and software development is a practical skill, not a theoretical one. Much like you would not tell a pole vaulter to just read a few books and watch some guides and then go compete, we should tell that to people who wants to improve their programming. 
+
+To get good at programming and software development you have to:
+- Write code, write a lot of code
+- Read other peoples code
+- Have other read your code
+- Throw away code, and write it again
+- Talk to others about code and writing code
+- Get coached on writing code
+- Learn the connection between code and hardware - what is the metal doing and is it efficient/correct
+- Read about others opinions and experience on writing code
+- Read research and theory on software
+
+This course tries to strike a balance between the above with a focus on actually doing something practical and getting feedback and giving feedback on that work.
+
 ## Replication crisis
 
 A major motivation for such an extensive approach to software development is to ensure maintainable and reproducible code which upholds proper research ethics.
 
 Consider the case of laboratory work, the first thing we get comfortable with is to keep a lab-protocol during an experiment of what nob was turned to what setting, or how much of a compound was mixed with another. This ensures that the experiment is reproducible, a cornerstone of the scientific method. Of course we should uphold software to the same rigor when we do numerical experiments and advanced calculations. 
 
-Imagine reading a math proof where suddenly the author just states “well, this next part of the proof is in my desk. But, its mine and not nicely typed out so I rather not share it, just take my word for it that it looks right when i read it.”. Most would reject that proof as being completely untrustworthy! When the code is not described accurately enough in a paper, the code is not publicly available, and/or the code is so obscure that it cannot be used by any independent research group: independent reproducibility and verification is impossible (see [Replication crisis](https://en.wikipedia.org/wiki/Replication_crisis)). This concept applies to both data science and simulations.
+Imagine reading a math proof where suddenly the author just states “well, this next part of the proof is in my desk. But, its mine and not nicely typed out so I rather not share it, just take my word for it that it looks right when i read it.”. Most would reject that proof as being completely untrustworthy! 
+
+When the code is not described accurately enough in a paper, the code is not publicly available, and/or the code is so obscure that it cannot be used by any independent research group: independent reproducibility and verification is impossible (see [Replication crisis](https://en.wikipedia.org/wiki/Replication_crisis)). And even if the algorithms / equations are described correctly in the published paper so that replication of method is possible, this is no guarantee that replication of results is possible since the code could still be faulty. This concept applies to both data science and simulations. 
