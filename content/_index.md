@@ -8,7 +8,7 @@ The last 50 years have seen a staggering increase in the use of computers and av
 
 {{< columns "45% 45%" "1em">}}
 
-![Supercomputer performance since the 1990s](computer-performance.png#expandable "Supercomputer performance from www.top500.org data.")
+![Supercomputer performance since the 1990s](computer-performance.png#expandable "Supercomputer performance from www.top500.org.")
 
 <--->
 
@@ -16,11 +16,13 @@ The graph to the left shows the growth of supercomputers performance since the 1
 
 {{< /columns >}}
 
-This availability of computational resources together with a similar inverse trend for storage and price per byte have created a golden age of scientific computing. 
+This availability of computational resources together with a similar inverse trend for storage and price per byte has ushered in a golden age of scientific computing.
 
-However this also means that most researchers today will have to produce computer code at some point in their career. Whether it be scripting or library development. The most basic tasks such as code to run other code and libraries, code to parse and analyze data from other code, code to visualize data for publication, code to compile statistics, or code to record data from instruments. 
+However this also means that most researchers today will have to produce computer code at some point in their career. Whether it be scripting or library development. The most basic tasks today require programming such as code to run other code and libraries, code to parse and analyze data from other code, code to visualize data for publication, code to compile statistics, or code to record data from instruments. 
 
 Often code starts of small and transient, with an idea and an experiment. Then when proven useful, it grows and persists in time. Years later the scope, needs, uses, and circumstances are completely different than when it started. 
+
+Well designed and maintained code can change the course of an entire scientific discipline, accelerating the research of hundreds of scientists world-wide. At the same time, re-inventing the wheel can exhaust and waste the time of equally many PhD candidates and scientists if software is not made available or the software sharing paradigm is not embraced. Being able to know when to re-write something, when to use someone elses library or code, when to contribute to their code, or when to fork, and _how_ to do these things can make the difference between months and years worth of productivity. 
 
 **This course aims to teach the tools and skills needed to navigate the modern software oriented world of scientific research.**
 
