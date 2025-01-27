@@ -49,7 +49,7 @@ The goal is that by the end of the course the participant should be able to:
 
 ## Course philosophy
 
-I firmly believe that programming and software development is a practical skill, not a theoretical one. Much like you would not tell a pole vaulter to just read a few books and watch some guides and then go compete, we should tell that to people who wants to improve their programming. 
+I firmly believe that programming and software development is a practical skill, not a theoretical one. Much like you would not tell a pole vaulter to just read a few books and watch some guides and then go compete, we should *not* tell that to people who wants to improve their programming either. 
 
 To get good at programming and software development you have to:
 - Write code, write a lot of code
