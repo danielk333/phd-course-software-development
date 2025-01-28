@@ -11,6 +11,10 @@ body.presentation {
     background-color: var(--r-background-color)!important;
 }
 
+dl > dt:not(:first-child) {
+    padding-top: 1em;
+}
+
 .course-tabs {
   border: 1px solid var(--fg-color);
   border-radius: 0.5rem;
