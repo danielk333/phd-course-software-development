@@ -9,7 +9,7 @@
             <h1 lang="{{ .Language }}">{{ .Title }}</h1>
         </header>
         <nav>
-            {{ partial "menu/submenu-sorted-by-date" . }}
+            {{ partial "menu/recursive-submenu" . }}
         </nav>        
     </div>
 </main>

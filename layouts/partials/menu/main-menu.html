@@ -20,9 +20,15 @@
                     {{ end }}
                     {{ $items := union (union .Pages .Sections) $otherSections }}
                     {{ $byWeight := sort $items "Weight" "asc" }}
+                    {{ $numberedHeadings := .Params.numberedHeadings }}
                     {{ range $byWeight }}
                         <li lang="{{ .Language }}">
-                            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                            <a href="{{ .Permalink }}">
+                                {{ if $numberedHeadings }}
+                                    {{ .Weight }}. 
+                                {{ end }}
+                                {{ .Title }}
+                            </a>
                         </li>
                     {{ end }}
                 </ul>

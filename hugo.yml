@@ -28,6 +28,8 @@ frontmatter:
 
 markup:
   goldmark:
+    extensions:
+      definitionList: true
     parser:
       # replace it with figure instead,
       # see /layouts/_default/_markup/render-image.html
@@ -58,11 +60,13 @@ module:
 
 menu:
   main:
-    - name: handouts
+    - name: schedule
       weight: 1
+    - name: handouts
+      weight: 2
       params:
         recursive: true
     - name: lectures
-      weight: 2
-    - name: schedule
       weight: 3
+      params:
+        recursive: true

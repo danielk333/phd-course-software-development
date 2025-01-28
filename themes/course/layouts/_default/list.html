@@ -8,7 +8,7 @@
         {{ partial "breadcrumb" . }}
         <article class="single {{ .Section | lower }}">
             <header>
-                <h1>{{ .Title }}</h1>
+                <h1 id="{{ urlize .Title }}">{{ .Title }}</h1>
                 {{ partial "byline" .}}
                 {{ if .Params.Tags }}
                 <dl class="meta">
@@ -28,6 +28,7 @@
                         {{ .Content }}
                     </div>
                 {{ end }}
+                <a href="{{ .Permalink }}#{{ urlize .Title }}">To top</a>
             </div>
         </article>
     </div>

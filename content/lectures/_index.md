@@ -1,6 +1,7 @@
 ---
 title: Lectures
 numberedHeadings: true
+weight: 3
 ---
 
 ## Lecture outline

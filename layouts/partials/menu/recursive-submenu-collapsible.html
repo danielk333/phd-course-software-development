@@ -4,11 +4,17 @@
     </summary>
     <ul>
         {{ $items := union .Pages .Sections }}
-        {{ $byTitle := sort $items "Title" "asc" }}
-        {{ range $byTitle }}
+        {{ $numberedHeadings := .Params.numberedHeadings }}
+        {{ $byWeight := sort $items "Weight" "asc" }}
+        {{ range $byWeight }}
             {{ with partial "prefer-page-translation" . }}
             <li lang="{{ .Language }}">
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <a href="{{ .Permalink }}">
+                    {{ if $numberedHeadings }}
+                        {{ .Weight }}. 
+                    {{ end }}
+                    {{ .Title }}
+                </a>
                 {{ if or .Sections .Pages }}
                     {{ partial "menu/recursive-submenu-collapsible" . }}
                 {{ else }}

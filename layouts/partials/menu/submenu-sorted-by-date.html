@@ -1,8 +1,0 @@
-<ol class="sub-menu date-sorted">
-    {{ $byTitle := sort .Pages "Date" "desc" }}
-    {{ range $byTitle }}
-        {{ with partial "prefer-page-translation" . }}
-            {{ .Render "li" }}
-        {{ end }}
-    {{ end }}
-</ol>

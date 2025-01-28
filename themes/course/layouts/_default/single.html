@@ -9,7 +9,7 @@
         {{ partial "breadcrumb" . }}
         <article class="single {{ .Section | lower }}" id="main">
             <header>
-                <h1>{{ .Title }}</h1>
+                <h1 id="{{ urlize .Title }}">{{ .Title }}</h1>
                 {{ partial "byline" .}}
                 {{ if .Params.Tags }}
                 <dl class="meta">
@@ -30,7 +30,7 @@
                         {{ end }}
                     </div>
                 {{ end }}
-            </header>
+            </heder>
             <div>
                 <a href="{{ .Permalink }}#TableOfContents" class="sr-only sr-only-focusable">{{ i18n "toc" }}</a>
 
@@ -39,6 +39,7 @@
                         {{ .Content }}
                     </div>
                 {{ end }}
+                <a href="{{ .Permalink }}#{{ urlize .Title }}">To top</a>
             </div>
         </article>
     </div>

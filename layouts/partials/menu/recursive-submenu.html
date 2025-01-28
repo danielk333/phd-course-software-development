@@ -1,9 +1,9 @@
 <ul class="sub-menu">
     {{ $items := union .Pages .Sections }}
-    {{ $items = sort $items "Weight" "asc" }}
+    {{ $byWeight := sort $items "Weight" "asc" }}
 
     {{ $numberedHeadings := .Params.numberedHeadings }}
-    {{ range $items }}
+    {{ range $byWeight }}
         <li lang="{{ .Language }}">
             <a href="{{ .Permalink }}">
                 {{ if $numberedHeadings }}
