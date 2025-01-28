@@ -2,6 +2,26 @@
 title: Introduction
 ---
 
+## Course details
+
+Credits
+: 7.5 ECTS
+: Workload ranges from 3-6 weeks full time work depending on your current programming skills.
+: Currently, only PhD students can earn course credits from this course.
+
+Grading
+: The grades for this course are `Pass` and `Fail`. 
+: The grading is based 50% on the completion of homework tasks and 50% on completion and quality of the group work practicals.
+: Around 80% completion is required for a pass.
+
+Lectures
+: Hybrid on zoom and recorded
+: 90 minutes including practical moments
+
+Practicals
+: Done in groups
+: Larger tasks started during a half day hackaton
+
 ## Software development for researchers
 
 The last 50 years have seen a staggering increase in the use of computers and available computer power. 
