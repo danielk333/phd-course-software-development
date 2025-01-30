@@ -3,12 +3,22 @@ details {
     overflow-x: scroll;
 }
 
+body.presentation > header:first-child {
+    background-color: var(--bg-color);
+    background-origin: padding-box;
+    background-repeat: no-repeat;
+    background-size: var(--logo-width) var(--logo-height);
+    background-image: var(--logo-url);
+    background-position: var(--logo-x-offset) var(--logo-y-offset);
+}
+
 body > header nav.presentation > ul > li:first-child {
     margin-left: calc(var(--logo-width) + 1em);
 }
 
 body.presentation {
-    background-color: var(--r-background-color)!important;
+    background: none;
+    background-color: var(--r-background-color);
 }
 
 body.presentation > div.reveal {
