@@ -164,3 +164,7 @@ table.noborder td {
     font-size: 4em;
 }
 
+code.file {
+    background-color: var(--irf-black-60);
+    padding: 0em 1em;
+}

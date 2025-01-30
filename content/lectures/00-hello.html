@@ -1,5 +1,6 @@
 ---
 title: "Hello World"
+handout: setup-env
 description: Setup the development environment and write an Hello World program
 weight: 0
 ---
@@ -23,13 +24,148 @@ weight: 0
             </div>
         </section> 
 
-        <section data-auto-animate>
-            <div class="margin-top">
-
+        <section 
+        data-background-image="media/leonid_server.jpg"
+        data-background-opacity="0.2"
+        data-auto-animate
+        data-auto-animate-id="title"
+        >
+            <div class="title-container margin-top">
+                <p class="background-credit">IRF server room Photo: Daniel Kastinen/IRF</p>
+                <h2 class="title">Software development for researchers</h2>
+                <h3 class="title mark fragment">Welcome!</h3>
             </div>
-            <div class="slide-logo"><img src="irflogo_vektortransp_svart.svg"></div>
+        </section> 
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Who am I?</h2>
+                <div class="row-flex-c expand fragment">
+                    <img style="width: 40vw; padding-right: 1em;" src="media/20211205_122052.jpg">
+                    <ul class="me-list">
+                        <p class="mark">Daniel Kastinen</p>
+                        <li>Living in Kiruna since 2017</li>
+                        <li>Finished PhD Nov. 2022<br><span style="font-size: 0.7em;">From Meteors to Space Safety: Dynamical Models and Radar Measurements of Space Objects</span></li>
+                        <li>Hired as permanent staff scientist February 2023</li>
+                        <li class="highlight">Task: Conduct research on meteors and space objects!</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
+        <section>
+            <div class="centered-container">
+                <h3 class="title">My focus: connecting the small and big pictures</h3>
+                <ul class="list-sep-small" style="padding-top: 1em;">
+                    <li>Radar data analysis & signal processing</li>
+                    <li>Meteoroid and small body dynamical simulations</li>
+                    <li>Statistical methods and solving inverse problems</li>
+                    <li>Meteor phenomena and meteoroid stream formation modelling</li>
+                    <li>(now also) Optical data processing and hardware control</li>
+                    <li>Space object observations, orbit determination, sensor simulations</li>
+                </ul>
+                <p class="highlight fragment">This is a WHOLE lot of software development</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="centered-container">
+                <h3 class="title">And so this course was born</h3>
+                <ul class="list-sep-small" style="padding-top: 1em;">
+                    <li class="fragment">Next time we will cover some motivation</li>
+                    <li class="fragment">Now let us get programming!</li>
+                    <li class="fragment" style="display: flex; flex-direction: column;">
+                        <span>Please open up</span>
+                        <a href="https://danielk.developer.irf.se/phd-course-software-development/">https://danielk.developer.irf.se/phd-course-software-development/</a>
+                        <img src="media/website-qr.png" style="height: 200px; width: 200px;">
+                        <span>And go to "Handouts > 0. Development environment"</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="centered-container">
+                <h3 class="title">Lets get programming!</h3>
+                <div class="col-flex-c">
+                    <p>Now that everyone has an environment and an editor</p>
+                    <p>lets get started...</p>
+                    <p class="fragment">by calculating $\pi$ in a very roundabout way!</p>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Calculating $\pi$ with randomness</h3>
+                <ul class="list-sep-small">
+                    <li class="fragment">Probability is
+                        <br>$\mathbb{P}(\bar{x} \in A) = \int_{A} f_X(\bar{x})\mathrm{d}\bar{x}$
+                        <br>where $\bar{x} \sim X$
+                    </li>
+                    <li class="fragment">Uniform 2d random distribution on $S = [-1, 1] \times [-1, 1]$
+                        <br>$f_\mathcal{U}(x, y) = \mathbf{1}_S(x, y) \frac{1}{\text{Area}} = \mathbf{1}_S(x, y)\frac{1}{4}$
+                    </li>
+                    <li class="fragment"><span class="select">What is</span> $\mathbb{P}(\sqrt{x^2 + y^2} \leq 1)$?</li>
+                    <li class="fragment">$= \int_{\text{Circle}} \mathbf{1}_S(x, y)\frac{1}{4} \mathrm{d}\bar{x} = \frac{1}{4} A_{\text{Circle}} = \frac{\pi}{4}$</li>
+                </ul>
+                <p class="fragment">
+                    $$\mathbb{P}(\sqrt{x^2 + y^2} \leq 1) = \frac{\pi}{4}$$
+                </p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Calculating $\pi$ with randomness</h3>
+                <p>
+                    $$\mathbb{P}(\sqrt{x^2 + y^2} \leq 1) = \frac{\pi}{4}$$
+                </p>
+                
+                <p class="fragment">
+                    $$ \lim_{\# \mapsto \infty} 4\frac{\# \text{number of points in circle}}{\# \text{number of points}} \mapsto \pi $$
+                </p>
+                <pre>
+                    <code class="bash fragment" style="width: 70vw;">$ pip install numpy</code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Calculating $\pi$ with randomness</h3>
+                <pre>
+                    <code class="bash" style="width: 70vw;">$ pip install numpy</code>
+                </pre>
+                <code class="file fragment" data-fragment-index="1">hello.py</code>
+                <pre>
+                    <code class="python fragment" data-fragment-index="1" style="width: 70vw;">import numpy as np
+
+samples = 100
+x = np.random.rand(samples)*2 - 1
+y = np.random.rand(samples)*2 - 1
+
+r = np.sqrt(x**2 + y**2)
+pi = 4*np.sum(r < 1)/samples
+
+print(f"{samples=} gives {pi=} (error {np.pi - pi})")
+                    </code>
+                </pre>
+                <pre>
+                    <code class="bash fragment" style="width: 70vw;">$ python hello.py</code>
+                </pre>
+                <p class="fragment">Try <code class="python">samples = 1_000_000</code></p>
+            </div>
+        </section>
+
+        <section>
+            <div class="centered-container">
+                <h3 class="title">Homework</h3>
+                <div class="col-flex-c">
+                    <p>See the handout for today</p>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 
