@@ -28,6 +28,15 @@
     <body class="presentation">
         <header>
             {{ partial "menu/main-menu" . }}
+
+            {{ if .Params.handout }}
+            {{ $lectURL := printf "%s%s" "handouts/" (.Params.handout) }}
+                <div class="course-handout-notice">
+                    {{ with .GetPage $lectURL }}
+                        Linked handout: <a href="{{ .Permalink }}">{{ .Weight }}. {{ .Title }}</a>
+                    {{ end }}
+                </div>
+            {{ end }}
         </header>
 
         {{ block "main" . }}
