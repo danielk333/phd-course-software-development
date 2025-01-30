@@ -12,9 +12,39 @@ body.presentation > header:first-child {
     background-position: var(--logo-x-offset) var(--logo-y-offset);
 }
 
+@media only screen and (prefers-color-scheme: light) {
+    body.presentation > header:first-child {
+        background-image: url("irf-symbol.svg");
+    }
+}
+
+body.presentation 
+p, 
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  line-height: inherit;
+}
+
 body > header nav.presentation > ul > li:first-child {
     margin-left: calc(var(--logo-width) + 1em);
 }
+
+body > header nav.presentation > ul > li > a {
+    color: var(--fg-color);
+}
+body > header nav.presentation > ul > li > a:hover {
+    background-color: var(--bg-alt-color);
+}
+body > header nav.presentation > ul > li:hover {
+    background-color: var(--bg-alt-color);
+}
+
 
 body.presentation {
     background: none;
@@ -23,6 +53,7 @@ body.presentation {
 
 body.presentation > div.reveal {
     background-color: var(--r-background-color)!important;
+    --r-main-font-size: 38px;
 }
 
 dl > dt:not(:first-child) {
@@ -87,6 +118,22 @@ dl > dt:not(:first-child) {
     margin: 0em 1em;
 }
 .course-lecture-notice > p {
+    margin: 0em 1em;
+}
+
+.course-handout-notice {
+    margin: 0em 1em;
+    padding: 0em 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 3em;
+    border: 1px solid var(--fg-color);
+    color: var(--fg-color);
+    border-radius: 0.5rem;
+    background-color: var(--bg-note);
+}
+.course-handout-notice > a {
     margin: 0em 1em;
 }
 
