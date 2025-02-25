@@ -37,7 +37,7 @@ function lazyvenv
     end
 end
 
-function venv_up
+function venvup
     if test (count $argv) -eq 0
         set venv_target (basename (pwd))
     else

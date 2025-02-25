@@ -40,7 +40,7 @@ lazyvenv() {
 }
 
 # venv_up function
-venv_up() {
+venvup() {
     local venv_target pypath
     if [[ $# -eq 0 ]]; then
         venv_target=$(basename "$(pwd)")

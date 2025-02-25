@@ -461,6 +461,12 @@ a[href^=https]:not([href*='.irf.se/']):not(:has(svg))::after {
   height: 1em;
 }
 
+@media (prefers-color-scheme: dark) {
+  a[href^=https]:not([href*='.irf.se/'])::after {
+    filter: invert(1);
+  }
+}
+
 main article li a,
 main article blockquote a,
 main article section.alert a,
