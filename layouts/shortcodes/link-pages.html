@@ -1,0 +1,10 @@
+{{ $items := .Page.Pages }}
+{{ $items = sort $items "Weight" "asc" }}
+
+<ul class="course-page-listing">
+{{ range $items }}
+    <li><a href="{{ .Permalink }}">
+        {{ .Title }}
+    </a></li>
+{{ end }}
+</ul>
