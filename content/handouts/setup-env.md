@@ -292,23 +292,10 @@ Personally - I use `VSCode` and `nvim`. I mostly still have `VSCode` until I ful
 
 ## Homework assignments
 
-If you have not used python before, go trough a few tutorials, e.g. [python.org tutorial](https://docs.python.org/3/tutorial/index.html), and complete a few coding excersizes e.g. from [exercism](https://exercism.org/tracks/python/exercises) or [adventofcode](https://adventofcode.com/) in addition to the below in order to catch up.
+Python basics
+: If you have not used python before, go trough a few tutorials, e.g. [python.org tutorial](https://docs.python.org/3/tutorial/index.html), and complete a few coding excersizes e.g. from [exercism](https://exercism.org/tracks/python/exercises) or [adventofcode](https://adventofcode.com/) in order to catch up.
 
+Install git
+: If [git](https://git-scm.com/) is not installed on your system (try `git --version`), install it (remember to always favor your package manager) and create a new repository for homework solutions.
+: If you want - upload the repo on [codeberg](https://codeberg.org/), [github](https://github.com/), or [gitlab](https://gitlab.irf.se/).
 
-Scripts, modules and packages
-: Create a small python package following the [packaging tutorial](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
-: Install your package into your virtual environment.
-: Create 2 functions in two separate [modules](https://docs.python.org/3/tutorial/modules.html) inside your package. One function should reverse a list and the other should take two lists as input, reverse the first list and then interleave every other argument of two lists outputting a single new list. You should import the list-reveral function from the other module ([hint: intra-package-references](https://docs.python.org/3/tutorial/modules.html#intra-package-references)).
-: Create a scripts in a different location than were the package is that uses this function from the package to interleave the following two strings: `'VOG!lo olH'` and `'el,Wrd ROY'`. 
-
-Python basic syntax
-: Implement a function in your package that uses the following: [f-strings](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals), [with](https://docs.python.org/3/reference/compound_stmts.html#with), and [encode](https://docs.python.org/3/library/stdtypes.html#str.encode) / [decode](https://docs.python.org/3/library/stdtypes.html#bytes.decode) to save an input string in a binary file. Also implement a function to load a string from a binary file.
-
-Plotting
-: Install [matplotlib](https://matplotlib.org/) into your environment.
-: Implement one of the [examples](https://matplotlib.org/stable/gallery/index).
-: Run the code and get the plot to show. 
-
-
-> [!Tips]
-> Depending on how your system is setup you might need to install `pyqt5` or `pyqt6` in your local environment to show plots. 
