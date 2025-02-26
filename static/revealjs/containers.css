@@ -107,3 +107,13 @@
     height: 95vh;
     padding-top: 3vh;
 }
+
+pre.show-code {
+    max-width: 80vw;
+    width: auto;
+    margin: 1em;
+}
+
+pre.show-code code {
+    padding: 0em 1em;
+}
