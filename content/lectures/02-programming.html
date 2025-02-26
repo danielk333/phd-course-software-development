@@ -1,19 +1,199 @@
 ---
 title: "Python programming"
-description: "This lecture will cover the basics of Python and ensure that the programming skills are on a sufficient level for learning software development"
+handout: programming
+description: "This lecture will cover the basics of Python and ensure that the programming skills are on a sufficient
+level for learning software development"
 weight: 2
 ---
 
 <div class="reveal">
     <div class="slides">
 
-        <section data-auto-animate>
-            <div class="margin-top">
-
+        <section
+        data-auto-animate
+        data-background-image="media/code.png"
+        data-background-opacity="0.7"
+        >
+            <div class="centered-container">
             </div>
-            <div class="slide-logo"><img src="irflogo_vektortransp_svart.svg"></div>
+        </section>
+        
+
+        <section
+        data-auto-animate
+        data-background-image="media/code.png"
+        data-background-opacity="0.2"
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <div class="row-flex">
+                    <ul style="max-width: 40vw;">
+                        <p class="mark">What is Python?</p>
+                        <li>Interpreted language</li>
+                        <li>As high level as you can get</li>
+                        <li>Dynamically type-checked</li>
+                        <li>Garbage-collected</li>
+                        <li>"Batteries included"</li>
+                        <li>Modular</li>
+                        <div class="fragment" data-fragment-index="3">
+                            <p class="mark">Recommendation</p>
+                            <li>Also learn a compiled language with memory management<br>
+                            <code>C/C++/Rust/Odin/Zig/FORTRAN/...</code>
+                            </li>
+                        </div>
+                    </ul>
+                    <ul style="margin-left: 3em; max-width: 40vw;">
+                        <div class="fragment" data-fragment-index="1">
+                            <p class="highlight">Pros</p>
+                            <li>Easy to learn<br>(but with a high skill-ceiling)</li>
+                            <li>Powerful</li>
+                            <li>Huge user community</li>
+                            <li>Easy to debug and prototype</li>
+                        </div>
+                        <div class="fragment" data-fragment-index="2">
+                            <p class="select">Cons</p>
+                            <li>Interpreters are slow</li>
+                            <li>Dynamic typing can be dangerous</li>
+                            <li>Optimization is less obvious</li>
+                            <li>Environments can be a bit of a mess</li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">How Python works</p>
+                <ul class="list-sep-small">
+                    <li class="fragment">Indentation (tab or number of spaces) decides to what "block" your code belongs</li>
+                    <li class="fragment">You can write code ”live” in the interpreter or write scripts, and then run the scripts trough the interpreter</li>
+                    <li class="fragment">Each row is executed in sequence (by being interpreted)</li>
+                    <li class="fragment">When memory can no longer be reached - python frees it (reference counting)</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code class="python">
+def my_function(x):
+    x = x + 2
+    y = 5
+    return x
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Dynamic typing</p>
+                <ul class="fragment">
+                    <li>Every object has a type</li>
+                    <li>Every object knows its type</li>
+                    <li>Types are not declared (but can be since Python 3)</li>
+                    <li>Names refer to an object</li>
+                    <li>Names are not typed</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code class="python">
+a = 5  # a is the name of an object of type integer
+a = 5.0  # a is now the name of an object of type float
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <h4 class="title">Try this</h4>
+                <pre class="fragment show-code">
+                    <code class="python">
+a = 5
+print(type(a))
+
+a = 5.0
+print(type(a))
+
+a = "5"
+print(type(a))
+
+print(type(print))
+
+def func(a):
+    return(a * 5)
+print(type(func))
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code class="python">
+print(func(5))
+print(func("Hello "))
+print(func("Na") + " Batman!")
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Basic data types</p>
+                <p class="fragment">
+                    Integer, Float, String, Boolean, Tuple, List, Ditionary, Set
+                </p>
+                <pre class="fragment show-code">
+                    <code class="python">
+my_dict = {"key": 1.0, "x": "this is a string"}
+my_list = [1, 2, "string"]
+my_tuple = (2, 3, 4)
+my_none = None
+                    </code>
+                </pre>
+                <p class="fragment select">Lets talk about pointers...</p>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="fragment select">Lets talk about pointers...</p>
+                <pre class="fragment show-code">
+                    <code class="python">
+# What do you think is the result?
+x = [
+    ["hello", "world"],
+    ["string 1", "string 2"],
+]
+
+a = x[0]
+print(a)
+a[0] = "my"
+print(x)
+                    </code>
+                </pre>
+            </div>
         </section>
 
     </div>
 </div>
-
