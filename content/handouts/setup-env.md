@@ -142,6 +142,54 @@ drwxr-xr-x     - danielk 25 mar  2024 📁 3.12.2
 
 While it is not strictly required during the course to have a way to install different python versions, depending on the group-work problems might arise if you cannot internally settle on a single version. 
 
+Another option for running different python versions is by using containers. This can be done using [docker](https://www.docker.com/) or [podman](https://podman.io/). Here I would recommend `podman` as it is the open source alternative. 
+
+For example to run a python 3.12 container I can do the following to first find the container
+
+```bash
+danielk@IRF033-danielk ~> podman search python
+NAME                               DESCRIPTION
+docker.io/library/python           Python is an interpreted, interactive, objec...
+```
+
+and then to download
+
+```bash
+danielk@IRF033-danielk ~> podman pull python:3.12
+Resolved "python" as an alias (/etc/containers/registries.conf.d/00-shortnames.conf)
+Trying to pull docker.io/library/python:3.12...
+Getting image source signatures
+Copying blob 80dfafe3215b done   | 
+Copying blob 1d281e50d3e4 done   | 
+Copying blob 447713e77b4f done   | 
+Copying blob 8031108f3cda done   | 
+Copying blob 155ad54a8b28 done   | 
+Copying blob 6a5d3adec565 done   | 
+Copying blob f5e20e850d9d done   | 
+Copying config 6663e62633 done   | 
+Writing manifest to image destination
+6663e6263306abb7230e6595c505da526c4a98628803b82e7bf2324f74b8626f
+```
+
+and run it:
+
+```bash
+danielk@IRF033-danielk ~> podman run -ti python:3.12 /bin/bash
+root@e75f5e9469bf:/# python --version
+Python 3.12.9
+root@e75f5e9469bf:/# python
+Python 3.12.9 (main, Feb 25 2025, 05:22:35) [GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pathlib
+>>> 
+```
+
+There are many good tutorials on how to work with containers when developing code, e.g. this [docker blog-post](https://www.docker.com/blog/containerized-python-development-part-1/).
+
+
+> [!Notera]
+> This website is built automatically on changes to the git-repository inside of a `registry.gitlab.com/pages/hugo/hugo_extended:0.139.3` container using the [Gitlab CI](https://docs.gitlab.com/ci/) system!
+
 ## Installing python
 
 {{% tabs %}}
@@ -254,7 +302,7 @@ Scripts, modules and packages
 : Create a scripts in a different location than were the package is that uses this function from the package to interleave the following two strings: `'VOG!lo olH'` and `'el,Wrd ROY'`. 
 
 Python basic syntax
-: Implement a function in your package that uses the following: [f-strings](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals), [with](https://docs.python.org/3/reference/compound_stmts.html#with), and [encode](https://docs.python.org/3/library/stdtypes.html#str.encode) / [decode](https://docs.python.org/3/library/stdtypes.html#bytes.decode) to save or load an input string in a binary file.
+: Implement a function in your package that uses the following: [f-strings](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals), [with](https://docs.python.org/3/reference/compound_stmts.html#with), and [encode](https://docs.python.org/3/library/stdtypes.html#str.encode) / [decode](https://docs.python.org/3/library/stdtypes.html#bytes.decode) to save an input string in a binary file. Also implement a function to load a string from a binary file.
 
 Plotting
 : Install [matplotlib](https://matplotlib.org/) into your environment.
