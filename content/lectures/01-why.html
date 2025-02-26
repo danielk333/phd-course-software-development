@@ -48,6 +48,68 @@ weight: 1
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Why this course?</h3>
+                <p class="mark">The classic: fast inverse square root implementation from Quake III Arena</p>
+                <pre>
+                    <code class="c" style="max-height: 80vh;">
+float Q_rsqrt( float number )
+{
+    long i;
+    float x2, y;
+    const float threehalfs = 1.5F;
+
+    x2 = number * 0.5F;
+    y  = number;
+    i  = * ( long * ) &y;                       // evil floating point bit level hacking
+    i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
+    y  = * ( float * ) &i;
+    y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+//  y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+
+    return y;
+}
+                    </code>
+                </pre>
+<p class="fragment">Being able to do the above takes someone good at programming</p>
+<p class="fragment">Realizing that it needed and could be done takes someone good at software development</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Why this course?</h3>
+                <p class="mark">The classic: fast inverse square root implementation from Quake III Arena</p>
+                <pre>
+                    <code style="max-height: 30vh;">
+float Q_rsqrt( float number )
+{
+    long i;
+    float x2, y;
+    const float threehalfs = 1.5F;
+
+    x2 = number * 0.5F;
+    y  = number;
+    i  = * ( long * ) &y;                       // evil floating point bit level hacking
+    i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
+    y  = * ( float * ) &i;
+    y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+//  y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+
+    return y;
+}
+                    </code>
+                </pre>
+                <ol>
+                    <li>Alias the argument $x$ to an integer as a way to compute an approximation of the binary logarithm $\log _{2}(x)$</li>
+                    <li>Use this approximation to compute an approximation of $\log _{2}\left({\frac {1}{\sqrt {x}}}\right)=-{\frac {1}{2}}\log _{2}(x)$</li>
+                    <li>Alias back to a float, as a way to compute an approximation of the base-2 exponential</li>
+                    <li>Refine the approximation using a single iteration of Newton's method (finding root to $ \frac{1}{y^2} - x = 0 $).</li>
+                </ol>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Why this course?</h3>
                 <div class="row-flex-c split-list">
                     <ul></ul>
                     <ul></ul>
@@ -197,8 +259,131 @@ weight: 1
                     <li class="fragment">Simulation for paper (using library) - <span class="fragment select">VC, input/output design, setup/dependency management</span></li>
                     <li class="fragment">Analysis pipeline (using library) - <span class="fragment select">VC, thorough output design, setup/dependency management, modular functionality, logging, performance</span></li>
                     <li class="fragment">Simulation library - <span class="fragment select">VC, packaging, CI/CD, testing, modularity, documentation, readability, maintainability, APIs, performance, footprint</span></li>
-                    <li class="fragment">Real-time operational system - <span class="fragment select">VC, CI/CD, testing, robustness, reliability, maintainability, documentation, logging, performance</span></li>
+                    <li class="fragment">Real-time operational system - <span class="fragment select">VC, CI/CD, testing, robustness, reliability, maintainability, documentation, logging, performance, control interface (UI/UX)</span></li>
                 </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="centered-container">
+                <a href="https://danielk.developer.irf.se/software/">Some of the software I have written</a>
+                <table style="font-size: 0.7em; margin: 1em 1em;">
+                    <thead>
+                        <tr>
+                            <th>Project</th>
+                            <th>Descritpion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                        <code>sorts</code>
+                        </td>
+                        <td>"Space Object Radar Tracking Simulator library"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>hardtarget</code>
+                        </td>
+                        <td>"Radar hard target processing package"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>rain</code>
+                        </td>
+                        <td>"ReseArch Infrastructure Network"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>pyorb</code>
+                        </td>
+                        <td>"Kepler orbits library"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>pyant</code>
+                        </td>
+                        <td>"Radar gain patterns library"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>runningman</code>
+                        </td>
+                        <td>"Runtime Manager"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>dasst</code>
+                        </td>
+                        <td>"Small-body dynamics simulations library"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>metecho</code>
+                        </td>
+                        <td>"Radar Meteor Head Echo Analysis library and pipeline"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>ablate</code>
+                        </td>
+                        <td>"Ablation model library"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>resordan</code>
+                        </td>
+                        <td>"Space object data analysis library"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>allsky7station</code>
+                        </td>
+                        <td>"Meteor camera station software"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>rebound-player</code>
+                        </td>
+                        <td>"Simulation visualization app"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>MU radar pipeline</code>
+                        </td>
+                        <td>"Meteor data pipeline"</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <code>EISCAT radar pipeline</code>
+                        </td>
+                        <td>"Space debris data pipeline"</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Some notes on learning</h3>
+                <ul class="list-sep">
+                    <li class="fragment">Write the code yourself - no gen-AI for this course
+                        <br>(see e.g. <a href="https://nmn.gl/blog/ai-illiterate-programmers">AI is Creating a Generation of Illiterate Programmers</a>)
+                    </li>
+                    <li class="fragment">Don't be afraid of writing a lot of code thats gonna get thrown away<br>
+                        (Everyone who writes good code does so because they wrote bad code first)
+                    </li>
+                    <li class="fragment">Do the homework assignments, they are there to teach</li>
+                    <li class="fragment">If you get stuck - discuss with someone, e.g. classmates or me</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Homework</h3>
+                <p>Click the link above to get to the handout</p>
             </div>
         </section>
     </div>
