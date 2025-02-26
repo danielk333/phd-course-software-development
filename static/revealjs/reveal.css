@@ -61,3 +61,25 @@
 #irf-logo {
     width: 40vw; 
 }
+
+div.split-list {
+    width: 80vw;
+}
+div.split-list ul {
+    width: 40vw;
+}
+
+.reveal blockquote {
+    background-color: transparent;
+    font-family: 'Roboto Serif', 'Times New Roman', Times, serif;  
+    position: relative;
+    font-style: italic;  
+    padding: 0 1em;
+    margin: 0;
+    padding-left: 3.5em;
+    min-height: 3em;
+    display: flex;
+    flex-direction: column;
+    /* align short quotes vertically with quote square*/
+    justify-content: center;
+  }
