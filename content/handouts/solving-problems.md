@@ -19,3 +19,14 @@ The opening gif was created using this script
 {{< details summary="Python script to create an orbit git" >}}
 {{< include-code "python" "code/python-scripts/make-orbit-gif.py" "">}}
 {{< /details >}}
+
+
+## Homework assignments
+
+### Recommended watching
+
+CodeAesthetic - Dependency Injection, The Best Pattern
+{{< youtube J1f5b4vcxCQ >}}
+
+CppCon 2014: Mike Acton "Data-Oriented Design and C++"
+{{< youtube rX0ItVEVjHc >}}
