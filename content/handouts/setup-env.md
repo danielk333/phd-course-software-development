@@ -144,31 +144,11 @@ While it is not strictly required during the course to have a way to install dif
 
 Another option for running different python versions is by using containers. This can be done using [docker](https://www.docker.com/) or [podman](https://podman.io/). Here I would recommend `podman` as it is the open source alternative. 
 
-For example to run a python 3.12 container I can do the following to first find the container
-
-```bash
-danielk@IRF033-danielk ~> podman search python
-NAME                               DESCRIPTION
-docker.io/library/python           Python is an interpreted, interactive, objec...
-```
-
-and then to download
+For example to run a python 3.12 container I can do the following to download
 
 ```bash
 danielk@IRF033-danielk ~> podman pull python:3.12
-Resolved "python" as an alias (/etc/containers/registries.conf.d/00-shortnames.conf)
 Trying to pull docker.io/library/python:3.12...
-Getting image source signatures
-Copying blob 80dfafe3215b done   | 
-Copying blob 1d281e50d3e4 done   | 
-Copying blob 447713e77b4f done   | 
-Copying blob 8031108f3cda done   | 
-Copying blob 155ad54a8b28 done   | 
-Copying blob 6a5d3adec565 done   | 
-Copying blob f5e20e850d9d done   | 
-Copying config 6663e62633 done   | 
-Writing manifest to image destination
-6663e6263306abb7230e6595c505da526c4a98628803b82e7bf2324f74b8626f
 ```
 
 and run it:
@@ -287,15 +267,19 @@ Having said that, for this course I recommend:
 2. If you want to setup something exactly like you want it, want to be as efficient as possible with editing, and you are ok with spending lots of time achieving that, use/learn [nvim](https://neovim.io/). One advantage of `nvim` is that it is a terminal editor which means: no fancy GUI to worry about, this can be used on any machine you SSH into. A similar bare-bones editor but with a GUI instead which can be customized to the gills is [sublime text](https://www.sublimetext.com/). 
 3. If you just want something that just works out of the box where you can install extensions that take care of LSP's and everything: go with [vscode](https://code.visualstudio.com/docs/setup/linux) or [vscodium](https://vscodium.com/).
 4. If you want all the bells and IDE-whistles with python debuggers and environment handling: go with [spyder](https://www.spyder-ide.org/) or [pycharm](https://www.jetbrains.com/pycharm/).
+5. If you are just looking for editing text with syntax highlighting - choose any alternative really if you don't already have an editor.
 
 Personally - I use `VSCode` and `nvim`. I mostly still have `VSCode` until I fully learn how to use [vim-motions](https://www.ssp.sh/brain/vim-language-and-motions/) efficiently. In my journey I have went trough pretty much the entire list of editors and IDEs above, I started out simple, sought out complexity, and now I'm back inside a terminal just coding again. 
 
 ## Homework assignments
 
-Python basics
-: If you have not used python before, go trough a few tutorials, e.g. [python.org tutorial](https://docs.python.org/3/tutorial/index.html), and complete a few coding excersizes e.g. from [exercism](https://exercism.org/tracks/python/exercises) or [adventofcode](https://adventofcode.com/) in order to catch up.
-
 Install git
 : If [git](https://git-scm.com/) is not installed on your system (try `git --version`), install it (remember to always favor your package manager) and create a new repository for homework solutions.
 : If you want - upload the repo on [codeberg](https://codeberg.org/), [github](https://github.com/), or [gitlab](https://gitlab.irf.se/).
 
+Virtual environments
+: Choose a method to manage virtual environments and implement it, write a cheat sheet for creating, entering, exiting and deleting environments.
+
+Editor mastery
+: Go trough the shortcuts that your chosen editors has, create a short cheat sheet for the shortcuts that you think are the most useful! 
+: Some suggestions are "Goto definition", "Fuzzy find [file/symbol]", "Goto line", "Goto symbol"
