@@ -114,12 +114,13 @@ Scripts, modules and packages
 : Create a scripts in a different location than were the package is that uses this function from the package to interleave the following two strings: `'VOG!lo olH'` and `'el,Wrd ROY'`. 
 
 Python basic syntax
-: Implement a function in your package that uses the following: [f-strings](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals), [with](https://docs.python.org/3/reference/compound_stmts.html#with), and [encode](https://docs.python.org/3/library/stdtypes.html#str.encode) / [decode](https://docs.python.org/3/library/stdtypes.html#bytes.decode) to save an input string in a binary file. Also implement a function to load a string from a binary file.
+: Implement a function in your package that uses the following: [with](https://docs.python.org/3/reference/compound_stmts.html#with), [encode](https://docs.python.org/3/library/stdtypes.html#str.encode), and [decode](https://docs.python.org/3/library/stdtypes.html#bytes.decode) to save an input string in a binary file. Also implement a function to load a string from a binary file.
 
 Plotting
 : Install [matplotlib](https://matplotlib.org/) into your environment.
 : Implement one of the [examples](https://matplotlib.org/stable/gallery/index).
 : Run the code and get the plot to show. 
+: Add it to your package and add `matplotlib` as a dependency
 
 > [!Tips]
 > Depending on how your system is setup you might need to install `pyqt5` or `pyqt6` in your local environment to show plots. 
