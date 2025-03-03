@@ -49,8 +49,8 @@ weight: 1
             <div class="centered-container">
                 <h3 class="title">Why this course?</h3>
                 <p class="mark">The classic: fast inverse square root implementation from Quake III Arena</p>
-                <pre>
-                    <code class="c" style="max-height: 80vh;">
+                <pre class="fragment">
+                    <code data-trim class="language-c" style="max-height: 80vh;">
 float Q_rsqrt( float number )
 {
     long i;
@@ -70,7 +70,7 @@ float Q_rsqrt( float number )
                     </code>
                 </pre>
 <p class="fragment">Being able to do the above takes someone good at programming</p>
-<p class="fragment">Realizing that it needed and could be done takes someone good at software development</p>
+<p class="fragment">Realizing that this was needed and creating the conditions where it could be done<br>takes someone good at software development</p>
             </div>
         </section>
 
@@ -79,7 +79,7 @@ float Q_rsqrt( float number )
                 <h3 class="title">Why this course?</h3>
                 <p class="mark">The classic: fast inverse square root implementation from Quake III Arena</p>
                 <pre>
-                    <code style="max-height: 30vh;">
+                    <code data-trim class="language-c" style="max-height: 30vh;">
 float Q_rsqrt( float number )
 {
     long i;
@@ -98,11 +98,11 @@ float Q_rsqrt( float number )
 }
                     </code>
                 </pre>
-                <ol>
+                <ol style="font-size: 0.9em;">
                     <li>Alias the argument $x$ to an integer as a way to compute an approximation of the binary logarithm $\log _{2}(x)$</li>
                     <li>Use this approximation to compute an approximation of $\log _{2}\left({\frac {1}{\sqrt {x}}}\right)=-{\frac {1}{2}}\log _{2}(x)$</li>
                     <li>Alias back to a float, as a way to compute an approximation of the base-2 exponential</li>
-                    <li>Refine the approximation using a single iteration of Newton's method (finding root to $ \frac{1}{y^2} - x = 0 $).</li>
+                    <li>Refine the approximation using a single iteration of Newton's method<br>(finding root to $ \frac{1}{y^2} - x = 0 $).</li>
                 </ol>
             </div>
         </section>
@@ -257,8 +257,49 @@ Instead we get a coffee and a donut and the product needs to ship next week.
                     </ul>
                 </div>
                 <p>Be able to tackle any problem</p>
-                    <p class="select">Hone your craft. Be an expert at your tools. Train and practice. "Yeah I could do that"</p>
-                    <img class="fragment" style="height: 50vh;" src="media/1200px-Blacksmith_Hammer_Strikes_Animation_Loop.gif">
+                <p class="select">Hone your craft. Be an expert at your tools. Train and practice. "Yeah I could do that"</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Why this course?</h3>
+                <p>This is a very fine line to walk</p>
+                <img class="fragment" src="media/fixing.png">
+                <ul class="fragment">
+                    <p>Left side</p>
+                    <li>You never get anything done</li>
+                    <li>Projects seem too big to even start</li>
+                    <li>Nobody benefits from your code</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Why this course?</h3>
+                <p>This is a very fine line to walk</p>
+                <img src="media/fixing.png">
+                <ul>
+                    <p>Right side</p>
+                    <li>Nobody, including you, knows if or how your code works</li>
+                    <li>You are slowed down by your own code</li>
+                    <li>Nobody benefits from your code</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Why this course?</h3>
+                <p>This is a very fine line to walk</p>
+                <img src="media/fixing.png">
+                <ul>
+                    <p>Middle</p>
+                    <li>You refine the critical parts - they can be trusted and maintained</li>
+                    <li>You are accelerated by your code</li>
+                    <li>Other benefit from your code</li>
+                </ul>
             </div>
         </section>
 
@@ -276,8 +317,8 @@ Instead we get a coffee and a donut and the product needs to ship next week.
                     <li class="fragment">One-off plotting script for paper - <span class="fragment select">Version-control (VC) but otherwise meh</span></li>
                     <li class="fragment">Simulation for paper (using library) - <span class="fragment select">VC, input/output design, setup/dependency management</span></li>
                     <li class="fragment">Analysis pipeline (using library) - <span class="fragment select">VC, thorough output design, setup/dependency management, modular functionality, logging, performance</span></li>
-                    <li class="fragment">Simulation library - <span class="fragment select">VC, packaging, CI/CD, testing, modularity, documentation, readability, maintainability, APIs, performance, footprint</span></li>
-                    <li class="fragment">Real-time operational system - <span class="fragment select">VC, CI/CD, testing, robustness, reliability, maintainability, documentation, logging, performance, control interface (UI/UX)</span></li>
+                    <li class="fragment">Simulation library - <span class="fragment select">VC, packaging, CI, testing, modularity, documentation, readability, maintainability, APIs, performance, footprint</span></li>
+                    <li class="fragment">Real-time operational system - <span class="fragment select">VC, CI/CD, testing, robustness, reliability, maintainability, documentation, logging, performance, control interface</span></li>
                 </ul>
             </div>
         </section>
