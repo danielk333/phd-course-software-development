@@ -109,11 +109,13 @@
 }
 
 pre.show-code {
-    max-width: 80vw;
-    width: auto;
     margin: 1em;
 }
 
 pre.show-code code {
-    padding: 0em 1em;
+    padding: 1em 1em;
+    max-width: 80vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
 }
