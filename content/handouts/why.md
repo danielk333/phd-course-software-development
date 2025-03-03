@@ -10,6 +10,7 @@ weight: 1
 - [Monya Baker, "1,500 scientists lift the lid on reproducibility"](https://www.nature.com/articles/533452a)
 - [Quake III Arena Fast inverse square root](https://en.wikipedia.org/wiki/Fast_inverse_square_root)
 - [Some of the software I have written](https://danielk.developer.irf.se/software/)
+- [Changelog & Friends – Episode #42: The Wu-Tang way ](https://changelog.com/friends/42)
 
 ## Homework assignments
 
