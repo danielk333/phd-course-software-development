@@ -20,7 +20,7 @@ Lectures
 
 Practicals
 : Done in groups
-: Larger tasks started during a half day hackaton
+: Larger tasks started during a half day hackathon
 
 ## Software development for researchers
 
@@ -78,7 +78,7 @@ To get good at programming and software development you have to:
 - Throw away code, and write it again
 - Talk to others about code and writing code
 - Get coached on writing code
-- Learn the connection between code and hardware - what is the metal doing and is it efficient/correct
+- Learn the connection between code and hardware
 - Read about others opinions and experience on writing code
 - Read research and theory on software
 
