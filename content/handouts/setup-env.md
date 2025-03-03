@@ -14,9 +14,28 @@ Use `venv` to create new environments.
 python -m venv /path/to/new/virtual/environment
 ```
 
-Activate them with `source <venv>/bin/activate`. Then use `pip` to install packages. Use `python your_stuff.py` to run code.
+Activate them with `source <venv>/bin/activate`. Then use `pip` to install packages.
 
-Optionally: install [pyenv](https://github.com/pyenv/pyenv) to manage python versions.
+```bash
+pip install numpy
+```
+
+Use `python your_stuff.py` to run code.
+
+### Multiple python version 
+
+Install [uv](https://docs.astral.sh/uv/) to manage python versions. Create new environments with
+
+```bash
+uv venv --python 3.X --seed /path/to/new/virtual/environment
+```
+
+Activate like before. 
+
+Install new python versions with `uv python install 3.X`.
+
+Read the docs for more info.
+
 
 ## What is a "Development environment"
 
@@ -27,7 +46,7 @@ A development environment is simply the set of programs and patterns that you us
 3. debug code
 4. (deploy code)
 
-As many of us who started programming as kids, my first "development environment" was [notepad](https://en.wikipedia.org/wiki/Windows_Notepad) (yes notepad is >40 years old), [cmd](https://en.wikipedia.org/wiki/Cmd.exe) and the then new and cool [mingw32](https://en.wikipedia.org/wiki/MinGW).
+As many of us who started programming as kids, my first "development environment" was [notepad](https://en.wikipedia.org/wiki/Windows_Notepad), [cmd](https://en.wikipedia.org/wiki/Cmd.exe) and the then new and cool [mingw32](https://en.wikipedia.org/wiki/MinGW).
 
 In essenece you do not need a lot to have a development environment. Back then `notepad` let me edit the code, `mingw32` and `cmd.exe` allowed me to compile and run it. Debugging occurred by reading compilation and runtime errors (bad as they were in those days) and by littering the code with "im here now!" print statements. Deploying was literally the same as running the code locally so I had that covered too.
 
@@ -70,13 +89,13 @@ If you already have a preferred way to work with python, go with that and learn 
 
 If you are complexly new to the whole environment thing I like to keep things simple: use pythons built in [venv](https://docs.python.org/3/library/venv.html) command to create environments.
 
-Using this command, you simply choose which python binary should be main python version of the environment by running the `venv` command with that version:
+Using this command, you can create an environment with python equal to the system python version by running the `venv` command:
 
 ```bash
 python -m venv /path/to/new/virtual/environment
 ```
 
-Lets say you have `python3.11` and `python3.7` installed. You can then make two different virtual environments with two different version by
+The python that runs the command dictates the version. Lets say you have `python3.11` and `python3.7` installed. You can then make two different virtual environments with two different version by
 
 ```bash
 python3.11 -m venv env3.11
@@ -125,19 +144,15 @@ pip install numpy
 
 will fetch and install [this](https://pypi.org/project/numpy/) package into the virtual environment. You can inspect what was installed by looking into `<venv>/lib/python3.13/site-packages`.
 
-To manage python versions, I recommend using [pyenv](https://github.com/pyenv/pyenv) to download and compile different python versions. This tool is easy and stores the binaries locally in your home folder . This way you are not contaminating anything else and can easily just delete all the data if you want to start over. For example on my main machine I have:
+To manage python versions, I recommend using [uv](https://docs.astral.sh/uv/) (or [pyenv](https://github.com/pyenv/pyenv) if you cant get `uv` to work) to download and manage python versions. This tool is easy and stores the binaries locally in your home folder. This way you are not contaminating anything else and can easily just delete all the data if you want to start over. For example on my main machine I have:
 
 ```bash
-danielk@IRF033-danielk ~> ll .pyenv/versions
+danielk@IRF033-danielk ~> ls -l .local/share/uv/python/
 Permissions Size User    Date Modified Name
-drwxr-xr-x     - danielk  9 dec  2024 📁 3.6.15
-drwxr-xr-x     - danielk 15 jun  2023 📁 3.7.16
-drwxr-xr-x     - danielk 14 jun  2023 📁 3.8.10
-drwxr-xr-x     - danielk 14 sep  2022 📁 3.9.13
-drwxr-xr-x     - danielk  6 dec  2023 📁 3.10.13
-drwxr-xr-x     - danielk 30 jul  2024 📁 3.11.9
-drwxr-xr-x     - danielk 17 jan  2024 📁 3.12.0
-drwxr-xr-x     - danielk 25 mar  2024 📁 3.12.2
+drwxr-xr-x     - danielk 3 mar 16.29  📁 cpython-3.10.16-linux-x86_64-gnu/
+drwxr-xr-x     - danielk 3 mar 17.17  📁 cpython-3.13.2-linux-x86_64-gnu/
+drwxr-xr-x     - danielk 3 mar 17.03  📁 cpython-3.7.9-linux-x86_64-gnu/
+drwxr-xr-x     - danielk 3 mar 17.03  📁 cpython-3.9.21-linux-x86_64-gnu/
 ```
 
 While it is not strictly required during the course to have a way to install different python versions, depending on the group-work problems might arise if you cannot internally settle on a single version. 
@@ -176,9 +191,13 @@ There are many good tutorials on how to work with containers when developing cod
 
 {{% tab "MacOS" %}}
 
-On MacOS *TODO*
+On MacOS python comes pre-installed but its usually a good idea to also have a system-package manager installed such as 
 
-See [Using Python on macOS](https://docs.python.org/3/using/mac.html) for more information.
+- [Homebrew](https://brew.sh/)
+- [MacPorts](https://www.macports.org/)
+- [Nix](https://nixos.org/)
+
+See also [Using Python on macOS](https://docs.python.org/3/using/mac.html) for more information.
 
 {{% /tab %}}
 
@@ -218,10 +237,11 @@ The below snippets of bash and [fish shell](https://fishshell.com/) scripts are 
 - `activate`
 - `venv`
 - `venvdel`
-- `venvup`
 - `venvs`
 
-These create new enviornments in `$HOME/venvs/` with `venv` and can delete them with `venvdel`. But my favorite command is `lazyvenv` which just looks at the name of the current folder and tries to activate a virtual environment with that name, and if it cant find one it creates it.
+These create new enviornments in `$HOME/venvs/` with `venv` and can delete them with `venvdel`. But my favorite command is `lazyvenv` which just looks at the name of the current folder and tries to activate a virtual environment with that name, and if it cant find one it creates it. 
+
+This is very similar to how `uv` works if one lets it manage all aspects of your virtual environment.
 
 {{< details summary="Example fish shell script function for working with python venv" >}}
 {{< include-code "fish" "code/shell-scripts/venv-tools.fish" "">}}
@@ -255,9 +275,9 @@ A few popular editors are:
 At minimum I recommend having an editor that has the following features:
 
 - Syntax highlighting
-- [Language Server Protocol (LSP)](https://en.wikipedia.org/wiki/Language_Server_Protocol) integration
-- Searching and goto
-- File-browser
+- [Language Server Protocol (LSP)](https://en.wikipedia.org/wiki/Language_Server_Protocol) integration or some sort of symbol finding system ( e.g. [ctags](https://github.com/universal-ctags/ctags) )
+- Text searching and go-to functionality
+- File-browsing or file-searching
 
 Having these features will make life a lot simpler and speed up development by quite a lot. 
 
@@ -266,7 +286,7 @@ Having said that, for this course I recommend:
 1. If you already have an editor you like and know - go with that
 2. If you want to setup something exactly like you want it, want to be as efficient as possible with editing, and you are ok with spending lots of time achieving that, use/learn [nvim](https://neovim.io/). One advantage of `nvim` is that it is a terminal editor which means: no fancy GUI to worry about, this can be used on any machine you SSH into. A similar bare-bones editor but with a GUI instead which can be customized to the gills is [sublime text](https://www.sublimetext.com/). 
 3. If you just want something that just works out of the box where you can install extensions that take care of LSP's and everything: go with [vscode](https://code.visualstudio.com/docs/setup/linux) or [vscodium](https://vscodium.com/).
-4. If you want all the bells and IDE-whistles with python debuggers and environment handling: go with [spyder](https://www.spyder-ide.org/) or [pycharm](https://www.jetbrains.com/pycharm/).
+4. If you want all the bells and IDE-whistles with python debuggers and environment handling: go with [spyder](https://www.spyder-ide.org/)
 5. If you are just looking for editing text with syntax highlighting - choose any alternative really if you don't already have an editor.
 
 Personally - I use `VSCode` and `nvim`. I mostly still have `VSCode` until I fully learn how to use [vim-motions](https://www.ssp.sh/brain/vim-language-and-motions/) efficiently. In my journey I have went trough pretty much the entire list of editors and IDEs above, I started out simple, sought out complexity, and now I'm back inside a terminal just coding again. 

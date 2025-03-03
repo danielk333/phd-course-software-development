@@ -39,48 +39,43 @@ lazyvenv() {
     fi
 }
 
-# venv_up function
-venvup() {
-    local venv_target pypath
-    if [[ $# -eq 0 ]]; then
-        venv_target=$(basename "$(pwd)")
-    else
-        venv_target="$1"
-    fi
-
-    if [[ $# -eq 2 ]]; then
-        pypath="$HOME/.pyenv/versions/$2/bin/python"
-    else
-        pypath=$(which python)
-    fi
-
-    "$pypath" -m venv --upgrade "$HOME/venvs/$venv_target"
-}
-
 # venv function
 venv() {
-    local venv_target pypath
     if [[ $# -eq 0 ]]; then
         venv_target=$(basename "$(pwd)")
     else
         venv_target="$1"
     fi
 
-    if [[ $# -eq 2 ]]; then
-        pypath="$HOME/.pyenv/versions/$2/bin/python"
+    if [[ $# -ge 3 ]]; then
+        extra_args="${@:3}"
     else
-        pypath=$(which python)
+        extra_args=""
     fi
 
-    echo "New venv target=$venv_target"
-    if [[ ! -d "$HOME/venvs" ]]; then
+    if [ ! -d "$HOME/venvs" ]; then
         mkdir "$HOME/venvs"
     fi
+    echo "New venv target=$venv_target"
+
     if [[ -d "$HOME/venvs/$venv_target" ]]; then
         echo "Folder '~/venvs/$venv_target' exists, choose a different name for new venv"
+        return 1
     else
-        "$pypath" -m venv "$HOME/venvs/$venv_target"
-        echo "Created virtualenv $venv_target"
+        if command -v uv &> /dev/null; then
+            if [[ $# -eq 2 ]]; then
+                uv venv --seed --python "$2" $extra_args "~/venvs/$venv_target"
+            else
+                uv venv --seed "~/venvs/$venv_target"
+            fi
+        else
+            if [[ $# -eq 2 ]]; then
+                echo "Can't use specific python version without uv"
+                return 1
+            fi
+            python -m venv "~/venvs/$venv_target"
+        fi
+        echo "Created virtual environment $venv_target"
     fi
 }
 

@@ -37,23 +37,6 @@ function lazyvenv
     end
 end
 
-function venvup
-    if test (count $argv) -eq 0
-        set venv_target (basename (pwd))
-    else
-        set venv_target $argv[1]
-    end
-
-    if test (count $argv) -eq 2
-        set pypath ~/.pyenv/versions/$argv[2]/bin/python
-    else
-        set pypath (which python)
-    end
-
-    $pypath -m venv --upgrade ~/venvs/$venv_target
-end
-
-
 
 function venv
     if test (count $argv) -eq 0
@@ -61,22 +44,35 @@ function venv
     else
         set venv_target $argv[1]
     end
-
-    if test (count $argv) -eq 2
-        set pypath ~/.pyenv/versions/$argv[2]/bin/python
+    if test (count $argv) -ge 3
+        set extra_args $argv[3..(count $argv)]
     else
-        set pypath (which python)
+        set extra_args ""
     end
 
-    echo "New venv target=$venv_target" 
     if not test -d ~/venvs
         mkdir ~/venvs
     end
+    echo "New venv target=$venv_target" 
+
     if test -d ~/venvs/$venv_target
         echo "Folder '~/venvs/$venv_target' exists, choose a different name for new venv"
+        return 1
     else
-        $pypath -m venv ~/venvs/$venv_target
-        echo "Created virtualenv $venv_target"
+        if type -q uv
+            if test (count $argv) -eq 2
+                uv venv --seed --python $argv[2] $extra_args ~/venvs/$venv_target
+            else
+                uv venv --seed ~/venvs/$venv_target
+            end
+        else
+            if test (count $argv) -eq 2
+                echo "Cant use specific python version without uv"
+                return 1
+            end
+            python -m venv ~/venvs/$venv_target
+        end
+        echo "Created virtual enviornment $venv_target"
     end
 end
 
