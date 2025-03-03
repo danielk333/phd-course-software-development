@@ -46,7 +46,7 @@ weight: 2
                         <div class="fragment" data-fragment-index="3">
                             <p class="mark">Recommendation</p>
                             <li>Also learn a compiled language with memory management<br>
-                            <code>C/C++/Rust/Odin/Zig/FORTRAN/...</code>
+                            <code data-trim>C/C++/Rust/Odin/Zig/FORTRAN/...</code>
                             </li>
                         </div>
                     </ul>
@@ -84,11 +84,11 @@ weight: 2
                     <li class="fragment">When memory can no longer be reached - python frees it (reference counting)</li>
                 </ul>
                 <pre class="fragment show-code">
-                    <code class="python">
-def my_function(x):
-    x = x + 2
-    y = 5
-    return x
+                    <code data-trim class="language-python">
+                        def my_function(x):
+                            x = x + 2
+                            y = 5
+                            return x
                     </code>
                 </pre>
             </div>
@@ -108,9 +108,9 @@ def my_function(x):
                     <li>Names are not typed</li>
                 </ul>
                 <pre class="fragment show-code">
-                    <code class="python">
-a = 5  # a is the name of an object of type integer
-a = 5.0  # a is now the name of an object of type float
+                    <code data-trim class="language-python">
+                        a = 5  # a is the name of an object of type integer
+                        a = 5.0  # a is now the name of an object of type float
                     </code>
                 </pre>
             </div>
@@ -123,33 +123,33 @@ a = 5.0  # a is now the name of an object of type float
                 <h3 class="title">Python programming primer</h3>
                 <h4 class="title">Try this</h4>
                 <pre class="fragment show-code">
-                    <code class="python">
-a = 5
-print(type(a))
+                    <code data-trim class="language-python">
+                        a = 5
+                        print(type(a))
 
-a = 5.0
-print(type(a))
+                        a = 5.0
+                        print(type(a))
 
-a = "5"
-print(type(a))
+                        a = "5"
+                        print(type(a))
 
-print(type(print))
+                        print(type(print))
 
-def func(a):
-    return(a * 5)
-print(type(func))
+                        def func(a):
+                            return(a * 5)
+
+                        print(type(func))
                     </code>
                 </pre>
                 <pre class="fragment show-code">
-                    <code class="python">
-print(func(5))
-print(func("Hello "))
-print(func("Na") + " Batman!")
+                    <code data-trim class="language-python">
+                        print(func(5))
+                        print(func("Hello "))
+                        print(func("Na") + " Batman!")
                     </code>
                 </pre>
             </div>
         </section>
-
 
         <section
         data-auto-animate
@@ -161,103 +161,28 @@ print(func("Na") + " Batman!")
                     Integer, Float, String, Boolean, Tuple, List, Ditionary, Set
                 </p>
                 <pre class="fragment show-code">
-                    <code class="python">
-my_dict = {"key": 1.0, "x": "this is a string"}
-print(my_dict["key"])
-
-my_list = [1, 2, "string"]
-print(my_list[0])
-
-my_tuple = (2, 3, 4)
-print(my_list[0])
-                    </code>
-                </pre>
-                <p class="fragment select">Lets talk about pointers...</p>
-            </div>
-        </section>
-
-        <section
-        data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Python programming primer</h3>
-                <p class="select">Lets talk about pointers...</p>
-                <pre class="fragment show-code">
-                    <code class="python">
-# What do you think is the result?
-x = [
-    ["hello", "world"],
-    ["string 1", "string 2"],
-]
-
-a = x[0]
-print(a)
-a[0] = "my"
-
-x[1][0] = "this is"
-print(x)
+                    <code data-trim class="language-python">
+                        my_dict = {"key": 1.0, "x": "this is a string"}
+                        print(my_dict["key"])
+                        my_dict["x"] = 2.0
                     </code>
                 </pre>
                 <pre class="fragment show-code">
-                    <code class="python">print(a == x[0])
-print(id(a), id(x[0]))</code>
-                </pre>
-            </div>
-        </section>
+                    <code data-trim class="language-python">
+                        my_list = [1, 2, "string"]
+                        print(my_list[0])
 
-        <section
-        data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Python programming primer</h3>
-                <p class="select">Lets talk about pointers...</p>
-                <pre class="show-code">
-                    <code class="python">
-# What do you think is the result?
-x = [
-    ["hello", "world"],
-    ["string 1", "string 2"],
-]
-
-a = x[0]
-print(a)
-a[0] = "my"
-
-x[1][0] = "this is"
-print(x)
+                        my_list[0] = "10"
                     </code>
                 </pre>
-                <pre class="show-code">
-                    <code class="python">
-y = x[0][0]
-y = "HELLO!"
-print(x)
-                    </code>
-                </pre>
-                <p class="fragment">Primitive types are copied!</p>
-            </div>
-        </section>
-
-        <section
-        data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Python programming primer</h3>
-                <p class="mark">Creating your own types</p>
                 <pre class="fragment show-code">
-                    <code class="python">
-class Square:
-    def __init__(self, length):
-        self.length = length
-    
-    def area(self):
-        return self.length ** 2
+                    <code data-trim class="language-python">
+                        my_tuple = (2, 3, 4)
+                        print(my_list[0])
 
-s = Square(10)
-print(s.area())
+                        my_tuple[0] = 10  # TypeError
                     </code>
                 </pre>
-                <p class="fragment">Classes are good for some things and bad for others - we will deep dive later</p>
             </div>
         </section>
 
@@ -271,20 +196,20 @@ print(s.area())
                 <div class="col-flex-c" style="width: 60vw;">
                     <p>Multiple return values</p>
                     <pre class="fragment show-code">
-                        <code class="python">
-# Return type is tuple when more than one argument is returned
-def func(a):
-    return a, a + 2
+                        <code data-trim class="language-python">
+                            # Return type is tuple when more than one argument is returned
+                            def func(a):
+                                return a, a + 2
 
-x = func(5)
-print(type(x), x)
+                            x = func(5)
+                            print(type(x), x)
                         </code>
                     </pre>
                     <p>Multiple variable assignment</p>
                     <pre class="fragment show-code">
-                        <code class="python">
-x, y = func(5)
-print(f"{x=} {y=}")
+                        <code data-trim class="language-python">
+                            x, y = func(5)
+                            print(f"{x=} {y=}")
                         </code>
                     </pre>
                 </div>
@@ -301,28 +226,16 @@ print(f"{x=} {y=}")
                 <div class="col-flex-c" style="width: 60vw;">
                     <p>Positional and keyword arguments</p>
                     <pre class="fragment show-code">
-                        <code class="python">
-# Keyword arguments have a default
-def func(a, b=2):
-    return a + b
+                        <code data-trim class="language-python">
+                            # Keyword arguments have a default
+                            def func(a, b=2):
+                                return a + b
 
-print(func(5), func(5, b=10))
+                            print(func(5), func(5, b=10))
                         </code>
                     </pre>
-                    <p>Argument catching and expanding</p>
-                    <pre class="fragment show-code">
-                        <code class="python">
-def func(*args, **kwargs):
-    print(f"these are the args {args}")
-    print(f"these are the keyword args {kwargs}")
-
-func(2, "hello", mark_this=True)
-
-x = [1, 2, 3]
-d = {"hello": "world"}
-func(*x, **d)
-                        </code>
-                    </pre>
+                    <p class="fragment">Argument expanding and catching comes later...</p>
+                    <p class="fragment select">Lets talk about immutability and pointers...</p>
                 </div>
             </div>
         </section>
@@ -332,28 +245,140 @@ func(*x, **d)
         >
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
-                <p class="mark">Function arguments</p>
-                
-                <div class="col-flex-c" style="width: 60vw;">
-                    <p><span class="select">WARNING!</span> Side effects due to passing pointers</p>
-                    <pre class="fragment show-code">
-                        <code class="python">
-def func(**kwargs):
-    kwargs["x"][0] = 0
-    kwargs["y"] = "func"
+                <p class="select">Lets talk about immutability and pointers...</p>
+                <p class="fragment">Immutable data types: numbers, booleans, tuples, and strings</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        a = "hello"
+                        b = a  # pointer is copied
+                        print(id(a))
+                        print(id(b))  # Same memory!
 
-# What do you think the output is?
-a = {"x": [1, 2, 3]}
-func(**a)
-print(a)
-                        </code>
-                    </pre>
-                    <ol class="fragment">
-                        <li><code class="python">{'x': [1, 2, 3]}</code></li>
-                        <li class="fragment highlight-green"><code class="python">{'x': [0, 2, 3]}</code></li>
-                        <li><code class="python">{'x': [0, 2, 3], 'y': 'func'}</code></li>
-                    </ol>
-                </div>
+                        b = "world"  # immutable -> new object is created
+                        print(id(a))
+                        print(id(b))  # Now different!
+                    </code>
+                </pre>
+                <p class="fragment">methods return a new object - does not modify in-place!</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        a = "hello"
+                        a.upper()
+                        print(a)
+
+                        b = a.upper()
+                        print(a, b)
+
+                        print(a[2])  # can access
+                        a[2] = "X"  # TypeError - but not modify
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="select">Lets talk about immutability and pointers...</p>
+                <p>Mutable types (the rest) CAN modify their memory</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        a = [3, 2, 1]
+                        b = a  # pointer is copied
+                        print(id(a), id(b))  # Same memory
+
+                        b.sort()
+                        print(a)
+                    </code>
+                </pre>
+                <p class="fragment">All pointers to the memory can modify it</p>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="select">Lets talk about immutability and pointers...</p>
+                <p class="fragment select">Be careful about side-effects!</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        def func(x=[]):
+                            x.append("world!")
+                            print(x)
+                        
+                        # what does this print?
+                        a = ["hello "]
+                        func(a)
+                        func(a)
+
+                        # what does this print?
+                        func()
+                        func()
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        # Same as above but more clear what is going on
+                        DEFAULT_LIST = []
+
+                        def func(x=DEFAULT_LIST):
+                            x.append("world!")
+                            print(x)
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Creating your own "types" - classes</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        class Square:
+                            def __init__(self, length):
+                                self.length = length
+                            
+                            def area(self):
+                                return self.length ** 2
+
+                        s = Square(10)
+                        print(s.area())
+                    </code>
+                </pre>
+                <p class="fragment">Classes are good for some things and bad for others - we will deep dive later</p>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Control flow</p>
+            
+                <p>For loop</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        for i in range(10):
+                            print(f"Hello world number {i}")
+                    </code>
+                </pre>
+                <p>While loop</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        a = 0
+                        while a < 10:
+                            print(f"Looping {a=}")
+                            a += 1
+                    </code>
+                </pre>
             </div>
         </section>
 
@@ -364,47 +389,30 @@ print(a)
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Control flow</p>
                 
-                <div class="col-flex-c" style="width: 30vw;">
-                    <p>For loop</p>
-                    <pre class="fragment show-code">
-                        <code class="python">
-for i in range(10):
-    print(f"Hello world number {i}")
-                        </code>
-                    </pre>
-                    <p>While loop</p>
-                    <pre class="fragment show-code">
-                        <code class="python">
-a = 0
-while a < 10:
-    print(f"Looping {a=}")
-    a += 1
-                        </code>
-                    </pre>
-                </div>
-            </div>
-        </section>
+                <p>Most sequences can be iterated</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        for c in "HELLO":
+                            print(f"{c}={ord(c)}")
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        d = {"a": 3.14, "b": 42, "c": 1}
 
-        <section
-        data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Python programming primer</h3>
-                <p class="mark">Control flow</p>
-                
-                <div class="col-flex-c" style="width: 30vw;">
-                    <p>Most sequences can be iterated</p>
-                    <pre class="fragment show-code">
-                        <code class="python">
-d = {"a": 3.14, "b": 42, "c": 1}
-for key, value in d.items():
-    print(f"{key}={value}")
+                        # Iterating a dict iterates the keys
+                        for c in d:
+                            print(c)
 
-for c in "HELLO":
-    print(f"{c}={ord(c)}")
-                        </code>
-                    </pre>
-                </div>
+                        # dict.items return a iterable of tuples with both keys and values
+                        for item in d.items():
+                            print(f"{item[0]}={item[1]}")
+
+                        # multiple variable assignment in loops too!
+                        for key, value in d.items():
+                            print(f"{key}={value}")
+                    </code>
+                </pre>
             </div>
         </section>
 
@@ -418,20 +426,48 @@ for c in "HELLO":
                 <div class="col-flex-c" style="width: 40vw;">
                     <p>If statement</p>
                     <pre class="fragment show-code">
-                        <code class="python">
-import numpy as np
+                        <code data-trim class="language-python">
+                            import numpy as np
 
-x = np.random.randn(1)
+                            x = np.random.randn(1)
 
-if x < -1 or x > 1:
-    print("Shocked!")
-elif x < -2 and x > 2:
-    print("WHAT?")
-else:
-    print("Completely normal phenomenon")
+                            if x < -1 or x > 1:
+                                print("Shocked!")
+                            elif x < -2 and x > 2:
+                                print("WHAT?")
+                            else:
+                                print("Completely normal phenomenon")
                         </code>
                     </pre>
                 </div>
+            </div>
+        </section>
+
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">List and dict comprehension!</p>
+                
+                <p class="fragment">This is advanced topic but just to introduce it</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        squares = [x ** 2 for x in range(10)]
+                        print(squares)
+
+
+                        some_strs = [f"{x}" for x in squares if x > 10]
+                        print(some_strs)
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        dicts_also = {c: ord(c) for c in "abcd"}
+                        print(dicts_also)
+                    </code>
+                </pre>
             </div>
         </section>
 
@@ -441,24 +477,22 @@ else:
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Math in C</p>
-                
-                <div class="col-flex-c" style="width: 40vw;">
-                    <p><code>numpy</code> arrays are our bread and butter!</p>
-                    <pre class="fragment show-code">
-                        <code class="python">
-import numpy as np
+            
+                <p><code data-trim>numpy</code> arrays are our bread and butter!</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        import numpy as np
 
-a = np.random.randn(2, 5)  # 5 rows, 10 columns
-print(type(a))
+                        a = np.random.randn(2, 5)  # 5 rows, 10 columns
+                        print(type(a))
 
-# Array slicing
-print(a[:, 3])  # print column 4
+                        # Array slicing
+                        print(a[:, 3])  # print column 4
 
-b = a[0, :] * 2  # Multiply a row and assign result
-print(f"{a[0, :]=} {b=}")
-                        </code>
-                    </pre>
-                </div>
+                        b = a[0, :] * 2  # Multiply a row and assign result
+                        print(f"{a[0, :]=} {b=}")
+                    </code>
+                </pre>
             </div>
         </section>
 
@@ -468,28 +502,65 @@ print(f"{a[0, :]=} {b=}")
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Math in C</p>
-                
-                <div class="col-flex-c" style="width: 40vw;">
-                    <p><code>numpy</code> matrix operations</p>
-                    <pre class="fragment show-code">
-                        <code class="python">
-import numpy as np
+            
+                <p><code data-trim>numpy</code> matrix operations</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        import numpy as np
 
-a = np.array([1, 1, 1], dtype=np.float64)
-M = np.eye(3)
-M[1, 1] = 2
+                        a = np.array([1, 1, 1], dtype=np.float64)
+                        M = np.eye(3)
+                        M[1, 1] = 2
 
-print(f"{M=}")
+                        print(f"{M=}")
 
-x = M @ a  # Matrix multiplication!
-print(f"{x=}")
+                        x = M @ a  # Matrix multiplication!
+                        print(f"{x=}")
 
-# Broadcasting!
-M = M[:, :] + x[:, None]
-print(f"{M=}")
-                        </code>
-                    </pre>
-                </div>
+                        # Broadcasting! ( or maybe brotcasting ;] )
+                        M = M[:, :] + x[:, None]
+                        print(f"{M=}")
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Ok bear with me here...</p>
+                <code class="file fragment">matmul_native.py</code>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        import numpy as np
+                        import time
+
+                        np.random.seed(12345)
+                        x = np.random.randn(3, 10_000).T.tolist()
+                        M = np.eye(3).T.tolist()
+
+                        repeats = 1_000
+
+                        t0 = time.time()
+
+                        # do work a lot!
+                        for ri in range(repeats):
+                            out = []  # calculate the matrix multiplication and sum
+                            for ind in range(10_000):
+                                x1, x2, x3 = x[ind]
+                                y = [
+                                    x1 * M[0][dim] + x2 * M[1][dim] + x3 * M[2][dim]
+                                    for dim in range(3)
+                                ]
+                                out.append(sum(y))
+
+                        dt = time.time() - t0
+
+                        print(f"Execution time [native] {dt} seconds")
+                    </code>
+                </pre>
             </div>
         </section>
 
@@ -499,51 +570,32 @@ print(f"{M=}")
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">I am speed!</p>
-                
-                <div class="col-flex-c" style="width: 60vw;">
-                    <pre class="fragment show-code" style="height: 65vh;">
-                        <code class="python">
-import numpy as np
-import timeit
+                <code class="file fragment">matmul_numpy.py</code>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        import numpy as np
+                        import time
 
-setup_numpy = """
-import numpy as np
-np.random.seed(12345)
-x = np.random.randn(3, 10_000)
-M = np.eye(3)
-"""
-comp_numpy = "out = np.sum(M @ x, axis=0)"
+                        np.random.seed(12345)
+                        x = np.random.randn(3, 10_000)
+                        M = np.eye(3)
 
-dt_np = timeit.timeit(stmt=comp_numpy, number=10_000, setup=setup_numpy)
-print(f"Execution time [numpy ] {dt_np} seconds")
+                        repeats = 1_000
 
-setup_native = """
-import numpy as np
-np.random.seed(12345)
-x = np.random.randn(3, 10_000).T.tolist()
-M = np.eye(3).T.tolist()
-"""
-comp_native = """
-out = []
-for ind in range(10_000):
-    x1, x2, x3 = x[ind]
-    y = [
-        x1 * M[0][dim] + x2 * M[1][dim] + x3 * M[2][dim]
-        for dim in range(3)
-    ]
-    out.append(sum(y))
-"""
+                        t0 = time.time()
 
-dt_py = timeit.timeit(stmt=comp_native, number=10_000, setup=setup_native)
-print(f"Execution time [native] {dt_py} seconds")
+                        # do work a lot!
+                        for ri in range(repeats):
+                            out = np.sum(M @ x, axis=0)
 
-print(f"Speedup {dt_py/dt_np:.1f}")
-                        </code>
-                    </pre>
-                </div>
+                        dt = time.time() - t0
+
+                        print(f"Execution time [numpy ] {dt} seconds")
+                    </code>
+                </pre>
+                <p class="fragment select">~100 times faster!</p>
             </div>
         </section>
-
 
         <section
         data-auto-animate
