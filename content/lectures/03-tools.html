@@ -1,5 +1,6 @@
 ---
 title: "Your tools and environment"
+handout: tools
 description: "This lecture will go trough different approaches to setting up your development environment and the tools that can be used within it. More advanced tools and development patterns will be covered in later lectures."
 weight: 3
 ---
@@ -29,8 +30,8 @@ weight: 3
                 <h3 class="title">Your tools and environment</h3>
                 <p class="mark">Categories of tools</p>
                 <ul class="fragment">
-                    <li>Language Server Protocols</li>
-                    <li>Linters</li>
+                    <li>Language Servers</li>
+                    <li>Linters and code analyzers</li>
                     <li>Formatters</li>
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
@@ -44,7 +45,7 @@ weight: 3
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Language Server Protocols</li>
+                    <li>Language Servers</li>
                 </ul>
                 <p class="fragment" style="margin: 1em 0em">
                     Language Server Protocol (LSP) is an open protocol 
@@ -63,7 +64,7 @@ weight: 3
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Language Server Protocols</li>
+                    <li>Language Servers</li>
                 </ul>
                 <p>This allows for things like:</p>
                 <video controls loop style="max-height: 60vh">
@@ -76,7 +77,7 @@ weight: 3
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Language Server Protocols</li>
+                    <li>Language Servers</li>
                 </ul>
                 <p>This allows for things like:</p>
                 <ul>
@@ -103,7 +104,7 @@ weight: 3
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Language Server Protocols</li>
+                    <li>Language Servers</li>
                 </ul>
                 <p>Recommended Language Server setup</p>
                 <ul>
@@ -123,7 +124,7 @@ weight: 3
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Language Server Protocols</li>
+                    <li>Language Servers</li>
                 </ul>
                 <p>Example setup (my current config)</p>
                 <pre class="fragment show-code">
@@ -172,8 +173,8 @@ return {
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Language Server Protocols</li>
-                    <li>Linters</li>
+                    <li>Language Servers</li>
+                    <li>Linters and code analyzers</li>
                     <li>Formatters</li>
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
@@ -185,11 +186,11 @@ return {
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Linters</li>
+                    <li>Linters and code analyzers</li>
                 </ul>
                 <p class="fragment" style="margin: 1em 0em">
                      Static code analysis tool used to flag programming errors, bugs, stylistic errors and suspicious constructs.
-                     Language servers and usually Linters go hand in hand.
+                     Language servers and Linters usually go hand in hand.
                 </p>
                 <p class="fragment">This allows for things like:</p>
             </div>
@@ -199,7 +200,7 @@ return {
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Linters</li>
+                    <li>Linters and code analyzers</li>
                 </ul>
                 <p>This allows for things like:</p>
                 <video controls loop style="max-height: 60vh">
@@ -212,7 +213,7 @@ return {
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Linters</li>
+                    <li>Linters and code analyzers</li>
                 </ul>
                 <p>Recommended python linter: <a href="https://flake8.pycqa.org/en/latest/">flake8</a></p>
 
@@ -232,8 +233,38 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Language Server Protocols</li>
-                    <li>Linters</li>
+                    <li>Linters and code analyzers</li>
+                </ul>
+                <p class="fragment" style="margin: 1em 0em">
+                    Static code analyzers: Clang or mypy
+                </p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        def fib(n):
+                            a, b = 0, 1
+                            while a < n:
+                                yield a
+                                a, b = b, a+b
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        def fib(n: int) -> Iterator[int]:
+                            a, b = 0, 1
+                            while a < n:
+                                yield a
+                                a, b = b, a+b
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Servers</li>
+                    <li>Linters and code analyzers</li>
                     <li>Formatters</li>
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
@@ -281,8 +312,8 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Language Server Protocols</li>
-                    <li>Linters</li>
+                    <li>Language Servers</li>
+                    <li>Linters and code analyzers</li>
                     <li>Formatters</li>
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
@@ -400,8 +431,8 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Language Server Protocols</li>
-                    <li>Linters</li>
+                    <li>Language Servers</li>
+                    <li>Linters and code analyzers</li>
                     <li>Formatters</li>
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
@@ -449,8 +480,8 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <ul>
-                    <li>Language Server Protocols</li>
-                    <li>Linters</li>
+                    <li>Language Servers</li>
+                    <li>Linters and code analyzers</li>
                     <li>Formatters</li>
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
@@ -504,36 +535,6 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                     <li>Spyder built-in</li>
                     <li>VsCode built-in</li>
                 </ul>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">Your tools and environment</h3>
-                <ul>
-                    <li>Honorable mentions</li>
-                </ul>
-                <p class="fragment" style="margin: 1em 0em">
-                    Static code analyzers: Clang or mypy
-                </p>
-                <pre class="fragment show-code">
-                    <code data-trim class="language-python">
-                        def fib(n):
-                            a, b = 0, 1
-                            while a < n:
-                                yield a
-                                a, b = b, a+b
-                    </code>
-                </pre>
-                <pre class="fragment show-code">
-                    <code data-trim class="language-python">
-                        def fib(n: int) -> Iterator[int]:
-                            a, b = 0, 1
-                            while a < n:
-                                yield a
-                                a, b = b, a+b
-                    </code>
-                </pre>
             </div>
         </section>
 
