@@ -6,13 +6,500 @@ weight: 3
 
 <div class="reveal">
     <div class="slides">
+        <section
+            data-auto-animate
+            data-background-image="media/code.png"
+            data-background-opacity="0.7"
+        >
+            <div class="centered-container"></div>
+        </section>
 
-        <section data-auto-animate>
-            <div class="margin-top">
-
+        <section
+            data-auto-animate
+            data-background-image="media/code.png"
+            data-background-opacity="0.2"
+        >
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
             </div>
         </section>
 
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <p class="mark">Categories of tools</p>
+                <ul class="fragment">
+                    <li>Language Server Protocols</li>
+                    <li>Linters</li>
+                    <li>Formatters</li>
+                    <li>Highlighters</li>
+                    <li>Snippet generators</li>
+                    <li>Debuggers</li>
+                 </ul>
+                <p class="fragment">Lets look at some examples of each one</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Server Protocols</li>
+                </ul>
+                <p class="fragment" style="margin: 1em 0em">
+                    Language Server Protocol (LSP) is an open protocol 
+                    for communication between source code editors and
+                    language servers that provide "language intelligence tools".
+                </p>
+                <p class="fragment mark" style="max-width: 60vw">
+                    So it is a Language Server that parses your code and sends
+                    the result to a Language Client (your editor)
+                </p>
+                <p class="fragment">This allows for things like:</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Server Protocols</li>
+                </ul>
+                <p>This allows for things like:</p>
+                <video controls loop style="max-height: 60vh">
+                    <source src="media/pyorb-lsp.webm" type="video/webm" />
+                </video>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Server Protocols</li>
+                </ul>
+                <p>This allows for things like:</p>
+                <ul>
+                    <li>Jumping to definition</li>
+                    <li>Peeking at definition</li>
+                    <li>Pulling in documentation of dependencies</li>
+                    <li>
+                        Detecting syntax errors live
+                        <ul class="fragment">
+                            <li>You forgot an import -> symbol not defined!</li>
+                            <li>Wrong indentation level? It tells you!</li>
+                            <li>
+                                Missing closing bracket? Red text everywhere
+                            </li>
+                            <li>...</li>
+                        </ul>
+                    </li>
+                    <li class="fragment">And more...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Server Protocols</li>
+                </ul>
+                <p>Recommended Language Server setup</p>
+                <ul>
+                    <p>NeoVim setup</p>
+                    <li><a href="https://github.com/williamboman/mason.nvim">mason.nvim</a></li>
+                    <li><a href="https://github.com/williamboman/mason-lspconfig.nvim">mason-lspconfig.nvim</a></li>
+                    <li><a href="https://github.com/neovim/nvim-lspconfig">nvim-lspconfig</a></li>
+                    <li><a href="https://github.com/python-lsp/python-lsp-server">Python-LSP-server</a></li>
+                </ul>
+                <ul>
+                    <p>VsCode setup</p>
+                    <li><a href="https://open-vsx.org/extension/ms-python/python">ms-python</a></li>
+                </ul>
+           </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Server Protocols</li>
+                </ul>
+                <p>Example setup (my current config)</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-lua" style="max-height: 60vh;">
+return {
+    {
+        { "williamboman/mason.nvim", opts = {} },
+        {
+            "williamboman/mason-lspconfig.nvim",
+            opts = {
+                ensure_installed = {
+                    "clangd",
+                    "ols",
+                    "pylsp",
+                    "emmet_language_server",
+                },
+            },
+        },
+        {
+            "neovim/nvim-lspconfig",
+            config = function()
+                local lspconfig = require("lspconfig")
+                lspconfig.pylsp.setup({
+                    autostart = true,
+                })
+                lspconfig.emmet_language_server.setup({
+                    autostart = true,
+                })
+
+                vim.api.nvim_set_keymap(
+                    "n",
+                    "gd",
+                    "<cmd>lua vim.lsp.buf.definition()<CR>",
+                    { noremap = true, silent = true }
+                )
+            end,
+        },
+    },
+ }
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Server Protocols</li>
+                    <li>Linters</li>
+                    <li>Formatters</li>
+                    <li>Highlighters</li>
+                    <li>Snippet generators</li>
+                    <li>Debuggers</li>
+                 </ul>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Linters</li>
+                </ul>
+                <p class="fragment" style="margin: 1em 0em">
+                     Static code analysis tool used to flag programming errors, bugs, stylistic errors and suspicious constructs.
+                     Language servers and usually Linters go hand in hand.
+                </p>
+                <p class="fragment">This allows for things like:</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Linters</li>
+                </ul>
+                <p>This allows for things like:</p>
+                <video controls loop style="max-height: 60vh">
+                    <source src="media/pyorb-lint.webm" type="video/webm" />
+                </video>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Linters</li>
+                </ul>
+                <p>Recommended python linter: <a href="https://flake8.pycqa.org/en/latest/">flake8</a></p>
+
+                <code class="file fragment">setup.cfg</code>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-ini">
+[flake8]
+ignore = D203,E251,E126,E226,W504,W503,W605
+max-line-length = 100
+exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Server Protocols</li>
+                    <li>Linters</li>
+                    <li>Formatters</li>
+                    <li>Highlighters</li>
+                    <li>Snippet generators</li>
+                    <li>Debuggers</li>
+                 </ul>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Formatters</li>
+                </ul>
+                <p class="fragment" style="margin: 1em 0em">
+                    Automatically format code according to a standard<br>
+                    (usually the same standard that the Linter is using)
+                </p>
+                <p class="fragment">This allows for things like:</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <p>This allows for things like:</p>
+                <video controls loop style="max-height: 70vh">
+                    <source src="media/conform-c.webm" type="video/webm" />
+                </video>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Formatters</li>
+                </ul>
+                <p>Recommended python formatter: <a href="https://github.com/psf/black">black</a> or <a href="https://github.com/astral-sh/ruff">ruff</a></p>
+                <p class="fragment">Note: Black cannot be configured</p>
+                <p class="fragment mark">Consistent but slightly ugly formatting can be better than no formatting at all</p>
+           </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Server Protocols</li>
+                    <li>Linters</li>
+                    <li>Formatters</li>
+                    <li>Highlighters</li>
+                    <li>Snippet generators</li>
+                    <li>Debuggers</li>
+                 </ul>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Highlighters</li>
+                </ul>
+                <p class="fragment" style="margin: 1em 0em">
+                    Highlights your code with color and font styling for faster parsing by humans!
+                </p>
+                <p class="fragment">Compare:</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Highlighters</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-trim class="language-plaintext">
+                        def true_to_mean(nu, e, degrees=False):
+                            '''Transforms true anomaly to mean anomaly.
+
+                            Parameters
+                            ----------
+                            nu : numpy.ndarray or float
+                                True anomaly.
+                            e : numpy.ndarray or float
+                                Eccentricity of ellipse (e<1), parabola (e==1) or hyperbola (e>1).
+                            degrees : bool
+                                If true degrees are used, else all angles are given in radians
+
+                            Returns
+                            -------
+                            numpy.ndarray or float
+                                Mean anomaly.
+                            '''
+                            if degrees:
+                                _nu = np.radians(nu)
+                            else:
+                                _nu = nu
+
+                            E = true_to_eccentric(_nu, e, degrees=False)
+                            M = eccentric_to_mean(E, e, degrees=False)
+
+                            if degrees:
+                                M = np.degrees(M)
+                            return M
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Highlighters</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-trim class="language-python">
+                        def true_to_mean(nu, e, degrees=False):
+                            '''Transforms true anomaly to mean anomaly.
+
+                            Parameters
+                            ----------
+                            nu : numpy.ndarray or float
+                                True anomaly.
+                            e : numpy.ndarray or float
+                                Eccentricity of ellipse (e<1), parabola (e==1) or hyperbola (e>1).
+                            degrees : bool
+                                If true degrees are used, else all angles are given in radians
+
+                            Returns
+                            -------
+                            numpy.ndarray or float
+                                Mean anomaly.
+                            '''
+                            if degrees:
+                                _nu = np.radians(nu)
+                            else:
+                                _nu = nu
+
+                            E = true_to_eccentric(_nu, e, degrees=False)
+                            M = eccentric_to_mean(E, e, degrees=False)
+
+                            if degrees:
+                                M = np.degrees(M)
+                            return M
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Highlighters</li>
+                </ul>
+                <p>Recommended NeoVim highlighter: <a href="https://github.com/nvim-treesitter/nvim-treesitter">treesitter</a></p>
+                <p class="fragment">Most editors have highlighting built-in (picking a color theme is fun!)</p>
+           </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Server Protocols</li>
+                    <li>Linters</li>
+                    <li>Formatters</li>
+                    <li>Highlighters</li>
+                    <li>Snippet generators</li>
+                    <li>Debuggers</li>
+                 </ul>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Snippet generators</li>
+                </ul>
+                <p class="fragment" style="margin: 1em 0em">
+                    These allow for inserting pre-defined code quickly.
+                </p>
+                <p class="fragment" style="margin: 1em 0em">
+                    Sources for snippets can be: The LSP (code hints), a spell-checker/buffer (for plain text), a snippet library (for common boiler-plate), ect.
+                </p>
+                <p class="fragment">This allows for things like:</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <p>This allows for things like:</p>
+                <video controls loop style="max-height: 70vh">
+                    <source src="media/snippets.mp4" type="video/webm" />
+                </video>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <p>This allows for things like:</p>
+                <video controls loop style="max-height: 70vh">
+                    <source src="media/snippets2.mp4" type="video/webm" />
+                </video>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Server Protocols</li>
+                    <li>Linters</li>
+                    <li>Formatters</li>
+                    <li>Highlighters</li>
+                    <li>Snippet generators</li>
+                    <li>Debuggers</li>
+                 </ul>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Debuggers</li>
+                </ul>
+                <p class="fragment" style="margin: 1em 0em">
+                    
+                </p>
+                <p class="fragment">This allows for things like:</p>
+            </div>
+        </section>
+
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Honorable mentions</li>
+                </ul>
+                <p class="fragment" style="margin: 1em 0em">
+                    Static code analyzers: Clang or mypy
+                </p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        def fib(n):
+                            a, b = 0, 1
+                            while a < n:
+                                yield a
+                                a, b = b, a+b
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-python">
+                        def fib(n: int) -> Iterator[int]:
+                            a, b = 0, 1
+                            while a < n:
+                                yield a
+                                a, b = b, a+b
+                    </code>
+                </pre>
+            </div>
+        </section>
     </div>
 </div>
-
