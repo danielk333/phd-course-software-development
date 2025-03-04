@@ -29,6 +29,17 @@ frontmatter:
 markup:
   goldmark:
     extensions:
+      passthrough:
+        delimiters:
+          block:
+          - - \[
+            - \]
+          - - $$
+            - $$
+          inline:
+          - - \(
+            - \)
+        enable: true
       definitionList: true
     parser:
       # replace it with figure instead,
@@ -50,6 +61,9 @@ markup:
     lineNumbersInTable: true
     style: catppuccin-mocha
     tabWidth: 4
+
+params:
+  math: true
 
 module:
   mounts:
