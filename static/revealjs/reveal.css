@@ -83,6 +83,8 @@ div.split-list ul {
     justify-content: center;
 }
 
+
+
 @media (prefers-color-scheme: light) {
     .reveal a[href^="https"]:not([href*=".irf.se/"])::after {
         filter: invert(1);

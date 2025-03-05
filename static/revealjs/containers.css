@@ -107,6 +107,10 @@
     height: 95vh;
     padding-top: 3vh;
 }
+.margins {
+    margin: 1em 1em;
+}
+
 
 pre.show-code {
     margin: 1em;
