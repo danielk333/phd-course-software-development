@@ -18,8 +18,7 @@
 }
 .reveal section > h2 + figure video:only-child,
 .reveal section > h3 + figure video:only-child,
-.reveal section > h2 + figure img:only-child
-.reveal section > h3 + figure img:only-child {
+.reveal section > h2 + figure img:only-child .reveal section > h3 + figure img:only-child {
     /* use the figcaption space (e.g. slide 2 but without <figcaption>) */
     max-height: 82vh;
 }
@@ -49,17 +48,17 @@
     filter: invert(1);
 }
 .logo {
-    max-height: 12vh!important;
-    width: auto!important;
+    max-height: 12vh !important;
+    width: auto !important;
     padding: 3vw;
 }
 .title-logo {
-    max-height: 20vh!important;
-    width: auto!important;
+    max-height: 20vh !important;
+    width: auto !important;
     padding: 3vw;
 }
 #irf-logo {
-    width: 40vw; 
+    width: 40vw;
 }
 
 div.split-list {
@@ -71,9 +70,9 @@ div.split-list ul {
 
 .reveal blockquote {
     background-color: transparent;
-    font-family: 'Roboto Serif', 'Times New Roman', Times, serif;  
+    font-family: "Roboto Serif", "Times New Roman", Times, serif;
     position: relative;
-    font-style: italic;  
+    font-style: italic;
     padding: 0 1em;
     margin: 0;
     padding-left: 3.5em;
@@ -82,4 +81,10 @@ div.split-list ul {
     flex-direction: column;
     /* align short quotes vertically with quote square*/
     justify-content: center;
-  }
+}
+
+@media (prefers-color-scheme: light) {
+    .reveal a[href^="https"]:not([href*=".irf.se/"])::after {
+        filter: invert(1);
+    }
+}
