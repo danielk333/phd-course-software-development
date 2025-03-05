@@ -36,8 +36,9 @@ weight: 3
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
                     <li>Debuggers</li>
+                    <li>Compilers</li>
                  </ul>
-                <p class="fragment">Lets look at some examples of each one</p>
+                <p class="fragment">Let's look at some examples of each one</p>
             </div>
         </section>
 
@@ -68,7 +69,19 @@ weight: 3
                 </ul>
                 <p>This allows for things like:</p>
                 <video controls loop style="max-height: 60vh">
-                    <source src="media/pyorb-lsp.webm" type="video/webm" />
+                    <source src="media/pyorb-lsp.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Servers</li>
+                </ul>
+                <p>This allows for things like:</p>
+                <video controls loop style="max-height: 60vh">
+                    <source src="media/autocomplete-lsp.mp4" type="video/mp4" />
                 </video>
             </div>
         </section>
@@ -108,15 +121,15 @@ weight: 3
                 </ul>
                 <p>Recommended Language Server setup</p>
                 <ul>
+                    <p>VsCode setup</p>
+                    <li><a href="https://open-vsx.org/extension/ms-python/python">ms-python</a></li>
+                </ul>
+                <ul>
                     <p>NeoVim setup</p>
                     <li><a href="https://github.com/williamboman/mason.nvim">mason.nvim</a></li>
                     <li><a href="https://github.com/williamboman/mason-lspconfig.nvim">mason-lspconfig.nvim</a></li>
                     <li><a href="https://github.com/neovim/nvim-lspconfig">nvim-lspconfig</a></li>
                     <li><a href="https://github.com/python-lsp/python-lsp-server">Python-LSP-server</a></li>
-                </ul>
-                <ul>
-                    <p>VsCode setup</p>
-                    <li><a href="https://open-vsx.org/extension/ms-python/python">ms-python</a></li>
                 </ul>
            </div>
         </section>
@@ -126,46 +139,7 @@ weight: 3
                 <ul>
                     <li>Language Servers</li>
                 </ul>
-                <p>Example setup (my current config)</p>
-                <pre class="fragment show-code">
-                    <code data-trim class="language-lua" style="max-height: 60vh;">
-return {
-    {
-        { "williamboman/mason.nvim", opts = {} },
-        {
-            "williamboman/mason-lspconfig.nvim",
-            opts = {
-                ensure_installed = {
-                    "clangd",
-                    "ols",
-                    "pylsp",
-                    "emmet_language_server",
-                },
-            },
-        },
-        {
-            "neovim/nvim-lspconfig",
-            config = function()
-                local lspconfig = require("lspconfig")
-                lspconfig.pylsp.setup({
-                    autostart = true,
-                })
-                lspconfig.emmet_language_server.setup({
-                    autostart = true,
-                })
-
-                vim.api.nvim_set_keymap(
-                    "n",
-                    "gd",
-                    "<cmd>lua vim.lsp.buf.definition()<CR>",
-                    { noremap = true, silent = true }
-                )
-            end,
-        },
-    },
- }
-                    </code>
-                </pre>
+                <p>Example setup in handouts</p>
             </div>
         </section>
 
@@ -179,6 +153,7 @@ return {
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
                     <li>Debuggers</li>
+                    <li>Compilers</li>
                  </ul>
             </div>
         </section>
@@ -204,7 +179,7 @@ return {
                 </ul>
                 <p>This allows for things like:</p>
                 <video controls loop style="max-height: 60vh">
-                    <source src="media/pyorb-lint.webm" type="video/webm" />
+                    <source src="media/pyorb-lint.webm" type="video/mp4" />
                 </video>
             </div>
         </section>
@@ -218,6 +193,8 @@ return {
                 <p>Recommended python linter: <a href="https://flake8.pycqa.org/en/latest/">flake8</a></p>
 
                 <code class="file fragment">setup.cfg</code>
+                <p class="fragment">or</p>
+                <code class="file fragment">.flake8</code>
                 <pre class="fragment show-code">
                     <code data-trim class="language-ini">
 [flake8]
@@ -226,6 +203,7 @@ max-line-length = 100
 exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                     </code>
                 </pre>
+                <p class="fragment">flake8 does not support <code>pyproject.toml</code> yet :(</p>
             </div>
         </section>
 
@@ -238,6 +216,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                 <p class="fragment" style="margin: 1em 0em">
                     Static code analyzers: Clang or mypy
                 </p>
+                <a class="fragment" href="https://docs.python.org/3/library/typing.html">Python type annotation</a>
                 <pre class="fragment show-code">
                     <code data-trim class="language-python">
                         def fib(n):
@@ -256,6 +235,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                                 a, b = b, a+b
                     </code>
                 </pre>
+                <p class="fragment"><a href="https://mypy-lang.org/">mypy</a> then checks everything is typed correctly</p>
             </div>
         </section>
 
@@ -269,6 +249,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
                     <li>Debuggers</li>
+                    <li>Compilers</li>
                  </ul>
             </div>
         </section>
@@ -291,7 +272,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                 <h3 class="title">Your tools and environment</h3>
                 <p>This allows for things like:</p>
                 <video controls loop style="max-height: 70vh">
-                    <source src="media/conform-c.webm" type="video/webm" />
+                    <source src="media/conform-c.mp4" type="video/mp4" />
                 </video>
             </div>
         </section>
@@ -305,8 +286,161 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                 <p>Recommended python formatter: <a href="https://github.com/psf/black">black</a> or <a href="https://github.com/astral-sh/ruff">ruff</a></p>
                 <p class="fragment">Note: Black cannot be configured</p>
                 <p class="fragment mark">Consistent but slightly ugly formatting can be better than no formatting at all</p>
+                <p class="fragment">Compare:</p>
            </div>
         </section>
+        
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Formatters</li>
+                </ul>
+                <p>Compare:</p>
+                    <pre class="fragment show-code">
+                        <code data-trim class="language-python" style="height: 60vh;">
+<!--
+class SGP4(Propagator):
+ def TEME_to_TLE(self,state,epoch,t=None,B=0.0,kepler=False,tol=1e-5,tol_v=1e-7):
+ """Convert osculating orbital elements in TEME to mean elements used in two line element sets (TLE's)."""
+  mean_elements=None
+  if len(state.shape) > 1:
+   if state.size > 6:
+    mean_elements=self.TEME_to_TLE_OPTIM(state,epoch=epoch,t=t,B=B,kepler=kepler,tol=tol,tol_v=tol_v)
+    return mean_elements
+   else:
+    state.shape=(state.size,)
+   if kepler:
+    state_mean=self._sgp4_elems2cart(state)
+    state_cart=state_mean.copy()
+   else:
+    state_mean=state.copy()
+    state_cart=state
+   iter_max=self.settings["TEME_to_TLE_max_iter"]
+   dr=0
+   dv=0
+   #Iterative determination of mean elements
+   for it in range(iter_max):
+    mean_elements=self._cart2sgp4_elems(state_mean)
+    if it>0 and mean_elements[1]>1:
+     #Assumptions of osculation within slope not working,go to general minimization algorithms
+     mean_elements=self.TEME_to_TLE_OPTIM(state_cart,epoch=epoch,B=B,kepler=False,tol=tol,tol_v=tol_v)
+     break
+    state_osc=self.propagate_mean_elements(epoch.jd1,epoch.jd2,mean_elements,epoch.mjd - self.sgp4_mjd0,B=B,logger_profiler_on=False)
+    d=state_cart-state_osc
+    state_mean+=d
+    if it>0:
+     dr_old=dr
+     dv_old=dv
+    dr=np.linalg.norm(d[:3,...],axis=0)#Position change
+    dv=np.linalg.norm(d[3:,...],axis=0)#Velocity change
+    if it > 0:
+     if dr_old < dr or dv_old < dv:
+      mean_elements=self.TEME_to_TLE_OPTIM(state_cart,epoch=epoch,B=B,kepler=False,tol=tol,tol_v=tol_v)
+      break
+     if dr < tol and dv < tol_v:  # Iterate until position changes by less than eps
+      break
+  return mean_elements
+-->
+                        </code>
+                    </pre>
+           </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Formatters</li>
+                </ul>
+                <p>Compare:</p>
+                    <pre class="show-code">
+                        <code data-trim class="language-python" style="height: 60vh;">
+<!--
+class SGP4(Propagator):
+    def TEME_to_TLE(
+        self, state, epoch, t=None, B=0.0, kepler=False, tol=1e-5, tol_v=1e-7
+    ):
+        """Convert osculating orbital elements in TEME to
+        mean elements used in two line element sets (TLE's).
+        """
+        mean_elements = None
+
+        if len(state.shape) > 1:
+            if state.size > 6:
+                mean_elements = self.TEME_to_TLE_OPTIM(
+                    state,
+                    epoch=epoch,
+                    t=t,
+                    B=B,
+                    kepler=kepler,
+                    tol=tol,
+                    tol_v=tol_v
+                )
+                return mean_elements
+            else:
+                state.shape = (state.size,)
+
+        if kepler:
+            state_mean = self._sgp4_elems2cart(state)
+            state_cart = state_mean.copy()
+        else:
+            state_mean = state.copy()
+            state_cart = state
+
+        iter_max = self.settings["TEME_to_TLE_max_iter"]
+        dr = 0
+        dv = 0
+
+        # Iterative determination of mean elements
+        for it in range(iter_max):
+            mean_elements = self._cart2sgp4_elems(state_mean)
+
+            if it > 0 and mean_elements[1] > 1:
+                # Assumptions of osculation within slope not working,go to general minimization algorithms
+                mean_elements = self.TEME_to_TLE_OPTIM(
+                    state_cart,
+                    epoch=epoch,
+                    B=B,
+                    kepler=False,
+                    tol=tol,
+                    tol_v=tol_v
+                )
+                break
+
+            state_osc = self.propagate_mean_elements(
+                epoch.jd1,
+                epoch.jd2,
+                mean_elements,
+                epoch.mjd - self.sgp4_mjd0,
+                B=B,
+                logger_profiler_on=False,
+            )
+            d = state_cart - state_osc
+            state_mean += d
+
+            if it > 0:
+                dr_old = dr
+                dv_old = dv
+
+            dr = np.linalg.norm(d[:3, ...], axis=0)  # Position change
+            dv = np.linalg.norm(d[3:, ...], axis=0)  # Velocity change
+            if it > 0:
+                if dr_old < dr or dv_old < dv:
+                    mean_elements = self.TEME_to_TLE_OPTIM(
+                        state_cart, epoch=epoch, B=B, kepler=False, tol=tol, tol_v=tol_v
+                    )
+                    break
+
+                if dr < tol and dv < tol_v:
+                    # Iterate until position changes by less than eps
+                    break
+        return mean_elements
+-->
+                        </code>
+                    </pre>
+           </div>
+        </section>
+
 
         <section data-auto-animate>
             <div class="centered-container">
@@ -318,6 +452,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
                     <li>Debuggers</li>
+                    <li>Compilers</li>
                  </ul>
             </div>
         </section>
@@ -424,6 +559,11 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                 </ul>
                 <p>Recommended NeoVim highlighter: <a href="https://github.com/nvim-treesitter/nvim-treesitter">treesitter</a></p>
                 <p class="fragment">Most editors have highlighting built-in (picking a color theme is fun!)</p>
+                <ul class="fragment">
+                    <p class="mark">It is not just fun: sometimes its vital!</p>
+                    <li>too high/low contrast, small fonts, etc. for 8h/day = headaches, eye strain, ...</li>
+                    <li>accessibility = choose plot schemes that your color blind collogues can see </li>
+                </ul>
            </div>
         </section>
 
@@ -437,6 +577,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
                     <li>Debuggers</li>
+                    <li>Compilers</li>
                  </ul>
             </div>
         </section>
@@ -450,7 +591,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                     These allow for inserting pre-defined code quickly.
                 </p>
                 <p class="fragment" style="margin: 1em 0em">
-                    Sources for snippets can be: The LSP (code hints), a spell-checker/buffer (for plain text), a snippet library (for common boiler-plate), ect.
+                    Sources for snippets can be: The LSP (code hints), a spell-checker/buffer (for plain text), a snippet library (for common boiler-plate), etc.
                 </p>
                 <p class="fragment">This allows for things like:</p>
             </div>
@@ -461,7 +602,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                 <h3 class="title">Your tools and environment</h3>
                 <p>This allows for things like:</p>
                 <video controls loop style="max-height: 70vh">
-                    <source src="media/snippets.mp4" type="video/webm" />
+                    <source src="media/snippets.mp4" type="video/mp4" />
                 </video>
             </div>
         </section>
@@ -471,7 +612,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                 <h3 class="title">Your tools and environment</h3>
                 <p>This allows for things like:</p>
                 <video controls loop style="max-height: 70vh">
-                    <source src="media/snippets2.mp4" type="video/webm" />
+                    <source src="media/snippets2.mp4" type="video/mp4" />
                 </video>
             </div>
         </section>
@@ -486,6 +627,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                     <li>Highlighters</li>
                     <li>Snippet generators</li>
                     <li>Debuggers</li>
+                    <li>Compilers</li>
                  </ul>
             </div>
         </section>
@@ -507,7 +649,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                 <h3 class="title">Your tools and environment</h3>
                 <p>This allows for things like:</p>
                 <video controls loop style="max-height: 70vh">
-                    <source src="media/pudb.mp4" type="video/webm" />
+                    <source src="media/pudb.mp4" type="video/mp4" />
                 </video>
             </div>
         </section>
@@ -516,7 +658,7 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
                 <h3 class="title">Your tools and environment</h3>
                 <p>This allows for things like:</p>
                 <video controls loop style="max-height: 70vh">
-                    <source src="media/gf2.mp4" type="video/webm" />
+                    <source src="media/gf2.mp4" type="video/mp4" />
                 </video>
             </div>
         </section>
@@ -538,13 +680,44 @@ exclude = src/pyant/__pycache__,src/pyant/__init__.py,src/pyant/**/__init__.py
             </div>
         </section>
 
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Language Servers</li>
+                    <li>Linters and code analyzers</li>
+                    <li>Formatters</li>
+                    <li>Highlighters</li>
+                    <li>Snippet generators</li>
+                    <li>Debuggers</li>
+                    <li>Compilers</li>
+                 </ul>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <ul>
+                    <li>Compilers</li>
+                </ul>
+                <ul class="fragment">
+                    <p class="mark">Python</p>
+                    <li>cython (allows transpiling Python/Cython to C)</li>
+                    <p class="mark">C</p>
+                    <li>gcc (The GNU toolchain for C/C++)</li>
+                    <li>clang (The LLVM toolchain for C/C++)</li>
+                    <p class="fragment select">And of course a bunch for other languages...</p>
+                </ul>
+            </div>
+        </section>
+
         <section
         data-auto-animate
         >
             <div class="centered-container">
                 <h3 class="title">Your tools and environment</h3>
                 <p class="mark">Example setups and homework</p>
-                <p class="select">Lets check out the handout above!</p>
+                <p class="select">Let's check out the handout above!</p>
             </div>
         </section>
 
