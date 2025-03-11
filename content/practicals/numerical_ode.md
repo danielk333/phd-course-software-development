@@ -98,3 +98,21 @@ $$
 I.e. a set of two coupled first order ordinary differential equations.
 
 Integrate the system with both Euler methods: what are the results? Which one is better?
+
+## Bonus task
+
+If you want to try out another famous system of differential equations try integrating the [Lorenz system](https://en.wikipedia.org/wiki/Lorenz_system):
+
+$$
+\frac{\mathrm{d}x}{\mathrm{d}t} = \sigma ( y - x )
+$$
+$$
+\frac{\mathrm{d}y}{\mathrm{d}t} = x ( \rho - z ) - y
+$$
+$$
+\frac{\mathrm{d}z}{\mathrm{d}t} = xy - \beta z
+$$
+
+and produce the famous Lorenz attractor that appears at \( \rho=28, \sigma=10, \beta=8/3 \). For that you will have to plot in 3D, see [matplotlib 3D](https://matplotlib.org/stable/gallery/mplot3d/index.html) or if you want a rewarding challenge, maybe use a direct coupling to [vtk](https://examples.vtk.org/site/Python/) or another 3D focused package (matplotlib is not originally designed to do 3D graphics and is hence not that good at it). 
+
+
