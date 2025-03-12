@@ -84,7 +84,7 @@ weight: 2
                     <li class="fragment">When memory can no longer be reached - python frees it (reference counting)</li>
                 </ul>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         def my_function(x):
                             x = x + 2
                             y = 5
@@ -108,7 +108,7 @@ weight: 2
                     <li>Names are not typed</li>
                 </ul>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         a = 5  # a is the name of an object of type integer
                         a = 5.0  # a is now the name of an object of type float
                     </code>
@@ -123,7 +123,7 @@ weight: 2
                 <h3 class="title">Python programming primer</h3>
                 <h4 class="title">Try this</h4>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         a = 5
                         print(type(a))
 
@@ -142,7 +142,7 @@ weight: 2
                     </code>
                 </pre>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         print(func(5))
                         print(func("Hello "))
                         print(func("Na") + " Batman!")
@@ -161,14 +161,14 @@ weight: 2
                     Integer, Float, String, Boolean, Tuple, List, Ditionary, Set
                 </p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         my_dict = {"key": 1.0, "x": "this is a string"}
                         print(my_dict["key"])
                         my_dict["x"] = 2.0
                     </code>
                 </pre>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         my_list = [1, 2, "string"]
                         print(my_list[0])
 
@@ -176,7 +176,7 @@ weight: 2
                     </code>
                 </pre>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         my_tuple = (2, 3, 4)
                         print(my_list[0])
 
@@ -196,7 +196,7 @@ weight: 2
                 <div class="col-flex-c" style="width: 60vw;">
                     <p>Multiple return values</p>
                     <pre class="fragment show-code">
-                        <code data-trim class="language-python">
+                        <code data-line-numbers data-trim class="language-python">
                             # Return type is tuple when more than one argument is returned
                             def func(a):
                                 return a, a + 2
@@ -207,7 +207,7 @@ weight: 2
                     </pre>
                     <p>Multiple variable assignment</p>
                     <pre class="fragment show-code">
-                        <code data-trim class="language-python">
+                        <code data-line-numbers data-trim class="language-python">
                             x, y = func(5)
                             print(f"{x=} {y=}")
                         </code>
@@ -226,7 +226,7 @@ weight: 2
                 <div class="col-flex-c" style="width: 60vw;">
                     <p>Positional and keyword arguments</p>
                     <pre class="fragment show-code">
-                        <code data-trim class="language-python">
+                        <code data-line-numbers data-trim class="language-python">
                             # Keyword arguments have a default
                             def func(a, b=2):
                                 return a + b
@@ -248,7 +248,7 @@ weight: 2
                 <p class="select">Lets talk about immutability and pointers...</p>
                 <p class="fragment">Immutable data types: numbers, booleans, tuples, and strings</p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         a = "hello"
                         b = a  # pointer is copied
                         print(id(a))
@@ -261,7 +261,7 @@ weight: 2
                 </pre>
                 <p class="fragment">methods return a new object - does not modify in-place!</p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         a = "hello"
                         a.upper()
                         print(a)
@@ -284,7 +284,7 @@ weight: 2
                 <p class="select">Lets talk about immutability and pointers...</p>
                 <p>Mutable types (the rest) CAN modify their memory</p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         a = [3, 2, 1]
                         b = a  # pointer is copied
                         print(id(a), id(b))  # Same memory
@@ -305,7 +305,7 @@ weight: 2
                 <p class="select">Lets talk about immutability and pointers...</p>
                 <p class="fragment select">Be careful about side-effects!</p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         def func(x=[]):
                             x.append("world!")
                             print(x)
@@ -321,7 +321,7 @@ weight: 2
                     </code>
                 </pre>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         # Same as above but more clear what is going on
                         DEFAULT_LIST = []
 
@@ -340,7 +340,7 @@ weight: 2
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Creating your own "types" - classes</p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         class Square:
                             def __init__(self, length):
                                 self.length = length
@@ -365,14 +365,14 @@ weight: 2
             
                 <p>For loop</p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         for i in range(10):
                             print(f"Hello world number {i}")
                     </code>
                 </pre>
                 <p>While loop</p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         a = 0
                         while a < 10:
                             print(f"Looping {a=}")
@@ -391,13 +391,13 @@ weight: 2
                 
                 <p>Most sequences can be iterated</p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         for c in "HELLO":
                             print(f"{c}={ord(c)}")
                     </code>
                 </pre>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         d = {"a": 3.14, "b": 42, "c": 1}
 
                         # Iterating a dict iterates the keys
@@ -426,7 +426,7 @@ weight: 2
                 <div class="col-flex-c" style="width: 40vw;">
                     <p>If statement</p>
                     <pre class="fragment show-code">
-                        <code data-trim class="language-python">
+                        <code data-line-numbers data-trim class="language-python">
                             import numpy as np
 
                             x = np.random.randn(1)
@@ -453,7 +453,7 @@ weight: 2
                 
                 <p class="fragment">This is advanced topic but just to introduce it</p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         squares = [x ** 2 for x in range(10)]
                         print(squares)
 
@@ -463,7 +463,7 @@ weight: 2
                     </code>
                 </pre>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         dicts_also = {c: ord(c) for c in "abcd"}
                         print(dicts_also)
                     </code>
@@ -480,7 +480,7 @@ weight: 2
             
                 <p><code data-trim>numpy</code> arrays are our bread and butter!</p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         import numpy as np
 
                         a = np.random.randn(2, 5)  # 5 rows, 10 columns
@@ -505,7 +505,7 @@ weight: 2
             
                 <p><code data-trim>numpy</code> matrix operations</p>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         import numpy as np
 
                         a = np.array([1, 1, 1], dtype=np.float64)
@@ -533,7 +533,7 @@ weight: 2
                 <p class="mark">Ok bear with me here...</p>
                 <code class="file fragment">matmul_native.py</code>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         import numpy as np
                         import time
 
@@ -572,7 +572,7 @@ weight: 2
                 <p class="mark">I am speed!</p>
                 <code class="file fragment">matmul_numpy.py</code>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         import numpy as np
                         import time
 

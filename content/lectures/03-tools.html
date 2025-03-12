@@ -174,6 +174,30 @@ weight: 3
                         <li class="mark">Editor / IDEs</li>
                     </ul>
                 </div>
+                <p class="select">My recommendations</p>
+                <ul class="list-sep">
+                    <li class="fragment">New to programming?<br>
+                    <span class="highlight">VsCode / PyCharm / Spyder</span> (Batteries included)
+                    </li>
+                    <li class="fragment">Experienced programmer but new to tooling?<br>
+                    <span class="highlight">NeoVim / SublimeText / Emacs</span> (Play around with plugins/configs galore)
+                    </li>
+                    <li class="fragment">Comfortable and efficient in your current setup?<br>
+                    <span class="highlight">You are good to go!</span> (maybe you get new ideas later)
+                    </li>
+                </ul>
+                <p class="fragment select">Why I changed setup: inefficiencies i could not fix / friction</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Your tools and environment</h3>
+                <div class="row-flex">
+                    <ul style="margin: 0em 1em;">
+                        <li class="mark">Editor / IDEs</li>
+                    </ul>
+                </div>
                 <p class="select">Regardless of choice: master your editor!</p>
                 <p class="fragment">If you know touch-typing and want to take it to the next level, maybe try vim-shortcuts in your editor</p>
                 <p class="fragment">As long as the editor does not get in your way / slows you down</p>
@@ -362,7 +386,7 @@ weight: 3
                 <p class="fragment">or</p>
                 <code class="file fragment">.flake8</code>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-ini">
+                    <code data-line-numbers data-trim class="language-ini">
                         [flake8]
                         ignore = D203,E251,E126,E226,W504,W503,W605
                         max-line-length = 100
@@ -384,7 +408,7 @@ weight: 3
                 </p>
                 <a class="fragment" href="https://docs.python.org/3/library/typing.html">Python type annotation</a>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         def fib(n):
                             a, b = 0, 1
                             while a < n:
@@ -393,7 +417,7 @@ weight: 3
                     </code>
                 </pre>
                 <pre class="fragment show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         def fib(n: int) -> Iterator[int]:
                             a, b = 0, 1
                             while a < n:
@@ -463,8 +487,8 @@ weight: 3
                     <li>Formatters</li>
                 </ul>
                 <p>Compare:</p>
-                    <pre class="fragment show-code">
-                        <code data-trim class="language-python" style="height: 60vh;">
+                    <pre data-id="code-animation" class="fragment show-code">
+                        <code data-line-numbers data-trim class="language-python" style="height: 60vh;">
 <!--
 class SGP4(Propagator):
  def TEME_to_TLE(self,state,epoch,t=None,B=0.0,kepler=False,tol=1e-5,tol_v=1e-7):
@@ -519,8 +543,8 @@ class SGP4(Propagator):
                     <li>Formatters</li>
                 </ul>
                 <p>Compare:</p>
-                    <pre class="show-code">
-                        <code data-trim class="language-python" style="height: 60vh;">
+                    <pre data-id="code-animation" class="show-code">
+                        <code data-line-numbers data-trim class="language-python" style="height: 60vh;">
 <!--
 class SGP4(Propagator):
     def TEME_to_TLE(
@@ -642,7 +666,7 @@ class SGP4(Propagator):
                     <li>Highlighters</li>
                 </ul>
                 <pre class="show-code">
-                    <code data-trim class="language-plaintext">
+                    <code data-line-numbers data-trim class="language-plaintext">
                         def true_to_mean(nu, e, degrees=False):
                             '''Transforms true anomaly to mean anomaly.
 
@@ -683,7 +707,7 @@ class SGP4(Propagator):
                     <li>Highlighters</li>
                 </ul>
                 <pre class="show-code">
-                    <code data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python">
                         def true_to_mean(nu, e, degrees=False):
                             '''Transforms true anomaly to mean anomaly.
 

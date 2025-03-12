@@ -1,34 +1,221 @@
 ---
 title: "Solving problems"
 description: "The basic skill that is needed to develop any software is to solve the many smaller problems that the software is composed of. To solve a problem one applies ones programming skills, to choose what problems should solved and choosing between different solutions is software design."
+handout: solving-problems
 weight: 4
 ---
 
 <div class="reveal">
     <div class="slides">
-
-        <section data-auto-animate data-background-image="media/orbits.gif" data-background-color="black"
-            data-background-opacity="1" data-auto-animate>
+        <section
+            data-auto-animate
+            data-background-image="media/orbits.gif"
+            data-background-color="black"
+            data-background-opacity="1"
+        >
             <div class="centered-container">
-                <h3 class="title">Python programming primer</h3>
+                <h3 class="title">Solving problems</h3>
             </div>
         </section>
 
-
-        <section data-auto-animate data-background-image="media/orbits.gif" data-background-color="black"
-            data-background-opacity="0.2" data-auto-animate>
+        <section
+            data-auto-animate
+            data-background-image="media/orbits.gif"
+            data-background-color="black"
+            data-background-opacity="0.2"
+        >
             <div class="centered-container">
-                <h3 class="title">Python programming primer</h3>
-                <p>The animation was made using <code>pyorb</code> - one of my packages<br>
-                    (code is in the handout)</p>
-                <p>It took about 10 minutes to make because</p>
+                <h3 class="title">Solving problems</h3>
+                <p>
+                    The animation was made using <code>pyorb</code> - one of my
+                    packages<br />
+                    (code is in the handout)
+                </p>
+                <div class="fragment">
+                    <p>
+                        "Solving the problem" took about 10 minutes to make
+                        because
+                    </p>
+                    <ul>
+                        <li>I knew the tools</li>
+                        <li>I knew Python</li>
+                        <li>I knew the correct pattern</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <p class="mark">Two levels for the solution</p>
                 <ul>
-                    <li>I know the tools</li>
-                    <li>I know Python</li>
+                    <li class="fragment">The pattern for the problem (language agnostic)</li>
+                    <li class="fragment">Implementing the pattern (language dependant)</li>
+                </ul>
+                <p class="fragment" style="padding-top: 1em;">Problem: implement vector dot product (no libraries)</p>
+                <ul class="list-sep-small">
+                    <li class="fragment">
+                        <span class="highlight">Multiplication map and sum reduce</span><br>
+                        [map-reduce pattern]<br>
+                        (Higher memory overhead / allows vectorisation optimisation)
+                    </li>
+                    <li class="fragment">
+                        <span class="highlight">Common iterator loop and mutable result variable</span><br>
+                        [online-algorithm pattern]<br>
+                        (Lower memory overhead / single thread sequential execution)
+                    </li>
                 </ul>
             </div>
         </section>
 
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <p class="mark">Two levels for the solution</p>
+                <p clase="padding-top: 1em;">Problem: implement vector dot product (no libraries)</p>
+                <ul class="list-sep-small">
+                    <li>
+                        <span class="highlight">Common iterator loop and mutable result variable</span><br>
+                        [online-algorithm pattern]<br>
+                        (Lower memory overhead / single thread sequential execution)
+                    </li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def dot(vec1, vec2):
+                            result = 0
+                            for ind in range(len(vec1)):
+                                result = result + vec1[ind] * vec2[ind]
+                            return result
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def dot(vec1, vec2):
+                            result = 0
+                            for ind in range(len(vec1)):
+                                result = result + vec1[ind] * vec2[ind]
+                            return result
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def dot(vec1, vec2):
+                            result = 0
+                            for x1, x2 in zip(vec1, vec2):
+                                result += x1 * x2
+                            return result
+                    </code>
+                </pre>
+                <p class="fragment">Not dependant on [], longest iter goes, readable</p>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def dot(vec1, vec2):
+                            result = 0
+                            for x1, x2 in zip(vec1, vec2):
+                                result += x1 * x2
+                            return result
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def dot(vec1, vec2):
+                            common_iter = zip(vec1, vec2)
+
+                            x1, x2 = next(common_iter)
+                            result = x1 * x2
+
+                            for x1, x2 in common_iter:
+                                result += x1 * x2
+                            
+                            return result
+                    </code>
+                </pre>
+                <p class="fragment">Not dependant on type (float/int/double), less readable, robust?</p>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <pre data-id="code-animation" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def dot(vec1, vec2):
+                            common_iter = zip(vec1, vec2)
+
+                            x1, x2 = next(common_iter)
+                            result = x1 * x2
+
+                            for x1, x2 in common_iter:
+                                result += x1 * x2
+                            
+                            return result
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <pre data-id="code-animation" class="show-code">
+                    <code data-trim data-line-numbers class="language-python">
+                        def dot(vec1, vec2):
+                            assert len(vec1) == len(vec2), "Input vectors must be same length"
+                            if len(vec1) == 0:
+                                return
+                            common_iter = zip(vec1, vec2)
+
+                            x1, x2 = next(common_iter)
+                            result = x1 * x2
+
+                            for x1, x2 in common_iter:
+                                result += x1 * x2
+                            
+                            return result
+                    </code>
+                </pre>
+                <p class="fragment">Balance of abstraction and specification</p>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <pre data-id="code-animation" class="show-code">
+                    <code data-trim data-line-numbers class="language-python">
+                        from numpy.typing import NDArray
+
+                        def dot(vec1: NDArray, vec2: NDArray):
+                            assert vec1.dtype == vec2.dtype, "Input vectors must be same type"
+                            assert vec1.size == vec2.size, "Input vectors must be same size"
+                            if vec1.size == 0:
+                                return
+
+                            result = vec1.dtype.type(0)
+                            for x1, x2 in zip(vec1, vec2):
+                                result += x1 * x2
+                            
+                            return result
+                    </code>
+                </pre>
+                <p class="fragment">Balance of abstraction and specification</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <p class="mark">Applying patterns</p>
+            </div>
+        </section>
     </div>
 </div>
-
