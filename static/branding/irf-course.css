@@ -13,7 +13,7 @@ body.presentation > header:first-child {
 }
 
 @media only screen and (prefers-color-scheme: light) {
-    body.presentation > header:first-child {
+    body.lightmode > header:first-child {
         background-image: url("irf-symbol.svg");
     }
 }

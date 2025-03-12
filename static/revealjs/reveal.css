@@ -1,3 +1,7 @@
+body > div.reveal {
+    overflow-y: auto;
+}
+
 .reveal section img,
 .reveal section video {
     /* vertically centered with about the same padding top and bottom (e.g. slide 3) */
@@ -82,7 +86,6 @@ div.split-list ul {
     /* align short quotes vertically with quote square*/
     justify-content: center;
 }
-
 
 
 @media (prefers-color-scheme: light) {
