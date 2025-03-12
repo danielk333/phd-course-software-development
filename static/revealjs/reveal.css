@@ -1,5 +1,8 @@
-body > div.reveal {
-    overflow-y: auto;
+.slides {
+    overflow-y: auto!important;
+}
+.slides {
+    scrollbar-width: none;
 }
 
 .reveal section img,

@@ -493,10 +493,10 @@ tr {
   border: none;
 }
 
-tr:not(:only-of-type) {
+tr:not(:only-of-type):not(code tr) {
   border-bottom: 1px solid var(--soft-divider-color);
 }
-tr:nth-child(even) {
+tr:nth-child(even):not(code tr) {
   background-color: var(--bg-alt-color);
 }
 
