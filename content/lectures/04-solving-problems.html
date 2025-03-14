@@ -395,9 +395,11 @@ weight: 4
                         Be aware of the trade-offs and make a concious decision
                     </li>
                     <li class="fragment">
-                        It is also a matter of "time-to-implement"
+                        It is also a matter of "time-to-implement" - pick your battles
+                        <p class="fragment mark">E.g. coordinate transforms (used everywhere):<br>religiously tested and validated and designed</p>
+                        <p class="fragment mark">E.g. my CLI interface:<br>Thrown together and when it crashes I fix it</p>
                     </li>
-                    <li class="fragment select">How to learn these things?</li>
+                    <li class="fragment select">How do you learn these things?</li>
                 </ul>
             </div>
         </section>
@@ -405,7 +407,7 @@ weight: 4
             <div class="centered-container">
                 <h3 class="title">Solving problems</h3>
                 <ul>
-                    <li class="select">How to learn these things?</li>
+                    <li class="select">How do you learn these things?</li>
                 </ul>
                 <ul style="margin-top: 1em">
                     <li>Write code, write a lot of code</li>
@@ -415,14 +417,33 @@ weight: 4
                     <li>Talk to others about code and writing code</li>
                     <li>Get coached on writing code</li>
                 </ul>
+                <p class="fragment highlight">So that is what we are going to do!</p>
             </div>
         </section>
 
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Solving problems</h3>
-                <p class="mark">Some common patterns</p>
-                <ul></ul>
+                <p class="mark">First: some common patterns</p>
+                <div class="row-flex-c">
+                    <ul class="margins">
+                        <p class="mark">Creation</p>
+                        <li>Dependency injection</li>
+                        <li>Singleton</li>
+                        <p class="mark">Structural</p>
+                        <li>Adapter</li>
+                        <li>Interface</li>
+                    </ul>
+                    <ul class="margins">    
+                        <p class="mark">Computational</p>
+                        <li>Vectorisation</li>
+                        <li>Online-algorithm</li>
+                        <li>Map-Reduce</li>
+                        <li>Visitor</li>
+                        <p class="mark">Interaction</p>
+                        <li>Strategy pattern</li>
+                    </ul>
+                </div>
             </div>
         </section>
     </div>

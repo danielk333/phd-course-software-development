@@ -4,6 +4,23 @@ lecture: "04-solving-problems"
 weight: 4
 ---
 
+
+## 
+
+design patterns
+
+https://www.youtube.com/watch?v=tAuRQs_d9F8
+
+
+##
+
+[protocols in python](https://typing.python.org/en/latest/spec/protocol.html#protocols)
+
+A two explanations of the Strategy pattern 
+
+https://www.youtube.com/watch?v=sZDJJeDNe_M
+https://www.youtube.com/watch?v=hVLb3-OE3pM
+
 ## Rules and guidelines
 
 https://spinroot.com/gerard/pdf/P10.pdf
