@@ -116,12 +116,14 @@ dl > dt:not(:first-child) {
     background-color: var(--bg-note);
 }
 .course-lecture-notice > a {
-    margin: 0em 1em;
 }
 .course-lecture-notice > p {
     margin: 0em 1em;
 }
 
+.course-lecture-notice > p::after {
+    content: " →";
+}
 
 .course-lecture-tutorial {
     display: flex;
@@ -130,15 +132,17 @@ dl > dt:not(:first-child) {
     height: 3em;
     border: 1px solid var(--fg-color);
     border-radius: 0.5rem;
-    background-color: var(--bg-tip);
+    background-color: hsl(from var(--bg-tip) h s calc(l - 10));
 }
 .course-lecture-tutorial > a {
-    margin: 0em 1em;
+    color: hsl(from var(--link-color) h s calc(l + 10));
 }
 .course-lecture-tutorial > p {
     margin: 0em 1em;
 }
-
+.course-lecture-tutorial > p::after {
+    content: " →";
+}
 
 .course-handout-notice {
     margin: 0em 1em;
