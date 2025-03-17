@@ -18,8 +18,7 @@ body.presentation > header:first-child {
     }
 }
 
-body.presentation 
-p, 
+body.presentation p,
 li,
 h1,
 h2,
@@ -27,8 +26,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: inherit;
-  line-height: inherit;
+    font-family: inherit;
+    line-height: inherit;
 }
 
 body > header nav.presentation > ul > li:first-child {
@@ -45,14 +44,13 @@ body > header nav.presentation > ul > li:hover {
     background-color: var(--bg-alt-color);
 }
 
-
 body.presentation {
     background: none;
     background-color: var(--r-background-color);
 }
 
 body.presentation > div.reveal {
-    background-color: var(--r-background-color)!important;
+    background-color: var(--r-background-color) !important;
     --r-main-font-size: 38px;
 }
 
@@ -61,19 +59,19 @@ dl > dt:not(:first-child) {
 }
 
 .course-tabs {
-  border: 1px solid var(--fg-color);
-  border-radius: 0.5rem;
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
     margin: 1em 0em;
+    border: 1px solid var(--fg-color);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .course-tabs > input[type="radio"] {
-  appearance: none;
-  border: 0;
-  outline: 0;
-  margin: 0;
+    appearance: none;
+    border: 0;
+    outline: 0;
+    margin: 0;
 }
 
 .course-tabs > input[type="radio"]:checked + label {
@@ -120,7 +118,6 @@ dl > dt:not(:first-child) {
 .course-lecture-notice > p {
     margin: 0em 1em;
 }
-
 .course-lecture-notice > p::after {
     content: " →";
 }
@@ -169,7 +166,7 @@ dl > dt:not(:first-child) {
 }
 
 .highlight > div:first-child {
-    background: none!important;
+    background: none !important;
 }
 
 .course-columns {
