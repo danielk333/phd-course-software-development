@@ -81,7 +81,7 @@ weight: 4
                     </li>
                 </ul>
                 <p class="fragment" style="padding-top: 1em">
-                    Problem: implement vector dot product
+                    An example problem: implement vector dot product
                 </p>
                 <ul class="list-sep-small">
                     <li class="fragment">
@@ -110,7 +110,7 @@ weight: 4
                 <h3 class="title">Solving problems</h3>
                 <p class="mark">Two levels for the solution</p>
                 <p clase="padding-top: 1em;">
-                    Problem: implement vector dot product
+                    An example problem: implement vector dot product
                 </p>
                 <ul class="list-sep-small">
                     <li>
@@ -229,38 +229,6 @@ weight: 4
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Solving problems</h3>
-                <pre class="show-code">
-                    <code data-line-numbers data-trim class="language-python">
-                        def dot(vec1, vec2):
-                            common_iter = zip(vec1, vec2)
-
-                            x1, x2 = next(common_iter)
-                            result = x1 * x2
-
-                            for x1, x2 in common_iter:
-                                result += x1 * x2
-
-                            return result
-                    </code>
-                </pre>
-                <pre data-id="code-animation1" class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-plaintext">
-                        <!--
-                        >>> dot(np.arange(3), np.arange(4))
-                        np.int64(5)
-                        >>> dot(np.arange(3), np.linspace(0, 1, 3))
-                        np.float64(2.5)
-                        >>> dot([1, 2, 3], [1, 1, 1])
-                        6
-                        >>> dot([1, 2, 3], ["a", "b", "c"])
-                        -->
-                    </code>
-                </pre>
-            </div>
-        </section>
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">Solving problems</h3>
                 <pre data-id="code-animation" class="show-code">
                     <code data-line-numbers data-trim class="language-python">
                         def dot(vec1, vec2):
@@ -278,8 +246,12 @@ weight: 4
                 <pre data-id="code-animation1" class="fragment show-code">
                     <code data-line-numbers data-trim class="language-plaintext">
                         <!--
-                        >>> dot([1, 2, 3], ["a", "b", "c"])
-                        'abbccc'
+                        >>> dot([1, 2, 3], [1, 1, 1])
+                        6
+                        >>> dot(np.arange(3), np.linspace(0, 1, 3))
+                        np.float64(2.5)
+                        >>> dot(np.arange(3), np.arange(4))
+                        np.int64(5)
                         -->
                     </code>
                 </pre>
@@ -305,6 +277,87 @@ weight: 4
                             return result
                     </code>
                 </pre>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <pre data-id="code-animation" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def dot(vec1, vec2):
+                            assert len(vec1) == len(vec2), "Input vectors must be same length"
+                            if len(vec1) == 0:
+                                return
+                            common_iter = zip(vec1, vec2)
+
+                            x1, x2 = next(common_iter)
+                            result = x1 * x2
+
+                            for x1, x2 in common_iter:
+                                result += x1 * x2
+
+                            return result
+                    </code>
+                </pre>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-plaintext">
+                        <!--
+                        >>> dot([1, 2, 3], ["a", "b", "c"])
+                        -->
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <pre data-id="code-animation" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def dot(vec1, vec2):
+                            assert len(vec1) == len(vec2), "Input vectors must be same length"
+                            if len(vec1) == 0:
+                                return
+                            common_iter = zip(vec1, vec2)
+
+                            x1, x2 = next(common_iter)
+                            result = x1 * x2
+
+                            for x1, x2 in common_iter:
+                                result += x1 * x2
+
+                            return result
+                    </code>
+                </pre>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-plaintext">
+                        <!--
+                        >>> dot([1, 2, 3], ["a", "b", "c"])
+                        'abbccc'
+                        -->
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <pre data-id="code-animation" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def dot(vec1, vec2):
+                            assert len(vec1) == len(vec2), "Input vectors must be same length"
+                            if len(vec1) == 0:
+                                return
+                            common_iter = zip(vec1, vec2)
+
+                            x1, x2 = next(common_iter)
+                            result = x1 * x2
+
+                            for x1, x2 in common_iter:
+                                result += x1 * x2
+
+                            return result
+                    </code>
+                </pre>
                 <p class="fragment">
                     Balance of abstraction and specification, safety and
                     brevity, efficiency and ease
@@ -312,6 +365,7 @@ weight: 4
                 <p class="fragment">Lets move to numpy arrays</p>
             </div>
         </section>
+
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Solving problems</h3>
@@ -348,6 +402,8 @@ weight: 4
                 <h3 class="title">Solving problems</h3>
                 <pre data-id="code-animation" class="show-code">
                     <code data-trim data-line-numbers class="language-python">
+                        import numpy as np
+
                         def dot(vec1, vec2):
                             result = vec1.dtype.type(0)
                             for x1, x2 in zip(vec1, vec2):
@@ -398,6 +454,7 @@ weight: 4
                         It is also a matter of "time-to-implement" - pick your battles
                         <p class="fragment mark">E.g. coordinate transforms (used everywhere):<br>religiously tested and validated and designed</p>
                         <p class="fragment mark">E.g. my CLI interface:<br>Thrown together and when it crashes I fix it</p>
+                        <p class="fragment mark">E.g. I trust numpy to be fast and scipy to be correct<br>I don't trust the 1 star, 0 issues, last commit 7 years ago, Kepler solver</p>
                     </li>
                     <li class="fragment select">How do you learn these things?</li>
                 </ul>
@@ -424,26 +481,60 @@ weight: 4
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Solving problems</h3>
-                <p class="mark">First: some common patterns</p>
-                <div class="row-flex-c">
-                    <ul class="margins">
-                        <p class="mark">Creation</p>
-                        <li>Dependency injection</li>
-                        <li>Singleton</li>
-                        <p class="mark">Structural</p>
-                        <li>Adapter</li>
-                        <li>Interface</li>
-                    </ul>
-                    <ul class="margins">    
-                        <p class="mark">Computational</p>
-                        <li>Vectorisation</li>
-                        <li>Online-algorithm</li>
-                        <li>Map-Reduce</li>
-                        <li>Visitor</li>
-                        <p class="mark">Interaction</p>
-                        <li>Strategy pattern</li>
+                <p class="mark">First: some common patterns I think are useful to know</p>
+                <ul> 
+                    <li>Dependency injection</li>
+                    <li>Composition over inheritance</li>
+                    <li>Adapter</li>
+                    <li>Interface</li>
+                    <li>Vectorisation</li>
+                    <li>Online-algorithm</li>
+                    <li>Map-Reduce</li>
+                    <li>Visitor</li>
+                    <li>Strategy pattern</li>
+                </ul>
+                <p class="fragment select">All of these are described in the handout!</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <p class="highlight">Time to code!</p>
+                <div class="fragment" style="margin: 0em 1em">
+                    <p class="mark">Task 1:</p>
+                    <p>List comparison</p>
+                    <a href="https://adventofcode.com/2024/day/1">Advent of code 2024 - Day 1</a>
+                    <p>https://adventofcode.com/2024/day/1</p>
+                </div>
+                <p class="fragment">If you don't want to log in: use <a href="code/input/aoc2024-day1.txt">This input file</a> - the result should be 1660292</p>
+                <p class="fragment select">Let's compare solutions</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <p class="highlight">Time to code!</p>
+                <div class="fragment" style="margin-top: 1em">
+                    <p class="mark">Task 2:</p>
+                    <p>Implement data-saving for a list of integers</p>
+                    <p>Should be able to save:</p>
+                    <ul>
+                        <li>as <a href="https://docs.python.org/3/library/json.html">json</a></li>
+                        <li>as <a href="https://docs.python.org/3/library/csv.html">csv</a></li>
+                        <li>as <a href="https://docs.python.org/3/library/pickle.html#module-pickle">pickle</a></li>
                     </ul>
                 </div>
+                <p class="fragment select">Let's compare solutions</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Solving problems</h3>
+                <p class="mark">Further study and homework</p>
+                <p class="select">Let's check out the handout above!</p>      
             </div>
         </section>
     </div>
