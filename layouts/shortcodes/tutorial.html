@@ -4,6 +4,6 @@
 <div class="course-lecture-tutorial">
     <p>{{ $desc }}</p>
         {{ with $.Site.GetPage $tutURL }}
-            <a href="{{ .Permalink }}">{{ .Weight }}. {{ .Title }}</a>
+            <a href="{{ .Permalink }}">Tutorial: {{ .Title }}</a>
         {{ end }}
 </div>
