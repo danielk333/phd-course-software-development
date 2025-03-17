@@ -76,11 +76,21 @@ menu:
   main:
     - name: schedule
       weight: 1
-    - name: handouts
+      params:
+        recursive: true
+    - name: practicals
       weight: 2
       params:
         recursive: true
-    - name: lectures
+    - name: handouts
       weight: 3
+      params:
+        recursive: true
+    - name: tutorials
+      weight: 3
+      params:
+        recursive: true
+    - name: lectures
+      weight: 4
       params:
         recursive: true
