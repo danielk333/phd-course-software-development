@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-numberedHeadings: true
+numberedHeadings: false
 weight: 4
 ---
 
