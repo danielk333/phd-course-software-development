@@ -1,0 +1,9 @@
+{{- $name := cond .IsNamedParams (.Get "name") (.Get 0) -}}
+{{- $desc := cond .IsNamedParams (.Get "desc") (.Get 1) -}}
+{{ $tutURL := printf "%s%s" "tutorials/" $name }}
+<div class="course-lecture-tutorial">
+    <p>{{ $desc }}</p>
+        {{ with $.Site.GetPage $tutURL }}
+            <a href="{{ .Permalink }}">{{ .Weight }}. {{ .Title }}</a>
+        {{ end }}
+</div>

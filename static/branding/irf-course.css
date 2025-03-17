@@ -121,6 +121,24 @@ dl > dt:not(:first-child) {
     margin: 0em 1em;
 }
 
+
+.course-lecture-tutorial {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 3em;
+    border: 1px solid var(--fg-color);
+    border-radius: 0.5rem;
+    background-color: var(--bg-tip);
+}
+.course-lecture-tutorial > a {
+    margin: 0em 1em;
+}
+.course-lecture-tutorial > p {
+    margin: 0em 1em;
+}
+
+
 .course-handout-notice {
     margin: 0em 1em;
     padding: 0em 1em;

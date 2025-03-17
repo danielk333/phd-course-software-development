@@ -6,6 +6,8 @@ weight: 0
 
 ## TL;DR
 
+{{< tutorial editor "For a short environment tutorial, see" >}}
+
 Install an editor you like.
 
 Use `venv` to create new environments.
