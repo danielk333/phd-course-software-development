@@ -66,6 +66,7 @@ dl > dt:not(:first-child) {
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
+    margin: 1em 0em;
 }
 
 .course-tabs > input[type="radio"] {
