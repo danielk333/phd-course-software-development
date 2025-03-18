@@ -4,6 +4,10 @@ lecture: "05-writing"
 weight: 5
 ---
 
+## Rules and guidelines
+
+https://spinroot.com/gerard/pdf/P10.pdf
+
 ## Homework assignments
 
 ### Recommended watching

@@ -64,6 +64,9 @@ weight: 4
                     <li class="fragment">
                         Some common patterns you might find useful
                     </li>
+                    <li class="fragment">
+                        Some problem solving practice
+                    </li>
                 </ul>
             </div>
         </section>
@@ -74,10 +77,10 @@ weight: 4
                 <p class="mark">Two levels for the solution</p>
                 <ul>
                     <li class="fragment">
-                        The pattern of the solution (language agnostic)
+                        The idea/pattern of the solution (language agnostic)
                     </li>
                     <li class="fragment">
-                        Implementing the pattern (language dependant)
+                        Implementing the idea/pattern (language dependant)
                     </li>
                 </ul>
                 <p class="fragment" style="padding-top: 1em">
@@ -89,8 +92,7 @@ weight: 4
                             >Multiplication map and sum reduce</span
                         ><br />
                         [map-reduce pattern]<br />
-                        (Higher memory overhead / allows vectorisation
-                        optimisation)
+                        (Higher memory overhead / allows for parallelisation)
                     </li>
                     <li class="fragment">
                         <span class="highlight"
@@ -187,7 +189,7 @@ weight: 4
                     </code>
                 </pre>
                 <p class="fragment">
-                    Not dependant on type (float/int/double), less readable,
+                    Not dependant on first type, less readable,
                     robust?
                 </p>
             </div>
@@ -336,6 +338,7 @@ weight: 4
                         -->
                     </code>
                 </pre>
+                <p class="fragment">This is either a really cool or a really bad feature - depending on what you want</p>
             </div>
         </section>
         <section data-auto-animate>
@@ -358,7 +361,7 @@ weight: 4
                             return result
                     </code>
                 </pre>
-                <p class="fragment">
+                <p>
                     Balance of abstraction and specification, safety and
                     brevity, efficiency and ease
                 </p>
@@ -433,7 +436,7 @@ weight: 4
                     (you can never assume with dependencies)
                 </p>
                 <p class="fragment">
-                    -added a dependency / no control over behaviour / no option
+                    -added a dependency (and its own tree) / no control over behaviour / no option
                     to optimize
                 </p>
             </div>
@@ -454,7 +457,7 @@ weight: 4
                         It is also a matter of "time-to-implement" - pick your battles
                         <p class="fragment mark">E.g. coordinate transforms (used everywhere):<br>religiously tested and validated and designed</p>
                         <p class="fragment mark">E.g. my CLI interface:<br>Thrown together and when it crashes I fix it</p>
-                        <p class="fragment mark">E.g. I trust numpy to be fast and scipy to be correct<br>I don't trust the 1 star, 0 issues, last commit 7 years ago, Kepler solver</p>
+                        <p class="fragment mark">E.g. I trust numpy to be fast and scipy to be correct<br>I don't trust the 1 star, 0 issues, last commit 7 years ago, github repo</p>
                     </li>
                     <li class="fragment select">How do you learn these things?</li>
                 </ul>
@@ -474,7 +477,7 @@ weight: 4
                     <li>Talk to others about code and writing code</li>
                     <li>Get coached on writing code</li>
                 </ul>
-                <p class="fragment highlight">So that is what we are going to do!</p>
+                <p class="fragment highlight">So that is what we are doing!</p>
             </div>
         </section>
 
@@ -485,13 +488,13 @@ weight: 4
                 <ul> 
                     <li>Dependency injection</li>
                     <li>Composition over inheritance</li>
+                    <li>Strategy pattern</li>
                     <li>Adapter</li>
                     <li>Interface</li>
                     <li>Vectorisation</li>
                     <li>Online-algorithm</li>
                     <li>Map-Reduce</li>
                     <li>Visitor</li>
-                    <li>Strategy pattern</li>
                 </ul>
                 <p class="fragment select">All of these are described in the handout!</p>
             </div>
