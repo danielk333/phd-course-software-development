@@ -44,7 +44,7 @@ weight: 2
                         <li>Modular</li>
                         <div class="fragment" data-fragment-index="3">
                             <p class="mark">Recommendation</p>
-                            <li>Also learn a compiled language with memory management<br>
+                            <li>Also learn a natively compiled language with memory management<br>
                             <code data-trim>C/C++/Rust/Odin/Zig/FORTRAN/...</code>
                             </li>
                         </div>
@@ -233,7 +233,6 @@ weight: 2
                             print(func(5), func(5, b=10))
                         </code>
                     </pre>
-                    <p class="fragment">Argument expanding and catching comes later...</p>
                     <p class="fragment select">Lets talk about immutability and pointers...</p>
                 </div>
             </div>
@@ -337,8 +336,211 @@ weight: 2
         >
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
-                <p class="mark">Creating your own "types" - classes</p>
+                <p class="mark">Argument catching and expanding</p>
                 <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def func(*args, **kwargs):
+                            print(args)
+                            print(kwargs)
+                        
+                        a = (1, 2, 3)
+                        func(*a)
+
+                        b = {"hello": None}
+                        func(**b)
+                    </code>
+                </pre>
+                <p class="fragment select">You should probably not do this!</p>
+                <p class="fragment">But sometimes it is useful (e.g. decorators)</p>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Decorators!</p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def say_hello(func):
+                            def hello_func(*args, **kwargs):
+                                print("hello!")
+                                return func(*args, **kwargs)
+
+                            return hello_func
+
+                        def add(a, b):
+                            return a + b
+
+                        hello_add = say_hello(add)
+
+                        x = hello_add(1, 2)
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Decorators!</p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def say_hello(func):
+                            def hello_func(*args, **kwargs):
+                                print("hello!")
+                                return func(*args, **kwargs)
+
+                            return hello_func
+
+                        @say_hello
+                        def add(a, b):
+                            return a + b
+
+                        x = add(1, 2)
+                    </code>
+                </pre>
+                <p class="fragment">This is an advanced technique but useful for some structural patterns - do not over-use!</p>
+                <p class="fragment">One thing I like to use it for is registering functions</p>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Decorators!</p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        FUNCS = {}
+
+                        def register(func):
+                            # Side-effect! GASP!
+                            FUNCS[func.__name__] = func
+                            return func
+
+                        @register
+                        def sub(a, b):
+                            return a - b
+
+                        @register
+                        def add(a, b):
+                            return a + b
+
+                        print(FUNCS)
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Error handling</p>
+                <pre data-id="code-animation1" class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def add(a, b):
+                            if not isinstance(a, float):
+                                raise TypeError("a is not a float!")
+                            return a + b
+
+                        x = add(1, 1)
+                    </code>
+                </pre>
+                <p class="fragment"><code>isinstance</code> is very useful for doing type checks (returns true for all sub-classes too)</p>
+                <p class="fragment">There is an extensive list of standard exceptions in the <a href="https://docs.python.org/3/library/exceptions.html">python docs</a></p>
+                <p class="fragment"><a href="https://docs.python.org/3/tutorial/errors.html">The python error tutorial</a> is also a good read</p>
+                <p class="fragment mark">But what if we want to handle the error?</p>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Error handling</p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def add(a, b):
+                            if not isinstance(a, float):
+                                raise TypeError("a is not a float!")
+                            return a + b
+                        
+                        try:
+                            x = add(1, 1)
+                        except TypeError:
+                            x = None
+                    </code>
+                </pre>
+                <p class="fragment">But what if we have more behaviour?</p>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Error handling</p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def odd_add(a, b):
+                            if not isinstance(a, float):
+                                raise TypeError("a is not a float!")
+                            if b % 2 == 0:
+                                raise ValueError("b has to be odd!")
+                            return a + b
+                        
+                        try:
+                            x = add(1.0, 2)
+                        except TypeError:
+                            x = None
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Error handling</p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def odd_add(a, b):
+                            if not isinstance(a, float):
+                                raise TypeError("a is not a float!")
+                            if b % 2 == 0:
+                                raise ValueError("b has to be odd!")
+                            return a + b
+                        
+                        try:
+                            x = add(1.0, 2)
+                        except TypeError:
+                            x = None
+                        except ValueError as e:
+                            x = str(e)
+                        else:
+                            x += 1
+                        finally:
+                            print("this will always get run!")
+                        print(x)
+                    </code>
+                </pre>
+                <p class="fragment">Try to get every block of this to execute!</p>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Creating your own "types" - classes</p>
+                <pre data-id="code-animation1" class="fragment show-code">
                     <code data-line-numbers data-trim class="language-python">
                         class Square:
                             def __init__(self, length):
@@ -351,7 +553,86 @@ weight: 2
                         print(s.area())
                     </code>
                 </pre>
+                <p class="fragment">You can define all behaviour of this class, e.g. see <a href="https://docs.python.org/3/library/operator.html">operators</a></p>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Creating your own "types" - classes</p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        class Square:
+                            ...
+                            def __add__(self, value):
+                                if isinstance(value, float):
+                                    new_square = Square(self.length + value)
+                                else:
+                                    raise TypeError(f"Can only add floats, not {type(value)}")
+                                return new_square
+
+                        s = Square(10)
+                        q = s + 10.5
+                        print(f"{s.area()=} {q.area()=}")
+                    </code>
+                </pre>
+                <p class="fragment">You should probably <span class="select">never</span> overload operators - unless you have a very good reason</p>
                 <p class="fragment">Classes are good for some things and bad for others - we will deep dive later</p>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Data classes are nice for specifying containers!</p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        from dataclasses import dataclass
+                        from typing import Tuple
+                        import numpy.typing as npt
+                        import numpy as np
+
+                        @dataclass
+                        class Meteors:
+                            """Class for meteor data from an observer."""
+                            observer_name: str
+                            observer_geo: Tuple[float, float]
+                            start_velocity: npt.NDArray[np.float64]
+                            instrument: str = "radar"
+
+                        m = Meteors("me", (1.0, 2.0), np.zeros((100, )))
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Also named tuples and enums!</p>
+                <p><a href="https://docs.python.org/3/library/collections.html">collections in python</a></p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        from collections import namedtuple
+                        from enum import Enum
+
+                        Point = namedtuple('Point', ['x', 'y'])
+                        p = Point(1.0, 2.0)  # Not mutable!
+                        print(p)
+
+                        class Color(Enum):
+                            RED = 1
+                            GREEN = 2
+                            BLUE = 3
+
+                        print(Color["BLUE"])  # Nice identifier declaration if needed!
+                    </code>
+                </pre>
             </div>
         </section>
 
@@ -414,6 +695,110 @@ weight: 2
                 </pre>
             </div>
         </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Iterator tricks!</p>
+                <pre data-id="code-animation1" class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        c = 0
+                        for a, b in zip(range(10), range(20, 30)):
+                            c += a * b
+
+                        for ind, ch in enumerate(str(c)):
+                            print(ind, ch)
+                    </code>
+                </pre>
+                <p class="fragment">We can combine however we like</p>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Iterator tricks!</p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        c = 0
+                        for ind, (a, b) in enumerate(zip(range(10), range(20, 30))):
+                            c += a * b + ind
+                    </code>
+                </pre>
+                <p class="fragment">Just don't overdo it!</p>
+                <p class="fragment">Then we have generators</p>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Iterator tricks!</p>
+                <pre data-id="code-animation2" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def my_iter(num):
+                            c = num
+                            for ind in range(num - 1, 0, -1):
+                                c *= ind
+                                yield c
+                        
+                        for x in my_iter(10):
+                            print(x)
+
+                        print(type(my_iter(100)))
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Iterator tricks!</p>
+                <pre data-id="code-animation2" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def my_iter(num):
+                            c = num
+                            for ind in range(num - 1, 0, -1):
+                                print(f"now at {ind=}")
+                                c *= ind
+                                yield c
+                        
+                        g = my_iter(20)
+                        x = next(g)
+                        print(f"{x=}")
+                        x = next(g)
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Iterator tricks!</p>
+                <pre data-id="code-animation2" class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def my_iter(num):
+                            c = num
+                            for ind in range(num - 1, 0, -1):
+                                print(f"now at {ind=}")
+                                c *= ind
+                                yield c
+                        
+                        g = my_iter(2)
+                        x = next(g)
+                        print(f"{x=}")
+                        x = next(g) # StopIteration!
+                    </code>
+                </pre>
+            </div>
+        </section>
 
         <section
         data-auto-animate
@@ -449,8 +834,6 @@ weight: 2
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">List and dict comprehension!</p>
-                
-                <p class="fragment">This is advanced topic but just to introduce it</p>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-python">
                         squares = [x ** 2 for x in range(10)]
@@ -600,17 +983,22 @@ weight: 2
         data-auto-animate
         >
             <div class="centered-container">
-                <h3 class="title">Programming paradigms</h3>
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Packages and the import statement</p>
+                TODO
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                    </code>
+                </pre>
             </div>
         </section>
-
 
         <section
         data-auto-animate
         >
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
-                <p class="mark">There are excellent tutorials online</p>
+                <p class="mark">there are excellent tutorials online</p>
                 <p class="select">Lets check out the handout above!</p>
             </div>
         </section>

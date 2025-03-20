@@ -74,7 +74,7 @@ There are several concepts within software development that are good to understa
 
 ### Polymorphism
 
-[https://en.wikipedia.org/wiki/Polymorphism_(computer_science)](Polymorphism) is generally when a single operation or interface works with many different types. The below is a overview of what this implies:
+[Polymorphism](https://en.wikipedia.org/wiki/Polymorphism_(computer_science)) is generally when a single operation or interface works with many different types. The below is a overview of what this implies:
 
 OOP Channel - What is Polymorphism
 {{< youtube 68uXfDlfYSE >}}
@@ -96,6 +96,10 @@ CodeAesthetic - Dear Functional Bros
 
 Richard Feldman - The Return of Procedural Programming
 {{< youtube vQPHtAxOZZw >}}
+
+### More 
+
+There will be more added here when I think of them!
 
 ## The correct language for the job
 
@@ -160,6 +164,9 @@ Scripts, modules and packages
 : Install your package into your virtual environment (look up editable install with `-e`).
 : Create 2 functions in two separate [modules](https://docs.python.org/3/tutorial/modules.html) inside your package. One function should reverse a list and the other should take two lists as input, reverse the first list and then interleave every other argument of two lists outputting a single new list. You should import the list-reveral function from the other module ([hint: intra-package-references](https://docs.python.org/3/tutorial/modules.html#intra-package-references)).
 : Create a scripts in a different location than were the package is that uses this function from the package to interleave the following two strings: `'VOG!lo olH'` and `'el,Wrd ROY'`. 
+
+Consume material
+: In the sections above it would be good to watch the linked videos in "History of programming languages" and a few in the "Concepts" and at least have a look at the links.
 
 Python `with` keyword and file handling
 : Implement a function in your package that uses the following: [with](https://docs.python.org/3/reference/compound_stmts.html#with), [encode](https://docs.python.org/3/library/stdtypes.html#str.encode), and [decode](https://docs.python.org/3/library/stdtypes.html#bytes.decode) to save an input string in a binary file. Also implement a function to load a string from a binary file.
