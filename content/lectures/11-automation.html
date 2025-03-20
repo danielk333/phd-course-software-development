@@ -13,6 +13,15 @@ weight: 11
             </div>
         </section>
 
+import shutil
+
+if shutil.which("ffmpeg") is None:
+    print("ffmpeg is not installed!")
+else:
+    print("ffmpeg is installed!")
+
+setup py check external deps
+
     </div>
 </div>
 
