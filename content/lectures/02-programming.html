@@ -241,6 +241,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="select">Lets talk about immutability and pointers...</p>
@@ -277,6 +278,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="select">Lets talk about immutability and pointers...</p>
@@ -298,6 +300,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="select">Lets talk about immutability and pointers...</p>
@@ -334,6 +337,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Argument catching and expanding</p>
@@ -358,6 +362,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Decorators!</p>
@@ -383,6 +388,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Decorators!</p>
@@ -409,6 +415,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Decorators!</p>
@@ -495,7 +502,7 @@ weight: 2
                             return a + b
                         
                         try:
-                            x = add(1.0, 2)
+                            x = odd_add(1.0, 2)
                         except TypeError:
                             x = None
                     </code>
@@ -518,7 +525,7 @@ weight: 2
                             return a + b
                         
                         try:
-                            x = add(1.0, 2)
+                            x = odd_add(1.0, 2)
                         except TypeError:
                             x = None
                         except ValueError as e:
@@ -560,6 +567,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Creating your own "types" - classes</p>
@@ -586,6 +594,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Data classes are nice for specifying containers!</p>
@@ -612,6 +621,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Also named tuples and enums!</p>
@@ -734,6 +744,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Iterator tricks!</p>
@@ -756,6 +767,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Iterator tricks!</p>
@@ -779,6 +791,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Iterator tricks!</p>
@@ -831,6 +844,7 @@ weight: 2
         <section
         data-auto-animate
         >
+            <div class="course-corner-banner">Advanced topic</div>
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">List and dict comprehension!</p>
@@ -913,7 +927,7 @@ weight: 2
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Ok bear with me here...</p>
-                <code class="file fragment">matmul_native.py</code>
+                <code class="file fragment">matmul_python.py</code>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-python">
                         import numpy as np
@@ -985,14 +999,167 @@ weight: 2
             <div class="centered-container">
                 <h3 class="title">Python programming primer</h3>
                 <p class="mark">Packages and the import statement</p>
-                TODO
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import blargh
+                    </code>
+                </pre>
+                <p class="fragment">How does python find "blargh"?</p>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-python">
+                        import sys
+                        for path in sys.path:
+                            print(repr(path))
+                    </code>
+                </pre>
+                <p class="fragment">For more info see <a href="https://docs.python.org/3/library/sys_path_init.html">sys path init</a></p>
+                <p class="fragment"><code>pip</code> installs into "site_packages"</p>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Packages and the import statement</p>
+                <p>So that's modules - what is a "package"?</p>
+                <ul class="fragment course-tree">
+                    <li class="folder">project
+                        <ul>
+                            <li class="file">script.py</li>
+                            <li class="folder">my_package
+                                <ul>
+                                    <li class="file">__init__.py</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="fragment"><code>__init__.py</code> is executed upon <code>import my_package</code></p>
+                <p class="fragment">We can of course nest this!</p>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="course-corner-banner">Advanced topic</div>
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Packages and the import statement</p>
+                <ul class="course-tree">
+                    <li class="folder">project
+                        <ul>
+                            <li class="file">script.py</li>
+                            <li class="folder">my_package
+                                <ul>
+                                    <li class="file">__init__.py</li>
+                                    <li class="folder">foo
+                                        <ul>
+                                            <li class="file">__init__.py</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        # my_package/__init__.py
+                        from . import foo
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        # script.py
+                        import my_package
+
+                        my_package.foo.bar()
                     </code>
                 </pre>
             </div>
         </section>
 
+        <section
+        data-auto-animate
+        >
+            <div class="course-corner-banner">Advanced topic</div>
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Packages and the import statement</p>
+                <code class="file">pyproject.toml</code>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-toml">
+                        [project]
+                        name = "spam-eggs"
+                        version = "1.0.0"
+                        dependencies = [
+                          "httpx",
+                          "gidgethub[httpx]>4.0.0",
+                        ]
+                        requires-python = ">=3.8"
+                        authors = [
+                          {name = "Jane Doe", email = "obviously_not_my@email.com"},
+                        ]
+                        maintainers = [
+                          {name = "Someone else", email = "bob@example.com"}
+                        ]
+                        description = "Lovely Spam! Wonderful Spam!"
+                        readme = "README.rst"
+                        license = "MIT"
+
+
+                        [project.urls]
+                        Homepage = "https://example.com"
+                        Repository = "https://github.com/me/spam.git"
+
+                        [project.scripts]
+                        spam-cli = "spam:main_cli"
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section
+        data-auto-animate
+        >
+            <div class="course-corner-banner">Advanced topic</div>
+            <div class="centered-container">
+                <h3 class="title">Python programming primer</h3>
+                <p class="mark">Packages and the import statement</p>
+                <code class="file">pyproject.toml</code>
+                <pre class="show-code" style="max-height: 40vh;">
+                    <code data-line-numbers data-trim class="language-toml">
+                        [project]
+                        name = "spam-eggs"
+                        version = "1.0.0"
+                        dependencies = [
+                          "httpx",
+                          "gidgethub[httpx]>4.0.0",
+                        ]
+                        requires-python = ">=3.8"
+                        authors = [
+                          {name = "Jane Doe", email = "obviously_not_my@email.com"},
+                        ]
+                        maintainers = [
+                          {name = "Someone else", email = "bob@example.com"}
+                        ]
+                        description = "Lovely Spam! Wonderful Spam!"
+                        readme = "README.rst"
+                        license = "MIT"
+
+
+                        [project.urls]
+                        Homepage = "https://example.com"
+                        Repository = "https://github.com/me/spam.git"
+
+                        [project.scripts]
+                        spam-cli = "spam:main_cli"
+                    </code>
+                </pre>
+                <p class="fragment"><code>pip install .</code></p>
+                <p class="fragment select">Read more in the handouts</p>
+            </div>
+        </section>
         <section
         data-auto-animate
         >

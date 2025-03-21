@@ -18,15 +18,14 @@ body.presentation > header:first-child {
     }
 }
 
-body.darkmode a[href^=https]:not([href*='.irf.se/'])::after {
+body.darkmode a[href^="https"]:not([href*=".irf.se/"])::after {
     filter: invert(1);
 }
 @media (prefers-color-scheme: dark) {
-  a[href^=https]:not([href*='.irf.se/'])::after {
-    filter: invert(1);
-  }
+    a[href^="https"]:not([href*=".irf.se/"])::after {
+        filter: invert(1);
+    }
 }
-
 
 body.presentation p,
 li,
@@ -225,4 +224,39 @@ img.expandable:hover {
 code.hljs[data-line-numbers] tr {
     border: none;
     background-color: transparent;
+}
+
+div.course-corner-banner {
+    position: fixed;
+    top: calc(2.5 * var(--header-height));
+    right: 0;
+    background: var(--irf-red);
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    transform: rotate(45deg);
+    transform-origin: top right;
+}
+
+ul.course-tree {
+    list-style-type: none;
+    padding-left: 20px;
+}
+ul.course-tree li {
+    margin: 5px 0;
+}
+ul.course-tree ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+ul.course-tree ul ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+li.folder::before {
+    content: "📁 ";
+}
+li.file::before {
+    content: "📄 ";
 }
