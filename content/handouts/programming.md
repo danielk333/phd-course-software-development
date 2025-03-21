@@ -55,6 +55,12 @@ Advent of code, made by Eric Wastl, is a really nice way to get some algorithmic
 
 You can find all previous advents of code [here](https://adventofcode.com/events) where the problems are stated and there are also solutions available if you get stuck! 
 
+### Code-katas
+
+Of course I am going to link this repository of "coding-katas" as I have been doing Kyokushin Karate for almost a decade soon so this jives with me!
+
+The repository: [gamontal awesome-katas](https://github.com/gamontal/awesome-katas)
+
 ### python.org
 
 The official Python docs also has many tutorials e.g. [python.org tutorial](https://docs.python.org/3/tutorial/index.html).
