@@ -17,6 +17,8 @@ First of all you probably want to keep your dotfiles in a git repository so that
 Dreams of Autonomy - Stow has forever changed the way I manage my dotfiles
 {{< youtube y6XCebnB9gs >}}
 
+As a hobby project I have built [my own dotfiles manager](https://github.com/danielk333/dotfiles-installer) that essentially does the same thing but with additional options to have diverging dotfiles between systems and installation of extra things. Doing these type of projects allow me to try things that I usually do not get exposed to and this has helped me a lot. My next thing to do is add in this hobby project is a terminal UI using [urwid](https://urwid.org/) to learn how `urwid` works since it could be useful in making TUIs for interacting with some of my analysis pipelines, but I don't want to try it on something that complicated until I understand what it is and how it works and if it would be useful.
+
 ## vim-motions
 
 A good article about the power of vim-motions, regardless of which editor you use, is 
