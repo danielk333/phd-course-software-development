@@ -147,7 +147,7 @@ Some languages I am currently learning and keeping my eyes on are:
 [Zig](https://ziglang.org/)
 : Zig is a general-purpose programming language and tool-chain for maintaining robust, optimal and reusable software. Very similar syntax to C.
 
-Both have some very good things going for them, where the more I learn about the features of Zig, the more excited I become to learn it. Currently, I use C for implementations that need to be optimized. But I'm slowly drifting towards wanting to exchange that for something else.
+Both have some very good things going for them, where the more I learn about the features of Zig, the more excited I become to learn it, similarly for Odin. Currently, I use C for implementations that need to be optimized. But I'm slowly drifting towards wanting to exchange that for something else.
 
 Other languages that are on my radar are:
 

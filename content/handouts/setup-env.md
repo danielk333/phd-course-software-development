@@ -8,6 +8,10 @@ weight: 0
 
 This handout collects much relevant information about what to consider when setting up ones development environment, such as choice of editor and Python environment management. For first time Python users or beginner codes it is recommended to simply follow the tutorials linked below. For more experienced users, and later in this course, the below handout may serve as a starting point for upgrading your environment and how you interact with it.
 
+## Skill tree
+
+{{< tutorial skill_tree "Get an achievement list to track milestones on your journey! See" >}}
+
 ## First time Python user?
 
 {{< tutorial python "For a short Python environment tutorial, see" >}}
