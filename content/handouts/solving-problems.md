@@ -119,6 +119,11 @@ NeetCode - 8 Design Patterns EVERY Developer Should Know
 {{< youtube tAuRQs_d9F8 >}}
 (While I don't agree that everyone should know all of these and be able to apply them, e.g. the singleton is rare in research software - we just use globals usually, its still a good idea to have heard about them!)
 
+## How hash maps work
+
+Last lecture one of the homework assignments were to find duplicate files in a folder. One of the best ways to solve this problem is using hashes and hash maps (or dictionaries as they are called in Python). To build on the solution to that problem, below is a video that goes into detail on how hash maps work and how to optimize them:
+
+{{< youtube DMQ_HcNSOAI >}}
 
 ## Building your own tools
 
