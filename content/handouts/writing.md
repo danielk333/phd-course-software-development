@@ -36,6 +36,17 @@ https://spinroot.com/gerard/pdf/P10.pdf
 
 ## Homework assignments
 
+Make documentation for your code
+: Make a `docs` folder inside your course repository and build a small wiki-page of your notes.
+: Compile the docs to html using [mkdocs](https://www.mkdocs.org/).
+
+Write docstrings
+: Write a docstrings for your last homework. Both module level and function level.
+
+Advanced documentation
+: If you want a more complicated example, use the [mkdocstrings](https://mkdocstrings.github.io/) package to compile an API page of the package you made earlier in the course.
+: If you don't already have a favourite format, use [numpydoc](https://numpydoc.readthedocs.io/en/latest/format.html). You can also try the [material theme](https://squidfunk.github.io/mkdocs-material/).
+
 ### Recommended watching
 
 CodeAesthetic - Naming Things in Code
