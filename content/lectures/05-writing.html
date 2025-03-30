@@ -24,29 +24,50 @@ weight: 5
         >
             <div class="centered-container">
                 <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <p class="fragment">Why worry about "reading"?</p>
+                <ul class="fragment">
+                    <p class="mark">As we already discussed:</p>
+                    <li>You will need to read it again <span class="highlight">(maintainability)</span></li>
+                    <li>Your colleagues might read it <span class="highlight">(collaboration)</span></li>
+                    <li>You need to understand it <span class="highlight">(correctness/extensibility)</span></li>
+                    <li>You/your colleagues/others will run it <span class="highlight">(usability)</span></li>
+                </ul>
+                <p class="fragment select">Categories of readability/comprehension/usability</p>
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        data-background-image="media/code.png"
-        data-background-opacity="0.15"
-        >
+        <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Writing code for Humans to read and Machines to run</h3>
-                <img src="media/comprehension.svg" alt="" style="width: 60vw;">
-                <span>(Plot idea stolen from "Software Design by Example" by Greg Wilson)</span>
+                <p class="select">Categories of readability/comprehension/usability</p>
+                <ul class="fragment">
+                    <li>Readable code / style / formatting</li>
+                    <li>Software design</li>
+                    <li>Comments / docstrings</li>
+                    <li>External documentation / manual</li>
+                    <li>Examples / tests</li>
+                    <li>Changelogs / READMEs / release notes</li>
+                    <li>APIs / interfaces</li>
+                    <li>CLIs / TUIs / GUIs</li>
+                    <li>Configuration</li>
+                    <li>Data formats</li>
+                </ul>
+                <p class="fragment mark">Lets go trough some things from each</p>
             </div>
         </section>
-        <section
-        data-auto-animate
-        >
+
+        <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Writing code for Humans to read and Machines to run</h3>
-                <img src="media/comprehension.svg" alt="" style="width: 40vw;">
                 <ul>
-                    <p>Lets unpack the above a bit</p>
-                    <li>TODO</li>
+                    <li>Readable code / style / formatting</li>
+                </ul>
+                <ul class="fragment">
+                    <p class="mark">Some considerations</p>
+                    <li>Variable / function / class names<br><span class="fragment highlight">$\mapsto$descriptive but concise</span></li>
+                    <li>Terms / abbreviations / (natural) language<br><span class="fragment  highlight">$\mapsto$</span></li>
+                    <li>Limiting line-length<br><span class="fragment highlight">$\mapsto$</span></li>
+                    <li>Using intermediate variables / step-by-step<br><span class="fragment  highlight">$\mapsto$</span></li>
                 </ul>
             </div>
         </section>
@@ -78,6 +99,61 @@ weight: 5
                     </code>
                 </pre>
 
+            </div>
+        </section>
+
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <ul>
+                    <li>Software design</li>
+                </ul>
+                <div class="fragment">
+                    <img src="media/comprehension.svg" alt="" style="width: 60vw;">
+                    <p>(Plot idea stolen from "Software Design by Example" by Greg Wilson)</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <ul>
+                    <li>Software design</li>
+                </ul>
+                <ul class="fragment">
+                    <p class="mark">Some considerations</p>
+                    <li>Function size</li>
+                    <li>Side-effects</li>
+                    <li></li>
+                </ul>
+            </div>
+        </section>
+
+
+        <section
+        data-auto-animate
+        data-background-image="media/code.png"
+        data-background-opacity="0.15"
+        >
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <img src="media/comprehension.svg" alt="" style="width: 40vw;">
+                <ul>
+                    <p>Lets unpack the above a bit</p>
+                    <li>TODO</li>
+                </ul>
             </div>
         </section>
 
