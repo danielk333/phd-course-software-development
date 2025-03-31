@@ -1,3 +1,4 @@
+import time
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -14,6 +15,7 @@ res_arrs = [
     np.empty((r.size, n), dtype=np.float64)
     for ind in range(samps)
 ]
+t0 = time.time()
 for ind, arr in enumerate(res_arrs):
     lib.logistic_sweep(
         n,
@@ -22,6 +24,9 @@ for ind, arr in enumerate(res_arrs):
         np.random.rand(len(r)),
         arr,
     )
+dt_ms = int((time.time() - t0)*1e3)
+print(f"Odin backend: {dt_ms} ms @ {n} steps for {samps} x {len(r)} clones")
+print(f"Approx {dt_ms*1e3 / (samps*len(r))} us / step")
 
 fig, ax = plt.subplots(figsize=(16, 9))
 scs = [
