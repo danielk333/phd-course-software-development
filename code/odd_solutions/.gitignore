@@ -1,2 +1,4 @@
 build/
+*.so
+__pycache__
 a_few_files

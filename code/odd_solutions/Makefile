@@ -1,3 +1,12 @@
+all:
+	echo "hello"
+
+logistic: logistic.so load_logistic.py
+	python load_logistic.py
+
+logistic.so: logistic/main.odin
+	odin build logistic -build-mode:dll
+
 run_find_dups: find_dups
 	./build/find_dups
 
