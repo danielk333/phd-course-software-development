@@ -65,10 +65,151 @@ weight: 5
                 <ul class="fragment">
                     <p class="mark">Some considerations</p>
                     <li>Variable / function / class names<br><span class="fragment highlight">$\mapsto$descriptive but concise</span></li>
-                    <li>Terms / abbreviations / (natural) language<br><span class="fragment  highlight">$\mapsto$</span></li>
-                    <li>Limiting line-length<br><span class="fragment highlight">$\mapsto$</span></li>
-                    <li>Using intermediate variables / step-by-step<br><span class="fragment  highlight">$\mapsto$</span></li>
+                    <li>Terms / abbreviations / (natural) language<br><span class="fragment  highlight">$\mapsto$clear and defined</span></li>
+                    <li>Limiting line-length<br><span class="fragment highlight">$\mapsto$~80-120 ish</span></li>
+                    <li>Using intermediate variables / step-by-step<br><span class="fragment  highlight">$\mapsto$when clarity trumps efficiency</span></li>
                 </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def f(x, y): ...
+
+                        # vs
+
+                        def true_anomaly(mean_anomaly, eccentricity): ...
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        class AbstractInterruptibleBatchPreparedStatementSetter: ...
+
+                        # vs (with some re-design)
+
+                        class StatementSetter: ...
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def gmf(zx, zr): ...
+
+                        # vs
+
+                        def generalized_match_function(
+                            received_signal,
+                            transmitted_signal,
+                        ): ...
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                    v[1:-1, 1:-1] = (vn[1:-1, 1:-1] - dt / dx * un[1:-1, 1:-1] * (vn[1:-1, 1:-1] - vn[1:-1, 0:-2]) - dt / dy * vn[1:-1, 1:-1] * (vn[1:-1, 1:-1] - vn[0:-2, 1:-1]) + nu * dt / dx**2 * (vn[1:-1, 2:] - 2 * vn[1:-1, 1:-1] + vn[1:-1, 0:-2]) + nu * dt / dy**2 * (vn[2:, 1:-1] - 2 * vn[1:-1, 1:-1] + vn[0:-2, 1:-1]))
+
+                        # vs
+                    v[1:-1, 1:-1] = (
+                         vn[1:-1, 1:-1] - 
+                         dt / dx * un[1:-1, 1:-1] *
+                         (vn[1:-1, 1:-1] - vn[1:-1, 0:-2]) -
+                         dt / dy * vn[1:-1, 1:-1] * 
+                         (vn[1:-1, 1:-1] - vn[0:-2, 1:-1]) + 
+                         nu * dt / dx**2 * 
+                         (vn[1:-1, 2:] - 2 * vn[1:-1, 1:-1] + vn[1:-1, 0:-2]) +
+                         nu * dt / dy**2 *
+                         (vn[2:, 1:-1] - 2 * vn[1:-1, 1:-1] + vn[0:-2, 1:-1])
+                    )
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        R[0, 0, ...] = np.cos(_Omega)*np.cos(_omega) - np.cos(_inc)*np.sin(_Omega)*np.sin(_omega)
+                        R[1, 0, ...] = np.cos(_omega)*np.sin(_Omega) + np.cos(_Omega)*np.cos(_inc)*np.sin(_omega)
+                        R[2, 0, ...] = np.sin(_inc)*np.sin(_omega)
+
+                        # vs (also faster in this case!)
+                        
+                        # 3 rotations 
+                        # First Long Asc. Node (Omega),
+                        c1 = np.cos(_Omega)
+                        s1 = np.sin(_Omega)
+
+                        # then Inclination
+                        c2 = np.cos(_inc)
+                        s2 = np.sin(_inc)
+
+                        # then Arg. Perihelion (omega)
+                        c3 = np.cos(_omega)
+                        s3 = np.sin(_omega)
+
+                        R[0, 0, ...] = c1*c3 - c2*s1*s3
+                        R[1, 0, ...] = c3*s1 + c1*c2*s3
+                        R[2, 0, ...] = s2*s3
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def foo(x): ...
+                            """Den här dokumentationen kan bara läsas av de som kan svenska!
+                            """
+
+                        # vs
+
+                        def foo(x): ...
+                            """This documentation can only be read by people who know swedish!
+                            """
+                    </code>
+                </pre>
             </div>
         </section>
 
@@ -77,6 +218,9 @@ weight: 5
         >
             <div class="centered-container">
                 <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                </ul>
                 <p>Lets test some practical considerations</p>
                 <ul>
                     <li class="fragment">Install <a href="https://flake8.pycqa.org/en/latest/">flake8</a> or integrate it into your editor</li>
@@ -87,21 +231,23 @@ weight: 5
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Writing code for Humans to read and Machines to run</h3>
-                <p>Lets look at some actual code:</p>
-                <pre class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-python">
-
-                    </code>
-                </pre>
-
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                    <li>Software design</li>
+                    <li>Comments / docstrings</li>
+                    <li>External documentation / manual</li>
+                    <li>Examples / tests</li>
+                    <li>Changelogs / READMEs / release notes</li>
+                    <li>APIs / interfaces</li>
+                    <li>CLIs / TUIs / GUIs</li>
+                    <li>Configuration</li>
+                    <li>Data formats</li>
+                </ul>
             </div>
         </section>
-
 
         <section data-auto-animate>
             <div class="centered-container">
@@ -116,6 +262,21 @@ weight: 5
             </div>
         </section>
 
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <ul>
+                    <li>Software design</li>
+                </ul>
+                <img src="media/comprehension.svg" alt="" style="width: 40vw;">
+                <ul>
+                    <p>Lets unpack the above a bit</p>
+                    <li>TODO</li>
+                </ul>
+            </div>
+        </section>
 
         <section data-auto-animate>
             <div class="centered-container">
@@ -133,6 +294,51 @@ weight: 5
         </section>
 
 
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <ul>
+                    <li>Comments / docstrings</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        # first case: e and n vector angle
+                        ez_neg = np.logical_and(e[2, :] < 0.0, eg_ig)
+                        o[3, ez_neg] = 2.0*np.pi - o[3, ez_neg]
+
+                        # second case: ex component
+                        # prograde
+                        ey_neg = np.logical_and(o[2, :] < np.pi*0.5, eg_il)
+                        ey_neg2 = np.logical_and(ey_neg, e[1, :] < 0.0)
+                        o[3, ey_neg2] = 2.0*np.pi - o[3, ey_neg2]
+
+                        # retrograde
+                        ey_neg = np.logical_and(o[2, :] > np.pi*0.5, eg_il)
+                        ey_neg2 = np.logical_and(ey_neg, e[1, :] >= 0.0)
+                        o[3, ey_neg2] = 2.0*np.pi - o[3, ey_neg2]
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
+                <p>Lets look at some actual code:</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+
+                    </code>
+                </pre>
+
+            </div>
+        </section>
+
+
         <section
         data-auto-animate
         data-background-image="media/code.png"
@@ -144,18 +350,7 @@ weight: 5
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Writing code for Humans to read and Machines to run</h3>
-                <img src="media/comprehension.svg" alt="" style="width: 40vw;">
-                <ul>
-                    <p>Lets unpack the above a bit</p>
-                    <li>TODO</li>
-                </ul>
-            </div>
-        </section>
+
 
         <section
         data-auto-animate
