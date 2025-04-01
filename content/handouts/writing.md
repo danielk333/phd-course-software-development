@@ -68,6 +68,17 @@ However, there are other sets of rules that might be good to read trough just to
 - [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) - "This project aims to be a better changelog convention."
 - [Git tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) - How to tag in git
 
+## Complexity
+
+Another static code analyzer for python is [radon](https://radon.readthedocs.io/en/latest/). It measures
+
+> raw metrics: SLOC, comment lines, blank lines, &c.
+> Cyclomatic Complexity (i.e. McCabe’s Complexity)
+> Halstead metrics (all of them)
+> the Maintainability Index (a Visual Studio metric)
+
+One of the metric mentioned above is [Cyclomatic complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity). This concept basically means how many linearly independent paths you can take trough the code you executed. This is something that might pop up if you have an LSP that measures it and it usually means that you have a _lot_ of branching and code-calling going on in your code. Sometimes this is just a necessary evil, but often it can be reduced to make the calling structure of your code simpler.
+
 ## Examples
 
 Writing good examples is a bit of an art and an exercise in knowing who your user base is. I would recommended some simple guidelines to start with:
