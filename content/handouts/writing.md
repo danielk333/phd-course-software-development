@@ -32,6 +32,8 @@ The [Don't repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yoursel
 
 ## Rules and guidelines
 
+TODO
+
 https://spinroot.com/gerard/pdf/P10.pdf
 
 ## Homework assignments
