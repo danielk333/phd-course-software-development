@@ -6,7 +6,7 @@ import ctypes as c
 FLAGS_W = "aligned, c_contiguous, writeable"
 FLAGS_RO = "aligned, c_contiguous"
 vec_type_ro = npct.ndpointer(np.float64, ndim=1, flags=FLAGS_RO)
-mat_type_rw = npct.ndpointer(np.float64, ndim=2, flags=FLAGS_RO)
+mat_type_rw = npct.ndpointer(np.float64, ndim=2, flags=FLAGS_W)
 
 HERE = pathlib.Path(__file__).parent
 lib = c.CDLL(HERE / "logistic.so")
