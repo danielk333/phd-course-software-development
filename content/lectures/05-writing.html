@@ -105,7 +105,7 @@ weight: 5
                     <li>
                         Limiting line-length<br /><span
                             class="fragment highlight"
-                            >$\mapsto$~80-120 ish</span
+                            >$\mapsto$consensus = 80-120 ish</span
                         >
                     </li>
                     <li>
@@ -189,7 +189,7 @@ weight: 5
                 <ul>
                     <li>Readable code / style / formatting</li>
                 </ul>
-                <pre class="fragment show-code">
+                <pre data-id="code-animation1" class="fragment show-code">
                     <code data-line-numbers data-trim class="language-python">
                     v[1:-1, 1:-1] = (vn[1:-1, 1:-1] - dt / dx * un[1:-1, 1:-1] * (vn[1:-1, 1:-1] - vn[1:-1, 0:-2]) - dt / dy * vn[1:-1, 1:-1] * (vn[1:-1, 1:-1] - vn[0:-2, 1:-1]) + nu * dt / dx**2 * (vn[1:-1, 2:] - 2 * vn[1:-1, 1:-1] + vn[1:-1, 0:-2]) + nu * dt / dy**2 * (vn[2:, 1:-1] - 2 * vn[1:-1, 1:-1] + vn[0:-2, 1:-1]))
 
@@ -218,30 +218,23 @@ weight: 5
                 <ul>
                     <li>Readable code / style / formatting</li>
                 </ul>
-                <pre class="fragment show-code">
+                <pre data-id="code-animation1" class="show-code">
                     <code data-line-numbers data-trim class="language-python">
-                        R[0, 0, ...] = np.cos(_Omega)*np.cos(_omega) - np.cos(_inc)*np.sin(_Omega)*np.sin(_omega)
-                        R[1, 0, ...] = np.cos(_omega)*np.sin(_Omega) + np.cos(_Omega)*np.cos(_inc)*np.sin(_omega)
-                        R[2, 0, ...] = np.sin(_inc)*np.sin(_omega)
+                    v[1:-1, 1:-1] = (vn[1:-1, 1:-1] - dt / dx * un[1:-1, 1:-1] * (vn[1:-1, 1:-1] - vn[1:-1, 0:-2]) - dt / dy * vn[1:-1, 1:-1] * (vn[1:-1, 1:-1] - vn[0:-2, 1:-1]) + nu * dt / dx**2 * (vn[1:-1, 2:] - 2 * vn[1:-1, 1:-1] + vn[1:-1, 0:-2]) + nu * dt / dy**2 * (vn[2:, 1:-1] - 2 * vn[1:-1, 1:-1] + vn[0:-2, 1:-1]))
 
-                        # vs (also faster in this case!)
-                        
-                        # 3 rotations 
-                        # First Long Asc. Node (Omega),
-                        c1 = np.cos(_Omega)
-                        s1 = np.sin(_Omega)
+                    # vs
+                    x_dot = dt / dx * un[1:-1, 1:-1]
+                    y_dot = dt / dy * vn[1:-1, 1:-1]
+                    v_diff_x = vn[1:-1, 1:-1] - vn[1:-1, 0:-2]
+                    v_diff_y = vn[1:-1, 1:-1] - vn[0:-2, 1:-1]
+                    v_diff_xy = vn[1:-1, 2:] - 2 * vn[1:-1, 1:-1] + vn[1:-1, 0:-2]
+                    v_diff_yx = vn[2:, 1:-1] - 2 * vn[1:-1, 1:-1] + vn[0:-2, 1:-1]
 
-                        # then Inclination
-                        c2 = np.cos(_inc)
-                        s2 = np.sin(_inc)
-
-                        # then Arg. Perihelion (omega)
-                        c3 = np.cos(_omega)
-                        s3 = np.sin(_omega)
-
-                        R[0, 0, ...] = c1*c3 - c2*s1*s3
-                        R[1, 0, ...] = c3*s1 + c1*c2*s3
-                        R[2, 0, ...] = s2*s3
+                    v[1:-1, 1:-1] += (
+                         - x_dot * v_diff_x - y_dot * v_diff_y
+                         + nu * dt / dx**2 * v_diff_xy
+                         + nu * dt / dy**2 * v_diff_yx
+                    )
                     </code>
                 </pre>
             </div>
@@ -330,6 +323,9 @@ weight: 5
                 <ul>
                     <li>Software design</li>
                 </ul>
+                <p class="fragment">
+                    This is a tricky one... but there is an attempt
+                </p>
                 <div class="fragment">
                     <img
                         src="media/comprehension.svg"
@@ -352,10 +348,17 @@ weight: 5
                 <ul>
                     <li>Software design</li>
                 </ul>
-                <img src="media/comprehension.svg" alt="" style="width: 40vw" />
-                <ul>
-                    <p>Lets unpack the above a bit</p>
-                    <li>TODO</li>
+                <img src="media/comprehension.svg" alt="" style="width: 35vw" />
+                <p>Lets unpack the above a bit</p>
+                <ul class="fragment">
+                    <li>Your comprehension of the code/project/module/...</li>
+                    <li>Exports of course comprehend more</li>
+                    <li>Peak is further into abstraction</li>
+                    <li>But it still dips at both ends!</li>
+                    <li class="fragment mark">
+                        You maybe noticed during practical:<br />interfaces and
+                        collaboration!
+                    </li>
                 </ul>
             </div>
         </section>
@@ -368,11 +371,84 @@ weight: 5
                 <ul>
                     <li>Software design</li>
                 </ul>
+                <img src="media/comprehension.svg" alt="" style="width: 30vw" />
+                <p>
+                    Well defined interfaces are easy to grasp and use<br />
+                    The interface to the entire <code>frames</code> sub-package
+                </p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def convert(t, states, in_frame, out_frame, **transform_kwargs):
+                            ...
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        from sorts import frames
+                        ...
+                        states = frames.convert(t, states, "TEME", "ITRS")
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>Software design</li>
+                </ul>
+                <img src="media/comprehension.svg" alt="" style="width: 30vw" />
                 <ul class="fragment">
-                    <p class="mark">Some considerations</p>
-                    <li>Function size</li>
-                    <li>Side-effects</li>
-                    <li></li>
+                    <p class="mark">Some more considerations</p>
+                    <li class="fragment">
+                        Function size<br />
+                        not too short (jumping everywhere)<br />
+                        not too long (hard to grasp)
+                    </li>
+                    <li class="fragment">
+                        Side-effects <br />
+                        limit them! (hard to follow)
+                    </li>
+                    <li class="fragment">
+                        Avoid cyclic complexity! <br />
+                        clear separation is always easier to grasp and debug
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>Software design</li>
+                </ul>
+                <img src="media/comprehension.svg" alt="" style="width: 35vw" />
+                <p class="select">Let us re-visit during the design lecture!</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                    <li>Software design</li>
+                    <li>Comments / docstrings</li>
+                    <li>External documentation / manual</li>
+                    <li>Examples / tests</li>
+                    <li>Changelogs / READMEs / release notes</li>
+                    <li>APIs / interfaces</li>
+                    <li>CLIs / TUIs / GUIs</li>
+                    <li>Configuration</li>
+                    <li>Data formats</li>
                 </ul>
             </div>
         </section>
@@ -385,160 +461,33 @@ weight: 5
                 <ul>
                     <li>Comments / docstrings</li>
                 </ul>
-                <pre class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-python">
-                        # first case: e and n vector angle
-                        ez_neg = np.logical_and(e[2, :] < 0.0, eg_ig)
-                        o[3, ez_neg] = 2.0*np.pi - o[3, ez_neg]
+                <ul class="fragment" style="width: 50vw">
+                    <p class="mark">Some recommendations</p>
+                    <li>
+                        Don't write useless comments <br />Write readable code
+                        instead
+                    </li>
+                    <pre class="fragment show-code">
+                        <code data-line-numbers data-trim class="language-python">
+                            # Add a and b
+                            c = a + b
+                        </code>
+                    </pre>
+                    <li class="fragment">Write a docstring when needed</li>
+                    <pre class="fragment show-code">
+                        <code data-line-numbers data-trim class="language-python">
+                            def complex_doppler_drift_phasor(...):
+                                """Calculates the phase offsets (as complex numbers)
+                                that a signal gets shifted by when the Doppler shift is
+                                drifting linearly.
 
-                        # second case: ex component
-                        # prograde
-                        ey_neg = np.logical_and(o[2, :] < np.pi*0.5, eg_il)
-                        ey_neg2 = np.logical_and(ey_neg, e[1, :] < 0.0)
-                        o[3, ey_neg2] = 2.0*np.pi - o[3, ey_neg2]
-
-                        # retrograde
-                        ey_neg = np.logical_and(o[2, :] > np.pi*0.5, eg_il)
-                        ey_neg2 = np.logical_and(ey_neg, e[1, :] >= 0.0)
-                        o[3, ey_neg2] = 2.0*np.pi - o[3, ey_neg2]
-                    </code>
-                </pre>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">
-                    Writing code for Humans to read and Machines to run
-                </h3>
-                <p>Lets look at some actual code:</p>
-                <pre class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-python">
-
-                    </code>
-                </pre>
-            </div>
-        </section>
-
-        <section
-            data-auto-animate
-            data-background-image="media/code.png"
-            data-background-opacity="0.15"
-        >
-            <div class="centered-container">
-                <h3 class="title">
-                    Writing code for Humans to read and Machines to run
-                </h3>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">
-                    Writing code for Humans to read and Machines to run
-                </h3>
-                <p>
-                    Constant tug of war between human cognitive ease and
-                    computer efficiency
-                </p>
-                <pre class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-python">
-
-                    </code>
-                </pre>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">
-                    Writing code for Humans to read and Machines to run
-                </h3>
-                <p>Readable code over comments</p>
-                <pre class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-python">
-
-                    </code>
-                </pre>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">
-                    Writing code for Humans to read and Machines to run
-                </h3>
-                <p>the README</p>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">
-                    Writing code for Humans to read and Machines to run
-                </h3>
-                <p>changelogs / git tags - help people find their way</p>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">
-                    Writing code for Humans to read and Machines to run
-                </h3>
-                <p>who is your reader?</p>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">
-                    Writing code for Humans to read and Machines to run
-                </h3>
-                <p>type hinting vs docstrings</p>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">
-                    Writing code for Humans to read and Machines to run
-                </h3>
-                <p>Docstrings, examples, and tests</p>
-                <pre class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-python">
-
-                    </code>
-                </pre>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">
-                    Writing code for Humans to read and Machines to run
-                </h3>
-                <p>Well defined interfaces are easy to grasp and use</p>
-                <pre class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-python">
-
-                    </code>
-                </pre>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">
-                    Writing code for Humans to read and Machines to run
-                </h3>
-                <p>markup languages to use</p>
-                <p>recommendation: markdown!</p>
-                <ul>
-                    <li>rst</li>
-                    <li>html</li>
-                    <li>md</li>
-                    <li>typst</li>
+                                """
+                        </code>
+                    </pre>
+                    <li class="fragment">
+                        Don't forget module level docstrings!
+                    </li>
+                    <li class="fragment">Use a standard docstring format</li>
                 </ul>
             </div>
         </section>
@@ -548,7 +497,28 @@ weight: 5
                 <h3 class="title">
                     Writing code for Humans to read and Machines to run
                 </h3>
-                <p>documentation styles in python</p>
+                <ul>
+                    <li>Comments / docstrings</li>
+                </ul>
+                <ul style="width: 50vw; padding-top: 1em">
+                    <li class="highlight">Use a standard docstring format</li>
+                    <li class="fragment">type hinting vs docstrings - why not both or neither</li>
+                    <li class="fragment">
+                        My recommendation:
+                        <a
+                            href="https://numpydoc.readthedocs.io/en/latest/format.html#"
+                            >numpydoc</a
+                        >
+                    </li>
+                    <li class="fragment">
+                        Lets look at an
+                        <a
+                            href="https://numpydoc.readthedocs.io/en/latest/example.html"
+                            >example</a
+                        >
+                    </li>
+                </ul>
+                <p class="fragment">Soooo "rendering"?</p>
             </div>
         </section>
 
@@ -557,12 +527,49 @@ weight: 5
                 <h3 class="title">
                     Writing code for Humans to read and Machines to run
                 </h3>
-                <p>building parallel docs</p>
                 <ul>
-                    <li>mkdocs</li>
+                    <li>Readable code / style / formatting</li>
+                    <li>Software design</li>
+                    <li>Comments / docstrings</li>
+                    <li>External documentation / manual</li>
+                    <li>Examples / tests</li>
+                    <li>Changelogs / READMEs / release notes</li>
+                    <li>APIs / interfaces</li>
+                    <li>CLIs / TUIs / GUIs</li>
+                    <li>Configuration</li>
+                    <li>Data formats</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>External documentation / manual</li>
+                </ul>
+                <p class="fragment highlight">
+                    Use a static website / document builder with a markup
+                    language
+                </p>
+                <ul class="fragment">
+                    <p class="mark">markup languages to use</p>
+                    <li>(recommendation) Markdown</li>
+                    <li>reStructuredText</li>
+                    <li>HTML</li>
+                    <li>
+                        typst <a href="https://github.com/typst/typst">link</a>
+                    </li>
+                </ul>
+                <ul class="fragment">
+                    <p class="mark">Documentation building</p>
+                    <li>(recommendation) mkdocs</li>
                     <li>sphinx</li>
                     <li>pandoc</li>
                     <li>hugo</li>
+                    <li>...</li>
                 </ul>
             </div>
         </section>
@@ -572,12 +579,249 @@ weight: 5
                 <h3 class="title">
                     Writing code for Humans to read and Machines to run
                 </h3>
-                <p>examples</p>
                 <ul>
-                    <li>docstring examples</li>
-                    <li>docs examples</li>
-                    <li>examples folder</li>
+                    <li>External documentation / manual</li>
                 </ul>
+                <p class="highlight">
+                    Use a static website / document builder with a markup
+                    language
+                </p>
+                <p>
+                    <a href="https://danielk.developer.irf.se/software/"
+                        >Examples!</a
+                    >
+                </p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                    <li>Software design</li>
+                    <li>Comments / docstrings</li>
+                    <li>External documentation / manual</li>
+                    <li>Examples / tests</li>
+                    <li>Changelogs / READMEs / release notes</li>
+                    <li>APIs / interfaces</li>
+                    <li>CLIs / TUIs / GUIs</li>
+                    <li>Configuration</li>
+                    <li>Data formats</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>Examples / tests</li>
+                </ul>
+                <ul>
+                    <p class="highlight">Accelerates understanding!</p>
+                    <li>Make an <code>examples/</code> folder</li>
+                    <li>
+                        Find a balance - too complicated examples hard to
+                        grasp<br />trivial examples don't add anything
+                    </li>
+                    <li>Write an example in the docstring</li>
+                    <li>Tests also show usage!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                    <li>Software design</li>
+                    <li>Comments / docstrings</li>
+                    <li>External documentation / manual</li>
+                    <li>Examples / tests</li>
+                    <li>Changelogs / READMEs / release notes</li>
+                    <li>APIs / interfaces</li>
+                    <li>CLIs / TUIs / GUIs</li>
+                    <li>Configuration</li>
+                    <li>Data formats</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>Changelogs / READMEs / release notes</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li class="fragment">
+                        <span class="mark">Chagenlogs:</span> helps users keep
+                        up to date
+                    </li>
+                    <li class="fragment">
+                        <span class="mark">READMEs:</span> provides the entry
+                        point!
+                    </li>
+                    <li class="fragment">
+                        <span class="mark">Release notes:</span> helps users
+                        make decisions
+                    </li>
+                    <li class="fragment">
+                        <span class="mark">Git tags:</span> helps users
+                        find their way
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                    <li>Software design</li>
+                    <li>Comments / docstrings</li>
+                    <li>External documentation / manual</li>
+                    <li>Examples / tests</li>
+                    <li>Changelogs / READMEs / release notes</li>
+                    <li>APIs / interfaces</li>
+                    <li>CLIs / TUIs / GUIs</li>
+                    <li>Configuration</li>
+                    <li>Data formats</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>APIs / interfaces</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li class="fragment">Describe your APIs!</li>
+                    <li class="fragment">Describe your interfaces!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                    <li>Software design</li>
+                    <li>Comments / docstrings</li>
+                    <li>External documentation / manual</li>
+                    <li>Examples / tests</li>
+                    <li>Changelogs / READMEs / release notes</li>
+                    <li>APIs / interfaces</li>
+                    <li>CLIs / TUIs / GUIs</li>
+                    <li>Configuration</li>
+                    <li>Data formats</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>CLIs / TUIs / GUIs</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li class="fragment">
+                        <span class="mark">CLI:</span> use
+                        <code>argparse</code> or standard package<br />
+                        write the help strings!
+                    </li>
+                    <li class="fragment">
+                        <span class="mark">TUIs:</span> remember to add a in-TUI
+                        help!<br />(e.g.
+                        <a href="https://urwid.org/index.html">urwid</a>)
+                    </li>
+                    <li class="fragment">
+                        <span class="mark">GUIs:</span> never force
+                        "clicking"<br />where programmatic interface should be
+                        available,<br />add a "manual" or video tutorial or
+                        similar
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>Readable code / style / formatting</li>
+                    <li>Software design</li>
+                    <li>Comments / docstrings</li>
+                    <li>External documentation / manual</li>
+                    <li>Examples / tests</li>
+                    <li>Changelogs / READMEs / release notes</li>
+                    <li>APIs / interfaces</li>
+                    <li>CLIs / TUIs / GUIs</li>
+                    <li>Configuration</li>
+                    <li>Data formats</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <ul>
+                    <li>Configuration</li>
+                    <li>Data formats</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li class="fragment">Use human readable configs</li>
+                    <li class="fragment">Use standard formats</li>
+                    <li class="fragment">Think why plain-text / binary</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <p>Last but not least:</p>
+                <p class="fragment select">who is your reader?</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">
+                    Writing code for Humans to read and Machines to run
+                </h3>
+                <p class="mark">Further study and homework</p>
+                <p class="select">Let's check out the handout above!</p>
             </div>
         </section>
     </div>
