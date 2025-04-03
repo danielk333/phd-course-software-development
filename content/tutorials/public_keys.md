@@ -39,7 +39,7 @@ Follow the [Use SSH keys to communicate with GitLab](https://docs.gitlab.com/use
 To share your public key when someone asks for it, you can either:
 
 1. Send the `https://github.com/username.keys` link
-1. Copy the local one `cat ~/.ssh/id_KEY_TYPE.pub` and copy the text from the terminal
+1. Print the one with `cat ~/.ssh/id_KEY_TYPE.pub` and copy the text from the terminal
     - Or be fancy and use `cat ~/.ssh/id_KEY_TYPE.pub | xclip -selection clipboard` for X11
     - or `cat ~/.ssh/id_KEY_TYPE.pub | wl-copy` for Wayland, to get it directly into the clipboard
 
