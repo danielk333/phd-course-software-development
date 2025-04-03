@@ -19,7 +19,9 @@ Dreams of Autonomy - Stow has forever changed the way I manage my dotfiles
 
 As a hobby project I have built [my own dotfiles manager](https://github.com/danielk333/dotfiles-installer) that essentially does the same thing but with additional options to have diverging dotfiles between systems and installation of extra things. Doing these type of projects allow me to try things that I usually do not get exposed to and this has helped me a lot. My next thing to do is add in this hobby project is a terminal UI using [urwid](https://urwid.org/) to learn how `urwid` works since it could be useful in making TUIs for interacting with some of my analysis pipelines, but I don't want to try it on something that complicated until I understand what it is and how it works and if it would be useful.
 
-## vim-motions
+## Editors
+
+### vim-motions
 
 A good article about the power of vim-motions, regardless of which editor you use, is 
 [vim is not about speed](https://levelup.gitconnected.com/vim-is-not-about-speed-88968ae4283c).
@@ -32,7 +34,7 @@ And I like this video series on advanced motions:
 
 {{< youtube qZO9A5F6BZs >}}
 
-## VsCode
+### VsCode
 
 Currently my [Code-OSS](https://github.com/microsoft/vscode) uses these extension
 
@@ -59,7 +61,7 @@ I really like `ErrorLens` together with the `ms-python` suite as it gives me dir
 
 There are a TON of tutorials on VsCode due to its popularity so I wont link any here.
 
-## Sublime Text
+### Sublime Text
 
 Below are a few good starting points for beginning to master Sublime text posted on a Youtube channel dedicated to Sublime Text.
 
@@ -67,11 +69,21 @@ Below are a few good starting points for beginning to master Sublime text posted
 
 {{< youtube VuyDseaaJl8 >}}
 
-## NeoVim
+### NeoVim
 
 Below is an example starting setup of `nvim` with most of the bells and whistles that you would want:
 
 {{< youtube w7i4amO_zaE >}}
+
+[This blogpost](https://www.josean.com/posts/neovim-linting-and-formatting) also provides a nice tutorial on how to setup several aspects of NeoVim manually without using a distribution.
+
+Some other useful things to know about `nvim` that you might not just discover while learning the editor are:
+
+- `lcd %:h` - Local `cd` to folder (`:h`) of current file (`%`)
+- `gf` - goto file under cursor, the `<cfile>` "variable" does the same in command mode, so e.g. `:e <cfile>` would edit that.
+- `:mksession!session.vim` will make save the current session to the file `session.vim`, the `!` causes overwrite if it exists
+- **More things will be added here as time passes!**
+
 
 ## Homework assignments
 
