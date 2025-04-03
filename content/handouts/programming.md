@@ -4,6 +4,10 @@ lecture: "02-programming"
 weight: 2
 ---
 
+## Python project templates
+
+{{< tutorial python_project "For python project templates, see" >}}
+
 ## Learning Python
 
 Below is a collection of resources for learning to program in Python!

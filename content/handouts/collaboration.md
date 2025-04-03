@@ -13,46 +13,44 @@ There are also a few websites that go trough a lot of material on git workflows:
 - [Patterns for Managing Source Code Branches](https://martinfowler.com/articles/branching-patterns.html#BasePatterns)
 - [Trunk-Based Development](https://trunkbaseddevelopment.com/)
 
-## Python project template
+## Python project templates
 
-> [!Notera]
-> I have made a small python project template that contains a variaty of different settings structures and configurations, check it out here: [python-project-template](https://gitlab.irf.se/danielk/python-project-template). The website for this repository is published [here](https://danielk.developer.irf.se/python-project-template).
-
-> [!Notera]
-> I have also made a small example repository for project code that should _not_ be a package, but rather just scripts here: [python-scripts-template](https://gitlab.irf.se/danielk/python-scripts-template). It contains a different set of interesting features.
-
+{{< tutorial python_project "For python project templates, see" >}}
 
 ## Git material
 
-A interactive game to learn git!
+### Oh-my-git
+
+A interactive game to learn git! Highly recommended!
 
 - [Oh-my-git](https://ohmygit.org/)
+
+### CodeRefinery workshop
 
 3.2 Git collaborative - CodeRefinery 2025 Mar
 {{< youtube 4Uf7eVSCZeU >}}
 
 Material: [Code Refinery git collaborative ](https://coderefinery.github.io/git-collaborative/)
 
+### Other resources
+
 A few other good resources are:
 
 - [Good set of standard `.gitignore` files](https://github.com/github/gitignore)
-
+- **More to be added here**
 
 ## License
 
 Having a license is also vital to collaboration. To learn more I very much recommend the [choosealicense.com](https://choosealicense.com/) website.
 
-
 ## Talks about trunk based development
 
+code.talks 2023 - Our journey from Gitflow to Trunk Based Development
+{{< youtube DDkjBqlks40 >}}
 
-
+Also the start of this talk is a nice overview of why long lived branches can be problematic: [Real Programmers Commit To Master - Jakob Ehn](https://www.youtube.com/watch?v=hL1OZfgoZGk).
 
 ## Homework
-
-### Recommended watching/listening
-
-
 
 ### Recommended listening
 
