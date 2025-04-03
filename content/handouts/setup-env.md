@@ -14,7 +14,7 @@ This handout collects much relevant information about what to consider when sett
 
 ## First time Python user?
 
-{{< tutorial python "For a short Python environment tutorial, see" >}}
+{{< tutorial python_env "For a short Python environment tutorial, see" >}}
 
 Code Refinery also has some great tutorials on [setting up a starting environment](https://coderefinery.github.io/installation/), including installing and setting up [git](https://git-scm.com/) and [github
 ](https://github.com/), editors such as VSCode and vim, and [anaconda](https://www.anaconda.com/). Although for this course, I do not recommended anaconda for beginners as we aim to directly work with environments as a starting point and anaconda might be something you choose to use later on. 
