@@ -42,15 +42,17 @@ A few other good resources are:
 
 Having a license is also vital to collaboration. To learn more I very much recommend the [choosealicense.com](https://choosealicense.com/) website.
 
+
+## Talks about trunk based development
+
+
+
+
 ## Homework
 
 ### Recommended watching/listening
 
-Real Programmers Commit To Master - Jakob Ehn
-{{< youtube hL1OZfgoZGk >}}
 
-code.talks 2023 - Our journey from Gitflow to Trunk Based Development
-{{< youtube DDkjBqlks40 >}}
 
 ### Recommended listening
 
