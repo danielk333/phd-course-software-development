@@ -46,6 +46,10 @@ Well designed and maintained code can change the course of an entire scientific 
 
 **This course aims to teach the tools and skills needed to navigate the modern software oriented world of scientific research.**
 
+## Getting started
+
+{{< tutorial skill_tree "Get an achievement list to track milestones on your journey! See" >}}
+
 ## Prerequisites
 
 To take full use of this course the participant should:
@@ -93,3 +97,5 @@ Consider the case of laboratory work, the first thing we get comfortable with is
 Imagine reading a math proof where suddenly the author just states “well, this next part of the proof is in my desk. But, its mine and not nicely typed out so I rather not share it, just take my word for it that it looks right when i read it.”. Most would reject that proof as being completely untrustworthy! 
 
 When the code is not described accurately enough in a paper, the code is not publicly available, and/or the code is so obscure that it cannot be used by any independent research group: independent reproducibility and verification is impossible (see [Replication crisis](https://en.wikipedia.org/wiki/Replication_crisis)). And even if the algorithms / equations are described correctly in the published paper so that replication of method is possible, this is no guarantee that replication of results is possible since the code could still be faulty. This concept applies to both data science and simulations. 
+
+
