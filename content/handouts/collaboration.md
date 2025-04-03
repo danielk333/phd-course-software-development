@@ -54,6 +54,29 @@ code.talks 2023 - Our journey from Gitflow to Trunk Based Development
 
 Also the start of this talk is a nice overview of why long lived branches can be problematic: [Real Programmers Commit To Master - Jakob Ehn](https://www.youtube.com/watch?v=hL1OZfgoZGk).
 
+
+## Creating your own "remote"
+
+First you are going to need what is called a "bare" repository at the remote site that you have ssh
+access to:
+
+```bash
+git init --bare name_of_my_repo.git
+```
+
+This command will create an empty repository in a folder `name_of_my_repo.git` that is specialized for being a remote repository.
+
+You can then add this repository as a remote on you local machine in the project `name_of_my_repo` with:
+
+```bash
+git remote add my_server ssh://username@hostname:port/path/to/name_of_my_repo.git
+```
+
+And that is it! As long as you can ssh to the server `username@hostname:port`, you can git push and
+pull like any other git hosting platform!
+
+For a full guide, have a look at [Getting Git on a Server](https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server).
+
 ## Homework
 
 ### Recommended listening
