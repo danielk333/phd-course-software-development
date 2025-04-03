@@ -17,6 +17,10 @@ There are also a few websites that go trough a lot of material on git workflows:
 
 {{< tutorial python_project "For python project templates, see" >}}
 
+## Public keys
+
+{{< tutorial public_keys "For instructions on how to get your public key, see" >}}
+
 ## Git material
 
 ### Oh-my-git
