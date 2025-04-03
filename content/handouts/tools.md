@@ -82,6 +82,7 @@ Some other useful things to know about `nvim` that you might not just discover w
 - `lcd %:h` - Local `cd` to folder (`:h`) of current file (`%`)
 - `gf` - goto file under cursor, the `<cfile>` "variable" does the same in command mode, so e.g. `:e <cfile>` would edit that.
 - `:mksession!session.vim` will make save the current session to the file `session.vim`, the `!` causes overwrite if it exists
+- `:save {file}` will save the current buffer under the new name `{file}` and change the buffer to point to that file
 - **More things will be added here as time passes!**
 
 
