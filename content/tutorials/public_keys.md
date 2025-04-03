@@ -22,7 +22,8 @@ ls ~/.ssh
 ```
 
 If any of the results end in `.pub`, that is your public key. The name of the key is usually the
-type of key it is by default. For example mine is called `id_ed25519.pub`.
+type of key it is (that is the default). For example mine is called `id_ed25519.pub` because it uses
+the [Ed25519](https://en.wikipedia.org/wiki/EdDSA#Ed25519) schema.
 
 > [!Varning]
 > Do not share, upload, version control or otherwise send your PRIVATE key in any way. The private
