@@ -7,13 +7,15 @@ python process.py "2 3 + 2 3 + +"
 """
 
 import sys
+import re
 
-FUNCTIONS = {}
+OPERATORS = {}
+DECIMAL = "."
 
 
 def add_function(operator):
     def decorator(func):
-        FUNCTIONS[operator] = func
+        OPERATORS[operator] = func
         return func
 
     return decorator
@@ -26,37 +28,71 @@ def add(a, b):
 
 @add_function("*")
 def multiply(a, b):
-    raise NotImplementedError("TODO")
+    raise NotImplementedError()
 
 
-def parser(tokens: list[str | int]):
+@add_function("/")
+def divison(a, b):
+    raise NotImplementedError()
+
+
+@add_function("%")
+def modulus(a, b):
+    raise NotImplementedError()
+
+
+def chunk_parse(chunk: str, token, stack: list[float | int]):
+    if len(chunk) > 0:
+        num = int(chunk) if chunk.isdecimal() else float(chunk)
+        stack.append(num)
+
+    if token in OPERATORS:
+        if len(stack) < 2:
+            raise RuntimeError(
+                "Cannot perform calculation, panicing\n"
+                "binary operation did not get enough inputs"
+            )
+        stack.append(OPERATORS[token](stack.pop(-1), stack.pop(-1)))
+
+
+def calculate(expression: str) -> float | int:
     """Parses the input token stream assuming reverse polish notation."""
-    # TODO: this is quite inefficient, we are doing too many loops
-    # tokenizing could group for us
-    while len(tokens) > 1:
-        for ind, token in enumerate(tokens):
-            if token in FUNCTIONS:
-                a = tokens.pop(ind - 2)
-                b = tokens.pop(ind - 2)
-                op = tokens.pop(ind - 2)
-                result = FUNCTIONS[op](a, b)
-                tokens.insert(ind - 2, result)
-                print(f" {a} {op} {b} = {result} ({tokens})")
-                break
-    return tokens[0]
+    last_ind = 0
+    stack: list[float | int] = []
+    breaks = list(OPERATORS.keys()) + [" "]
+    for ind, token in enumerate(expression):
+        if token in breaks:
+            chunk = expression[last_ind:ind].strip()
+            chunk_parse(chunk, token, stack)
+            last_ind = ind + 1
 
-
-def tokenize(expression: str) -> list[str | int]:
-    tokens = [
-        token if token in FUNCTIONS else int(token)
-        for token in expression.strip().split(" ")
-    ]
-    return tokens
+    if len(stack) != 1:
+        raise RuntimeError("Too many numbers, panicing")
+    return stack[0]
 
 
 if __name__ == "__main__":
-    exp = " ".join(sys.argv[1:])
-    # TODO: should probably use argparse
-    tokens = tokenize(exp)
-    result = parser(tokens)
-    print(f"{exp} =  {result}")
+    if len(sys.argv) == 1:
+        print(f"usage {__file__}" + "{CALCULATION}")
+        print("\nA calculator that uses reverse polish notation")
+        print("For example '3 4 + 2 *' is = 14")
+
+    calculation = " ".join(sys.argv[1:])
+    if len(calculation) == 0:
+        raise ValueError("Cannot do calculation on a length 0")
+
+    syntax_check = re.compile(
+        r"(?!1|2|3|4|5|6|7|8|9|0|"
+        + r"|".join([rf"\{op}" for op in OPERATORS])
+        + rf"|\s|\{DECIMAL})."
+    )
+    if syntax_check.search(calculation):
+        raise SyntaxError(
+            f"Input calculation '{calculation}' cannot be parsed\n"
+            "Contains unsupported charachters\n"
+            f"Supported operations are {' '.join(OPERATORS.keys())}\n"
+            f"Decimal notation uses {DECIMAL}"
+        )
+
+    result = calculate(calculation)
+    print(f"{calculation} =  {result}")
