@@ -31,7 +31,7 @@ A interactive game to learn git! Highly recommended!
 
 ### CodeRefinery
 
-I can really recommend everyone go trough the CodeRefinery [Introduction to version control with Git - Why we want to track versions and how to go back in time to a working version](https://coderefinery.github.io/git-intro/). 
+I can really recommend everyone go trough the CodeRefinery [Introduction to version control with Git - Why we want to track versions and how to go back in time to a working version](https://coderefinery.github.io/git-intro/). 
 
 This written material above is walked trough in workshop in the following two videos
 
@@ -59,9 +59,27 @@ There are several ways you can get the git status in to the commend line prompt,
 
 To manually make this happen, you can follow the [A1.6 Appendix A: Git in Other Environments - Git in Bash](https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash) guide.
 
+### Git tools
+
+The one tool that I would recommend for working with git is []()
+
+There are other tools out there such as [Meld](https://gnome.pages.gitlab.gnome.org/meld/#)and also
+really good tools for editors such as VSCode. For NeoVim I use [fugutive.vim](https://github.com/tpope/vim-fugitive), it helps me work with git directly in my editor. Below is a video that showcases this is practice:
+
+DevOps Toolbox - Resolve Git Merge Conflicts with Neovim and Fugitive!
+{{< youtube vpwJ7fqD1CE >}}
+
 ## License
 
 Having a license is also vital to collaboration. To learn more I very much recommend the [choosealicense.com](https://choosealicense.com/) website.
+
+It is important to consider that code and data often have different licenses and needs to be treated
+differently. In the end intellectual property, licenses and copy-rights are legal matters which is
+outside the scope of this course and also vary from contract to contract, university to institute
+and country to country.
+
+Still it is good to know that the standard in Sweden for researchers at universities is to have
+something called the "teachers exemption", you can read more about it on this [wiki page](https://sv.wikipedia.org/wiki/L%C3%A4rarundantag) or on the [Union webpages (Upphovsrätt till forskningsdata och forskningsmaterial)](https://sulf.se/jobb-lon-och-villkor/upphovsratt/upphovsratt-till-forskningsdata-och-forskningsmaterial/).
 
 ## Talks about trunk based development
 
