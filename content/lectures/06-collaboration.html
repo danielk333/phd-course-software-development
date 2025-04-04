@@ -245,17 +245,12 @@ weight: 6
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
                 <p class="select">Some practical experience</p>
-                <div style="width: 50vw; padding-bottom: 2em;">
-                    <p class="fragment">Everyone who has not yet sent their private key to me - do so
-                        now (via email or slack)</p>
-                    <p class="fragment highlight">Lets have a look at the handout - how to set up
-                        your own remote</p>
-                </div>
-                <p class="fragment">Split up into groups of 2</p>
-                <p class="fragment">One person comes up to the desk and picks a number</p>
+                <p class="fragment">First we will setup a two person situation, but locally</p>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-bash">
-                        git clone ssh://phdcourse25@data.irf.se:2200/~/phdcourse_git_clashN.git
+                        # go to the folder where you want to do this exercise
+                        git init --bare git-clash.git
+                        git clone ./git-clash.git git-clash-person1
                     </code>
                 </pre>
             </div>
@@ -264,20 +259,231 @@ weight: 6
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <p>Now we add some content</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        cd git-clash-person1
+                        echo "Hello!" > README.md
+                        git add README.md
+                        git commit -m "added readme"
+                        git push
+                    </code>
+                </pre>
+                <p class="fragment highlight">Open up a new terminal and put them side-by-side</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Open up a new terminal and put them side-by-side</p>
+                <p class="fragment">Navigate to the folder where you put your git folders</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git clone ./git-clash.git git-clash-person2
+                        cd git-clash-person2
+                    </code>
+                </pre>
+                <p class="fragment">Now you should have two terminals</p>
+                <ul class="fragment">
+                    <li>one in <code>git-clash-person1</code></li>
+                    <li>one in <code>git-clash-person2</code></li>
+                    <li><code>git remote -v</code> on both point to <code>git-clash.git</code></li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <p>Now you should have two terminals</p>
+                <ul>
+                    <li>one in <code>git-clash-person1</code></li>
+                    <li>one in <code>git-clash-person2</code></li>
+                    <li><code>git remote -v</code> on both point to <code>git-clash.git</code></li>
+                </ul>
+                <p class="fragment">This is <em>exactly</em> like a 2-person collaboration trough
+                    gitlab</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <p>Your task: make this happen and then fix it</p>
+                <img class="fragment" src="media/git_merge.gif" style="height: 50vh;">
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+
+                <p class="mark">Person 1 terminal</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        echo "World!" >> README.md
+                        cat README.md
+                        git add README.md
+                        git commit -m "forgot world"
+                        git push
+                    </code>
+                </pre>
+                <p class="fragment highlight">Person 2 terminal</p>
+                <pre data-id="code-animation1" class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        echo "Friend!" >> README.md
+                        cat README.md
+                        git add README.md
+                        git commit -m "Someone forgot to add the end!"
+                        git push
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Person 2 terminal</p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git push
+                        # This fails with "! [rejected]"
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git pull
+                        # also fails!
+                        # "You have divergent branches and need to specify how to reconcile them."
+                        git fetch
+                        git log --oneline --graph origin/main main
+                    </code>
+                </pre>
+                <p class="fragment">You see how you have a divergence? This will need to be fixed</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Person 2 terminal</p>
                 <pre class="show-code">
                     <code data-line-numbers data-trim class="language-bash">
-                        git clone ssh://phdcourse25@data.irf.se:2200/~/phdcourse_git_clashN.git
+                        git pull --rebase
+                        # This causes a merge conflict
+                        cat README.md
                     </code>
                 </pre>
-                <p>Your task: you will both implement the <code>multiply</code> function</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        <<<<<<< HEAD
+                            stuff...
+                        =======
+                            stuff...
+                        >>>>>>> 952ba69
+                    </code>
+                </pre>
             </div>
         </section>
 
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
-                <p>Your task: you will both implement the <code>multiply</code> function</p>
-                <img src="media/git_merge.gif" style="height: 50vh;">
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Person 2 terminal</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        <<<<<<< HEAD
+                            stuff...
+                        =======
+                            stuff...
+                        >>>>>>> 952ba69
+                    </code>
+                </pre>
+                <div class="fragment">    
+                    <p>Special marker inserted by git</p>
+                    <p><code>HEAD</code> is remote changes</p>
+                    <p><code>hash</code> is your changes</p>
+                    <p>Resolve the conflict and remove the markers</p>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Person 2 terminal</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git add README.md
+                        git rebase --continue
+                        # No need to commit, you are modifying 
+                        # your old commit to not be in conflict!
+
+                        git log --oneline --graph origin/main main
+
+                        git push
+                    </code>
+                </pre>
+                <p class="fragment"><code>git log</code> shows one line of commits</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Person 2 terminal</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        nvim README.md 
+                        # Modify World -> WORLD
+                        git add README.md
+                        git commit -m "thats better"
+                    </code>
+                </pre>
+                <p class="mark">Person 1 terminal</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git pull
+                        nvim README.md
+                        # Modify World -> Earth
+                        git add README.md
+                        git commit -m "naming convention"
+                        git push
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Person 2 terminal</p>
+                <pre data-id="code-animation1" class="show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git push
+                        # ! [rejected] again!
+                        git pull --no-rebase
+                        # fix conflict
+                        git add README.md
+                        git merge --continue
+
+                        git log --oneline --graph origin/main main
+                    </code>
+                </pre>
+                <p class="fragment"><code>git log</code> shows a branch and a merge!</p>
             </div>
         </section>
 
