@@ -2,7 +2,8 @@
 
 Run this script with e.g.
 
-python process.py "2 3 + 2 3 + +"
+python reverse_polish_calculator.py "2 3 + 2 3 + +"
+python reverse_polish_calculator.py "2 3 + 2 3 * +"
 
 """
 
