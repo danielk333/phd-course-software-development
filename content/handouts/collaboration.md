@@ -29,12 +29,22 @@ A interactive game to learn git! Highly recommended!
 
 - [Oh-my-git](https://ohmygit.org/)
 
-### CodeRefinery workshop
+### CodeRefinery
+
+I can really recommend everyone go trough the CodeRefinery [Introduction to version control with Git - Why we want to track versions and how to go back in time to a working version](https://coderefinery.github.io/git-intro/). 
+
+This written material above is walked trough in workshop in the following two videos
+
+1.2 Git Intro (day 1) - CodeRefinery 2025 Mar
+{{< youtube 0u2K7KJBL-U >}}
+
+2.2 Git Intro day 2 - CodeRefinery 2025 Mar
+{{< youtube 8uay_XoNRck >}}
+
+There is also follow-up material called [git collaborative](https://coderefinery.github.io/git-collaborative/) that was also arranged into a recorded workshop here:
 
 3.2 Git collaborative - CodeRefinery 2025 Mar
 {{< youtube 4Uf7eVSCZeU >}}
-
-Material: [Code Refinery git collaborative ](https://coderefinery.github.io/git-collaborative/)
 
 ### Other resources
 
@@ -42,6 +52,12 @@ A few other good resources are:
 
 - [Good set of standard `.gitignore` files](https://github.com/github/gitignore)
 - **More to be added here**
+
+### Get git status in command line
+
+There are several ways you can get the git status in to the commend line prompt, one of the easiest is by using something like [starship](https://starship.rs/). 
+
+To manually make this happen, you can follow the [A1.6 Appendix A: Git in Other Environments - Git in Bash](https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash) guide.
 
 ## License
 

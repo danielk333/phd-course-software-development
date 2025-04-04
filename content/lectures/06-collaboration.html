@@ -8,7 +8,7 @@ weight: 6
     <div class="slides">
         <section
             data-auto-animate
-            data-background-image="media/brick_wall.jpg"
+            data-background-image="media/git_graph.png"
             data-background-color="black"
             data-background-opacity="1"
         >
@@ -16,9 +16,9 @@ weight: 6
         </section>
         <section
             data-auto-animate
-            data-background-image="media/brick_wall.jpg"
+            data-background-image="media/git_graph.png"
             data-background-color="black"
-            data-background-opacity="0.3"
+            data-background-opacity="0.1"
         >
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
@@ -36,7 +36,8 @@ weight: 6
                 <ul class="list-sep-small">
                     <li>
                         Collaboration is a social contract $\mapsto$<br />
-                        <span class="fragment highlight">you need to communicate what you expect!</span>
+                        <span class="fragment highlight">you need to communicate what you expect!</span><br />
+                        <span class="fragment highlight">And listen to what every one else expects!</span>
                     </li>
                     <p class="fragment">It's like having roommates<br>if no one does the dishes, soon
                     all hell breaks loose</p>
@@ -71,10 +72,11 @@ weight: 6
                     <p class="select">Tools and methods to make collaboration smooth</p>
                     <li>Sharing code $\mapsto$ git</li>
                     <li>Reading code $\mapsto$ flake8</li>
-                    <li>Writing code $\mapsto$ documentation</li>
-                    <li>Running code $\mapsto$ make / bash & python packaging</li>
-                    <li>Verifying code $\mapsto$ pytest</li>
+                    <li>Writing code $\mapsto$ documentation & co-coding/code-review</li>
+                    <li>Running code $\mapsto$ make / bash / ... & python packaging</li>
+                    <li>Verifying code $\mapsto$ pytest / generic automation system</li>
                 </ul>
+                <p class="fragment mark">2,3 we covered - 4,5 is later lectures</p>
             </div>
         </section>
 
@@ -86,18 +88,9 @@ weight: 6
                     <p class="select">Today we focus on</p>
                     <li>Sharing code $\mapsto$ git</li>
                 </ul>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">Collaboration</h3>
-                <p class="mark">Git</p>
-                <div style="width: 50vw;">
-                    <p class="fragment">Everyone who has not yet sent their private key to me - do so
-                        now (via email or slack)</p>
-                    <p class="fragment highlight">Lets have a look at the handout - how to set up
-                        your own remote</p>
+                <div class="fragment" style="max-width: 50vw;">
+                    <p>I recommend everyone to watch the two first CodeRefinery git-intro videos or read the</p>
+                    <p><a href="https://coderefinery.github.io/git-intro/">Introduction to version control with Git - Why we want to track versions and how to go back in time to a working version</a></p>
                 </div>
             </div>
         </section>
@@ -105,59 +98,38 @@ weight: 6
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
-                <p class="mark">Git</p>
-                <p class="fragment">Split up into groups of 2</p>
-                <p class="fragment">One person comes up to the desk and picks a number</p>
-                <pre class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-bash">
-                        git clone ssh://phdcourse25@data.irf.se:2200/~/phdcourse_git_clashN.git
-                    </code>
-                </pre>
+                <p class="highlight">Some git terminology</p>
+                <ul class="list-sep-small" style="max-width: 70vw;">
+                    <li class="fragment"><span class="highlight">repository:</span> All data and history (commits, branches, tags)</li>
+                    <li class="fragment"><span class="highlight">commit:</span> "Snapshot" of the project with unique identifier (data is not duplicated!)</li>
+                    <li class="fragment"><span class="highlight">branch:</span> Independent line of commits (mutable pointer to a commit)</li>
+                    <li class="fragment"><span class="highlight">tag:</span> Pointer to a commit (but fixed)</li>
+                    <li class="fragment"><span class="highlight">cloning:</span> Copy whole repository (and set the source as a remote)</li>
+                    <li class="fragment"><span class="highlight">remote:</span> The git hosting platform (or literally any other computer)</li>
+                </ul>
             </div>
         </section>
 
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
-                <p class="mark">Git</p>
+                <p class="highlight">Some git terminology</p>
+                <p>Remotes have their own versions of branches</p>
                 <pre class="show-code">
                     <code data-line-numbers data-trim class="language-bash">
-                        git clone ssh://phdcourse25@data.irf.se:2200/~/phdcourse_git_clashN.git
+                        danielk@IRF033-danielk ~/g/sorts (danielk/develop)> git branch -a
+                        * danielk/develop
+                          develop
+                          main
+                          remotes/irf/develop
+                          remotes/irf/main
+                          remotes/origin/danielk/develop
+                          remotes/origin/develop
+                          remotes/origin/main
+
+                        # I edited out the HEAD if you think it looks strange
                     </code>
                 </pre>
-                <p>Your task: you will both implement the <code>multiply</code> function</p>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">Collaboration</h3>
-                <p class="mark">Git</p>
-                <p>Your task: you will both implement the <code>multiply</code> function</p>
-                <img src="media/git_merge.gif" style="height: 50vh;">
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">Collaboration</h3>
-                task 1 merge conflict
-                choose who pushes first
-                try with rebase
-                how to resolve?
-                walk trough
-
-                revert your changes without pushing, try same again with merge
-                then reset changes on remote and revert back to state before
-                switch who pushes first
-                make both able to try it out
-
-                this time push it
-
-                now pick two different tasks
-                from the todos
-
-                and follow the workflow
             </div>
         </section>
 
@@ -167,15 +139,15 @@ weight: 6
                 <p class="highlight">Useful git commands</p>
                 <div class="row-flex-c">
                     <ul>
-                        <li><code>init</code></li>
-                        <li><code>status</code></li>
-                        <li><code>pull</code></li>
-                        <li><code>push</code></li>
-                        <li><code>merge</code></li>
+                        <li><code>diff</code></li>
+                        <li><code>branch</code></li>
                         <li><code>checkout</code></li>
+                        <li><code>fetch</code></li>
+                        <li><code>merge</code></li>
+                        <li><code>pull</code></li>
                     </ul>
                     <ul>
-                        <li><code>fetch</code></li>
+                        <li><code>push</code></li>
                         <li><code>rebase</code></li>
                         <li><code>blame</code></li>
                         <li><code>log</code></li>
@@ -190,8 +162,160 @@ weight: 6
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
-                <p>blame in the editor</p>
+                <p class="highlight">Useful git commands</p>
+                <div>
+                    <ul>
+                        <li><code>diff</code></li>
+                        <li>changes between commits in history</li>
+                        <li><code>branch</code></li>
+                        <li>create a new branch</li>
+                        <li><code>checkout</code></li>
+                        <li>goes to a commit (+tags/branches)</li>
+                        <li><code>fetch</code></li>
+                        <li>synchronize with the remote</li>
+                        <li><code>merge</code></li>
+                        <li>Join two histories together</li>
+                        <li><code>pull</code></li>
+                        <li>Perform a fetch and a merge</li>
+                    </ul>
+                </div>
             </div>
         </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div class="row-flex-c">
+                    <ul>
+                        <li><code>diff</code></li>
+                        <li><code>branch</code></li>
+                        <li><code>checkout</code></li>
+                        <li><code>fetch</code></li>
+                        <li><code>merge</code></li>
+                        <li><code>pull</code></li>
+                    </ul>
+                    <ul>
+                        <li><code>push</code></li>
+                        <li><code>rebase</code></li>
+                        <li><code>blame</code></li>
+                        <li><code>log</code></li>
+                        <li><code>remote</code></li>
+                        <li><code>reset</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div>
+                    <ul>
+                        <li><code>push</code></li>
+                        <li>synchronize with a remote</li>
+                        <li><code>rebase</code></li>
+                        <li>put divergent commits on-top new history</li>
+                        <li><code>blame</code></li>
+                        <li>locate origin of content</li>
+                        <li><code>log</code></li>
+                        <li>see the history</li>
+                        <li><code>remote</code></li>
+                        <li>work with your remotes</li>
+                        <li><code>reset</code></li>
+                        <li>remove commits in different ways</li>
+                    </ul>
+                </div>
+                <p class="fragment select">(no this is not a daft punk song)</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p>Blame in the editor</p>
+                <video controls loop style="max-height: 65vh">
+                    <source src="media/git_blame.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <div style="width: 50vw; padding-bottom: 2em;">
+                    <p class="fragment">Everyone who has not yet sent their private key to me - do so
+                        now (via email or slack)</p>
+                    <p class="fragment highlight">Lets have a look at the handout - how to set up
+                        your own remote</p>
+                </div>
+                <p class="fragment">Split up into groups of 2</p>
+                <p class="fragment">One person comes up to the desk and picks a number</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git clone ssh://phdcourse25@data.irf.se:2200/~/phdcourse_git_clashN.git
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git clone ssh://phdcourse25@data.irf.se:2200/~/phdcourse_git_clashN.git
+                    </code>
+                </pre>
+                <p>Your task: you will both implement the <code>multiply</code> function</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p>Your task: you will both implement the <code>multiply</code> function</p>
+                <img src="media/git_merge.gif" style="height: 50vh;">
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p>Let us look at the handout - follow the workflow there</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <ul>
+                 <p>Task 1 conflict</p>
+                    <li>choose who pushes first</li>
+                    <li>the other tries to push - fails</li>
+                    <li>then pull</li>
+                    <li>then rebase or merge to your branch</li>
+                    <li>get merge conflict</li>
+                    <li>resolve it (read the docs)</li>
+                    <li>delete the implementation, push changes</li>
+                    <li>let the other person try next</li>
+                </ul>
+
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <ul>
+                 <p>Task 2</p>
+                    <li>now pick two different tasks</li>
+                    <li>and follow the workflow</li>
+                </ul>
+            </div>
+        </section>
+
     </div>
 </div>
