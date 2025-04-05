@@ -53,14 +53,26 @@ weight: 6
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
                 <p class="mark">Important aspects</p>
-                <ul class="list-sep-small" style="width: 60vw;">
-                    <p class="select">Tools and methods to make collaboration smooth</p>
-                    <li class="fragment">Sharing code $\mapsto$ version control</li>
-                    <li class="fragment">Reading code $\mapsto$ code style</li>
-                    <li class="fragment">Writing code $\mapsto$ common design / development plan</li>
-                    <li class="fragment">Running code $\mapsto$ build system / dependency management</li>
-                    <li class="fragment">Verifying code $\mapsto$ tests</li>
-                </ul>
+                <p class="select">Tools and methods to make collaboration smooth</p>
+                <table class="reveal-table-layout">
+                    <tbody>
+                        <tr>
+                            <th>Sharing code $\mapsto$</th><th class="fragment">version control</th>
+                        </tr>
+                        <tr>
+                            <th>Reading code $\mapsto$</th><th class="fragment">code style</th>
+                        </tr>
+                        <tr>
+                            <th>Writing code $\mapsto$</th><th class="fragment">common design / development plan</th>
+                        </tr>
+                        <tr>
+                            <th>Running code $\mapsto$</th><th class="fragment">build system / dependency management</th>
+                        </tr>
+                        <tr>
+                            <th>Verifying code $\mapsto$</th><th class="fragment">tests</th>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
@@ -68,14 +80,26 @@ weight: 6
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
                 <p class="mark">Important aspects</p>
-                <ul class="list-sep-small" style="width: 60vw;">
-                    <p class="select">Tools and methods to make collaboration smooth</p>
-                    <li>Sharing code $\mapsto$ git</li>
-                    <li>Reading code $\mapsto$ flake8</li>
-                    <li>Writing code $\mapsto$ documentation & co-coding/code-review</li>
-                    <li>Running code $\mapsto$ make / bash / ... & python packaging</li>
-                    <li>Verifying code $\mapsto$ pytest / generic automation system</li>
-                </ul>
+                <p class="select">Tools and methods to make collaboration smooth</p>
+                <table class="reveal-table-layout">
+                    <tbody>
+                        <tr>
+                            <th>Sharing code $\mapsto$</th><th class="fragment">git</th>
+                        </tr>
+                        <tr>
+                            <th>Reading code $\mapsto$</th><th class="fragment">flake8/ruff/...</th>
+                        </tr>
+                        <tr>
+                            <th>Writing code $\mapsto$</th><th class="fragment">documentation & co-coding/code-review</th>
+                        </tr>
+                        <tr>
+                            <th>Running code $\mapsto$</th><th class="fragment">make / bash / ... & python packaging</th>
+                        </tr>
+                        <tr>
+                            <th>Verifying code $\mapsto$</th><th class="fragment">pytest / generic automation system</th>
+                        </tr>
+                    </tbody>
+                </table>
                 <p class="fragment mark">2,3 we covered - 4,5 is later lectures</p>
             </div>
         </section>
@@ -84,10 +108,7 @@ weight: 6
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
                 <p class="mark">Important aspects</p>
-                <ul class="list-sep">
-                    <p class="select">Today we focus on</p>
-                    <li>Sharing code $\mapsto$ git</li>
-                </ul>
+                <p class="select">Today we focus on <span class="highlight">git</span></p>
                 <div class="fragment" style="max-width: 50vw;">
                     <p>I recommend everyone to watch the two first CodeRefinery git-intro videos or read the</p>
                     <p><a href="https://coderefinery.github.io/git-intro/">Introduction to version control with Git - Why we want to track versions and how to go back in time to a working version</a></p>
@@ -98,10 +119,69 @@ weight: 6
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
+                <p class="mark">Important aspects</p>
+                <p class="select">Today we focus on <span class="highlight">git</span></p>
+                <p class="fragment">The command everyone should know: <code>man</code></p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        man git
+                        man git-merge
+                        man git-rebase
+                        man git-pull
+                        man git-commit
+                        man git-push
+                        man git-checkout
+                        ...
+                    </code>
+                </pre>
+                <p class="fragment">There is SO much good documentation</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
                 <p class="highlight">Some git terminology</p>
                 <ul class="list-sep-small" style="max-width: 70vw;">
-                    <li class="fragment"><span class="highlight">repository:</span> All data and history (commits, branches, tags)</li>
-                    <li class="fragment"><span class="highlight">commit:</span> "Snapshot" of the project with unique identifier (data is not duplicated!)</li>
+                    <li>repository</li>
+                    <li>commit</li>
+                    <li>branch</li>
+                    <li>tag</li>
+                    <li>clone</li>
+                    <li>remote</li>
+                </ul>
+                <p class="fragment">I can recommend the <a href="https://git-scm.com/book/en/v2">Pro Git 2nd
+                    Edition</a> open source book</p>
+            </div>
+        </section>
+        
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Some git terminology</p>
+                <ul class="list-sep-small" style="max-width: 70vw;">
+                    <li>repository</li>
+                </ul>
+                <p>All data and the entire history (commits, branches, tags, ...)</p>
+                <p>the<code>.git</code> folder has everything</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Some git terminology</p>
+                <ul class="list-sep-small" style="max-width: 70vw;">
+                    <li>repository</li>
+                    <li>commit</li>
+                    <li>branch</li>
+                    <li>tag</li>
+                    <li>clone</li>
+                    <li>remote</li>
+                </ul>
+            </div>
+        </section>
+
                     <li class="fragment"><span class="highlight">branch:</span> Independent line of commits (mutable pointer to a commit)</li>
                     <li class="fragment"><span class="highlight">tag:</span> Pointer to a commit (but fixed)</li>
                     <li class="fragment"><span class="highlight">cloning:</span> Copy whole repository (and set the source as a remote)</li>
@@ -109,6 +189,8 @@ weight: 6
                 </ul>
             </div>
         </section>
+        
+
 
         <section data-auto-animate>
             <div class="centered-container">

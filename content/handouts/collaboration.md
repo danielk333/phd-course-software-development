@@ -23,6 +23,17 @@ There are also a few websites that go trough a lot of material on git workflows:
 
 ## Git material
 
+### Pro Git book
+
+There is a open source book published under a Creative Commons lisence called Pro Git V2 which is
+really good and I can highly recommended. You can find it compiled on [git-scm
+book](https://git-scm.com/book/en/v2) with the source here on
+[github.com/progit/progit2](https://github.com/progit/progit2). I have used some of the figures from
+this book in the lecture as they very well explain the ins-and-outs of git! They are included in
+this repository and of course licensed under the same licence as the book is licensed under
+([Attribution-NonCommercial-ShareAlike 3.0
+Unported](https://creativecommons.org/licenses/by-nc-sa/3.0)).
+
 ### Oh-my-git
 
 A interactive game to learn git! Highly recommended!
