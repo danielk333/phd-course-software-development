@@ -23,6 +23,140 @@ weight: 7
         >
             <div class="centered-container">
                 <h3 class="title">Styles of development</h3>
+                <p class="fragment mark">The process by which we go from <code>git init</code> to
+                    <code>pdflatex paper.tex</code></p>
+                <p class="fragment">We will cover some useful methods and styles for different
+                situations</p>
+                <p class="fragment select">This is based on my experience
+                    <br>depending on the case - what fits better might be different!</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Iterative design</li>
+                    <li>Iterative and incremental development</li>
+                    <li>Test-driven development</li>
+                    <li>V-model</li>
+                    <li>Software prototyping</li>
+                    <li>Continuous deployment</li>
+                    <li>Scrum</li>
+                    <li>Waterfall-model</li>
+                    <li>Agile</li>
+                    <li>Lean</li>
+                    <li>...</li>
+                </ul>
+                <p class="fragment select">This is too much in my opinion</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <p class="highlight">Building up novel components</p>
+                    <li>Iterative and incremental development</li>
+                    <li>Software prototyping</li>
+                    <p class="highlight">Building up well-known components</p>
+                    <li>Test-driven development</li>
+                    <p class="highlight">Maintaining code</p>
+                    <li>Kanban, issues, sprints</li>
+                    <p class="mark">The fallback style</p>
+                    <li>The "None" pattern - just do it</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Iterative and incremental development</li>
+                    <li>Software prototyping</li>
+                </ul>
+                <p class="fragment mark">I have modified these to fit better what scientist usually
+                do</p>
+                <p class="fragment">(if you want to read the "enterprise" versions - have a look in
+                    the handouts or search online)
+                </p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Iterative and incremental development</li>
+                    <li>Software prototyping</li>
+                </ul>
+                <ol style="margin-top: 1em;">
+                    <li class="fragment">Define the goal and some way to validate it</li>
+                    <li class="fragment">Imagine a fuzzy high level design</li>
+                    <li class="fragment">Choose a sub-component</li>
+                    <li class="fragment">Think up a design and some way to validate it</li>
+                    <li class="fragment">Iterate until it works</li>
+                    <li class="fragment">Goto (3.) until you have a working prototype</li>
+                    <li class="fragment">Goto (1.) and re-evaluate until you reach the goal</li>
+                </ol>
+                <p class="fragment select">Done</p>
+                <p class="fragment">This is probably close to what you already do!</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <p class="mark">An example:</p>
+                <ol>
+                    <li class="fragment"><span class="highlight">Goal:</span> A new integrator
+                        <br><span class="highlight">Validation: </span>better accuracy than Euler (plot)</li>
+                    <li class="fragment"><span class="highlight">High level design:</span>
+                        <br>Different methods run in the same way
+                        <br>Save output (for quantitative), different target equations
+                        <br>Plotting (for qualitative, regular & vs true)</li>
+                    <li class="fragment"><span class="highlight">Sub-component:</span>
+                    The Euler method</li>
+                    <li class="fragment"><span class="highlight">Plan:</span>
+                    Just a function that can set step-size and steps
+                    <br>hard-code equation that has analytic solution</li>
+                    <li class="fragment">Iterate until it works</li>
+                </ol>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <p class="mark">An example:</p>
+                <ol>
+                    <li><span class="highlight">Goal:</span> A new integrator
+                        <br><span class="highlight">Validation: </span>better accuracy than Euler (plot)</li>
+                    <li><span class="highlight">High level design:</span>
+                        <br>Different methods run in the same way
+                        <br>Save output (for quantitative), different target equations
+                        <br>Plotting (for qualitative, regular & vs true)</li>
+                    <li><span class="highlight">Sub-component:</span>
+                    Arbitrary equations</li>
+                    <li class="fragment"><span class="highlight">Plan:</span>
+                    Make function take in target equation
+                    <br>make library of equations</li>
+                    <li class="fragment">Iterate until it works</li>
+                </ol>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <p class="mark">An example:</p>
+                <p class="fragment">I might discover once I have a working prototype that</p>
+                <ul>
+                    <li class="fragment">The method abstraction makes the integrator too slow</li>
+                    <li class="fragment">Need to sweep equation parameters<br>hard coded equations do not work</li>
+                    <li class="fragment mark">So I re-evaluate the goal and refactor</li>
+                </ul>
             </div>
         </section>
 

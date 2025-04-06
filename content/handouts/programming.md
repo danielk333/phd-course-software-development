@@ -164,6 +164,12 @@ Other languages that are on my radar are:
 > The takeaway is: don't get attached to one language! They all have their pros and cons. Learning to use a hammer does not make everything a nail. Try to pair a high-level language with a low-level language to cover as many bases as possible. My usual approach is "Write infrastructure in Python that orchestrates the calling of compiled low level languages that actually do the work".
 
 
+Lastly... a bit of humor (I can recommend that entire channel, especially [Interview with Senior JS Developer 2024](https://www.youtube.com/watch?v=aWfYxg-Ypm4)):
+
+Programmers are also human - Interview with a Postdoc, Junior Python Developer
+{{< youtube YnL9vAFphmE >}}
+
+
 ## Homework assignments
 
 Tutorial

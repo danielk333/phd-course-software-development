@@ -4,6 +4,35 @@ lecture: "07-development"
 weight: 7
 ---
 
+## Development Styles
+
+There are many different styles of development, e.g.
+
+- [Iterative design](https://en.wikipedia.org/wiki/Iterative_design)
+- [Iterative and incremental development](https://en.wikipedia.org/wiki/Iterative_and_incremental_development)
+- [Test-driven development](https://en.wikipedia.org/wiki/Test-driven_development)
+- [V](https://en.wikipedia.org/wiki/V-model_(software_development))
+- [Software prototyping](https://en.wikipedia.org/wiki/Software_prototyping)
+- [Continuous deployment](https://en.wikipedia.org/wiki/Continuous_deployment) or [Continuous delivery](https://en.wikipedia.org/wiki/Continuous_delivery)
+- [Scrum](https://en.wikipedia.org/wiki/Scrum_(software_development))
+- [Waterfall](https://en.wikipedia.org/wiki/Waterfall_model)
+- [Agile](https://en.wikipedia.org/wiki/Agile_software_development)
+- [Lean](https://en.wikipedia.org/wiki/Lean_software_development) &
+[Kanban](https://en.wikipedia.org/wiki/Kanban)
+- And probably a bunch more
+
+Although, for us scientists I believe really only a select few are relevant, which are also the ones covered
+in the lecture.
+
+A few brief explanations of relevant styles can be found in the videos below since the articles
+above can be quite long and wordy.
+
+TheAgileBroadcast - Is agile incremental or iterative?
+{{< youtube 20SdEYJEbrE >}}
+
+
+ProDeveloper - Software Development Methodologies Introduction
+{{< youtube WSq72fWYLDE >}}
 
 ## Homework
 
