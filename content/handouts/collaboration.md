@@ -25,7 +25,7 @@ There are also a few websites that go trough a lot of material on git workflows:
 
 ### Pro Git book
 
-There is a open source book published under a Creative Commons lisence called Pro Git V2 which is
+There is a open source book published under a Creative Commons licence called Pro Git V2 which is
 really good and I can highly recommended. You can find it compiled on [git-scm
 book](https://git-scm.com/book/en/v2) with the source here on
 [github.com/progit/progit2](https://github.com/progit/progit2). I have used some of the figures from
@@ -89,6 +89,9 @@ differently. In the end intellectual property, licenses and copy-rights are lega
 outside the scope of this course and also vary from contract to contract, university to institute
 and country to country.
 
+Some material such as images and other creative material fit much better under a Creative Commons
+license, you can read more about these at [About CC Licenses](https://creativecommons.org/share-your-work/cclicenses/).
+
 Still it is good to know that the standard in Sweden for researchers at universities is to have
 something called the "teachers exemption", you can read more about it on this [wiki page](https://sv.wikipedia.org/wiki/L%C3%A4rarundantag) or on the [Union webpages (Upphovsrätt till forskningsdata och forskningsmaterial)](https://sulf.se/jobb-lon-och-villkor/upphovsratt/upphovsratt-till-forskningsdata-och-forskningsmaterial/).
 
@@ -118,7 +121,12 @@ git remote add my_server ssh://username@hostname:port/path/to/name_of_my_repo.gi
 ```
 
 And that is it! As long as you can ssh to the server `username@hostname:port`, you can git push and
-pull like any other git hosting platform!
+pull like any other git hosting platform! You can even do this locally towards a USB stick or just
+on your own harddrive for moving later with
+
+```bash
+git remote add my_remote /path/to/name_of_my_repo.git 
+```
 
 For a full guide, have a look at [Getting Git on a Server](https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server).
 

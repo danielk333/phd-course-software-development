@@ -48,6 +48,7 @@ build documentation all you need is a good static website generator! A few examp
 
 - [mkdocs](https://www.mkdocs.org/)
 - [hugo](https://gohugo.io/)
+- [zola](https://www.getzola.org/)
 - [nikola](https://getnikola.com/)
 - [mdbook](https://rust-lang.github.io/mdBook/)
 - [jekyll](https://jekyllrb.com/)
