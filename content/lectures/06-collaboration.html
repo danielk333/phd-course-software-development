@@ -84,19 +84,19 @@ weight: 6
                 <table class="reveal-table-layout">
                     <tbody>
                         <tr>
-                            <th>Sharing code $\mapsto$</th><th class="fragment">git</th>
+                            <th>Sharing code $\mapsto$</th><th>git</th>
                         </tr>
                         <tr>
-                            <th>Reading code $\mapsto$</th><th class="fragment">flake8/ruff/...</th>
+                            <th>Reading code $\mapsto$</th><th>flake8/ruff/...</th>
                         </tr>
                         <tr>
-                            <th>Writing code $\mapsto$</th><th class="fragment">documentation & co-coding/code-review</th>
+                            <th>Writing code $\mapsto$</th><th>documentation & co-coding/code-review</th>
                         </tr>
                         <tr>
-                            <th>Running code $\mapsto$</th><th class="fragment">make / bash / ... & python packaging</th>
+                            <th>Running code $\mapsto$</th><th>make / bash / ... & python packaging</th>
                         </tr>
                         <tr>
-                            <th>Verifying code $\mapsto$</th><th class="fragment">pytest / generic automation system</th>
+                            <th>Verifying code $\mapsto$</th><th>pytest / generic automation system</th>
                         </tr>
                     </tbody>
                 </table>
@@ -163,7 +163,7 @@ weight: 6
                     <li>repository</li>
                 </ul>
                 <p>All data and the entire history (commits, branches, tags, ...)</p>
-                <p>the<code>.git</code> folder has everything</p>
+                <p>Thats the <code>.git</code> folder</p>
             </div>
         </section>
 
@@ -182,15 +182,256 @@ weight: 6
             </div>
         </section>
 
-                    <li class="fragment"><span class="highlight">branch:</span> Independent line of commits (mutable pointer to a commit)</li>
-                    <li class="fragment"><span class="highlight">tag:</span> Pointer to a commit (but fixed)</li>
-                    <li class="fragment"><span class="highlight">cloning:</span> Copy whole repository (and set the source as a remote)</li>
-                    <li class="fragment"><span class="highlight">remote:</span> The git hosting platform (or literally any other computer)</li>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Some git terminology</p>
+                <ul class="list-sep-small" style="max-width: 70vw;">
+                    <li>commit</li>
+                </ul>
+                <ul class="list-sep-small">
+                    <li>A commit is a so called "snapshot"<br>(not file-based differences
+                        like most other systems)</li>
+                    <li>This snapshot contains meta data and points to a data tree</li>
+                </ul>
+                <figure class="fragment">
+                    <img style="height: 20vh; width: auto;" src="media/pro-gitv2/commit-and-tree.png">
+                    <caption>
+                        Figure 9. A commit and its tree - Pro Git 2nd Edition (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="height: 50vh; width: auto;" src="media/pro-gitv2/commit-and-tree.png">
+                    <caption>
+                        Figure 9. A commit and its tree - Pro Git 2nd Edition (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+                <p class="fragment mark">Commits also have parents (except the first)
+                    <br>A series of commits can look like</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="height: 55vh; width: auto;" src="media/pro-gitv2/data-model-3.png">
+                    <caption>
+                        Figure 175. All the reachable objects in your Git directory - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="height: 30vh; width: auto;" src="media/pro-gitv2/data-model-3.png">
+                </figure>
+                <ul>
+                    <p class="mark">Is that not a lot of duplicated data?</p>
+                    <li class="fragment">Yes, but git also does diffs in a smart way!</li>
+                    <li class="fragment">Every time you push, it optimizes the storage
+                        <br>Trigger it yourself with <code>git gc</code>
+                    </li>
+                    <li class="fragment">do you recognize the output?
+                        <br>One of the lines <code>Delta compression...</code>
+                    </li>
                 </ul>
             </div>
         </section>
-        
 
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Some git terminology</p>
+                <ul class="list-sep-small" style="max-width: 70vw;">
+                    <li>commit</li>
+                </ul>
+                <p>So that is what a commit is</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Some git terminology</p>
+                <ul class="list-sep-small" style="max-width: 70vw;">
+                    <li>repository</li>
+                    <li>commit</li>
+                    <li>branch</li>
+                    <li>tag</li>
+                    <li>clone</li>
+                    <li>remote</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Some git terminology</p>
+                <ul class="list-sep-small" style="max-width: 70vw;">
+                    <li>branch</li>
+                </ul>
+                <ul class="list-sep-small">
+                    <li class="fragment">A lightweight movable pointer to one of these commits</li>
+                    <li class="fragment">A <code>git commit</code> also advances this pointer to that commit</li>
+                    <li class="fragment">You are building a directed acyclic graph</li>
+                    <li class="fragment">A branch... is branch (two commits with same parent)</li>
+                    <li class="fragment">A merge is... a merge (one commits with two or more parents)</li>
+                    <li class="fragment">The special <code>HEAD</code> pointers tracks where your
+                        are (branch or commit)
+                        <br>(<code>HEAD</code> on remotes are sort of the "default" branch)
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Some git terminology</p>
+                <ul class="list-sep-small" style="max-width: 70vw;">
+                    <li>branch</li>
+                </ul>
+                <ul class="list-sep-small">
+                    <li>A lightweight movable pointer to one of these commits</li>
+                </ul>
+                <p class="mark">An example</p>
+                <figure class="fragment">
+                    <img style="height: 20vh; width: auto;" src="media/pro-gitv2/head-to-master.png">
+                    <caption>
+                        Figure 13. HEAD pointing to a branch - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="height: 50vh; width: auto;" src="media/pro-gitv2/head-to-master.png">
+                    <caption>
+                        Figure 13. HEAD pointing to a branch - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git checkout testing
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="height: 50vh; width: auto;" src="media/pro-gitv2/head-to-testing.png">
+                    <caption>
+                        Figure 14. HEAD points to the current branch - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        ...
+                        git commit 
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="height: 50vh; width: auto;" src="media/pro-gitv2/advance-testing.png">
+                    <caption>
+                        Figure 15. The HEAD branch moves forward - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git checkout master
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="height: 50vh; width: auto;" src="media/pro-gitv2/checkout-master.png">
+                    <caption>
+                        Figure 16. HEAD moves when you checkout - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        ...
+                        git commit
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="height: 65vh; width: auto;" src="media/pro-gitv2/advance-master.png">
+                    <caption>
+                        Figure 17. Divergent history - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Some git terminology</p>
+                <ul class="list-sep-small" style="max-width: 70vw;">
+                    <li>branch</li>
+                </ul>
+                <p>So that is what a branch is</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Some git terminology</p>
+                <ul class="list-sep-small" style="max-width: 70vw;">
+                    <li>repository</li>
+                    <li>commit</li>
+                    <li>branch</li>
+                    <li>tag</li>
+                    <li>clone</li>
+                    <li>remote</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Some git terminology</p>
+                <ul class="list-sep-small" style="max-width: 70vw;">
+                    <li>tag</li>
+                    <p class="mark">A static pointer to a commit</p>
+                    <li>clone</li>
+                    <p class="mark">Make a complete copy of another repository
+                        <br>set that repository as a remote</p>
+                    <li>remote</li>
+                    <p class="mark">Another repository somewhere
+                        <br>(we will use a "bare" repository for testing)</p>
+                </ul>
+                <p></p>
+            </div>
+        </section>
 
         <section data-auto-animate>
             <div class="centered-container">
@@ -199,19 +440,13 @@ weight: 6
                 <p>Remotes have their own versions of branches</p>
                 <pre class="show-code">
                     <code data-line-numbers data-trim class="language-bash">
-                        danielk@IRF033-danielk ~/g/sorts (danielk/develop)> git branch -a
-                        * danielk/develop
-                          develop
-                          main
-                          remotes/irf/develop
-                          remotes/irf/main
-                          remotes/origin/danielk/develop
-                          remotes/origin/develop
+                         ~/g/phd-course-software-development (main)> git branch -a
+                        * main
+                          remotes/origin/HEAD -> origin/main
                           remotes/origin/main
-
-                        # I edited out the HEAD if you think it looks strange
                     </code>
                 </pre>
+                <p class="fragment mark">These can of course diverge like we saw before</p>
             </div>
         </section>
 
@@ -245,24 +480,150 @@ weight: 6
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
                 <p class="highlight">Useful git commands</p>
-                <div>
+                <div class="row-flex-c">
                     <ul>
                         <li><code>diff</code></li>
-                        <li>changes between commits in history</li>
                         <li><code>branch</code></li>
-                        <li>create a new branch</li>
                         <li><code>checkout</code></li>
-                        <li>goes to a commit (+tags/branches)</li>
                         <li><code>fetch</code></li>
-                        <li>synchronize with the remote</li>
                         <li><code>merge</code></li>
-                        <li>Join two histories together</li>
                         <li><code>pull</code></li>
-                        <li>Perform a fetch and a merge</li>
                     </ul>
                 </div>
             </div>
         </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div class="row-flex-c">
+                    <ul>
+                        <li><code>diff</code></li>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git diff HEAD..HEAD~1
+                            </code>
+                        </pre>
+                        <a href="https://git-scm.com/docs/git-rev-parse#_specifying_revisions">
+                            git specifying revisions</a>
+                        <p><code>^</code> and <code>~</code> and <code>@{}</code> are different (and
+                        there are more!)</p>
+                        <li><code>branch</code></li>
+                        <li><code>checkout</code></li>
+                        <li><code>fetch</code></li>
+                        <li><code>merge</code></li>
+                        <li><code>pull</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div class="row-flex-c">
+                    <ul>
+                        <li><code>diff</code></li>
+                        <li><code>branch</code></li>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git branch new_branch
+                            </code>
+                        </pre>
+                        <li><code>checkout</code></li>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git checkout new_branch
+                                git checkout -b another_new
+                                git checkout v0.1  # a tag name
+                                git checkout f5b4bf3  # a commit
+                            </code>
+                        </pre>
+                        <li><code>fetch</code></li>
+                        <li><code>merge</code></li>
+                        <li><code>pull</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div class="row-flex-c">
+                    <ul>
+                        <li><code>diff</code></li>
+                        <li><code>branch</code></li>
+                        <li><code>checkout</code></li>
+                        <li><code>fetch</code></li>
+                        <p>Download objects and refs from another repository</p>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git fetch  # default remote
+                                git fetch origin
+                                git fetch --all
+                            </code>
+                        </pre>
+                        <li><code>merge</code></li>
+                        <li><code>pull</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div class="row-flex-c">
+                    <ul>
+                        <li><code>diff</code></li>
+                        <li><code>branch</code></li>
+                        <li><code>checkout</code></li>
+                        <li><code>fetch</code></li>
+                        <li><code>merge</code></li>
+                        <p>Merge two or more development histories together</p>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git merge target_branch  # or commit-id
+                                git merge (--continue | --abort | --quit)
+                            </code>
+                        </pre>
+                        <p class="select">Can enter conflict if incompatible histories</p>
+                        <li><code>pull</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div class="row-flex-c">
+                    <ul>
+                        <li><code>diff</code></li>
+                        <li><code>branch</code></li>
+                        <li><code>checkout</code></li>
+                        <li><code>fetch</code></li>
+                        <li><code>merge</code></li>
+                        <li><code>pull</code></li>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git pull
+                                git pull origin
+                            </code>
+                        </pre>
+                        <p>fetch and merge remote branch into local branch</p>
+                        <p class="select">Can enter conflict if incompatible histories</p>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
 
         <section data-auto-animate>
             <div class="centered-container">
@@ -293,23 +654,150 @@ weight: 6
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
                 <p class="highlight">Useful git commands</p>
-                <div>
+                <div class="row-flex-c">
                     <ul>
                         <li><code>push</code></li>
-                        <li>synchronize with a remote</li>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git push
+                                git push origin
+                            </code>
+                        </pre>
+                        <p>Updates remote refs using local refs<br><code>branch</code> $\mapsto$
+                            <code>remote/name/branch</code></p>
+                        <p class="select">Can fail if incompatible histories<br>(then you need to
+                            pull and fix)</p>
                         <li><code>rebase</code></li>
-                        <li>put divergent commits on-top new history</li>
                         <li><code>blame</code></li>
-                        <li>locate origin of content</li>
                         <li><code>log</code></li>
-                        <li>see the history</li>
                         <li><code>remote</code></li>
-                        <li>work with your remotes</li>
                         <li><code>reset</code></li>
-                        <li>remove commits in different ways</li>
                     </ul>
                 </div>
-                <p class="fragment select">(no this is not a daft punk song)</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div class="row-flex-c">
+                    <ul>
+                        <li><code>push</code></li>
+                        <li><code>rebase</code></li>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git rebase target_branch
+                                git pull --rebase
+                                git rebase (--continue|--skip|--abort|--quit)
+                            </code>
+                        </pre>
+                        <p>Reapply commits on top of another base tip</p>
+                        <p class="select">Can enter conflict if incompatible histories</p>
+                        <li><code>blame</code></li>
+                        <li><code>log</code></li>
+                        <li><code>remote</code></li>
+                        <li><code>reset</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div class="row-flex-c">
+                    <ul>
+                        <li><code>push</code></li>
+                        <li><code>rebase</code></li>
+                        <li><code>blame</code></li>
+                        <p>Show what revision and author last modified each line of a file</p>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git blame path/to/file
+                            </code>
+                        </pre>
+                        <li><code>log</code></li>
+                        <li><code>remote</code></li>
+                        <li><code>reset</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div class="row-flex-c">
+                    <ul>
+                        <li><code>push</code></li>
+                        <li><code>rebase</code></li>
+                        <li><code>blame</code></li>
+                        <li><code>log</code></li>
+                        <p>Shows commit logs</p>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git log
+                                git log --all --graph --decorate --oneline
+                                git log HEAD~3..HEAD
+                            </code>
+                        </pre>
+                        <li><code>remote</code></li>
+                        <li><code>reset</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div class="row-flex-c">
+                    <ul>
+                        <li><code>push</code></li>
+                        <li><code>rebase</code></li>
+                        <li><code>blame</code></li>
+                        <li><code>log</code></li>
+                        <li><code>remote</code></li>
+                        <p>Work with remotes</p>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git remote -v
+                                git remote remove upstream
+                                git remote add upstream LOCATION
+                            </code>
+                        </pre>
+                        <li><code>reset</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="highlight">Useful git commands</p>
+                <div class="row-flex-c">
+                    <ul>
+                        <li><code>push</code></li>
+                        <li><code>rebase</code></li>
+                        <li><code>blame</code></li>
+                        <li><code>log</code></li>
+                        <li><code>remote</code></li>
+                        <li><code>reset</code></li>
+                        <p>Reset HEAD to a specified state</p>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                git reset HEAD~1
+                                git reset [--soft | --mixed | --hard ...]
+                            </code>
+                        </pre>
+                        <p class="select">BE CAREFUL - you can lose data with <code>reset</code></p>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -445,7 +933,7 @@ weight: 6
                         git pull
                         # also fails!
                         # "You have divergent branches and need to specify how to reconcile them."
-                        git fetch
+                        git status
                         git log --oneline --graph origin/main main
                     </code>
                 </pre>
@@ -529,7 +1017,7 @@ weight: 6
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-bash">
                         nvim README.md 
-                        # Modify World -> WORLD
+                        # Modify a word to upper case, e.g. World -> WORLD
                         git add README.md
                         git commit -m "thats better"
                     </code>
@@ -539,7 +1027,7 @@ weight: 6
                     <code data-line-numbers data-trim class="language-bash">
                         git pull
                         nvim README.md
-                        # Modify World -> Earth
+                        # Modify the same word to another word, e.g. World -> Earth
                         git add README.md
                         git commit -m "naming convention"
                         git push
@@ -553,11 +1041,13 @@ weight: 6
                 <h3 class="title">Collaboration</h3>
                 <p class="select">Some practical experience</p>
                 <p class="highlight">Person 2 terminal</p>
-                <pre data-id="code-animation1" class="show-code">
+                <pre class="show-code">
                     <code data-line-numbers data-trim class="language-bash">
                         git push
                         # ! [rejected] again!
                         git pull --no-rebase
+                        git status
+                        cat README.md
                         # fix conflict
                         git add README.md
                         git merge --continue
@@ -572,38 +1062,112 @@ weight: 6
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
-                <p>Let us look at the handout - follow the workflow there</p>
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Person 2 terminal</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        echo "I just want to add a line" > README.md
+                        git add README.md
+                        git commit -m "added a line"
+                        cat README.md
+
+                        # OPS a misstake!
+                    </code>
+                </pre>
             </div>
         </section>
 
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
-                <ul>
-                 <p>Task 1 conflict</p>
-                    <li>choose who pushes first</li>
-                    <li>the other tries to push - fails</li>
-                    <li>then pull</li>
-                    <li>then rebase or merge to your branch</li>
-                    <li>get merge conflict</li>
-                    <li>resolve it (read the docs)</li>
-                    <li>delete the implementation, push changes</li>
-                    <li>let the other person try next</li>
-                </ul>
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Person 2 terminal</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git reset --soft HEAD~1
+                        git status
+                        cat README.md
 
+                        # We still have the changes staged, just not committed
+                        # Lets see what --hard/mixed does
+                        
+                        git commit -m "added a line"
+                        # Now we are back to how it was before the reset
+                    </code>
+                </pre>
             </div>
         </section>
 
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
-                <ul>
-                 <p>Task 2</p>
-                    <li>now pick two different tasks</li>
-                    <li>and follow the workflow</li>
-                </ul>
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Person 2 terminal</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git reset --mixed HEAD~1
+                        git status
+                        cat README.md
+
+                        # Changes are still there but not staged and not committed
+                        git add README.md
+                        git commit -m "added a line"
+
+                        # Now we are back to how it was before the reset
+                        # now lets try --hard
+                    </code>
+                </pre>
             </div>
         </section>
 
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Person 2 terminal</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git reset --hard HEAD~1
+                        git status
+                        cat README.md
+
+                        # Now the changes are gone too
+
+                        # lets do a different commit
+                        echo "I just want to add a line" >> README.md
+                        echo "new file" > test.txt
+                        git add README.md test.txt
+                        git commit -m "added a line"
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p class="select">Some practical experience</p>
+                <p class="highlight">Person 2 terminal</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        # Lets say i want to revert just README.md 
+
+                        # There are many ways to do that, but could e.g.
+                        git reset --mixed HEAD~1
+                        git status
+                        git checkout README.md
+                        git add test.txt
+                        git commit -m "added a test file"
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p>Let us look at the handout</p>
+            </div>
+        </section>
     </div>
 </div>
