@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="branding/irf-hugo.css">
     <link rel="stylesheet" href="branding/irf-intranet.css">
     <link rel="stylesheet" href="branding/irf-course.css">
-    <!-- TODO: download mathjax and use locally instead -->
+    <!-- TODO: download CDN and use locally instead -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>
       MathJax = {
@@ -26,6 +26,9 @@
           load: ['ui/safe']
         },
       };
+    </script>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
     </script>
 
     {{ range .Aliases }}

@@ -1,7 +1,8 @@
 # TODO
 
 - [x] make a gitlab template with ci, docs, pages, python packaing,
-- [ ] add basic setup of a package for simulation and pipelines
-- [ ] add basic project structure recommendations
+- [x] add basic setup of a package for simulation and pipelines
+- [x] add basic project structure recommendations
+- [ ] download js sources and include them locally instead of fetching them
 - [ ] add info about sidecar files
-
+- [ ] redraw all git graphs in mermaid so that i can remove the figures by progit 

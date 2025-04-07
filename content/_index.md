@@ -35,7 +35,7 @@ of sense to create a PhD course out of the material.
 
 I spend a lot of my free time refining this material and maintaining it, so if you want to show that
 you have used it or find it useful, please leave a star on [the github mirror (TODO - not yet
-created)](#) so I know if my efforts are useful!
+created)](#) so I know if it is being used!
 
 ## Software development for researchers
 
