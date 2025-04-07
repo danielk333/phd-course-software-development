@@ -16,11 +16,18 @@ weight: 7
             <div class="centered-container"></div>
         </section>
 
+
         <section
             data-auto-animate
             data-background-image="media/DND_Alignment_Chart.png"
             data-background-opacity="0.1"
         >
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+            </div>
+        </section>
+
+        <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Styles of development</h3>
                 <p class="fragment mark">The process by which we go from <code>git init</code> to
@@ -115,7 +122,7 @@ weight: 7
                     <li class="fragment"><span class="highlight">High level design:</span>
                         <br>Different methods run in the same way
                         <br>Save output (for quantitative), different target equations
-                        <br>Plotting (for qualitative, regular & vs true)</li>
+                        <br>Plotting (for qualitative)</li>
                     <li class="fragment"><span class="highlight">Sub-component:</span>
                     The Euler method</li>
                     <li class="fragment"><span class="highlight">Plan:</span>
@@ -123,6 +130,7 @@ weight: 7
                     <br>hard-code equation that has analytic solution</li>
                     <li class="fragment">Iterate until it works</li>
                 </ol>
+                <p class="fragment mark">So back to choosing a sub-component</p>
             </div>
         </section>
 
@@ -136,14 +144,15 @@ weight: 7
                     <li><span class="highlight">High level design:</span>
                         <br>Different methods run in the same way
                         <br>Save output (for quantitative), different target equations
-                        <br>Plotting (for qualitative, regular & vs true)</li>
+                        <br>Plotting (for qualitative)</li>
                     <li><span class="highlight">Sub-component:</span>
                     Arbitrary equations</li>
                     <li class="fragment"><span class="highlight">Plan:</span>
-                    Make function take in target equation
+                    Make Euler method take in target equation name
                     <br>make library of equations</li>
                     <li class="fragment">Iterate until it works</li>
                 </ol>
+                <p class="fragment mark">Keep going until I have a first prototype</p>
             </div>
         </section>
 
@@ -151,11 +160,28 @@ weight: 7
             <div class="centered-container">
                 <h3 class="title">Styles of development</h3>
                 <p class="mark">An example:</p>
-                <p class="fragment">I might discover once I have a working prototype that</p>
+                <p>I might discover once I have that prototype that</p>
                 <ul>
                     <li class="fragment">The method abstraction makes the integrator too slow</li>
-                    <li class="fragment">Need to sweep equation parameters<br>hard coded equations do not work</li>
+                    <li class="fragment">Need to sweep equation parameters<br>hard coded equation
+                        library will not work</li>
                     <li class="fragment mark">So I re-evaluate the goal and refactor</li>
+                </ul>
+                <p class="fragment select">Does this sound familiar?</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <p class="mark">A few adjustments along the way</p>
+                <ul class="list-sep-small">
+                    <li class="fragment">Be aware of the process you use to develop
+                        <br>(Then you can make adjustments and improve it)</li>
+                    <li class="fragment">When a sub-component works:
+                        <br><span class="select">transfer your validation into a test</span>
+                        <br>(you do not have to worry about breaking it then!)
+                    </li>
                 </ul>
             </div>
         </section>
