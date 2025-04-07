@@ -135,6 +135,16 @@ The opening gif was created using this script:
 
 Since I work a lot with orbits - I made a tool that specifically converts orbits from Cartesian coordinates to Kepler elements in an efficient way with lots of helper functions to make working with that type of data easy. Since I divided it up into a package I can depend on that package and the functions in this package are *heavily* tested so I can thrust the results.
 
+
+## Useful concepts
+
+There are many useful concepts to know about when solving small individual problems, below I list a
+a few common ones:
+
+- [Sidecar files](https://en.wikipedia.org/wiki/Sidecar_file)
+- **More to be added here**
+
+
 ## Homework assignments
 
 ### Logistic map
