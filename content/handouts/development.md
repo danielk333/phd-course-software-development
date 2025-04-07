@@ -73,6 +73,13 @@ or with `pytest` as
 pytest tests.py
 ```
 
+If you want to use advanced `pytest` features, you can read more about them [here](https://docs.pytest.org/en/7.1.x/how-to/parametrize.html). For testing of `numpy` arrays I recommend using the built in [test support](https://numpy.org/doc/stable/reference/routines.testing.html). To read more about what kind of assert helper `unittest` provides, see the [TestCase docs](https://docs.python.org/3/library/unittest.html#unittest.TestCase.debug). A particularly useful helper is for testing that functions fail as expected using e.g. `assertRaises` as in
+
+```python
+with self.assertRaises(SomeException):
+    do_something()
+```
+
 Reflection afterwards
 : Did you anticipate all the aspects you needed to test? What was missing? Where there useless
 : tests? Why? Would it have been easier or harder to start without tests?

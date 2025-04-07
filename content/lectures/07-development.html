@@ -102,12 +102,33 @@ weight: 7
                     <li class="fragment">Define the goal and some way to validate it</li>
                     <li class="fragment">Imagine a fuzzy high level design</li>
                     <li class="fragment">Choose a sub-component</li>
-                    <li class="fragment">Think up a design and some way to validate it</li>
+                    <li class="fragment">Think up an implementation and a validation method</li>
                     <li class="fragment">Iterate until it works</li>
                     <li class="fragment">Goto (3.) until you have a working prototype</li>
                     <li class="fragment">Goto (1.) and re-evaluate until you reach the goal</li>
                 </ol>
                 <p class="fragment select">Done</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Iterative and incremental development</li>
+                    <li>Software prototyping</li>
+                </ul>
+                <pre class="mermaid wide" style="width: 80vw;">
+                    flowchart LR
+                        A(Goal) -->|Planning| B(High level design
+                        & goal validation)
+                        B -->|Choose| C(Sub-component)
+                        C -->|Planning| D(Implementation
+                        & validation)
+                        D -->|Choose| C
+                        D -->|Prototype| B 
+                        B -->|Goal reached| E[Stable version]
+                </pre>
                 <p class="fragment">This is probably close to what you already do!</p>
             </div>
         </section>
@@ -126,8 +147,8 @@ weight: 7
                     <li class="fragment"><span class="highlight">Sub-component:</span>
                     The Euler method</li>
                     <li class="fragment"><span class="highlight">Plan:</span>
-                    Just a function that can set step-size and steps
-                    <br>hard-code equation that has analytic solution</li>
+                    Just a function that take step-size and number of steps
+                    <br>hard-code an equation that has analytic solution</li>
                     <li class="fragment">Iterate until it works</li>
                 </ol>
                 <p class="fragment mark">So back to choosing a sub-component</p>
@@ -180,9 +201,296 @@ weight: 7
                         <br>(Then you can make adjustments and improve it)</li>
                     <li class="fragment">When a sub-component works:
                         <br><span class="select">transfer your validation into a test</span>
-                        <br>(you do not have to worry about breaking it then!)
-                    </li>
+                        <br>(then you don't have to worry about introducing computational bugs!)
+                    <li class="fragment">A computational bug is miles worse than a runtime bug
+                        <br><span class="mark">"Huh, I wonder why my energy is always 1% off what's
+                            expected"</span></li>
+                    <li class="fragment">Or transfer you validation into an usage example</li>
                 </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Iterative and incremental development</li>
+                    <li>Software prototyping</li>
+                </ul>
+                <p class="mark">Adapt to your needs and scope</p>
+                <ul class="list-sep-small">
+                    <li class="fragment">If the project is small:
+                        <br>just design it up front in one go and iterate that</li>
+                    <li class="fragment">If the project is huge:
+                        <br>make a stricter plan so it does not descend into chaos</li>
+                    <li class="fragment">If the components are not vital:
+                        <br>skip the tests - if they break, they break</li>
+                    <li class="fragment">If you don't need more than a prototype:
+                        <br>skip the refactor / re-evaluate stage</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <p class="highlight">Building up novel components</p>
+                    <li>Iterative and incremental development</li>
+                    <li>Software prototyping</li>
+                    <p class="highlight">Building up well-known components</p>
+                    <li>Test-driven development</li>
+                    <p class="highlight">Maintaining code</p>
+                    <li>Kanban, issues, sprints</li>
+                    <p class="mark">The fallback style</p>
+                    <li>The "None" pattern - just do it</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Test-driven development</li>
+                </ul>
+                <ol style="margin-top: 1em;">
+                    <li class="fragment">Define the goal</li>
+                    <li class="fragment">Define the needed behaviour of a component</li>
+                    <li class="fragment">Write tests for that behaviour</li>
+                    <li class="fragment">Write simplest implementation to make test pass</li>
+                    <li class="fragment">Refactor code while ensuring tests pass</li>
+                    <li class="fragment">Goto (2.) until you reach the goal</li>
+                </ol>
+                <p class="fragment select">Done</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Test-driven development</li>
+                </ul>
+                <pre class="mermaid tall" style="height: 80vh;">
+                    flowchart LR
+                        A(Goal) -->|Choose| B(Component behaviour)
+                        B -->|Design| C(Tests)
+                        C --> D(Implementation)
+                        D -->|Tests pass| E(Refactor)
+                        E -->|Tests pass| B
+                        B -->|Goal reached| G[Stable version]
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Test-driven development</li>
+                </ul>
+                <p class="mark">An example:</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                    class TestAnomalies(unittest.TestCase):
+                        def test_true_to_eccentric_hand_calc(self):
+                            e = np.linspace(0.1, 0.9, num=100)
+                            # For E = pi/2 hand calc and Pythagoras gives 
+                            # `\\nu = \pi - tan^{-1}(\sqrt{e^{-2} - 1})`.
+                            nu = np.pi - np.arctan(np.sqrt(1.0/e**2 - 1.0))
+                            E0 = np.ones(e.shape)*np.pi*0.5
+                            E = kep.true_to_eccentric(nu, e)
+                            nt.assert_array_almost_equal(E, E0, decimal=7)
+
+                        def test_eccentric_true_inverse(self):
+                            nu0 = 1.2345
+                            e = 0.5
+                            nu = kep.eccentric_to_true(kep.true_to_eccentric(nu0, e), e)
+                            self.assertAlmostEqual(nu0, nu)
+                    </code>
+                </pre>
+                <p class="fragment">Then I would work on the <code>true_to_eccentric</code>
+                    function</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Test-driven development</li>
+                </ul>
+                <p class="mark">An example:</p>
+                <ul class="list-sep-small" style="width: 60vw;">
+                    <li>Dangerous if you do not know everything you need to test up front</li>
+                    <li>Prevents pre-mature bloat: don't write it if it is not there to make the
+                        tests pass</li>
+                    <li>Ensures the implementation functions immediately</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <p class="highlight">Building up novel components</p>
+                    <li>Iterative and incremental development</li>
+                    <li>Software prototyping</li>
+                    <p class="highlight">Building up well-known components</p>
+                    <li>Test-driven development</li>
+                    <p class="highlight">Maintaining code</p>
+                    <li>Kanban, issues, sprints</li>
+                    <p class="mark">The fallback style</p>
+                    <li>The "None" pattern - just do it</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Kanban, issues, sprints</li>
+                </ul>
+                <p class="highlight">Kanban & issues</p>
+                <pre class="mermaid wide" style="width: 70vw;">
+                    kanban
+                      [Todo]
+                        [Update to numpy 2.x]@{priority: 'High'}
+                        [Fix edge case in coordinate transform]@{priority: 'Low'}
+                      [In progress]
+                        [Fix faulty background subtraction when no TX signal]@{priority: 'Very High', assigned: 'Daniel'}
+                        [Support macOS]@{priority: 'High', assigned: 'Hampus'}
+                        [Update plotting CLI with requested args]@{priority: 'Very Low', assigned: 'Daniel'}
+                      [Code review]
+                        [Support new radar experiment v2.1]@{priority: 'Very High', assigned: 'Ingar'}
+                      [Done]
+                        [Fix colorbar bug in raw data plotting]@{priority: 'Very Low'}
+                </pre>
+                <p class="fragment">Nice for distributing work across a team over time<br>(e.g. github
+                    issues -> todo list)</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Kanban, issues, sprints</li>
+                </ul>
+                <p class="highlight">Sprint</p>
+                <ul class="fragment">
+                    <p class="mark">From what I have seen / understand:
+                        <br>everything about agile, scrum, and sprints seem</p>
+                    <li>inefficient</li>
+                    <li>horrible to work with</li>
+                    <li>disconnected from reality</li>
+                    <li>bloated</li>
+                    <li>(at least for our type of work)</li>
+                </ul>
+                <p class="fragment select">But... I like the word sprint so here is my version</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Kanban, issues, sprints</li>
+                </ul>
+                <p class="highlight">Sprint</p>
+                <ul>
+                    <li>A short time-period (2-4 weeks)</li>
+                    <li>A clear goal achievable during this time</li>
+                    <li>Pre-made plan to reach that goal</li>
+                    <li>Applied to already mature software</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>Kanban, issues, sprints</li>
+                </ul>
+                <p class="highlight">Sprint</p>
+                <p class="mark">An example</p>
+                <ul class="fragment" style="width: 60vw;">
+                    <li>We need to refactor the library interface to support all the new features
+                        and go from <code>v1.8.1 -> v2.0.0</code></li>
+                    <li class="mark">Plan:</li>
+                    <li>Person 1) update interface and documentation</li>
+                    <li>Person 2) update tests</li>
+                    <li>Person 3) update examples</li>
+                    <li>Person 4) add long overdue new internals</li>
+                    <li>Person 5) updates dependant code we maintain</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <p class="highlight">Building up novel components</p>
+                    <li>Iterative and incremental development</li>
+                    <li>Software prototyping</li>
+                    <p class="highlight">Building up well-known components</p>
+                    <li>Test-driven development</li>
+                    <p class="highlight">Maintaining code</p>
+                    <li>Kanban, issues, sprints</li>
+                    <p class="mark">The fallback style</p>
+                    <li>The "None" pattern - just do it</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <ul>
+                    <li>The "None" pattern - just do it</li>
+                </ul>
+                <p class="mark">Perfect for</p>
+                <ul>
+                    <li>the one-off code</li>
+                    <li>the lone script</li>
+                    <li>the throwaway prototype</li>
+                    <li>the quick-fix</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <p class="mark">Reality check</p>
+                <p class="fragment highlight">Defining strict methods fine but in the end</p>
+                <ul>
+                    <li class="fragment">Use a combination of everything that works</li>
+                    <li class="fragment">The ultimate deciding factor is results:</li>
+                    <ul class="fragment">
+                        <li>functionality & correctness</li>
+                        <li>longevity</li>
+                        <li>performance</li>
+                        <li>development time</li>
+                        <li>usability</li>
+                        <li>...</li>
+                    </ul>
+                    <li class="fragment select">how you get there is up to you</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Styles of development</h3>
+                <p class="mark">Further study and homework</p>
+                <p class="select">Let's check out the handout above!</p>
             </div>
         </section>
 
