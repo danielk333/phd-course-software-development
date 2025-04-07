@@ -664,7 +664,7 @@ weight: 6
                                 git push origin
                             </code>
                         </pre>
-                        <p>Updates remote refs using local refs<br><code>branch</code> $\mapsto$
+                        <p>Updates remote refs using local refs<br>(default is)<code>branch</code> $\mapsto$
                             <code>remote/name/branch</code></p>
                         <p class="select">Can fail if incompatible histories<br>(then you need to
                             pull and fix)</p>
@@ -802,10 +802,90 @@ weight: 6
             </div>
         </section>
 
+
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Collaboration</h3>
-                <p>Blame in the editor</p>
+                <p>A quick rebase overview</p>
+                <figure>
+                    <img style="height: 45vh; width: auto;" src="media/pro-gitv2/basic-rebase-1.png">
+                    <caption>
+                        Figure 35. Simple divergent history - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+            </div>
+        </section>
+
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="height: 55vh; width: auto;" src="media/pro-gitv2/basic-rebase-1.png">
+                    <caption>
+                        Figure 35. Simple divergent history - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        git checkout master
+                        git merge experiment
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="height: 55vh; width: auto;" src="media/pro-gitv2/basic-rebase-2.png">
+                    <caption>
+                        Figure 36. Merging to integrate diverged work history - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        # RESET THAT
+                        git checkout experiment
+                        git rebase master
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="max-height: 55vh; width: auto;" src="media/pro-gitv2/basic-rebase-3.png">
+                    <caption>
+                        Figure 37. Rebasing the change introduced in C4 onto C3 - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        # C4 does not exist any more, it is now C4'
+                        # So now we can 'fast forward' master as they are in line
+                        git checkout master
+                        git merge experiment
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <figure>
+                    <img style="max-height: 55vh; width: auto;" src="media/pro-gitv2/basic-rebase-4.png">
+                    <caption>
+                        Figure 38. Fast-forwarding the master branch - (CC BY-NC-SA 3.0)
+                    </caption>
+                </figure>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Collaboration</h3>
+                <p>Tools integration: <code>git blame</code> in the editor</p>
                 <video controls loop style="max-height: 65vh">
                     <source src="media/git_blame.mp4" type="video/mp4" />
                 </video>
