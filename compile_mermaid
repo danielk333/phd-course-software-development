@@ -3,5 +3,5 @@
 for filename in mermaid/*.mmd; do
     filen=$(basename $filename)
     filen="${filen%%.*}.png"
-    mmdc -i "$filename" -o "static/mermaid/$filen" -t dark -b transparent
+    mmdc -i "$filename" -o "static/mermaid/$filen" -t dark -b transparent --scale 4
 done

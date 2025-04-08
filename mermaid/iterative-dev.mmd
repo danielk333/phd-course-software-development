@@ -1,0 +1,9 @@
+flowchart LR
+    A(Goal) -->|Planning| B(High level design
+    & goal validation)
+    B -->|Choose| C(Sub-component)
+    C -->|Planning| D(Implementation
+    & validation)
+    D -->|Choose| C
+    D -->|Prototype| B 
+    B -->|Goal reached| E[Stable version]

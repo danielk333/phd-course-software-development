@@ -118,17 +118,7 @@ weight: 7
                     <li>Iterative and incremental development</li>
                     <li>Software prototyping</li>
                 </ul>
-                <pre class="mermaid wide" style="width: 80vw;">
-                    flowchart LR
-                        A(Goal) -->|Planning| B(High level design
-                        & goal validation)
-                        B -->|Choose| C(Sub-component)
-                        C -->|Planning| D(Implementation
-                        & validation)
-                        D -->|Choose| C
-                        D -->|Prototype| B 
-                        B -->|Goal reached| E[Stable version]
-                </pre>
+                <img src="mermaid/iterative-dev.png" style="width: 80vw; height: auto;" alt="">
                 <p class="fragment">This is probably close to what you already do!</p>
             </div>
         </section>
@@ -337,20 +327,7 @@ weight: 7
                     <li>Kanban, issues, sprints</li>
                 </ul>
                 <p class="highlight">Kanban & issues</p>
-                <pre class="mermaid wide" style="width: 70vw;">
-                    kanban
-                      [Todo]
-                        [Update to numpy 2.x]@{priority: 'High'}
-                        [Fix edge case in coordinate transform]@{priority: 'Low'}
-                      [In progress]
-                        [Fix faulty background subtraction when no TX signal]@{priority: 'Very High', assigned: 'Daniel'}
-                        [Support macOS]@{priority: 'High', assigned: 'Hampus'}
-                        [Update plotting CLI with requested args]@{priority: 'Very Low', assigned: 'Daniel'}
-                      [Code review]
-                        [Support new radar experiment v2.1]@{priority: 'Very High', assigned: 'Ingar'}
-                      [Done]
-                        [Fix colorbar bug in raw data plotting]@{priority: 'Very Low'}
-                </pre>
+                <img src="mermaid/kanban.png" style="width: auto; height: 40vh;" alt="">
                 <p class="fragment">Nice for distributing work across a team over time<br>(e.g. github
                     issues -> todo list)</p>
             </div>

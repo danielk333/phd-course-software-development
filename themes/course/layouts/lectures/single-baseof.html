@@ -96,16 +96,5 @@
 
             enable_hash("{{ .Page.Permalink }}");
         </script>
-        <script type="module">
-            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-            let config = {startOnLoad: true, theme: "dark"};
-            mermaid.initialize(config);
-            
-            // Reveal.on('slidechanged', (event) => {
-            //     await mermaid.run({
-            //       querySelector: '.mermaid',
-            //     });
-            // });
-        </script>
     </body>
 </html>

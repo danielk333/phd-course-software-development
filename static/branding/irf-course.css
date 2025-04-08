@@ -226,15 +226,6 @@ code.hljs[data-line-numbers] tr {
     background-color: transparent;
 }
 
-.mermaid.tall svg {
-    max-height: 100%!important;
-    width: auto;
-}
-.mermaid.wide svg {
-    max-width: 100%!important;
-    height: auto;
-}
-
 div.course-corner-banner {
     position: fixed;
     top: calc(2.5 * var(--header-height));
