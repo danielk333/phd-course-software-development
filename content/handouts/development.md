@@ -34,6 +34,17 @@ TheAgileBroadcast - Is agile incremental or iterative?
 ProDeveloper - Software Development Methodologies Introduction
 {{< youtube WSq72fWYLDE >}}
 
+
+## Project management tools
+
+- [pter](https://vonshednob.cc/pter/)
+- gitlab itself
+- markdown files
+- [obsidian](https://obsidian.md/)
+- [ganttlab](https://www.ganttlab.com/)
+- **More to be added here**
+
+
 ## Homework
 
 ### A calculator
