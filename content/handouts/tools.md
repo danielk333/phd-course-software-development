@@ -112,7 +112,7 @@ out [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
 This video from ThePrimeagen called [0 to LSP : Neovim RC From
 Scratch](https://www.youtube.com/watch?v=w7i4amO_zaE) is also a good starting point but
 unfortunately it uses [packer.nvim](https://github.com/wbthomason/packer.nvim) which is not being
-actively updated anymore. Although the [git-repository](https://github.com/wbthomason/packer.nvim)
+actively updated anymore. Although the [git-repository](https://github.com/ThePrimeagen/init.lua)
 which he makes in the video has since been updated to also use `lazy.nvim` as that seems to be the
 standard today.
 
