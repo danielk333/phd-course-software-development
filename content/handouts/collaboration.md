@@ -130,6 +130,23 @@ git remote add my_remote /path/to/name_of_my_repo.git
 
 For a full guide, have a look at [Getting Git on a Server](https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server).
 
+
+## Notes from lecture
+
+In the live lecture we ended up going trough the "Python project template" and one of the things
+that came up was the [GitLab CI/CD YAML syntax](https://docs.gitlab.com/ci/yaml/). We will deep dive
+into this later in the lecture on *Automation* but some things came up during the lecture that I was
+not sure about so here are those explained/corrected:
+
+[`expire_in`](https://docs.gitlab.com/ci/yaml/#artifactsexpire_in)
+: `expire_in` specify how long job artifacts are stored before they are deleted. This setting **does not** affect artifacts from the latest job, *unless* this is disabled in the settings at the project level or instance-wide.
+
+[`pages`](https://docs.gitlab.com/ci/yaml/#pages)
+: In the current version in the repository I used the job-name `pages` together with the artifact
+`public` to indicate that GitLab pages should be built and published. However, it turns out that
+using the job-name is now a deprecated method (!) and one should instead use `pages: true`.
+
+
 ## Homework
 
 ### Recommended listening
