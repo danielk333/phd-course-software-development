@@ -510,14 +510,6 @@ img.placeholder {
     filter: sepia(1) saturate(0.5);
 }
 
-article header img,
-[class*=WidgetPreviewContainer] img {
-    object-fit: cover;
-    /* reduce height of large featured media to keep the hN above the fold */    
-    max-height: 410px;
-    object-position: top center;
-    aspect-ratio: 750 / 410;
-}
 
 article > footer,
 article > header {

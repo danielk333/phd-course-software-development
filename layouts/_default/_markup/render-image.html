@@ -19,10 +19,6 @@
   {{- end -}}
 {{- else -}}  
   {{ $image := resources.Get $file }}
-  {{ $filters := slice
-    images.AutoOrient
-    (images.Process "fit 750x1500 webp Center q90")
-  }}
   {{- if $image -}}
     {{- if strings.HasSuffix $file ".svg" -}}
       {{- if and .IsBlock .Title -}}
@@ -36,17 +32,16 @@
         </figure>
       {{- end -}}
     {{- else -}}
-      {{ $fitted := images.Filter $filters $image }}
-      {{ (resources.Get $fitted).Publish }}    
+      {{ (resources.Get $image).Publish }}    
       {{- if and .IsBlock .Title -}}
         <figure>
-          <img src="{{ $fitted.RelPermalink | safeURL }}" class="{{ $hash }}"
+          <img src="{{ $image.RelPermalink | safeURL }}" class="{{ $hash }}"
             {{- with .Text }} alt="{{ . }}"{{ end -}}
           >
           <figcaption>{{ .Title }}</figcaption>
         </figure>
       {{- else -}}
-        <img src="{{ $fitted.RelPermalink | safeURL }}" class="{{ $hash }}"
+        <img src="{{ $image.RelPermalink | safeURL }}" class="{{ $hash }}"
           {{- with .Text }} alt="{{ . }}"{{ end -}}
           {{- with .Title }} title="{{ . }}"{{ end -}}
         >

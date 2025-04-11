@@ -260,3 +260,11 @@ li.folder::before {
 li.file::before {
     content: "📄 ";
 }
+
+
+.fill-width {
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    height: auto;
+}
