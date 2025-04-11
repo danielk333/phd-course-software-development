@@ -95,6 +95,13 @@ license, you can read more about these at [About CC Licenses](https://creativeco
 Still it is good to know that the standard in Sweden for researchers at universities is to have
 something called the "teachers exemption", you can read more about it on this [wiki page](https://sv.wikipedia.org/wiki/L%C3%A4rarundantag) or on the [Union webpages (Upphovsrätt till forskningsdata och forskningsmaterial)](https://sulf.se/jobb-lon-och-villkor/upphovsratt/upphovsratt-till-forskningsdata-och-forskningsmaterial/).
 
+
+The following video is also a nice summary of the most common licenses:
+
+The Linux Experiment - Free and Open Source software licenses explained
+{{< youtube UMIG4KnM8xw >}}
+
+
 ## Talks about trunk based development
 
 code.talks 2023 - Our journey from Gitflow to Trunk Based Development
