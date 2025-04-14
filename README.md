@@ -4,8 +4,16 @@ This is the repository for the "Software development for researchers" PhD level 
 
 - [Course website](https://danielk.developer.irf.se/phd-course-software-development)
 
-## Compile mermaid
+## Compile diagrams
+
+The diagrams are compiled using [graphviz](https://graphviz.org/)
 
 ```bash
-pacman -S mermaid-cli
+pacman -S graphviz
+```
+
+to compile, run
+
+```bash
+./compile_diagrams
 ```

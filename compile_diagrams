@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for filename in diagrams/*.gv; do
+    filen=$(basename $filename)
+    filen="${filen%%.*}.png"
+    dot -Tpng -ostatic/diagrams/$filen $filename
+done

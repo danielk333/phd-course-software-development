@@ -36,7 +36,7 @@ weight: 8
                 <h3 class="title">Software design</h3>
                 <p class="mark">Today we will cover</p>
                 <ul>
-                    <li>Communicating design</li>
+                    <li>Communicating design / architecture</li>
                     <li class="fragment">Design on all levels of development</li>
                     <li class="fragment">What is a "design decision"</li>
                     <li class="fragment">What goes into that decision
@@ -60,9 +60,130 @@ weight: 8
             <div class="centered-container">
                 <h3 class="title">Software design</h3>
                 <ul>
-                    <li>Communicating design</li>
+                    <li>Communicating design / architecture</li>
                 </ul>
-                <p class="highlight">The norm: visual representation + text</p>
+                <p class="fragment highlight">The usual: visual representation + live explanation</p>
+                <p class="fragment select">Success rate: questionable</p>
+                <p class="fragment">The suggestion: design the design presentation properly
+                    <ul>
+                        <li>Should it be stand-alone?</li>
+                        <li>What story should it tell?</li>
+                        <li>Who are you telling it to?</li>
+                    </ul>
+                </p>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <p class="fragment highlight">A good standard to start with: the C4 model
+                <br><a href="https://c4model.com/">c4model.com/</a></p>
+                <ul class="fragment">
+                    <li>Level 1: Context</li>
+                    <li>Level 2: Containers (i.e. Environments)</li>
+                    <li>Level 3: Components</li>
+                    <li>Level 4: Code</li>
+                </ul>
+                <p class="fragment">Great introductory video in the handout - here quick summary</p>
+            </div>
+        </section>
+    
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 1: Context</li>
+                </ul>
+                TODO
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 3: Component</li>
+                </ul>
+                TODO
+                <p class="fragment select">This diagram should be reflected in the code!</p>
+                <p class="fragment">Think modules, subpackages, protocols, ...</p>
+                <p class="fragment">Its a map that should help me navigate and understand</p>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 4: Code</li>
+                </ul>
+                <p class="fragment select">You should (in almost all cases) not draw these</p>
+                <p class="fragment">Read the code/docs instead</p>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <p class="mark">Today we will cover</p>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                    <li>Design on all levels of development</li>
+                    <li>What is a "design decision"</li>
+                    <li>What goes into that decision</li>
+                    <li>Consequences of decisions</li>
+                    <li>Practical examples</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Design on all levels of development</li>
+                </ul>
+                <p class="fragment highlight">Design decisions on different levels have different consequences</p>
+                <p class="fragment">Example: A solar-system dynamics simulation tool</p>
+                <p class="fragment">Level 1 Context example - where do I get my data?</p>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Design on all levels of development</li>
+                </ul>
+                <p>Level 1 Context example - where do I get my data?</p>
+                <img class="fragment" src="diagrams/context_data_source_option1.png">
             </div>
         </section>
 
@@ -75,7 +196,79 @@ weight: 8
                 <ul>
                     <li>Design on all levels of development</li>
                 </ul>
-                <p class="highlight">From the highest level</p>
+                <p>Level 1 Context example - where do I get my data?</p>
+                <img src="diagrams/context_data_source_option2.png">
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Design on all levels of development</li>
+                </ul>
+                <p>Example: Level 1 Context - where do I get my data?</p>
+                <ul>
+                    <li>Option 1: Only simple API call needed, dependant on network, not reproducible, no
+                    kernel choice</li>
+                    <li>Option 2: Requires manual kernel parsing, offline, reproducible, completely
+                        configurable</li>
+                    <li class="mark">Which one is better?</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Design on all levels of development</li>
+                </ul>
+                <p>Example: Level 2 Container - How do I view the results?</p>
+                <img class="fragment" src="diagrams/container_viewer_option1.png">
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Design on all levels of development</li>
+                </ul>
+                <p>Example: Level 2 Container - How do I view the results?</p>
+                <img src="diagrams/container_viewer_option2.png">
+            </div>
+        </section>
+        
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Design on all levels of development</li>
+                </ul>
+                <p>Example: Level 2 Container - How do I view the results?</p>
+                <ul>
+                    <li>Option 1: A server that streams the resulting video</li>
+                    <ul>
+                        <li>No client requirements (except video receive)</li>
+                        <li>Server side calculations</li>
+                        <li>No user control</li>
+                    </ul>
+                    <li>Option 2: A viewer that reads the data locally</li>
+                    <ul>
+                        <li>Client must compile/run viewer</li>
+                        <li>Client must download all data and have sufficient hardware</li>
+                        <li>Total user control</li>
+                    </ul>
+                </ul>
             </div>
         </section>
 
