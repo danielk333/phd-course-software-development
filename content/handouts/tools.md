@@ -6,8 +6,12 @@ weight: 3
 
 ## Minimal setups
 
-A cut down version of my current NeoVim setup which is still quite minimal can be found
-[here](https://gitlab.irf.se/danielk/starting-nvim#).
+> [!Notera]
+> A cut down version of my current NeoVim setup which is still quite minimal can be found
+> [here](https://gitlab.irf.se/danielk/starting-nvim#).
+
+If you have any other good suggestions for minimal starting points for setting up editors and
+development environments, send them my way and I will have a look and add them here!
 
 ## Managing "dotfiles"
 

@@ -13,6 +13,20 @@ The recommended approach
 ### TODO
 
 
+## Communicating design
+
+### Diagrams
+
+C4
+{{< youtube x2-rSnhpw0g >}}
+
+https://c4model.com/
+
+```mermaid
+C4Context
+```
+
+
 ## Design by example
 
 *TODO: add a bunch of repositories to look trough for good design choices*
