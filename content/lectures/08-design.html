@@ -1,6 +1,7 @@
 ---
 title: "Software design"
 description: "Everyone who has written software has designed it, but many designs are unconscious. We should strive to making the important decisions conscious, informed, and efficient. This lecture covers what software design is and what it is generally not, what consequences design decisions have and how to walk the line between just doing and over-engineering. "
+handout: design
 weight: 8
 ---
 
@@ -64,13 +65,12 @@ weight: 8
                 </ul>
                 <p class="fragment highlight">The usual: visual representation + live explanation</p>
                 <p class="fragment select">Success rate: questionable</p>
-                <p class="fragment">The suggestion: design the design presentation properly
-                    <ul>
-                        <li>Should it be stand-alone?</li>
-                        <li>What story should it tell?</li>
-                        <li>Who are you telling it to?</li>
-                    </ul>
-                </p>
+                <ul class="fragment">
+                    <p>The suggestion: design the design presentation properly</p>
+                    <li>Should it be stand-alone?</li>
+                    <li>What story should it tell?</li>
+                    <li>Who are you telling it to?</li>
+                </ul>
             </div>
         </section>
 
@@ -82,7 +82,7 @@ weight: 8
                 <ul>
                     <li>Communicating design / architecture</li>
                 </ul>
-                <p class="fragment highlight">A good standard to start with: the C4 model
+                <p>A good place to start: <span class="highlight">the C4 model</span>
                 <br><a href="https://c4model.com/">c4model.com/</a></p>
                 <ul class="fragment">
                     <li>Level 1: Context</li>
@@ -105,7 +105,17 @@ weight: 8
                 <ul>
                     <li>Level 1: Context</li>
                 </ul>
-                TODO
+                <img src="diagrams/c4_context_example.png" class="light" style="height: 60vh; width:
+                    auto; max-height: none; max-width: none;">
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <img src="diagrams/c4_context_example.png" class="light" style="height: 80vh; width:
+                    auto; max-height: none; max-width: none;">
             </div>
         </section>
 
@@ -118,12 +128,131 @@ weight: 8
                     <li>Communicating design / architecture</li>
                 </ul>
                 <ul>
-                    <li>Level 3: Component</li>
+                    <li>Level 1: Context</li>
                 </ul>
-                TODO
-                <p class="fragment select">This diagram should be reflected in the code!</p>
-                <p class="fragment">Think modules, subpackages, protocols, ...</p>
-                <p class="fragment">Its a map that should help me navigate and understand</p>
+                <img src="diagrams/c4_context_example.png" class="light" style="height: 60vh; width:
+                    auto; max-height: none; max-width: none;">
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 1: Context</li>
+                    <li>Level 2: Containers (i.e. Environments)</li>
+                    <li>Level 3: Components</li>
+                    <li>Level 4: Code</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 2: Containers (i.e. Environments)</li>
+                </ul>
+                <img src="diagrams/c4_container_example.png" class="light" style="height: 60vh; width:
+                    auto; max-height: none; max-width: none;">
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <img src="diagrams/c4_container_example.png" class="light" style="height: 80vh; width:
+                    auto; max-height: none; max-width: none;">
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 2: Containers (i.e. Environments)</li>
+                </ul>
+                <img src="diagrams/c4_container_example.png" class="light" style="height: 60vh; width:
+                    auto; max-height: none; max-width: none;">
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 1: Context</li>
+                    <li>Level 2: Containers (i.e. Environments)</li>
+                    <li>Level 3: Components</li>
+                    <li>Level 4: Code</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 3: Components</li>
+                </ul>
+                <img src="diagrams/c4_container_example.png" class="light" style="height: 60vh; width:
+                    auto; max-height: none; max-width: none;">
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <img src="diagrams/c4_container_example.png" class="light" style="height: 80vh; width:
+                    auto; max-height: none; max-width: none;">
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 3: Components</li>
+                </ul>
+                <img src="diagrams/c4_container_example.png" class="light" style="height: 30vh; width:
+                    auto; max-height: none; max-width: none;">
+                <ul>
+                    <li class="fragment select">This architecture should be reflected in the code!</li>
+                    <li class="fragment">Think modules, subpackages, protocols, ...</li>
+                    <li class="fragment">Its a map that should help me navigate and understand</li>
+                </ul>
             </div>
         </section>
 
@@ -138,8 +267,10 @@ weight: 8
                 <ul>
                     <li>Level 4: Code</li>
                 </ul>
-                <p class="fragment select">You should (in almost all cases) not draw these</p>
-                <p class="fragment">Read the code/docs instead</p>
+                <ul>
+                    <li class="fragment select">You should (in almost all cases) not draw these</li>
+                    <li class="fragment">Read the code/docs instead</li>
+                </ul>
             </div>
         </section>
 

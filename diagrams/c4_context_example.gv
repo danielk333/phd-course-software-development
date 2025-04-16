@@ -1,0 +1,49 @@
+digraph iterative{
+    rankdir="TB";
+    dpi=300;
+    edge [ style=dashed ];
+    node[
+        shape = rect
+        style = "filled, rounded"
+        color = "#a4fad0"
+    ];
+    user [
+        label=<
+            <table border="0" cellborder="0">
+                <tr> <td><b>Scientist</b></td> </tr>
+                <tr> <td>[Person]</td> </tr>
+                <tr> <td>A researcher using the tool</td> </tr>
+            </table>
+        >
+    ]
+    node[
+        shape = rect
+        style = filled
+        color = "#9db5f7"
+    ];
+    software [
+        label=<
+            <table border="0" cellborder="0">
+                <tr> <td><b>Solar-system simulation</b></td> </tr>
+                <tr> <td>[Software system]</td> </tr>
+                <tr> <td>A toolbox for simulating different scenarios<br/>within the solar-system taking a variety of<br/>effects into account</td> </tr>
+            </table>
+        >
+    ]
+    node[
+        shape = rect
+        style = filled
+        color = "#cfcfcf"
+    ];
+    horizons [
+        label=<
+            <table border="0" cellborder="0">
+                <tr> <td><b>JPL Horizons System</b></td> </tr>
+                <tr> <td>[Software system]</td> </tr>
+                <tr> <td>A software system to calculate positions<br/>and velocities of solar system bodies at a requested time</td> </tr>
+            </table>
+        >
+    ]
+    user -> software [label="Configures, simulates,\nand analyses scenarios"]
+    software -> horizons [label="Gets the solar-system\nbody states for scenario"]
+}
