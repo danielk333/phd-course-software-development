@@ -268,7 +268,106 @@ weight: 8
                         <li>Client must download all data and have sufficient hardware</li>
                         <li>Total user control</li>
                     </ul>
+                    <li class="mark">Which one is better?</li>
                 </ul>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Design on all levels of development</li>
+                </ul>
+                <p>Level 3 Component example - How do I visualize the data?</p>
+                <img class="fragment" src="diagrams/component_visualize_option1.png">
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Design on all levels of development</li>
+                </ul>
+                <p>Level 3 Component example - How do I visualize the data?</p>
+                <img class="fragment" src="diagrams/component_visualize_option2.png">
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Design on all levels of development</li>
+                </ul>
+                <p>Level 3 Component example - How do I visualize the data?</p>
+                <ul>
+                    <li>Option 1: Static</li>
+                    <ul>
+                        <li>No real-time rendering requirement</li>
+                        <li>Simple interface, slow user exploration</li>
+                        <li>Simple / flexible implementation</li>
+                    </ul>
+                    <li>Option 2: Interactive</li>
+                    <ul>
+                        <li>Real-time rendering</li>
+                        <li>Interactive UI, fast user exploration</li>
+                        <li>Complex GPU implementation</li>
+                    </ul>
+                    <li class="mark">Which one is better?</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Design on all levels of development</li>
+                </ul>
+                <p>Level 4 Code example - How do I represent the data?</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        class Position3D:
+                            def __init__(self, x, y, z):
+                                self.x = x
+                                self.y = y
+                                self.z = z
+
+
+                        class Velocity3D:
+                            def __init__(self, vx, vy, vz):
+                                self.vx = vx
+                                self.vy = vy
+                                self.vz = vz
+
+
+                        class State:
+                            def __init__(self, pos: Position3D, vel: Velocity3D):
+                                self.position = pos
+                                self.velocity = vel
+
+
+                        class Simulation:
+                            def __init__(self, file):
+                                self.objects = {}
+                                for identifier, state in self.load(file):
+                                    self.objects[identifier] = State(
+                                        Position3D(state[0], state[1], state[2]),
+                                        Velocity3D(state[3], state[4], state[5]),
+                                    )
+
+                    </code>
+                </pre>
             </div>
         </section>
 
