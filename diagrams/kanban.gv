@@ -1,45 +1,59 @@
 graph {
+    dpi=300;
+    margin = "0"
     node[
         shape = rect
-        style = filled
-        color = "#f5f5f5"
+        margin = "0"
     ]
-    task1 [label="Update to numpy 2.x\n priority: High"]
-    task2 [label="Fix edge case in coordinate transform\n priority: Low"]
-    task3 [label="Fix faulty background subtraction when no TX signal\n priority: Very High\n assigned: Daniel"]
-    task4 [label="Support macOS\n priority: High\n assigned: Hampus"]
-    task5 [label="Update plotting CLI with requested args\npriority: Very Low\nassigned: Daniel"]
-    task6 [label="Support new radar experiment v2.1\n priority: Very High\n assigned: Ingar"]
-    task7 [label="Fix colorbar bug in raw data plotting\n priority: Very Low}"]
     subgraph cluster_todo {
         bgcolor="#d2aaf4"
         label=<<b>Todo</b>>
-        { rank="min"
-            task1
-            task2
-        }
+        todo_tasks [
+            color="#d2aaf4"
+            label=<
+                <table color="black" border="0" cellborder="1" cellspacing="8" cellpadding="2">
+                    <tr><td bgcolor="white"><b>Update to numpy 2.x</b><br/><i>priority: High</i></td></tr>
+                    <tr><td bgcolor="white"><b>Fix edge case in coordinate transform</b><br/><i>priority: Low</i></td></tr>
+                </table>
+            >
+        ]
     }
     subgraph cluster_progress {
         bgcolor="#aaeaf4"
         label=<<b>In progress</b>>
-        { rank=same
-            task3
-            task4
-            task5
-        }
+        progress_tasks [
+            color="#aaeaf4"
+            label=<
+                <table color="black" border="0" cellborder="1" cellspacing="8" cellpadding="2">
+                    <tr><td bgcolor="white"><b>Fix faulty background subtraction when no TX signal</b><br/><i>priority: Very High</i><br/><i>assigned: Daniel</i></td></tr>
+                    <tr><td bgcolor="white"><b>Support macOS</b><br/><i>priority: High</i><br/><i>assigned: Hampus</i></td></tr>
+                    <tr><td bgcolor="white"><b>Update plotting CLI with requested args</b><br/><i>priority: Very Low</i><br/><i>assigned: Daniel</i></td></tr>
+                </table>
+            >
+        ]
     }
     subgraph cluster_review {
         bgcolor="#a4fab2"
         label=<<b>Code review</b>>
-        { rank=same
-            task6
-        }
+        review_tasks [
+            color="#a4fab2"
+            label=<
+                <table color="black" border="0" cellborder="1" cellspacing="8" cellpadding="2">
+                    <tr><td bgcolor="white"><b>Support new radar experiment v2.1</b><br/><i>priority: Very High</i><br/><i>assigned: Ingar</i></td></tr>
+                </table>
+            >
+        ]
     }
     subgraph cluster_done {
         bgcolor="#cfcfcf"
         label=<<b>Done</b>>
-        { rank=same
-            task7
-        }
+        done_tasks [
+            color="#cfcfcf"
+            label=<
+                <table color="black" border="0" cellborder="1" cellspacing="8" cellpadding="2">
+                    <tr><td bgcolor="white"><b>Fix colorbar bug in raw data plotting</b><br/><i>priority: Very Low</i><br/><i>assigned: Daniel</i></td></tr>
+                </table>
+            >
+        ]
     }
 }
