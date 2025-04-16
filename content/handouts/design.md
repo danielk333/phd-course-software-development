@@ -22,7 +22,7 @@ C4
 
 https://c4model.com/
 
-TODO tutorial - making c4 diagrams with graphviz
+{{< tutorial c4 "For a small tutorial on how to make C4 diagrams, see" >}}
 
 ## Design by example
 
