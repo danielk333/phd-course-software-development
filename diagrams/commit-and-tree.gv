@@ -1,0 +1,51 @@
+digraph commit{
+    rankdir="LR";
+    dpi=300;
+    node[
+        shape = rect
+        style = filled
+    ];
+    commit [
+        color = "#dcdcdc"
+        label=<
+            <table border="0" cellborder="0">
+                <tr> <td><b>commit</b></td> <td>3djf82</td> </tr>
+                <tr> <td>tree</td> <td port="tree">hf82hs</td> </tr>
+                <tr> <td>author</td> <td>Daniel</td> </tr>
+                <tr> <td colspan="2">...</td> </tr>
+                <tr> <td colspan="2"><i>"added main file"</i></td> </tr>
+            </table>
+        >
+    ]
+    tree [
+        color = "#84c0d3"
+        label=<
+            <table border="0" cellborder="0">
+                <tr> <td><b>tree</b></td> <td>hf82hs</td> </tr>
+                <tr> <td><u>blob</u></td> <td>pqi8s2</td> <td port="blob1">README.md</td> </tr>
+                <tr> <td><u>blob</u></td> <td>2zka76</td> <td port="blob2">main.py</td> </tr>
+            </table>
+        >
+    ]
+    readme [
+        color = "#c5e4cf"
+        label=<
+            <table border="0" cellborder="0">
+                <tr> <td><b>blob</b></td> <td>pqi8s2</td> </tr>
+                <tr> <td colspan="2"># My awesome readme<br/>This is my readme</td> </tr>
+            </table>
+        >
+    ]
+    main [
+        color = "#c5e4cf"
+        label=<
+            <table border="0" cellborder="0">
+                <tr> <td><b>blob</b></td> <td>2zka76</td> </tr>
+                <tr> <td align="left" colspan="2">import antigravity<br align="left"/>antigravity.on()</td></tr>
+            </table>
+        >
+    ]
+    commit:tree -> tree;
+    tree:blob1 -> readme;
+    tree:blob2 -> main;
+}

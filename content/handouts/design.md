@@ -22,10 +22,7 @@ C4
 
 https://c4model.com/
 
-```mermaid
-C4Context
-```
-
+TODO tutorial - making c4 diagrams with graphviz
 
 ## Design by example
 

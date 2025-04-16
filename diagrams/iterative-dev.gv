@@ -1,0 +1,22 @@
+digraph iterative{
+    rankdir="LR";
+    dpi=300;
+    node[
+        shape = rect
+        style = filled
+        color = "#aacdf4"
+    ];
+    A [label="Goal"]
+    B [label="High level deisng\n& goal validation"]
+    C [label="Sub-component"]
+    D [label="Implementation\n & validation"]
+    E [label="Stable version"]
+
+    A -> B [label="Planning"];
+    B -> C [label="Choose"];
+    C -> D [label="Plan implementation"];
+    D -> C [label="Choose"];
+    D -> B [label="Prototype complete"];
+    B -> E [label="Goal reached"];
+
+}

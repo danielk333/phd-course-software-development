@@ -1,0 +1,45 @@
+graph {
+    node[
+        shape = rect
+        style = filled
+        color = "#f5f5f5"
+    ]
+    task1 [label="Update to numpy 2.x\n priority: High"]
+    task2 [label="Fix edge case in coordinate transform\n priority: Low"]
+    task3 [label="Fix faulty background subtraction when no TX signal\n priority: Very High\n assigned: Daniel"]
+    task4 [label="Support macOS\n priority: High\n assigned: Hampus"]
+    task5 [label="Update plotting CLI with requested args\npriority: Very Low\nassigned: Daniel"]
+    task6 [label="Support new radar experiment v2.1\n priority: Very High\n assigned: Ingar"]
+    task7 [label="Fix colorbar bug in raw data plotting\n priority: Very Low}"]
+    subgraph cluster_todo {
+        bgcolor="#d2aaf4"
+        label=<<b>Todo</b>>
+        { rank="min"
+            task1
+            task2
+        }
+    }
+    subgraph cluster_progress {
+        bgcolor="#aaeaf4"
+        label=<<b>In progress</b>>
+        { rank=same
+            task3
+            task4
+            task5
+        }
+    }
+    subgraph cluster_review {
+        bgcolor="#a4fab2"
+        label=<<b>Code review</b>>
+        { rank=same
+            task6
+        }
+    }
+    subgraph cluster_done {
+        bgcolor="#cfcfcf"
+        label=<<b>Done</b>>
+        { rank=same
+            task7
+        }
+    }
+}
