@@ -130,8 +130,14 @@ weight: 8
                 <ul>
                     <li>Level 1: Context</li>
                 </ul>
-                <img src="diagrams/c4_context_example.png" class="light" style="height: 60vh; width:
+                <img src="diagrams/c4_context_example.png" class="light" style="height: 30vh; width:
                     auto; max-height: none; max-width: none;">
+                <ul>
+                    <li class="fragment select">This tells me how the Users interact with the system
+                    and what external connections are made</li>
+                    <li class="fragment">This should reflect the real-world usage of the system</li>
+                    <li class="fragment">Its a map that should help me understand the context</li>
+                </ul>
             </div>
         </section>
 
@@ -188,8 +194,15 @@ weight: 8
                 <ul>
                     <li>Level 2: Containers (i.e. Environments)</li>
                 </ul>
-                <img src="diagrams/c4_container_example.png" class="light" style="height: 60vh; width:
+                <img src="diagrams/c4_container_example.png" class="light" style="height: 30vh; width:
                     auto; max-height: none; max-width: none;">
+                <ul>
+                    <li class="fragment select">This tells you what environments you need to manage and how
+                        they interface with each other</li>
+                    <li class="fragment">These should be reflected in your deployment, build,
+                        dependency, and API management</li>
+                    <li class="fragment">Its a map that should help me navigate and understand</li>
+                </ul>
             </div>
         </section>
 
@@ -270,9 +283,29 @@ weight: 8
                 <ul>
                     <li class="fragment select">You should (in almost all cases) not draw these</li>
                     <li class="fragment">Read the code/docs instead</li>
+                    <li class="fragment">Or auto-generate them from the code</li>
                 </ul>
             </div>
         </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 4: Code</li>
+                </ul>
+                <p class="highlight">Here is the call-graph of a simple TCP client Request
+                    call</p>
+                <img src="media/pycallgraph.png" class="light" style="width: 80vw; height:
+                    auto; max-height: none; max-width: none;">
+            </div>
+        </section>
+
 
         <section
         data-auto-animate
@@ -491,7 +524,7 @@ weight: 8
                         class Simulation:
                             def __init__(self, file):
                                 self.objects = {}
-                                for identifier, state in self.load(file):
+                                for identifier, state in read_simulation(file):
                                     self.objects[identifier] = State(
                                         Position3D(state[0], state[1], state[2]),
                                         Velocity3D(state[3], state[4], state[5]),
@@ -502,6 +535,40 @@ weight: 8
             </div>
         </section>
 
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Software design</h3>
+                <ul>
+                    <li>Design on all levels of development</li>
+                </ul>
+                <p>Level 4 Code example - How do I represent the data?</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        from dataclasses import dataclass
+                        import numpy as np
+                        import numpy.typing as npt
+
+
+                        @dataclass
+                        class States:
+                            positions: npt.NDArray[np.float64]
+                            velocities: npt.NDArray[np.float64]
+                            ids: npt.NDArray[np.int64]
+
+
+                        def load_simulation(file) -> States:
+                            states, ids = read_simulation(file)
+                            return States(
+                                positions=states[:3, :],
+                                velocities=states[3:, :],
+                                ids=ids,
+                            )
+                    </code>
+                </pre>
+            </div>
+        </section>
     </div>
 </div>
 
