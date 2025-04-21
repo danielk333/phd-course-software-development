@@ -80,7 +80,7 @@ digraph iterative{
     ]
     user -> cli [label="Configures and\nsimulates scenarios\n[Local/remote shell]"]
     cli -> horizons [label="Gets the solar-system\nbody states for scenario\n[JSON/HTTPS]"]
-    cli -> lib [label="Configures and calls functions\n[ctypes]"]
+    cli -> lib [label="Configures and calls\n[subprocess]"]
     lib -> storage [label="Reads from \nand writes to"]
     vis -> storage [label="Reads from"]
     user -> vis [label="Visualizes simulation\n[GLFW GUI]"]

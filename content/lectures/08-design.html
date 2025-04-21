@@ -1,5 +1,5 @@
 ---
-title: "Software design"
+title: "Software design and architecture"
 description: "Everyone who has written software has designed it, but many designs are unconscious. We should strive to making the important decisions conscious, informed, and efficient. This lecture covers what software design is and what it is generally not, what consequences design decisions have and how to walk the line between just doing and over-engineering. "
 handout: design
 weight: 8
@@ -7,40 +7,40 @@ weight: 8
 
 <div class="reveal">
     <div class="slides">
-
         <section
-        data-auto-animate
-        data-background-image="media/code.png"
-        data-background-opacity="0.7"
+            data-auto-animate
+            data-background-image="media/code.png"
+            data-background-opacity="0.7"
         >
-            <div class="centered-container">
-            </div>
+            <div class="centered-container"></div>
         </section>
 
         <section
-        data-auto-animate
-        data-background-image="media/code.png"
-        data-background-opacity="0.15"
+            data-auto-animate
+            data-background-image="media/code.png"
+            data-background-opacity="0.15"
         >
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <p class="fragment">We have already touched on design a lot</p>
                 <p class="fragment mark">Today we will cover</p>
             </div>
         </section>
 
-
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <p class="mark">Today we will cover</p>
                 <ul>
                     <li>Communicating design / architecture</li>
-                    <li class="fragment">Design on all levels of development</li>
-                    <li class="fragment">What is a "design decision"</li>
-                    <li class="fragment">What goes into that decision
+                    <li class="fragment">
+                        Design on all levels of architecture
+                    </li>
+                    <li class="fragment">
+                        What are "design" vs "architecture" decisions
+                    </li>
+                    <li class="fragment">
+                        What goes into decisions
                         <ul>
                             <li>Predictions</li>
                             <li>Scope</li>
@@ -55,18 +55,21 @@ weight: 8
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
                     <li>Communicating design / architecture</li>
                 </ul>
-                <p class="fragment highlight">The usual: visual representation + live explanation</p>
+                <p class="fragment highlight">
+                    The usual: visual representation + live explanation
+                </p>
                 <p class="fragment select">Success rate: questionable</p>
                 <ul class="fragment">
-                    <p>The suggestion: design the <u>design presentation</u> properly</p>
+                    <p>
+                        The suggestion: design the
+                        <u>design / architecture presentation</u> properly
+                    </p>
                     <li>Should it be stand-alone?</li>
                     <li>What story should it tell?</li>
                     <li>Who are you telling it to?</li>
@@ -74,146 +77,109 @@ weight: 8
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
                     <li>Communicating design / architecture</li>
                 </ul>
-                <p>A good place to start: <span class="highlight">the C4 model</span>
-                <br><a href="https://c4model.com/">c4model.com/</a></p>
+                <p>
+                    A good place to start:
+                    <span class="highlight">the C4 model</span> <br /><a
+                        href="https://c4model.com/"
+                        >c4model.com/</a
+                    >
+                </p>
                 <ul class="fragment">
                     <li>Level 1: Context</li>
                     <li>Level 2: Containers (i.e. Environments)</li>
                     <li>Level 3: Components</li>
                     <li>Level 4: Code</li>
                 </ul>
-                <p class="fragment">Great introductory video in the handout - here quick summary</p>
+                <p class="fragment">
+                    Great introductory video in the handout - here quick summary
+                </p>
             </div>
         </section>
-    
-        <section
-        data-auto-animate
-        >
+
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
                     <li>Communicating design / architecture</li>
                 </ul>
                 <ul>
                     <li>Level 1: Context</li>
                 </ul>
-                <img src="diagrams/c4_context_example.png" class="light" style="height: 60vh; width:
-                    auto; max-height: none; max-width: none;">
+                <img
+                    src="diagrams/c4_context_example.png"
+                    class="light"
+                    style="
+                        height: 60vh;
+                        width: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <img src="diagrams/c4_context_example.png" class="light" style="height: 80vh; width:
-                    auto; max-height: none; max-width: none;">
+                <img
+                    src="diagrams/c4_context_example.png"
+                    class="light"
+                    style="
+                        height: 80vh;
+                        width: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
                     <li>Communicating design / architecture</li>
                 </ul>
                 <ul>
                     <li>Level 1: Context</li>
                 </ul>
-                <img src="diagrams/c4_context_example.png" class="light" style="height: 20vh; width:
-                    auto; max-height: none; max-width: none;">
+                <img
+                    src="diagrams/c4_context_example.png"
+                    class="light"
+                    style="
+                        height: 20vh;
+                        width: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
                 <ul>
-                    <li class="fragment select">This tells me how the Users interact with the system
-                    and what external connections are made</li>
-                    <li class="fragment">This should reflect the real-world usage of the system</li>
-                    <li class="fragment">Its a map that should help me understand the context</li>
-                    <li class="fragment mark">Even if this diagram is often trivial in research
-                        software it might
-                    not be!</li>
+                    <li class="fragment select">
+                        This tells me how the Users interact with the system and
+                        what external connections are made
+                    </li>
+                    <li class="fragment">
+                        This should reflect the real-world usage of the system
+                    </li>
+                    <li class="fragment">
+                        Its a map that should help me understand the context
+                    </li>
+                    <li class="fragment mark">
+                        Even if this diagram is often trivial in research
+                        software it might not be!
+                    </li>
                 </ul>
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
-                <ul>
-                    <li>Communicating design / architecture</li>
-                </ul>
-                <ul>
-                    <li>Level 1: Context</li>
-                    <li>Level 2: Containers (i.e. Environments)</li>
-                    <li>Level 3: Components</li>
-                    <li>Level 4: Code</li>
-                </ul>
-            </div>
-        </section>
-
-        <section
-        data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Software design</h3>
-                <ul>
-                    <li>Communicating design / architecture</li>
-                </ul>
-                <ul>
-                    <li>Level 2: Containers (i.e. Environments)</li>
-                </ul>
-                <img src="diagrams/c4_container_example.png" class="light" style="height: 60vh; width:
-                    auto; max-height: none; max-width: none;">
-            </div>
-        </section>
-
-        <section
-        data-auto-animate
-        >
-            <div class="centered-container">
-                <img src="diagrams/c4_container_example.png" class="light" style="height: 80vh; width:
-                    auto; max-height: none; max-width: none;">
-            </div>
-        </section>
-
-        <section
-        data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Software design</h3>
-                <ul>
-                    <li>Communicating design / architecture</li>
-                </ul>
-                <ul>
-                    <li>Level 2: Containers (i.e. Environments)</li>
-                </ul>
-                <img src="diagrams/c4_container_example.png" class="light" style="height: 30vh; width:
-                    auto; max-height: none; max-width: none;">
-                <ul>
-                    <li class="fragment select">This tells you what environments you need to manage and how
-                        they interface with each other</li>
-                    <li class="fragment">These should be reflected in your deployment, build,
-                        dependency, and API management</li>
-                    <li class="fragment">Its a map that should help me navigate and understand</li>
-                </ul>
-            </div>
-        </section>
-
-        <section
-        data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
                     <li>Communicating design / architecture</li>
                 </ul>
@@ -226,57 +192,166 @@ weight: 8
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 2: Containers (i.e. Environments)</li>
+                </ul>
+                <img
+                    src="diagrams/c4_container_example.png"
+                    class="light"
+                    style="
+                        height: 60vh;
+                        width: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <img
+                    src="diagrams/c4_container_example.png"
+                    class="light"
+                    style="
+                        height: 80vh;
+                        width: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 2: Containers (i.e. Environments)</li>
+                </ul>
+                <img
+                    src="diagrams/c4_container_example.png"
+                    class="light"
+                    style="
+                        height: 30vh;
+                        width: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
+                <ul>
+                    <li class="fragment select">
+                        This tells you what environments you need to manage and
+                        how they interface with each other
+                    </li>
+                    <li class="fragment">
+                        These should be reflected in your deployment, build,
+                        dependency, and API management
+                    </li>
+                    <li class="fragment">
+                        Its a map that should help me navigate and understand
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                </ul>
+                <ul>
+                    <li>Level 1: Context</li>
+                    <li>Level 2: Containers (i.e. Environments)</li>
+                    <li>Level 3: Components</li>
+                    <li>Level 4: Code</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
                     <li>Communicating design / architecture</li>
                 </ul>
                 <ul>
                     <li>Level 3: Components</li>
                 </ul>
-                <img src="diagrams/c4_component_example.png" class="light" style="height: 60vh; width:
-                    auto; max-height: none; max-width: none;">
+                <img
+                    src="diagrams/c4_component_example.png"
+                    class="light"
+                    style="
+                        height: 60vh;
+                        width: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <img src="diagrams/c4_component_example.png" class="light" style="height: 80vh; width:
-                    auto; max-height: none; max-width: none;">
+                <img
+                    src="diagrams/c4_component_example.png"
+                    class="light"
+                    style="
+                        height: 80vh;
+                        width: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
                     <li>Communicating design / architecture</li>
                 </ul>
                 <ul>
                     <li>Level 3: Components</li>
                 </ul>
-                <img src="diagrams/c4_component_example.png" class="light" style="height: 30vh; width:
-                    auto; max-height: none; max-width: none;">
+                <img
+                    src="diagrams/c4_component_example.png"
+                    class="light"
+                    style="
+                        height: 30vh;
+                        width: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
                 <ul>
-                    <li class="fragment select">This architecture should be reflected in the code!</li>
-                    <li class="fragment">Think modules, subpackages, protocols, classes ...</li>
-                    <li class="fragment">Its a map that should help me navigate and understand</li>
+                    <li class="fragment select">
+                        This architecture should be reflected in the code!
+                    </li>
+                    <li class="fragment">
+                        Think modules, subpackages, protocols, classes ...
+                    </li>
+                    <li class="fragment">
+                        Its a map that should help me navigate and understand
+                    </li>
                 </ul>
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
                     <li>Communicating design / architecture</li>
                 </ul>
@@ -284,148 +359,187 @@ weight: 8
                     <li>Level 4: Code</li>
                 </ul>
                 <ul>
-                    <li class="fragment select">You should (in almost all cases) not draw these</li>
+                    <li class="fragment select">
+                        You should (in almost all cases) not draw these
+                    </li>
                     <li class="fragment">Read the code/docs instead</li>
-                    <li class="fragment">Or auto-generate them from the code</li>
+                    <li class="fragment">
+                        Or auto-generate them from the code
+                    </li>
                 </ul>
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
                     <li>Communicating design / architecture</li>
                 </ul>
                 <ul>
                     <li>Level 4: Code</li>
                 </ul>
-                <p class="highlight">Here is the call-graph of a simple TCP client Request
-                    call</p>
-                <img src="media/pycallgraph.png" class="light" style="width: 80vw; height:
-                    auto; max-height: none; max-width: none;">
+                <p class="highlight">
+                    Here is the call-graph of a simple TCP client Request call
+                </p>
+                <img
+                    src="media/pycallgraph.png"
+                    class="light"
+                    style="
+                        width: 80vw;
+                        height: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
             </div>
         </section>
 
-
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <p class="mark">Today we will cover</p>
                 <ul>
                     <li>Communicating design / architecture</li>
-                    <li>Design on all levels of development</li>
-                    <li>What is a "design decision"</li>
-                    <li>What goes into that decision</li>
+                    <li>Design on all levels of architecture</li>
+                    <li>What are "design" vs "architecture" decisions</li>
+                    <li>What goes into decisions</li>
                     <li>Consequences of decisions</li>
                     <li>Practical examples</li>
                 </ul>
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
-                    <li>Design on all levels of development</li>
+                    <li>Design on all levels of architecture</li>
                 </ul>
-                <p class="fragment highlight">Design decisions on different levels have different consequences</p>
-                <p class="fragment">Example: A solar-system dynamics simulation tool</p>
-                <p class="fragment">Level 1 Context example - where do I get my data?</p>
+                <p class="fragment highlight">
+                    Design decisions on different levels have different
+                    consequences
+                </p>
+                <p class="fragment">
+                    Example: A solar-system dynamics simulation tool
+                </p>
+                <p class="fragment">
+                    Level 1 Context example - where do I get my data?
+                </p>
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
-                    <li>Design on all levels of development</li>
+                    <li>Design on all levels of architecture</li>
                 </ul>
                 <p>Level 1 Context example - where do I get my data?</p>
-                <img class="fragment light" src="diagrams/c4_context_example.png" 
-                    style="height: auto; width: 25vw; max-height: none; max-width: none;">
+                <img
+                    class="fragment light"
+                    src="diagrams/c4_context_example.png"
+                    style="
+                        height: auto;
+                        width: 25vw;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
             </div>
         </section>
 
-
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
-                    <li>Design on all levels of development</li>
+                    <li>Design on all levels of architecture</li>
                 </ul>
                 <p>Level 1 Context example - where do I get my data?</p>
-                <img class="light" src="diagrams/c4_context_example_v2.png" 
-                    style="height: auto; width: 25vw; max-height: none; max-width: none;">
-                <p class="fragment">Instead include the Kernel parsing as a component</p>
+                <img
+                    class="light"
+                    src="diagrams/c4_context_example_v2.png"
+                    style="
+                        height: auto;
+                        width: 25vw;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
+                <p class="fragment">
+                    Instead include the Kernel parsing as a component
+                </p>
                 <p class="fragment select">Pros vs Cons?</p>
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
-                    <li>Design on all levels of development</li>
+                    <li>Design on all levels of architecture</li>
                 </ul>
                 <p>Level 1 Context example - where do I get my data?</p>
                 <ul class="list-sep-small">
-                    <li>Option 1: Only simple API call needed, dependant on network, not reproducible, no
-                    kernel choice</li>
-                    <li>Option 2: Requires manual kernel parsing, offline, reproducible, completely
-                        configurable</li>
+                    <li>
+                        Option 1: Only simple API call needed, dependant on
+                        network, not reproducible, no kernel choice
+                    </li>
+                    <li>
+                        Option 2: Requires manual kernel parsing, offline,
+                        reproducible, completely configurable, requires more
+                        space and the kernels on runtime
+                    </li>
                     <li class="mark">Which one is better?</li>
                 </ul>
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
-                    <li>Design on all levels of development</li>
+                    <li>Design on all levels of architecture</li>
                 </ul>
                 <p>Level 2 Container example - How do I view the results?</p>
-                <img src="diagrams/c4_container_example.png" class="fragment light" 
-                    style="height: 55vh; width: auto; max-height: none; max-width: none;">
+                <img
+                    src="diagrams/c4_container_example.png"
+                    class="fragment light"
+                    style="
+                        height: 55vh;
+                        width: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
-                    <li>Design on all levels of development</li>
+                    <li>Design on all levels of architecture</li>
                 </ul>
                 <p>Level 2 Container example - How do I view the results?</p>
-                <img src="diagrams/c4_container_example_v2.png" class="light" 
-                    style="height: 55vh; width: auto; max-height: none; max-width: none;">
+                <img
+                    src="diagrams/c4_container_example_v2.png"
+                    class="light"
+                    style="
+                        height: 55vh;
+                        width: auto;
+                        max-height: none;
+                        max-width: none;
+                    "
+                />
             </div>
         </section>
-        
-        <section
-        data-auto-animate
-        >
+
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
-                    <li>Design on all levels of development</li>
+                    <li>Design on all levels of architecture</li>
                 </ul>
                 <p>Level 2 Container example - How do I view the results?</p>
                 <ul>
@@ -435,10 +549,15 @@ weight: 8
                         <li>Server side calculations</li>
                         <li>Limited user control possible</li>
                     </ul>
-                    <li>Option 2: A viewer that renders the results in a GUI</li>
+                    <li>
+                        Option 2: A viewer that renders the results in a GUI
+                    </li>
                     <ul>
                         <li>User must compile/run viewer</li>
-                        <li>User must download/access all data and have sufficient hardware</li>
+                        <li>
+                            User must download/access all data and have
+                            sufficient hardware
+                        </li>
                         <li>Total user control possible</li>
                     </ul>
                     <li class="mark">Which one is better?</li>
@@ -446,13 +565,11 @@ weight: 8
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
-                    <li>Design on all levels of development</li>
+                    <li>Design on all levels of architecture</li>
                 </ul>
                 <p>Level 3 Component example - How do I visualize the data?</p>
                 <ul class="fragment">
@@ -473,13 +590,11 @@ weight: 8
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
-                    <li>Design on all levels of development</li>
+                    <li>Design on all levels of architecture</li>
                 </ul>
                 <p>Level 4 Code example - How do I represent the data?</p>
                 <pre class="fragment show-code">
@@ -499,33 +614,39 @@ weight: 8
 
 
                         class State:
-                            def __init__(self, pos: Position3D, vel: Velocity3D):
+                            def __init__(self, pos: Position3D, vel: Velocity3D, identifier):
                                 self.position = pos
                                 self.velocity = vel
+                                self.identifier = identifier
+                                self.next = None
 
 
                         class Simulation:
                             def __init__(self, file):
-                                self.objects = {}
+                                self.head = None
+                                current = None
                                 for identifier, state in read_simulation(file):
-                                    self.objects[identifier] = State(
+                                    s = State(
                                         Position3D(state[0], state[1], state[2]),
                                         Velocity3D(state[3], state[4], state[5]),
+                                        identifier,
                                     )
-
+                                    if current is not None:
+                                        current.next = s 
+                                    current = s
+                                    if self.head is None:
+                                        self.head = s
                     </code>
                 </pre>
                 <p class="fragment select">Versus</p>
             </div>
         </section>
 
-        <section
-        data-auto-animate
-        >
+        <section data-auto-animate>
             <div class="centered-container">
-                <h3 class="title">Software design</h3>
+                <h3 class="title">Software design and architecture</h3>
                 <ul>
-                    <li>Design on all levels of development</li>
+                    <li>Design on all levels of architecture</li>
                 </ul>
                 <p>Level 4 Code example - How do I represent the data?</p>
                 <pre class="show-code">
@@ -554,9 +675,210 @@ weight: 8
                             )
                     </code>
                 </pre>
-                <p class="fragment select">Why?</p>
+                <p class="fragment select">
+                    Why? See this and previous handouts
+                </p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                    <li>Design on all levels of architecture</li>
+                    <li>What are "design" vs "architecture" decisions</li>
+                    <li>What goes into decisions</li>
+                    <li>Consequences of decisions</li>
+                    <li>Practical examples</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>What are "design" vs "architecture" decisions</li>
+                </ul>
+                <p>My definition is</p>
+                <ul>
+                    <li>Architecture decisions</li>
+                    <p class="highlight">
+                        How the software system will function and what it shall
+                        do
+                    </p>
+                    <p class="select">Level 1-3</p>
+                    <li>Design decisions</li>
+                    <p class="highlight">
+                        Multiple solutions that fulfill the requirements, free
+                        variables <br />(not obvious which is the best)
+                    </p>
+                    <p class="select">Level 4</p>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>What are "design" vs "architecture" decisions</li>
+                </ul>
+                <ul>
+                    <li>Design decisions</li>
+                </ul>
+                <p class="highlight">
+                    An example: a table with schedule data used in processing
+                </p>
+                <ol>
+                    <li><code>pandas</code> DataFrame</li>
+                    <li>dataclass with <code>numpy</code> vectors</li>
+                </ol>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>What are "design" vs "architecture" decisions</li>
+                </ul>
+                <ul>
+                    <li>Design decisions</li>
+                </ul>
+                <p class="highlight">
+                    An example: a table with schedule data used in processing
+                </p>
+                <ul>
+                    <li class="mark">Everything we need can be done in both</li>
+                    <li>Which one is easier to implement?</li>
+                    <li>Which one will be easier to read/maintain?</li>
+                    <li>Is <code>pandas</code> used elsewhere?</li>
+                    <li>Will we do more complex queries later?</li>
+                    <li>Is it easy to change our minds later?</li>
+                    <li>Is this performance critical?</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>What are "design" vs "architecture" decisions</li>
+                </ul>
+                <p class="select">These decisions go hand in hand</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <p class="mark">Today we will cover</p>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                    <li>Design on all levels of architecture</li>
+                    <li>What are "design" vs "architecture" decisions</li>
+                    <li>What goes into decisions</li>
+                    <li>Consequences of decisions</li>
+                    <li>Practical examples</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>What goes into decisions</li>
+                    <li>Consequences of decisions</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>What goes into decisions</li>
+                    <p class="highlight">
+                        Boring answer: everything that matters
+                    </p>
+                    <li>Consequences of decisions</li>
+                    <p class="highlight">Boring answer: depends on the situation</p>
+                </ul>
+                <p class="fragment select">But: Try to predict the consequences and let those that
+                    matter guide you</p>
+                <p class="fragment">Some suggestions of factors to consider:</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>What goes into decisions</li>
+                    <li>Consequences of decisions</li>
+                </ul>
+                <p>Some suggestions of factors to consider:</p>
+                <ul>
+                    <li>Compatibility</li>
+                    <li>Extensibility</li>
+                    <li>Modularity</li>
+                    <li>Fault-tolerance/Robustness</li>
+                    <li>Maintainability</li>
+                    <li>Reusability</li>
+                    <li>Security</li>
+                    <li>Usability</li>
+                    <li>Performance</li>
+                    <li>Portability</li>
+                    <li>Scalability</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>What goes into decisions</li>
+                    <li>Consequences of decisions</li>
+                </ul>
+                <p>These come from a master thesis I supervised a while ago</p>
+                <p><a href="https://urn.kb.se/resolve?urn=urn:nbn:se:ltu:diva-90443">The Efficiency of Good Software Practices: A Case Study on a Radar Meteor Analysis Software Rewrite</a></p>
+                <div class="fragment">
+                    <p class="select">TL;DR Conclusions</p>
+                    <p>good software practices do matter and improve the factors<br>and the suggested
+                    factors are important (depending on the project)</p>
+                </div>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <p class="mark">Today we will cover</p>
+                <ul>
+                    <li>Communicating design / architecture</li>
+                    <li>Design on all levels of architecture</li>
+                    <li>What are "design" vs "architecture" decisions</li>
+                    <li>What goes into decisions</li>
+                    <li>Consequences of decisions</li>
+                    <li>Practical examples</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <p class="mark">Today we will cover</p>
+                <ul>
+                    <li>Practical examples</li>
+                </ul>
+                <p class="fragment mark">See handouts</p>
             </div>
         </section>
     </div>
 </div>
-

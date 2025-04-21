@@ -35,6 +35,13 @@ ProDeveloper - Software Development Methodologies Introduction
 {{< youtube WSq72fWYLDE >}}
 
 
+Geoffrey Hubona - Chapter 2.2 Waterfall, Parallel, and V-model Approaches
+{{< youtube 7brJiq1M7Fg >}}
+
+
+Eye on Tech - What is the Agile Manifesto? An Introduction 
+{{< youtube lHmHKh-QVNQ >}}
+
 ## Project management tools
 
 - [pter](https://vonshednob.cc/pter/)
