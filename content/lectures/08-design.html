@@ -66,7 +66,7 @@ weight: 8
                 <p class="fragment highlight">The usual: visual representation + live explanation</p>
                 <p class="fragment select">Success rate: questionable</p>
                 <ul class="fragment">
-                    <p>The suggestion: design the design presentation properly</p>
+                    <p>The suggestion: design the <u>design presentation</u> properly</p>
                     <li>Should it be stand-alone?</li>
                     <li>What story should it tell?</li>
                     <li>Who are you telling it to?</li>
@@ -130,13 +130,16 @@ weight: 8
                 <ul>
                     <li>Level 1: Context</li>
                 </ul>
-                <img src="diagrams/c4_context_example.png" class="light" style="height: 30vh; width:
+                <img src="diagrams/c4_context_example.png" class="light" style="height: 20vh; width:
                     auto; max-height: none; max-width: none;">
                 <ul>
                     <li class="fragment select">This tells me how the Users interact with the system
                     and what external connections are made</li>
                     <li class="fragment">This should reflect the real-world usage of the system</li>
                     <li class="fragment">Its a map that should help me understand the context</li>
+                    <li class="fragment mark">Even if this diagram is often trivial in research
+                        software it might
+                    not be!</li>
                 </ul>
             </div>
         </section>
@@ -234,7 +237,7 @@ weight: 8
                 <ul>
                     <li>Level 3: Components</li>
                 </ul>
-                <img src="diagrams/c4_container_example.png" class="light" style="height: 60vh; width:
+                <img src="diagrams/c4_component_example.png" class="light" style="height: 60vh; width:
                     auto; max-height: none; max-width: none;">
             </div>
         </section>
@@ -243,7 +246,7 @@ weight: 8
         data-auto-animate
         >
             <div class="centered-container">
-                <img src="diagrams/c4_container_example.png" class="light" style="height: 80vh; width:
+                <img src="diagrams/c4_component_example.png" class="light" style="height: 80vh; width:
                     auto; max-height: none; max-width: none;">
             </div>
         </section>
@@ -259,11 +262,11 @@ weight: 8
                 <ul>
                     <li>Level 3: Components</li>
                 </ul>
-                <img src="diagrams/c4_container_example.png" class="light" style="height: 30vh; width:
+                <img src="diagrams/c4_component_example.png" class="light" style="height: 30vh; width:
                     auto; max-height: none; max-width: none;">
                 <ul>
                     <li class="fragment select">This architecture should be reflected in the code!</li>
-                    <li class="fragment">Think modules, subpackages, protocols, ...</li>
+                    <li class="fragment">Think modules, subpackages, protocols, classes ...</li>
                     <li class="fragment">Its a map that should help me navigate and understand</li>
                 </ul>
             </div>
@@ -347,7 +350,8 @@ weight: 8
                     <li>Design on all levels of development</li>
                 </ul>
                 <p>Level 1 Context example - where do I get my data?</p>
-                <img class="fragment" src="diagrams/context_data_source_option1.png">
+                <img class="fragment light" src="diagrams/c4_context_example.png" 
+                    style="height: auto; width: 25vw; max-height: none; max-width: none;">
             </div>
         </section>
 
@@ -361,7 +365,10 @@ weight: 8
                     <li>Design on all levels of development</li>
                 </ul>
                 <p>Level 1 Context example - where do I get my data?</p>
-                <img src="diagrams/context_data_source_option2.png">
+                <img class="light" src="diagrams/c4_context_example_v2.png" 
+                    style="height: auto; width: 25vw; max-height: none; max-width: none;">
+                <p class="fragment">Instead include the Kernel parsing as a component</p>
+                <p class="fragment select">Pros vs Cons?</p>
             </div>
         </section>
 
@@ -373,8 +380,8 @@ weight: 8
                 <ul>
                     <li>Design on all levels of development</li>
                 </ul>
-                <p>Example: Level 1 Context - where do I get my data?</p>
-                <ul>
+                <p>Level 1 Context example - where do I get my data?</p>
+                <ul class="list-sep-small">
                     <li>Option 1: Only simple API call needed, dependant on network, not reproducible, no
                     kernel choice</li>
                     <li>Option 2: Requires manual kernel parsing, offline, reproducible, completely
@@ -392,8 +399,9 @@ weight: 8
                 <ul>
                     <li>Design on all levels of development</li>
                 </ul>
-                <p>Example: Level 2 Container - How do I view the results?</p>
-                <img class="fragment" src="diagrams/container_viewer_option1.png">
+                <p>Level 2 Container example - How do I view the results?</p>
+                <img src="diagrams/c4_container_example.png" class="fragment light" 
+                    style="height: 55vh; width: auto; max-height: none; max-width: none;">
             </div>
         </section>
 
@@ -405,8 +413,9 @@ weight: 8
                 <ul>
                     <li>Design on all levels of development</li>
                 </ul>
-                <p>Example: Level 2 Container - How do I view the results?</p>
-                <img src="diagrams/container_viewer_option2.png">
+                <p>Level 2 Container example - How do I view the results?</p>
+                <img src="diagrams/c4_container_example_v2.png" class="light" 
+                    style="height: 55vh; width: auto; max-height: none; max-width: none;">
             </div>
         </section>
         
@@ -418,19 +427,19 @@ weight: 8
                 <ul>
                     <li>Design on all levels of development</li>
                 </ul>
-                <p>Example: Level 2 Container - How do I view the results?</p>
+                <p>Level 2 Container example - How do I view the results?</p>
                 <ul>
                     <li>Option 1: A server that streams the resulting video</li>
                     <ul>
                         <li>No client requirements (except video receive)</li>
                         <li>Server side calculations</li>
-                        <li>No user control</li>
+                        <li>Limited user control possible</li>
                     </ul>
-                    <li>Option 2: A viewer that reads the data locally</li>
+                    <li>Option 2: A viewer that renders the results in a GUI</li>
                     <ul>
-                        <li>Client must compile/run viewer</li>
-                        <li>Client must download all data and have sufficient hardware</li>
-                        <li>Total user control</li>
+                        <li>User must compile/run viewer</li>
+                        <li>User must download/access all data and have sufficient hardware</li>
+                        <li>Total user control possible</li>
                     </ul>
                     <li class="mark">Which one is better?</li>
                 </ul>
@@ -446,33 +455,7 @@ weight: 8
                     <li>Design on all levels of development</li>
                 </ul>
                 <p>Level 3 Component example - How do I visualize the data?</p>
-                <img class="fragment" src="diagrams/component_visualize_option1.png">
-            </div>
-        </section>
-
-        <section
-        data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Software design</h3>
-                <ul>
-                    <li>Design on all levels of development</li>
-                </ul>
-                <p>Level 3 Component example - How do I visualize the data?</p>
-                <img class="fragment" src="diagrams/component_visualize_option2.png">
-            </div>
-        </section>
-
-        <section
-        data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Software design</h3>
-                <ul>
-                    <li>Design on all levels of development</li>
-                </ul>
-                <p>Level 3 Component example - How do I visualize the data?</p>
-                <ul>
+                <ul class="fragment">
                     <li>Option 1: Static</li>
                     <ul>
                         <li>No real-time rendering requirement</li>
@@ -500,7 +483,7 @@ weight: 8
                 </ul>
                 <p>Level 4 Code example - How do I represent the data?</p>
                 <pre class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python" style="height: 45vh;">
                         class Position3D:
                             def __init__(self, x, y, z):
                                 self.x = x
@@ -532,6 +515,7 @@ weight: 8
 
                     </code>
                 </pre>
+                <p class="fragment select">Versus</p>
             </div>
         </section>
 
@@ -545,8 +529,8 @@ weight: 8
                 </ul>
                 <p>Level 4 Code example - How do I represent the data?</p>
                 <pre class="show-code">
-                    <code data-line-numbers data-trim class="language-python">
-                        from dataclasses import dataclass
+                    <code data-line-numbers data-trim class="language-python" style="height: 45vh;">
+                        from dataclasses import dataclass, field
                         import numpy as np
                         import numpy.typing as npt
 
@@ -555,8 +539,11 @@ weight: 8
                         class States:
                             positions: npt.NDArray[np.float64]
                             velocities: npt.NDArray[np.float64]
-                            ids: npt.NDArray[np.int64]
+                            ids: npt.NDArray[np.dtype("U8")]
+                            objects: dict[np.dtype("U8"), int] = field(init=False)
 
+                            def __post_init__(self):
+                                self.objects = {obj: ind for ind, obj in enumerate(self.ids)}
 
                         def load_simulation(file) -> States:
                             states, ids = read_simulation(file)
@@ -567,6 +554,7 @@ weight: 8
                             )
                     </code>
                 </pre>
+                <p class="fragment select">Why?</p>
             </div>
         </section>
     </div>

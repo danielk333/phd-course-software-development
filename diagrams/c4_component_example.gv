@@ -22,66 +22,75 @@ digraph iterative{
         fillcolor = "#9db5f7"
         color = "black"
     ];
+    cli [
+        label=<
+            <table border="0" cellborder="0">
+                <tr> <td><b>Simulation CLI interface</b></td> </tr>
+                <tr> <td>[Container: Python]</td> </tr>
+                <tr> <td>The interface for configuring, running, and viewing the simulations</td> </tr>
+            </table>
+        >
+    ]
+    storage [
+        shape = cylinder
+        label=<
+            <table border="0" cellborder="0">
+                <tr> <td><b>Results</b></td> </tr>
+                <tr> <td>[Container: Filesystem and HDF5]</td> </tr>
+                <tr> <td>The simulation results stored on a file system using HDF5</td> </tr>
+            </table>
+        >
+    ]
+    node[
+        shape = rect
+        style = filled
+        fillcolor = "#bbcdfd"
+        color = "black"
+    ];
     subgraph cluster_software {
-        label=<<b>Solar-system simulation</b>>
-        cli [
+        label=<<b>Visualization tool<br/>[Container: Odin]</b>>
+        control [
             label=<
                 <table border="0" cellborder="0">
-                    <tr> <td><b>Simulation CLI interface</b></td> </tr>
-                    <tr> <td>[Container: Python]</td> </tr>
-                    <tr> <td>The interface for configuring and\nrunning the simulations</td> </tr>
+                    <tr> <td><b>Control and command server</b></td> </tr>
+                    <tr> <td>[Component: TCP/IP JSON]</td> </tr>
+                    <tr> <td>A control and command server that accepts JSON requests over TCP/IP for<br/>controlling and configuring the RTSP server and simulation rendering</td> </tr>
+                </table>
+            >
+        ]        
+        rtsp [
+            label=<
+                <table border="0" cellborder="0">
+                    <tr> <td><b>RTSP server</b></td> </tr>
+                    <tr> <td>[Component: ffmpeg]</td> </tr>
+                    <tr> <td>A RTSP server that streams to a port using ffmpeg bindings</td> </tr>
                 </table>
             >
         ]
-        lib [
+        render [
             label=<
                 <table border="0" cellborder="0">
-                    <tr> <td><b>Simulation library</b></td> </tr>
-                    <tr> <td>[Container: C]</td> </tr>
-                    <tr> <td>The simulation software that solves\nthe equations of motion</td> </tr>
+                    <tr> <td><b>Simulation renderer</b></td> </tr>
+                    <tr> <td>[Component: OpenGL]</td> </tr>
+                    <tr> <td>Interpolates and renders a 3D visualization of the simulation using OpenGL</td> </tr>
                 </table>
             >
         ]
-        vis [
+        reader [
             label=<
                 <table border="0" cellborder="0">
-                    <tr> <td><b>Visualization tool</b></td> </tr>
-                    <tr> <td>[Container: Odin]</td> </tr>
-                    <tr> <td>A tool to create 3d visualizations\nof the simulation results</td> </tr>
-                </table>
-            >
-        ]
-        storage [
-            shape = cylinder
-            label=<
-                <table border="0" cellborder="0">
-                    <tr> <td><b>Results</b></td> </tr>
-                    <tr> <td>[Container: Filesystem and HDF5]</td> </tr>
-                    <tr> <td>The simulation results stored on\na file system using HDF5</td> </tr>
+                    <tr> <td><b>Simulation reader</b></td> </tr>
+                    <tr> <td>[Component: HDF5]</td> </tr>
+                    <tr> <td>Reads simulation data from the HDF5 based filesystem storage using HDF bindings</td> </tr>
                 </table>
             >
         ]
     }
-    node[
-        shape = rect
-        style = filled
-        fillcolor = "#cfcfcf"
-        color = "black"
-    ];
-    horizons [
-        label=<
-            <table border="0" cellborder="0">
-                <tr> <td><b>JPL Horizons System</b></td> </tr>
-                <tr> <td>[Software system]</td> </tr>
-                <tr> <td>A software system to calculate positions<br/>and velocities of solar system bodies at a requested time</td> </tr>
-            </table>
-        >
-    ]
-    user -> cli [label="Configures and\nsimulates scenarios\n[SSH]"]
-    cli -> horizons [label="Gets the solar-system\nbody states for scenario\n[JSON/HTTPS]"]
-    cli -> lib [label="Configures and calls functions"]
-    cli -> vis [label="Configures and runs"]
-    lib -> storage [label="Reads from \nand writes to"]
-    vis -> storage [label="Reads from"]
-    user -> vis [label="Views results\n[RTSP stream]"]
+    cli -> control [label="Configures and runs\n[TCP/JSON]"]
+    control -> rtsp [label="Controls"]
+    control -> render [label="Configures"]
+    reader -> storage [label="Reads from"]
+    render -> reader [label="Get segment of simulation using"]
+    rtsp -> render [label="Get frames using"]
+    user -> rtsp [label="Views results\n[RTSP stream]"]
 }

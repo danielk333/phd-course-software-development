@@ -30,7 +30,7 @@ digraph iterative{
                 <table border="0" cellborder="0">
                     <tr> <td><b>Simulation CLI interface</b></td> </tr>
                     <tr> <td>[Container: Python]</td> </tr>
-                    <tr> <td>The interface for configuring, running, and viewing the simulations</td> </tr>
+                    <tr> <td>The interface for configuring and running the simulations</td> </tr>
                 </table>
             >
         ]
@@ -81,8 +81,7 @@ digraph iterative{
     user -> cli [label="Configures and\nsimulates scenarios\n[Local/remote shell]"]
     cli -> horizons [label="Gets the solar-system\nbody states for scenario\n[JSON/HTTPS]"]
     cli -> lib [label="Configures and calls functions\n[ctypes]"]
-    cli -> vis [label="Configures and runs\n[TCP/JSON]"]
     lib -> storage [label="Reads from \nand writes to"]
     vis -> storage [label="Reads from"]
-    user -> vis [label="Views results video\n[RTSP stream + e.g. VLC]"]
+    user -> vis [label="Visualizes simulation\n[GLFW GUI]"]
 }
