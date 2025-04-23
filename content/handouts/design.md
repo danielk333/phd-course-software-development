@@ -26,7 +26,7 @@ function of your software:
 - State diagrams
 - Sequence diagrams
 
-**TODO: add links to the above diagrams**
+**TODO: add links to good descriptions of the above diagrams**
 
 ### Code
 

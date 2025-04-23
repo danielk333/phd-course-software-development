@@ -12,7 +12,7 @@ to define graphs using the `dot` language.
 I did not find any good pre-defined templates for making C4 diagrams using Graphviz so I have written my own. As I have also made a bunch of other diagrams in this course using the `dot` language I wanted to keep the graphing language consistent. You can have a look at one example here:
 
 {{< details summary="Example c4 container diagram made in the dot language" >}}
-{{< include-code "dot" "code/c4_container_example.gv" "">}}
+{{< include-code "dot" "code/graphviz/c4_container_example.gv" "">}}
 {{< /details >}}
 
 The above code generates this figure:
@@ -40,30 +40,17 @@ There is an extensive list of other tooling for C4 listen on [c4model.com's tool
 
 ## State diagrams
 
-A state diagram is fairly simple to draw. If we follow the [UML definition](https://en.wikipedia.org/wiki/UML_state_machine) we can draw them:
-
-- [Using `plantUML`](https://plantuml.com/state-diagram)
+A state diagram is fairly simple to draw. If we follow the [UML
+definition](https://en.wikipedia.org/wiki/UML_state_machi#ne) we can draw them using the [plantUML's state-diagram](https://plantuml.com/state-diagram) or any other UML diagram drawing tool.
 
 ### Using `graphviz`
 
-```dot
-digraph finite_state_machine {
-    label="Pressure valve";
-    rankdir="LR";
-    dpi=300;
-    node [shape=point, label=""];
-    ENTRY;
-    EXIT;
-    node [shape=rect, style=rounded];
+My own recipe for drawing state-diagrams using `graphviz` is:
 
-    A[label="Low flow"];
-    B[label="High flow"];
-    C[label="No flow"];
+{{< include-code "dot" "code/graphviz/state_diagram_example.gv" "">}}
 
-    ENTRY->A [label="Start"];
-    A->C [label="Shutdown"];
-    B->A [label="Pressure drops"];
-    A->B [label="Request recived"];
-    C->EXIT [label="End"];
-}
-```
+Which results in
+
+![Pressure valve state diagram](state_diagram_example.png#expandable.light "Example state diagram of
+a pressure valve control system")
+
