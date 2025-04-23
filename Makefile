@@ -4,5 +4,5 @@ output_files := $(addprefix static/,$(output_files_tmp))
 
 all: $(output_files)
 
-%.png : %.gv
-	dot -Tpng -ostatic/$@ $<
+static/diagrams/%.png : diagrams/%.gv
+	dot -Tpng -o$@ $<
