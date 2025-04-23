@@ -1,0 +1,12 @@
+digraph {
+    rankdir="LR";
+    dpi=300;
+    node [ shape=plain ];
+    data [ label="Raw data" ];
+    node [ shape=rect ];
+    proc [ label="Hard target matched filtering" ];
+    clust [ label="Event clustering" ];
+    node [ shape=plain ];
+    track [ label="Tracklets"];
+    data -> proc -> clust -> track;
+}

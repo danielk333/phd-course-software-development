@@ -9,15 +9,24 @@ weight: 8
 
 ### Diagrams
 
+{{< tutorial diagrams "For a small tutorial on how to make different diagrams, see" >}}
+
 One of the better models I have encountered for displaying software architecture (or design) is the
 [C4 model](https://c4model.com/). Below is a video by its creator describing the model:
-
 
 Visualising software architecture with the C4 model - Simon Brown, Agile on the Beach 2019
 {{< youtube x2-rSnhpw0g >}}
 
+There are also a number of other diagrams that are super useful for communicating the design and
+function of your software:
 
-{{< tutorial c4 "For a small tutorial on how to make C4 diagrams, see" >}}
+- Functional flow diagrams
+- Control flow diagrams
+- Data flow diagrams
+- State diagrams
+- Sequence diagrams
+
+**TODO: add links to the above diagrams**
 
 ### Code
 

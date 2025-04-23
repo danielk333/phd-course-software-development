@@ -1,0 +1,19 @@
+digraph finite_state_machine {
+    label="Pressure valve";
+    rankdir="LR";
+    dpi=300;
+    node [shape=point, label=""];
+    ENTRY;
+    EXIT;
+    node [shape=rect, style=rounded];
+
+    A[label="Low flow"];
+    B[label="High flow"];
+    C[label="No flow"];
+
+    ENTRY->A [label="Start"];
+    A->C [label="Shutdown"];
+    B->A [label="Pressure drops"];
+    A->B [label="Request recived"];
+    C->EXIT [label="End"];
+}

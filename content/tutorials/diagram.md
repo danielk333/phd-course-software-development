@@ -1,8 +1,10 @@
 ---
-title: Drawing C4 diagrams
+title: Drawing diagrams
 ---
 
-## Using `graphviz`
+## C4
+
+### Using `graphviz`
 
 [Graphviz](https://graphviz.org/) is a powerful open source graph visualization tool written in (mostly) C that allows you
 to define graphs using the `dot` language.
@@ -18,7 +20,7 @@ The above code generates this figure:
 ![C4 container example diagram](c4_container_example.png#expandable.light "Example C4 Container
 diagram for a solar-system simulation tool")
 
-## Using `plantUML`
+### Using `plantUML`
 
 [PlantUML](https://plantuml.com/) is a Java tool for drawing a wide range of diagrams, notably
 [Unified Modeling Language (UML)](https://en.wikipedia.org/wiki/Unified_Modeling_Language) and
@@ -32,6 +34,36 @@ There is a predefined set for drawing specifically C4-architecture diagrams call
 
 To read more on how to use C4-PlantUML, see the [github README.md](https://github.com/plantuml-stdlib/C4-PlantUML?tab=readme-ov-file#getting-started).
 
-## Other tooling
+### Other tooling
 
 There is an extensive list of other tooling for C4 listen on [c4model.com's tooling page](https://c4model.com/tooling).
+
+## State diagrams
+
+A state diagram is fairly simple to draw. If we follow the [UML definition](https://en.wikipedia.org/wiki/UML_state_machine) we can draw them:
+
+- [Using `plantUML`](https://plantuml.com/state-diagram)
+
+### Using `graphviz`
+
+```dot
+digraph finite_state_machine {
+    label="Pressure valve";
+    rankdir="LR";
+    dpi=300;
+    node [shape=point, label=""];
+    ENTRY;
+    EXIT;
+    node [shape=rect, style=rounded];
+
+    A[label="Low flow"];
+    B[label="High flow"];
+    C[label="No flow"];
+
+    ENTRY->A [label="Start"];
+    A->C [label="Shutdown"];
+    B->A [label="Pressure drops"];
+    A->B [label="Request recived"];
+    C->EXIT [label="End"];
+}
+```
