@@ -1,12 +1,20 @@
 digraph {
     rankdir="LR";
     dpi=300;
-    node [ shape=plain ];
-    data [ label="Raw data" ];
+    data [
+        label = "Raw data"
+        shape = plain
+    ];
+
     node [ shape=rect ];
     proc [ label="Hard target matched filtering" ];
     clust [ label="Event clustering" ];
-    node [ shape=plain ];
-    track [ label="Tracklets"];
+    noise [ label="Reciver noise calibration" ];
+
+    track [
+        label="Tracklets"
+        shape = plain
+    ];
     data -> proc -> clust -> track;
+    proc -> noise;
 }
