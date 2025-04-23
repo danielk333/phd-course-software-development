@@ -405,8 +405,6 @@ weight: 8
                 <p class="mark">A few other useful diagram types</p>
                 <ul>
                     <li>Functional diagrams</li>
-                    <li>Control flow diagrams</li>
-                    <li>Data flow diagrams</li>
                     <li>State diagrams</li>
                     <li>Sequence diagrams</li>
                 </ul>
@@ -432,8 +430,9 @@ weight: 8
                         max-width: none;
                     "
                 />
-                <p>Functional diagrams showcase a system's functional processes and how they
+                <p class="fragment mark">Functional diagrams showcase a system's functional processes and how they
                     interact (it does not have to reflect architecture)</p>
+                <p class="fragment">For our field, these are usually 1-to-1 with control and data flow diagrams</p>
             </div>
         </section>
 
@@ -445,85 +444,7 @@ weight: 8
                 </ul>
                 <p class="mark">A few other useful diagram types</p>
                 <ul>
-                    <li>Functional flow diagrams</li>
-                    <li>Control flow diagrams</li>
-                    <li>Data flow diagrams</li>
-                    <li>State diagrams</li>
-                    <li>Sequence diagrams</li>
-                </ul>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">Software design and architecture</h3>
-                <ul>
-                    <li>Communicating design / architecture</li>
-                </ul>
-                <ul>
-                    <li>Control flow diagrams</li>
-                </ul>
-                <img
-                    src="diagrams/functional_diagram_example.png"
-                    class="light"
-                    style="
-                        width: 80vw;
-                        height: auto;
-                        max-height: none;
-                        max-width: none;
-                    "
-                />
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">Software design and architecture</h3>
-                <ul>
-                    <li>Communicating design / architecture</li>
-                </ul>
-                <ul>
-                    <li>Functional flow diagrams</li>
-                    <li>Control flow diagrams</li>
-                    <li>Data flow diagrams</li>
-                    <li>State diagrams</li>
-                    <li>Sequence diagrams</li>
-                </ul>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">Software design and architecture</h3>
-                <ul>
-                    <li>Communicating design / architecture</li>
-                </ul>
-                <ul>
-                    <li>Data flow diagrams</li>
-                </ul>
-                <img
-                    src="diagrams/functional_diagram_example.png"
-                    class="light"
-                    style="
-                        width: 80vw;
-                        height: auto;
-                        max-height: none;
-                        max-width: none;
-                    "
-                />
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">Software design and architecture</h3>
-                <ul>
-                    <li>Communicating design / architecture</li>
-                </ul>
-                <ul>
-                    <li>Functional flow diagrams</li>
-                    <li>Control flow diagrams</li>
-                    <li>Data flow diagrams</li>
+                    <li>Functional diagrams</li>
                     <li>State diagrams</li>
                     <li>Sequence diagrams</li>
                 </ul>
@@ -559,9 +480,7 @@ weight: 8
                     <li>Communicating design / architecture</li>
                 </ul>
                 <ul>
-                    <li>Functional flow diagrams</li>
-                    <li>Control flow diagrams</li>
-                    <li>Data flow diagrams</li>
+                    <li>Functional diagrams</li>
                     <li>State diagrams</li>
                     <li>Sequence diagrams</li>
                 </ul>
@@ -578,15 +497,16 @@ weight: 8
                     <li>Sequence diagrams</li>
                 </ul>
                 <img
-                    src="diagrams/functional_diagram_example.png"
+                    src="diagrams/sequence_diagram_example.png"
                     class="light"
                     style="
-                        width: 80vw;
-                        height: auto;
+                        height: 50vh;
+                        width: auto;
                         max-height: none;
                         max-width: none;
                     "
                 />
+                <p class="fragment mark">Describes not only what occurs but also <u>in what order</u></p>
             </div>
         </section>
 
@@ -902,14 +822,30 @@ weight: 8
                     <p class="highlight">
                         How the software system will function and what it shall
                         do
+                        <br />(can be multiple architectures that fulfill requirements)
                     </p>
-                    <p class="select">Level 1-3</p>
+                    <p class="select">C4 Level 1-3</p>
                     <li>Design decisions</li>
                     <p class="highlight">
-                        Multiple solutions that fulfill the requirements, free
-                        variables <br />(not obvious which is the best)
+                        Multiple implementations that solve the same problem
+                        <br />(i.e. "free variables", not obvious which is the best)
                     </p>
-                    <p class="select">Level 4</p>
+                    <p class="select">C4 Level 4</p>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Software design and architecture</h3>
+                <ul>
+                    <li>What are "design" vs "architecture" decisions</li>
+                </ul>
+                <p>My definition is</p>
+                <ul>
+                    <li>Architecture decisions</li>
+                    <p class="highlight">We saw example before of these</p>
+                    <li>Design decisions</li>
                 </ul>
             </div>
         </section>
@@ -930,6 +866,7 @@ weight: 8
                     <li><code>pandas</code> DataFrame</li>
                     <li>dataclass with <code>numpy</code> vectors</li>
                 </ol>
+                <p class="fragment mark">Everything we need can be done in both</p>
             </div>
         </section>
 
@@ -945,14 +882,15 @@ weight: 8
                 <p class="highlight">
                     An example: a table with schedule data used in processing
                 </p>
-                <ul>
-                    <li class="mark">Everything we need can be done in both</li>
+                <p class="mark">Everything we need can be done in both</p>
+                <ul class="fragment">
                     <li>Which one is easier to implement?</li>
                     <li>Which one will be easier to read/maintain?</li>
                     <li>Is <code>pandas</code> used elsewhere?</li>
                     <li>Will we do more complex queries later?</li>
                     <li>Is it easy to change our minds later?</li>
                     <li>Is this performance critical?</li>
+                    <li>Which is more performant?</li>
                 </ul>
             </div>
         </section>
@@ -960,17 +898,6 @@ weight: 8
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Software design and architecture</h3>
-                <ul>
-                    <li>What are "design" vs "architecture" decisions</li>
-                </ul>
-                <p class="select">These decisions go hand in hand</p>
-            </div>
-        </section>
-
-        <section data-auto-animate>
-            <div class="centered-container">
-                <h3 class="title">Software design and architecture</h3>
-                <p class="mark">Today we will cover</p>
                 <ul>
                     <li>Communicating design / architecture</li>
                     <li>Design on all levels of architecture</li>
@@ -1003,9 +930,9 @@ weight: 8
                     <li>Consequences of decisions</li>
                     <p class="highlight">Boring answer: depends on the situation</p>
                 </ul>
-                <p class="fragment select">But: Try to predict the consequences and let those that
+                <p class="fragment"><span class="select">My suggestion?</span><br>Try to predict the consequences and let those that
                     matter guide you</p>
-                <p class="fragment">Some suggestions of factors to consider:</p>
+                <p class="fragment mark">Some factors to consider:</p>
             </div>
         </section>
 
@@ -1016,7 +943,7 @@ weight: 8
                     <li>What goes into decisions</li>
                     <li>Consequences of decisions</li>
                 </ul>
-                <p>Some suggestions of factors to consider:</p>
+                <p class="mark">Some factors to consider:</p>
                 <ul>
                     <li>Compatibility</li>
                     <li>Extensibility</li>

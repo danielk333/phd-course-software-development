@@ -1,0 +1,41 @@
+digraph sequence {
+    dpi=300;
+    graph [overlap=true, splines=line, nodesep=1.0, ordering=out];
+    edge [arrowhead=none];
+    node [shape=none, width=0, height=0, label=""];
+    {
+        rank=same;
+        node[shape=rectangle, height=0.7, width=2];
+        ask[label="Allsky rain server"];
+        a4d[label="ALIS_4D rain client"];
+        a4dc[label="ALIS_4D controller"];
+    }
+    {
+        edge [style=dashed, weight=6];
+        ask -> a1;
+        edge [penwidth=5; style=solid];
+        a1 -> a2;
+        edge [style=dashed, penwidth=1];
+        a2 -> a3 -> a4 -> a5;
+    }
+    {
+        edge [style=dashed, weight=6];
+        a4d -> b1;
+        edge [penwidth=5; style=solid];
+        b1 -> b2 -> b3 -> b4;
+        edge [style=dashed, penwidth=1];
+        b4 -> b5;
+    }
+    {
+        edge [style=dashed, weight=6];
+        a4dc -> c1 -> c2 -> c3;
+        edge [penwidth=5; style=solid];
+        c3 -> c4;
+        edge [style=dashed, penwidth=1];
+        c4 -> c5;
+    }
+    { rank=same; a1 -> b1 [label="request_aurora()", arrowhead=normal, dir=back]; b1 -> c1 [style=invis]; }
+    { rank=same; a2 -> b2 [label="response()", arrowhead=normal]; b2 -> c2 [style=invis]; }
+    { rank=same; a3 -> b3 [style=invis]; b3 -> c3 [label="set_experiment()", arrowhead=normal]; }
+    { rank=same; a4 -> b4 [style=invis]; b4 -> c4 [label="state()", arrowhead=normal, dir=back]; }
+}

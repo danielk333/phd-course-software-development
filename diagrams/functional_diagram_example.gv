@@ -16,5 +16,5 @@ digraph {
         shape = plain
     ];
     data -> proc -> clust -> track;
-    proc -> noise;
+    proc -> noise -> track;
 }
