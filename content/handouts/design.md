@@ -29,33 +29,32 @@ function of your software:
 ### Code
 
 Documentation can do a great deal to communicate design and architecture, especially package and
-module level docstrings or a design page of a separate documentation page. You can also signal a lot
-with just good naming conventions of module and sub packages, for example this structure:
+module level docstrings, or a design page of a separate documentation. You can also signal a lot
+with just good naming conventions of modules and sub packages, for example this structure:
 
 ```
-src/pyant/
+src/package/
 ├── __init__.py
-├── beam.py
-├── beams
-│   ├── __init__.py
-│   ├── beams.py
-│   ├── eiscat_3d.py
-│   ├── eiscat_uhf.py
-│   ├── mu.py
-├── coordinates.py
-├── models
-│   ├── __init__.py
-│   ├── airy.py
-│   ├── cassegrain.py
+├── server.py
+├── client.py
 ├── plotting.py
+├── cli.py
 ```
 
-Directly tells me that the model is separate from the real world instance, as I know that `cassegrain` is
-a general model for radiation patterns while `eiscat_uhf` is a radar that exists in the eal world.
+Directly tells me that there is a server and a client and that this functionality is (hopefully)
+mostly contained to these separate modules. I can also see that I can probably use this as a
+stand-alone library in addition to the CLI since these have been separated. 
 I also know that there is a dedicated plotting module which indicates that plotting is
-not littered throughout the code but isolated to this file. 
+not littered throughout the code, but rather isolated to this file. Consider instead this structure: 
 
-Similarly, if the software is supposed to contain a server somewhere, I would expect to find a file or package somewhere called `server` or something similar. If instead it was just baked into the same file the CLI and this was called something generic like `functions`, how would I know where to look other than starting to grep trough files or randomly following LSP definitions.
+```
+src/package/
+├── __init__.py
+├── functions.py
+├── processes.py
+```
+
+How would I know where to look to find certain functionality?
 
 ## Design by example
 
@@ -72,64 +71,98 @@ So the easiest for me to point to are my own projects as I know exactly how they
 
 #### `sorts`
 
-Space Object Radar Tracking Simulator (SORTS) is a collection of modules designed for research purposes concerning the tracking and detection of objects in space. Its ultimate goal is to simulate the tracking and discovery of objects in space using radar systems in a very general fashion.
+Space Object Radar Tracking Simulator (SORTS) is a collection of modules designed for research
+purposes concerning the tracking and detection of objects in space. Its ultimate goal is to simulate
+the tracking and discovery of objects in space using radar systems in a very general fashion. This
+library is currently in its 4th refactoring because we discovered a lot while writing it the last 3
+times! So this is a good example of a larger library style package written by researchers that did
+not really know everything when we started. The largest problem that caused the current refactoring
+was that the library was TOO general, causing it to be hard to debug and hard to optimize.
 
 - [GitHub repository](https://github.com/danielk333/sorts)
 
 
 ### `hardtarget`
 
-General package for hard target processing of radar data in the digital_rf format using matched filtering.
+General package for hard target processing of radar data in the `digital_rf` format using matched
+filtering. This is a typical example of a general purpose tool for data pipeline construction.
 
 - [GitHub repository](https://github.com/danielk333/hardtarget)
 
 #### `rain`
 
-ReseArch Infrastructure Network (RAIN) is a Python package that allows users to exchange messages between each other. This package was created with the purpose of sending status information between research infrastructure in the Arctic regions of the Nordics.
+ReseArch Infrastructure Network (RAIN) is a Python package that allows users to exchange messages
+between each other. This package was created with the purpose of sending status information between
+research infrastructure in the Arctic regions of the Nordics. This is a very different type of
+package compared to what researchers generally work with. It is small and simple but it was not
+trivial for us, i.e. not software engineers, to put it togehter. We are currently trying to fix the
+last issues and then use it to enable automatic control of several instruments in real time.
 
 - [GitHub repository](https://github.com/danielk333/rain)
 
 
 #### `pyorb`
 
-Python implementation of the definition of Kepler orbits and related transformations, nothing more, nothing less.
+Python implementation of the definition of Kepler orbits and related transformations, nothing more,
+nothing less. An example of a really simple package to do a simple and well defined thing well.
 
 - [GitHub repository](https://github.com/danielk333/pyorb)
 
 
 #### `runningman`
 
-Runtime Manager, i.e. a running-man(ager), for setting up a set of service like processes that are asynchronously managed by triggers and fed data trough queues.
+Runtime Manager, i.e. a running-man(ager), for setting up a set of service like processes that are
+asynchronously managed by triggers and fed data trough queues. This is again a very different type
+of package since it is basically a runtime for instrumentation. I am using this to setup the meteor
+camera stations to record the video, do automatic detection, archive the results, do calibration,
+ect. In real-time.
 
 - [GitHub repository](https://github.com/danielk333/runningman)
 
 #### `dasst`
 
-Dynamical Astronomy Statistical Simulations Toolbox, or DASST (pronounce as "dust") for short. A toolbox for all things small body dynamics simulations that has a statistical component to them. Mainly focused on meteoroid streams.
+Dynamical Astronomy Statistical Simulations Toolbox, or DASST (pronounce as "dust") for short. A
+toolbox for all things small body dynamics simulations that has a statistical component to them.
+Mainly focused on meteoroid streams. This is basically 90% unfinished, its an idea I had like 8
+years ago. Have not had time to finish it. But i did add one thing which i discovered i needed a
+lot: meteor orbit-determination. This turns out was a good move because this is now used by several
+radar meteor pipelines around the world. Ill get to the cool parts of the package at some point.
 
-> [!Varning]
-> Work in progress
+> [!Varning] Work in progress
 
 - [GitHub repository](https://github.com/danielk333/dasst)
 
 #### `metecho`
 
-Radar Meteor Head Echo Analysis package - metecho. Package for processing radar data measuring meteor head echoes. Mainly focused on fitting meteoroid models to the processed data and performing the additional tasks needed such as calibration and error estimation.
+Radar Meteor Head Echo Analysis package - metecho. Package for processing radar data measuring
+meteor head echoes. Mainly focused on fitting meteoroid models to the processed data and performing
+the additional tasks needed such as calibration and error estimation. This is a good example of bad
+decisions coming back to haunt me. When i started my PhD I decided to keep the code in MATLAB rather
+then directly rewriting, now here I am and need to rewrite it anyway and now it is like 5 times more
+MATLAB code. Since my work pertins to meteor head echo studies, I am going to do that a lot. Hence I
+want reusable software and hence I am now doing that rewrite. 
 
-> [!Varning]
-> Work in progress - porting from MATLAB
+> [!Varning] Work in progress - porting from MATLAB
 
 - [GitHub repository](https://github.com/danielk333/metecho)
 
 #### `ablate`
 
-A collection of ablation models implemented or wrapped in Python to use for research, mostly directed towards meteoroids and meteor research. 
+A collection of ablation models implemented or wrapped in Python to use for research, mostly
+directed towards meteoroids and meteor research. This is an example of re-implementing models from
+the literature that do not exist as open source packages that can then be used in research. Not all
+packages have to invent some new method, this package has already proven very useful for validation
+and analysis reasons.
 
 - [GitHub repository](https://github.com/danielk333/ablate)
 
 #### `rebound-player`
 
-This is a software to reconstruct simulations created in [Rebound](https://rebound.readthedocs.io/en/latest/) to be replayed in realtime using OpenGL rendering.
+This is a software to reconstruct simulations created in
+[Rebound](https://rebound.readthedocs.io/en/latest/) to be replayed in real-time using OpenGL
+rendering. Again a very different type of software where the focus IS on visualization rather than
+the algorithms, but this again turned into a question of novel algorithms because visualizing
+millions of particles in video frame rates is not trivial.
 
 > [!Varning]
 > Work in progress
