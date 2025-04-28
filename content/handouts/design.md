@@ -198,6 +198,24 @@ exist](https://mesonbuild.com/meson-python/tutorials/introduction.html)).
 integrator itself is written in C but it is mostly used trough the Python interface that they have
 developed. I would say that `rebound` is an example of a extremely successful research software.
 
+### Making API calls in Python
+
+### `rebound`
+
+Rebound implements a convenience function where one can simply state the name of the object and it
+will get the state of that object from [Horizons](https://ssd.jpl.nasa.gov/horizons/), this implementation makes an API call using the
+Python [requests](https://github.com/psf/requests) package and is contained in [this
+file](https://github.com/hannorein/rebound/blob/main/rebound/horizons.py) in the repository.
+
+### `spacetrack`
+
+https://github.com/python-astrodynamics/spacetrack
+
+
+### `hardtarget`
+
+https://github.com/danielk333/hardtarget/blob/main/src/hardtarget/radars/eiscat/download.py
+
 ### TODO
 
 *TODO: add a bunch of more repositories*
