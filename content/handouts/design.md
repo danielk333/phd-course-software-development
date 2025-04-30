@@ -209,12 +209,16 @@ file](https://github.com/hannorein/rebound/blob/main/rebound/horizons.py) in the
 
 ### `spacetrack`
 
-https://github.com/python-astrodynamics/spacetrack
+The [spacetrack](https://github.com/python-astrodynamics/spacetrack) package provides a convenient
+way to download data about resident space objects directly from the database usually published on
+[space-track.org](https://www.space-track.org/).
 
 
 ### `hardtarget`
 
-https://github.com/danielk333/hardtarget/blob/main/src/hardtarget/radars/eiscat/download.py
+In our `hardtarget` package mentioned above we also provide a option to download data, in this case
+EISCAT radar data from the EISCAT portal page, using either `requests` or `wget` as a subprocess.
+The relevant implementation of this can be found in the [download.py file](https://github.com/danielk333/hardtarget/blob/main/src/hardtarget/radars/eiscat/download.py)
 
 ### TODO
 
