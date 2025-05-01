@@ -1,6 +1,6 @@
 ---
 title: "Making it work: debugging"
-description: "" 
+description: ""
 weight: 9
 ---
 
@@ -12,12 +12,14 @@ weight: 9
             data-background-opacity="0.7"
         >
             <div class="centered-container">
-                <p class="fragment">Rubber duck debugging in a hotel room in Darmstadt @ ESA 2019 Space
-                debris conference</p>
+                <p class="fragment">
+                    Rubber duck debugging in a hotel room in Darmstadt @ ESA
+                    2019 Space debris conference
+                </p>
             </div>
         </section>
 
-       <section
+        <section
             data-auto-animate
             data-background-image="media/duck_debug.jpg"
             data-background-opacity="0.15"
@@ -29,7 +31,6 @@ weight: 9
                     <li>Finding bugs before they happen</li>
                     <li>Finding bugs after they happen</li>
                     <li>Finding bugs while they happen</li>
-                    <li>Solving bugs</li>
                 </ul>
             </div>
         </section>
@@ -39,11 +40,19 @@ weight: 9
                 <h3 class="title">Making it work: debugging</h3>
                 <p class="select">So what is a "bug"</p>
                 <div class="fragment">
-                    <span>On September 9, 1945, U.S. Navy officer Grace Hopper found a moth between
-                        some relays on the Harvard Mark II computer</span>
-                    <img style="height: 40vh; width: auto;" src="media/bug.jpg">
+                    <span
+                        >On September 9, 1945, U.S. Navy officer Grace Hopper
+                        found a moth between some relays on the Harvard Mark II
+                        computer</span
+                    >
+                    <img
+                        style="height: 40vh; width: auto"
+                        src="media/bug.jpg"
+                    />
                 </div>
-                <p class="fragment">And thus and the term "bug in the computer" caught on</p>
+                <p class="fragment">
+                    And thus and the term "bug in the computer" caught on
+                </p>
             </div>
         </section>
 
@@ -62,7 +71,6 @@ weight: 9
                     <li>Finding bugs before they happen</li>
                     <li>Finding bugs after they happen</li>
                     <li>Finding bugs while they happen</li>
-                    <li>Solving bugs</li>
                 </ul>
             </div>
         </section>
@@ -74,16 +82,827 @@ weight: 9
                     <li>Finding bugs before they happen</li>
                 </ul>
                 <p class="fragment mark">The most common methods</p>
-                <ul class="fragment">
+                <ul style="padding-top: 1em" class="fragment">
                     <li>Reading the code</li>
                     <li>Static code analyzers</li>
                     <li>Tests</li>
-                    <li>Exceptions</li>
-                    <li>Logging</li>
                 </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Reading the code</li>
+                </ul>
+                <ul>
+                    <li class="fragment">You reviewing your code</li>
+                    <li class="fragment">Others reviewing your code</li>
+                </ul>
+            </div>
+        </section>
+
+        <section 
+            data-auto-animate
+            data-background-image="media/duck_debug.jpg"
+            data-background-opacity="0.7"
+        >
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Reading the code</li>
+                </ul>
+                <ul>
+                    <li>You reviewing your code</li>
+                    <li>Others reviewing your code</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Reading the code</li>
+                </ul>
+                <ul>
+                    <li>You reviewing your code</li>
+                    <li>Others reviewing your code</li>
+                </ul>
+                <p class="fragment mark">Make a routine out of it!</p>
+                <p class="fragment">
+                    We are practicing this now with the homework
+                </p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Static code analyzers</li>
+                </ul>
+                <ul class="fragment">
+                    <li>mypy (Python)</li>
+                    <li>flake8 / ruff (Python)</li>
+                    <li>Any LSP server (clangd, pylsp, ...)</li>
+                    <li>
+                        Any compiler (clang, gcc, rustc)
+                        <span class="select">!</span>
+                    </li>
+                    <li>ikos (C/C++)</li>
+                    <li>CodeQL (C/C++, Java, JavaScript, Python)</li>
+                    <li>[commercial] Cppcheck (C/C++)</li>
+                    <li>
+                        [commercial] Sonar (C/C++, Java, JavaScript, Python)
+                    </li>
+                </ul>
+                <p class="fragment">
+                    <a
+                        href="https://github.com/analysis-tools-dev/static-analysis"
+                        >github analysis-tools-dev</a
+                    >
+                    has a long list!
+                </p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Static code analyzers</li>
+                </ul>
+                <p class="highlight">
+                    We are already doing this (right?!) after our tooling
+                    lecture!
+                </p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Tests</li>
+                </ul>
+                <ul class="fragment">
+                    <li>Unit testing</li>
+                    <li>Integration testing</li>
+                    <li>End-to-end testing</li>
+                    <li>Compatibility testing</li>
+                    <li>Performance testing</li>
+                    <li>Stress testing</li>
+                    <li>Security testing</li>
+                    <li>...</li>
+                </ul>
+                <p class="fragment mark">Practical examples</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Tests</li>
+                </ul>
+                <p class="highlight">Unit testing</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        class TestAnomalies(unittest.TestCase):
+                            def test_eccentric_true_inverse(self):
+                                nu0 = 1.2345
+                                e = 0.5
+                                nu = kep.eccentric_to_true(kep.true_to_eccentric(nu0, e), e)
+                                self.assertAlmostEqual(nu0, nu)
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Tests</li>
+                </ul>
+                <p class="highlight">Integration testing</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        class TestKeplerSolver(unittest.TestCase):
+                            @pytest.mark.slow
+                            def test_laguerre_solve_kepler(self):
+                                E = np.linspace(0.0, 2.0*np.pi, num=300, dtype=np.float64)
+                                e = np.linspace(0, 0.99, num=500, dtype=np.float64)
+
+                                for eit in e:
+                                    for Eit in E:
+                                        M = kep.eccentric_to_mean(Eit, eit)
+
+                                        E0 = kep.kepler_guess(M, eit)
+                                        E_calc, it = kep.laguerre_solve_kepler(E0, M, eit, tol=1e-12)
+                                        fun_err = np.abs(M - E_calc + eit*np.sin(E_calc))
+
+                                        nt.assert_almost_equal(Eit, E_calc, decimal = 1e-9)
+                                        assert fun_err < 1e-11
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Tests</li>
+                </ul>
+                <p class="highlight">End-to-end testing</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python" style="height: 40vh;">
+                        <!--
+                        class TestEndToEndComputeGMF:
+                            """
+                            It is possible that CUDA support is compiled, yet still non-functional.
+                            """
+
+                            @pytest.mark.parametrize("gmf_impl", [Impl.numpy])
+                            def test_dpt(self, gmf_impl):
+                                self.run_test("fdpt", gmf_impl)
+
+                            @pytest.mark.parametrize("gmf_impl", [Impl.numpy, Impl.c])
+                            def test_gmf(self, gmf_impl):
+                                self.run_test("fgmf", gmf_impl)
+
+                            @pytest.mark.cuda
+                            def test_gmf_cuda(self):
+                                self.run_test("fgmf", Impl.cuda)
+
+                            def run_test(self, gmf_method, gmf_impl):
+                                """Simulate echoes without noise and analyse the echoes to verify parameters are recovered.
+
+                                There is a minimum acceleration thats theoretically detectable depending
+                                on the total time integrated and the numerical derivative length and the
+                                doppler of the target
+
+                                so min_acc(t_total, tau, dop)
+
+                                anything below this acceleration will be aliased into higher acceleration
+                                bins, even if there is no noise
+                                """
+
+                                gmf_impl = gmf_impl.name
+
+                                debug_test = False
+                                frequency_decimation = 10
+                                n_ipp = 10
+                                tau_ipp = 5
+
+                                config_str = f"""
+
+                                [signal-processing]
+                                    n_ipp={n_ipp}
+                                    ipp_offset=0
+                                    min_range_gate=6640
+                                    max_range_gate=6700
+                                    min_acceleration=-300.0
+                                    max_acceleration=300.0
+                                    range_gate_step=1
+                                    frequency_decimation={frequency_decimation}
+                                    num_cohints_per_file=10
+                                    node_gpus=1
+                                    dpt_ipp_delay_parameter={tau_ipp}
+
+                                """
+
+                                t_end = 4.0
+                                coh_int_len = 0.2
+                                t_abs = np.arange(0, t_end + coh_int_len, coh_int_len)
+
+                                simulation_params = {
+                                    "epoch": "2021-04-12T12:15:40",
+                                    "start_time": 0,
+                                    "end_time": t_end,
+                                    "target_start_time": 0,
+                                    "target_end_time": t_end,
+                                    "noise_sigma": 0,
+                                    "tx_amp": 1,
+                                }
+
+                                rx_channel = "sim"
+
+                                range0 = 2000e3
+                                vel0 = 0.4e3
+                                acel0 = 0.10e3
+
+                                sim_r = range0 + vel0 * t_abs + acel0 * 0.5 * t_abs**2
+                                sim_v = vel0 + acel0 * t_abs
+                                sim_a = np.ones_like(t_abs) * acel0
+
+                                def range_function(t):
+                                    inds = np.logical_and(t >= t_abs[0], t <= t_abs[-1])
+                                    if np.any(inds):
+                                        return range0 + vel0 * t[inds] + acel0 * 0.5 * t[inds] ** 2
+                                    else:
+                                        return np.nan
+
+                                experiment_params = {
+                                    "sample_rate": 1000000,
+                                    "ipp": 20000,
+                                    "tx_pulse_length": 1920.0,
+                                    "tx_start": 82.0,
+                                    "tx_end": 2002.0,
+                                    "rx_start": 0,
+                                    "rx_end": 20000,
+                                    "cal_on": 19900.0,
+                                    "cal_off": 19997.0,
+                                    "frequency": 929.6,
+                                    "baud_length": 30.0,
+                                    "code": hardtarget.load_radar_code("leo_bpark"),
+                                }
+
+                                wavelength = constants.c / (experiment_params["frequency"] * 1e6)
+                                print(wavelength)
+
+                                sample_rate = experiment_params["sample_rate"]
+                                dec_samp = (
+                                    (experiment_params["ipp"] * 1e-6 * sample_rate)
+                                    / frequency_decimation
+                                )
+
+                                range_gate = constants.c / sample_rate
+                                doppler_gate = 2 * wavelength * frequency_decimation / ((experiment_params["ipp"] * 1e-6) * n_ipp)
+
+                                step = 2 * dec_samp * tau_ipp * frequency_decimation / sample_rate
+                                max_accels_len = (n_ipp - tau_ipp) * dec_samp
+                                accel_gate = wavelength * 2 * sample_rate / (max_accels_len * frequency_decimation * step)
+                                print(f"{range_gate=}, {doppler_gate=}, {accel_gate=}")
+
+                                for key, val in experiment_params.items():
+                                    print(f"{key}: {val}")
+
+                                with (
+                                    tempfile.TemporaryDirectory() as tmp_sim_path,
+                                    tempfile.TemporaryDirectory() as tmp_analysis_path,
+                                    tempfile.NamedTemporaryFile(mode="w+") as tmp_config,
+                                ):
+                                    # hacky way to create a temp config
+                                    tmp_config.write(config_str)
+                                    tmp_config.seek(0)
+                                    tmp_config_path = tmp_config.name
+
+                                    print(f"{tmp_config_path=}")
+
+                                    hardtarget.simulation.drf(
+                                        tmp_sim_path,
+                                        range_function,
+                                        simulation_params,
+                                        experiment_params,
+                                        chnl=rx_channel,
+                                        snr_function=None,
+                                        dtype=np.complex64,
+                                        clobber=True,
+                                    )
+
+                                    reader, params = hardtarget.drf_utils.load_hardtarget_drf(tmp_sim_path)
+
+                                    all_params = hardtarget.load_gmf_params(tmp_sim_path, tmp_config_path)
+
+                                    for key, val in all_params["PRO"].items():
+                                        print(f"{key}: {val}")
+
+                                    # process
+                                    _ = hardtarget.compute_gmf(
+                                        rx=(tmp_sim_path, rx_channel),
+                                        tx=(tmp_sim_path, rx_channel),
+                                        config=tmp_config_path,
+                                        gmf_method=gmf_method,
+                                        gmf_implementation=gmf_impl,
+                                        clobber=False,
+                                        output=tmp_analysis_path,
+                                        progress=False,
+                                        subprogress=False,
+                                    )
+
+                                    data_generator = hardtarget.load_gmf_out(tmp_analysis_path)
+                                    for data, meta in data_generator:
+                                        dr = data["range_peak"] - sim_r[1:-1]
+                                        dv = data["range_rate_peak"] - sim_v[1:-1]
+                                        da = data["acceleration_peak"] - sim_a[1:-1]
+
+                                        print(f"dr = {np.abs(np.mean(dr))} (std = {np.std(dr)}) < {range_gate=}")
+                                        assert np.abs(np.mean(dr)) < range_gate
+                                        assert np.std(dr) < range_gate
+
+                                        print(f"dr = {np.abs(np.mean(dv))} (std = {np.std(dv)}) < {doppler_gate=}")
+                                        assert np.abs(np.mean(dv)) < doppler_gate
+                                        assert np.std(dv) < doppler_gate
+
+                                        print(f"dr = {np.abs(np.mean(da))} (std = {np.std(da)}) < {accel_gate=}")
+                                        assert np.abs(np.mean(da)) < accel_gate
+                                        assert np.std(da) < accel_gate
+                                    -->
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Tests</li>
+                </ul>
+                <p class="highlight">Compatibility testing</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-yaml">
+test_python_3_10:
+  image: python:3.10
+  before_script:
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install .
+  script:
+    - pip install pytest
+    - pytest
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Tests</li>
+                </ul>
+                <p class="highlight">Compatibility testing</p>
+                <img src="media/windows_vm.png" />
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Tests</li>
+                </ul>
+                <p class="highlight">Performance testing</p>
+                <p class="fragment select">Next lecture!</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Tests</li>
+                </ul>
+                <p class="highlight">Stress testing</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        class TestServer(unittest.TestCase):
+                            ...
+                            def test_connect_client(self):
+                                clients = []
+                                for ind in range(10_000):
+                                    clients.append(
+                                        self.launch_client_request_thread()
+                                    )
+                                for client in clients:
+                                    self.close_and_validate(client)
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 0.5em">
+                    <li>Tests</li>
+                </ul>
+                <p class="highlight">Security testing</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        danielk@IRF081-danielk ~/g/pyorb (main)> grype dir:.
+                         ✔ Vulnerability DB                [updated]  
+                         ✔ Indexed file system  . 
+                         ✔ Cataloged contents   cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8 
+                           ├── ✔ Packages                        [1 packages]  
+                           ├── ✔ Executables                     [0 executables]  
+                           ├── ✔ File metadata                   [2 locations]  
+                           └── ✔ File digests                    [2 files]  
+                         ✔ Scanned for vulnerabilities     [0 vulnerability matches]  
+                           ├── by severity: 0 critical, 0 high, 0 medium, 0 low, 0 negligible
+                           └── by status:   0 fixed, 0 not-fixed, 0 ignored 
+                        No vulnerabilities found
+                    </code>
+                </pre>
+                <p class="fragment">
+                    For example
+                    <a href="https://github.com/anchore/grype">grype</a>
+                    (podcast in handouts)
+                </p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Tests</li>
+                </ul>
+                <p class="highlight">
+                    We are already doing this (right?!) after our testing
+                    homework and tooling lecture!
+                </p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                    <li>Finding bugs after they happen</li>
+                    <li>Finding bugs while they happen</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs after they happen</li>
+                </ul>
+                <p class="fragment mark">The most common methods</p>
+                <ul style="padding-top: 1em" class="fragment">
+                    <li>Logging</li>
+                    <li>
+                        Examining program output<br />(plots, data, real world
+                        actions, ...)
+                    </li>
+                    <li>Asserts and exceptions</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs after they happen</li>
+                </ul>
+                <p class="mark">The most common methods</p>
+                <ul style="padding-top: 1em">
+                    <li>Logging</li>
+                    <p class="highlight">Next lecture!</p>
+                    <li>
+                        Examining program output<br />(plots, data, real world
+                        actions, ...)
+                    </li>
+                    <p class="highlight">
+                        This is the default - no need to cover here
+                    </p>
+                    <li>Asserts and exceptions</li>
+                    <p class="highlight">
+                        A quick second look (we covered syntax before)
+                    </p>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs after they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Asserts and exceptions</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def stack(logger, file: Path, output_folder=Path | None, duration=1.0, clobber=False):
+                            ...
+                            if frame_cnt == 0:
+                                raise EmptyVideoFile("Empty video file, cannot produce stack")
+                            ...
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def worker(file, output_folder, duration, clobber):
+                            logger = logging.getLogger("allsky7station.processing.stack")
+                            logger.info(f"Processing {file.name}")
+                            try:
+                                stack(logger, file, output_folder=output_folder, duration=duration, clobber=clobber)
+                            except EmptyVideoFile:
+                                logger.warning(f"Empty video-file {file}, not writing output stack")
+                            except FileExistsError:
+                                logger.warning(f"{file} exists, not making stack")
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs after they happen</li>
+                </ul>
+                <ul>
+                    <li>Asserts and exceptions</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        <!--
+                        pth = pathlib.Path(args.path)
+                        if not pth.exists():
+                            raise FileNotFoundError(f"{pth} does not exist")
+                        elif pth.is_file():
+                            stack(logger, pth, output_folder=args.output, duration=args.duration, clobber=args.clobber)
+                        elif pth.is_dir():
+                            files = [file for file in pth.glob(args.include) if file.is_file()]
+                            if args.cores > 1:
+                                worker_args = zip(
+                                    files, [args.output] * len(files), [args.duration] * len(files), [args.clobber] * len(files),
+                                )
+                                with multiprocessing.Pool(args.cores) as pool:
+                                    pool.starmap(worker, worker_args)
+                            else:
+                                for fid, file in enumerate(files):
+                                    logger.info(f"Iterating [{fid}/{len(files)}]")
+                                    worker(file, output_folder=args.output, duration=args.duration, clobber=args.clobber)
+                        else:
+                            raise RuntimeError("Unexpected state, panic")
+                        -->
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs after they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Asserts and exceptions</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        python -O my_code.py
+                    </code>
+                </pre>
+                <p class="fragment">
+                    <a
+                        href="https://docs.python.org/3/using/cmdline.html#cmdoption-O"
+                        >python cmdline -O</a
+                    >: remove asserts and <code>__debug__</code> code
+                </p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs after they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Asserts and exceptions</li>
+                </ul>
+                <p><code>mypy</code> understands "type narrowing"</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def function(arg: Any):
+                            assert isinstance(arg, int)
+                            reveal_type(arg)  # Revealed type: "builtins.int"
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs after they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Asserts and exceptions</li>
+                </ul>
+                <p>Assertion heavy coding! (video in handouts)</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        # val should never be nan here
+                    </code>
+                </pre>
+                <p class="fragment">vs</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        assert not np.isnan(val), "this should never happen?!"
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs after they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Bonus method: post-mortem</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        # automatically enter post-mortem if abnormal exit
+                        python -m pdb -c continue my_code.py
+                    </code>
+                </pre>
+                <p class="fragment">It will enter debugger with current state at point of error<br><a
+                    href="https://docs.python.org/3/library/pdb.html#pdb.post_mortem">pdb.post_mortem</a></p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs before they happen</li>
+                    <li>Finding bugs after they happen</li>
+                    <li>Finding bugs while they happen</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs while they happen</li>
+                </ul>
+                <p class="fragment mark">The most common methods</p>
+                <ul style="padding-top: 1em" class="fragment">
+                    <li>Dynamic/runtime analyzers</li>
+                    <li>Debuggers</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs while they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Dynamic/runtime analyzers</li>
+                </ul>
+                <ul>
+                    <li>tracemalloc (python)</li>
+                    <li>valgrind (C/C++)</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs while they happen</li>
+                </ul>
+                <ul style="padding-top: 1em">
+                    <li>Dynamic/runtime analyzers</li>
+                </ul>
+                <ul>
+                    <li>tracemalloc (python)</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import tracemalloc
+                        tracemalloc.start()
+
+                        # ... code
+
+                        snapshot = tracemalloc.take_snapshot()
+                        top_stats = snapshot.statistics('lineno')
+                        print("[ Top 10 ]")
+                        for stat in top_stats[:10]:
+                            print(stat)
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: debugging</h3>
+                <ul>
+                    <li>Finding bugs while they happen</li>
+                </ul>
+                <ul style="padding-top: 1em" class="fragment">
+                    <li>Debuggers</li>
+                </ul>
+                <p class="fragment highlight">Practical example! Go to handout</p>
             </div>
         </section>
 
     </div>
 </div>
-
