@@ -1,17 +1,520 @@
 ---
 title: "Making it work: logging and profiling"
 description: ""
+handout: logging-profiling
 weight: 10
 ---
 
 <div class="reveal">
     <div class="slides">
 
-        <section data-auto-animate>
-            <div class="margin-top">
-
+        <section
+            data-auto-animate
+            data-background-image="media/breaker-lock.jpg"
+            data-background-opacity="1"
+        >
+            <div class="centered-container">
             </div>
         </section>
+
+        <section
+            data-auto-animate
+            data-background-image="media/breaker-lock.jpg"
+            data-background-opacity="0.7"
+        >
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p>Python <code>logging</code> package</p>
+                <p class="mark fragment">What is it?</p>
+                <ul class="fragment">
+                    <li>Builtin package for flexible logging</li>
+                    <p class="highlight">Why?</p>
+                    <li>Standard interface for logging</li>
+                    <li>All modules can connect to the same logging system</li>
+                    <li>Builtin logging levels</li>
+                    <li>Builtin log handling (file, stream, network...)</li>
+                    <li>Log formatting, filtering</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p>Python <code>logging</code> package</p>
+                <p class="mark">For example</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import logging
+                        logger = logging.getLogger("my_logger")
+
+                        logger.info("hello!")
+                        logger.warning("watch out, exiting!")
+                        logger.debug("exiting")
+                    </code>
+                </pre>
+                <p class="fragment">The above will just show the middle: default is stdout +
+                above warning</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p>Python <code>logging</code> package</p>
+                <p class="mark">For example</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import logging
+                        logger = logging.getLogger("my_logger")
+
+                        logging.basicConfig(filename="example.log", encoding="utf-8", level=logging.DEBUG)
+
+                        logger.info("hello!")
+                        logger.warning("watch out, exiting!")
+                        logger.debug("exiting")
+                   </code>
+                </pre>
+                <p class="fragment">Now all will get recoded to the file instead</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p>Python <code>logging</code> package</p>
+                <p class="mark">Nice patterns</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import logging
+                        # my_package/a_module.py
+                        logger = logging.getLogger(__file__)
+
+                        logger.info("hello!")
+                   </code>
+                </pre>
+                <p class="fragment">This will get logger <code>my_package.my_logger</code></p>
+                <p class="fragment">it will inherent properties from <code>my_package</code></p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p>Python <code>logging</code> package</p>
+                <p class="mark">Thread-safe by default</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        logger = logging.getLogger("my_logger")
+                        def worker(ident, num):
+                            for i in range(num):
+                                time.sleep(0.05)
+                                logger.info(f"{ident}: {i}")
+
+                        threads = []
+                        for ind in range(2):
+                            threads.append(
+                                threading.Thread(
+                                    target=worker, args=(f"worker {ind}", (ind + 1) * 10)
+                                )
+                            )
+                            threads[-1].start()
+                        for th in threads:
+                            th.join()
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p>Python <code>logging</code> package</p>
+                <p class="mark">Multiprocessing: <span class="select">queues</span>, <span>files</span> or <span>builtin</span></p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import logging
+                        import logging.handlers
+                        import multiprocessing
+                        import time
+                        import random
+
+
+                        def worker(log_queue, ident):
+                            logger = logging.getLogger(ident)
+                            logger.setLevel(logging.DEBUG)
+
+                            handler = logging.handlers.QueueHandler(log_queue)
+                            logger.addHandler(handler)
+                            for i in range(10):
+                                time.sleep(random.random() * 0.1)
+                                logger.info(f"{ident}: {i}")
+
+
+                        log_queue: multiprocessing.Queue = multiprocessing.Queue(-1)
+
+                        logger = logging.getLogger("my_logger")
+                        logger.setLevel(logging.INFO)
+
+                        handler = logging.StreamHandler()
+                        handler.setLevel(logging.INFO)
+                        logger.addHandler(handler)
+
+                        queue_handler = logging.handlers.QueueListener(log_queue, handler)
+                        queue_handler.start()
+
+
+                        processes = []
+                        for i in range(5):
+                            p = multiprocessing.Process(target=worker, args=(log_queue, f"Worker-{i}"))
+                            processes.append(p)
+                            p.start()
+                        for p in processes:
+                            p.join()
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p>Python <code>logging</code> package</p>
+                <p class="mark">Multiprocessing: <span>queues</span>, <span class="select">files</span> or <span>builtin</span></p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import logging
+                        import pathlib
+                        import multiprocessing
+                        import time
+                        import random
+                        import tempfile
+
+
+                        def worker(ident, dirname):
+                            logger = logging.getLogger(ident)
+                            logger.setLevel(logging.DEBUG)
+                            handler = logging.FileHandler(dirname / f"{ident}.log")
+                            logger.addHandler(handler)
+                            for i in range(10):
+                                time.sleep(random.random() * 0.1)
+                                logger.info(f"{ident}: {i}")
+
+
+                        with tempfile.TemporaryDirectory() as tmpdirname:
+                            processes = []
+                            dirname = pathlib.Path(tmpdirname)
+                            for i in range(5):
+                                p = multiprocessing.Process(
+                                    target=worker, args=(f"Worker-{i}", dirname)
+                                )
+                                processes.append(p)
+                                p.start()
+                            for p in processes:
+                                p.join()
+                            for logfile in dirname.glob("*.log"):
+                                print(f"reading {logfile}")
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p>Python <code>logging</code> package</p>
+                <p class="mark">Multiprocessing: <span>queues</span>, <span>files</span> or <span class="select">builtin</span></p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import logging
+                        import multiprocessing
+                        import time
+                        import random
+
+                        def worker(ident):
+                            logger = multiprocessing.get_logger()
+                            for i in range(10):
+                                time.sleep(random.random() * 0.1)
+                                logger.info(f"{ident}: {i}")
+
+
+                        logger = multiprocessing.log_to_stderr()
+                        logger.setLevel(logging.INFO)
+
+                        processes = []
+                        for i in range(5):
+                            p = multiprocessing.Process(
+                                target=worker, args=(f"Worker-{i}", )
+                            )
+                            processes.append(p)
+                            p.start()
+                        for p in processes:
+                            p.join()
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p>Python <code>logging</code> package</p>
+                <p>(these examples are also in in the handouts)</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p>Python <code>logging</code> package</p>
+                <p class="mark">My standard pattern is some variant of this</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def setup_loggers(log_folder=None, stdout=True, verbosity=level):
+                            parallel, rank = check_parallel()
+                            if parallel:
+                                formatter = logging.Formatter(
+                                    f"RANK{rank} - %(asctime)s %(levelname)s %(name)s - %(message)s"
+                                )
+                            else:
+                                formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s - %(message)s")
+                            formatter.default_time_format = "%Y-%m-%d %H:%M:%S"
+                            formatter.default_msec_format = "%s.%03d"
+
+                            handlers = []
+                            if stdout:
+                                handlers.append(logging.StreamHandler(sys.stdout))
+
+                            if log_folder is not None:
+                                if not isinstance(log_folder, pathlib.Path):
+                                    log_folder = pathlib.Path(log_folder)
+                                now = datetime.datetime.now()
+                                datetime_str = now.strftime("%Y-%m-%d_at_%H-%M")
+                                if not log_folder.is_dir():
+                                    assert not log_folder.is_file(), f"Cannot use '{log_folder}', is a file not a folder"
+                                    log_folder.mkdir(parents=True)
+
+                                    if parallel:
+                                        log_fname = str(log_folder / f"hardtarget_{datetime_str}_RANK{rank}.log")
+                                    else:
+                                        log_fname = str(log_folder / f"hardtarget_{datetime_str}.log")
+
+                                handlers.append(logging.FileHandler(log_fname))
+
+                            liblogger = logging.getLogger("hardtarget")
+                            # So that the logging does not propagate up to parent loggers
+                            # but settings do propagate down to child loggers
+                            liblogger.propagate = False
+
+                            for handler in handlers:
+                                handler.setFormatter(formatter)
+                                handler.setLevel(level)
+                                liblogger.setLevel(level)
+                                liblogger.addHandler(handler)
+
+                            return liblogger
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <p>Different tools</p>
+                <ul class="fragment">
+                    <li>(external) time / hyperfine</li>
+                    <li>timeit</li>
+                    <li>yappi</li>
+                    <li>CProfile</li>
+                    <li>py-spy</li>
+                    <li>custom implementation!</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>(external) time / hyperfine</li>
+                </ul>
+                <video controls loop style="max-height: 60vh">
+                    <source src="media/hyperfine.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>(external) time / hyperfine</li>
+                    <li>timeit</li>
+                    <li>yappi</li>
+                    <li>CProfile</li>
+                    <li>py-spy</li>
+                    <li>custom implementation!</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>timeit</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>(external) time / hyperfine</li>
+                    <li>timeit</li>
+                    <li>yappi</li>
+                    <li>CProfile</li>
+                    <li>py-spy</li>
+                    <li>custom implementation!</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>yappi</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>(external) time / hyperfine</li>
+                    <li>timeit</li>
+                    <li>yappi</li>
+                    <li>CProfile</li>
+                    <li>py-spy</li>
+                    <li>custom implementation!</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>CProfile</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>(external) time / hyperfine</li>
+                    <li>timeit</li>
+                    <li>yappi</li>
+                    <li>CProfile</li>
+                    <li>py-spy</li>
+                    <li>custom implementation!</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>py-spy</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>(external) time / hyperfine</li>
+                    <li>timeit</li>
+                    <li>yappi</li>
+                    <li>CProfile</li>
+                    <li>py-spy</li>
+                    <li>custom implementation!</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>custom implementation!</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+        data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Examples and homework</p>
+                <p class="select">Let's check out the handout above!</p>
+            </div>
+        </section>
+
 
     </div>
 </div>
