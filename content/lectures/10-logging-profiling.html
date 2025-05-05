@@ -75,7 +75,11 @@ weight: 10
                         import logging
                         logger = logging.getLogger("my_logger")
 
-                        logging.basicConfig(filename="example.log", encoding="utf-8", level=logging.DEBUG)
+                        logging.basicConfig(
+                            filename="example.log",
+                            encoding="utf-8",
+                            level=logging.DEBUG,
+                        )
 
                         logger.info("hello!")
                         logger.warning("watch out, exiting!")
@@ -139,7 +143,7 @@ weight: 10
                 <p>Python <code>logging</code> package</p>
                 <p class="mark">Multiprocessing: <span class="select">queues</span>, <span>files</span> or <span>builtin</span></p>
                 <pre class="show-code">
-                    <code data-line-numbers data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python" style="height: 50vh;">
                         import logging
                         import logging.handlers
                         import multiprocessing
@@ -189,7 +193,7 @@ weight: 10
                 <p>Python <code>logging</code> package</p>
                 <p class="mark">Multiprocessing: <span>queues</span>, <span class="select">files</span> or <span>builtin</span></p>
                 <pre class="show-code">
-                    <code data-line-numbers data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python" style="height: 50vh;">
                         import logging
                         import pathlib
                         import multiprocessing
@@ -232,7 +236,7 @@ weight: 10
                 <p>Python <code>logging</code> package</p>
                 <p class="mark">Multiprocessing: <span>queues</span>, <span>files</span> or <span class="select">builtin</span></p>
                 <pre class="show-code">
-                    <code data-line-numbers data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python" style="height: 50vh;">
                         import logging
                         import multiprocessing
                         import time
@@ -276,7 +280,7 @@ weight: 10
                 <p>Python <code>logging</code> package</p>
                 <p class="mark">My standard pattern is some variant of this</p>
                 <pre class="show-code">
-                    <code data-line-numbers data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python" style="height: 50vh;">
                         def setup_loggers(log_folder=None, stdout=True, verbosity=level):
                             parallel, rank = check_parallel()
                             if parallel:
@@ -309,8 +313,6 @@ weight: 10
                                 handlers.append(logging.FileHandler(log_fname))
 
                             liblogger = logging.getLogger("hardtarget")
-                            # So that the logging does not propagate up to parent loggers
-                            # but settings do propagate down to child loggers
                             liblogger.propagate = False
 
                             for handler in handlers:
@@ -335,6 +337,7 @@ weight: 10
                     <li>timeit</li>
                     <li>yappi</li>
                     <li>CProfile</li>
+                    <li>line_profiler</li>
                     <li>py-spy</li>
                     <li>custom implementation!</li>
                     <li>...</li>
@@ -349,7 +352,7 @@ weight: 10
                 <ul>
                     <li>(external) time / hyperfine</li>
                 </ul>
-                <video controls loop style="max-height: 60vh">
+                <video  controls loop style="max-height: 55vh">
                     <source src="media/hyperfine.mp4" type="video/mp4" />
                 </video>
             </div>
@@ -364,6 +367,7 @@ weight: 10
                     <li>timeit</li>
                     <li>yappi</li>
                     <li>CProfile</li>
+                    <li>line_profiler</li>
                     <li>py-spy</li>
                     <li>custom implementation!</li>
                     <li>...</li>
@@ -380,6 +384,40 @@ weight: 10
                 </ul>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-python">
+                        def list_comp():
+                            L = [i for i in range(1000)]
+
+                        def loop():
+                            L = []
+                            for i in range(1000):
+                                L.append(i)
+
+                        if __name__ == "__main__":
+                            import timeit
+
+                            num = 10_000
+                            lc_dt = timeit.timeit(list_comp, number=num) / num
+                            lo_dt = timeit.timeit(loop, number=num) / num
+
+                            print(f"avg list comp time: {lc_dt} s")
+                            print(f"avg loop time     : {lo_dt} s")
+                            print(f"list comp speedup: {lo_dt/lc_dt} times")
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>timeit</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        > python -m timeit "'-'.join(str(n) for n in range(100))"
+                        50000 loops, best of 5: 5.39 usec per loop
                    </code>
                 </pre>
             </div>
@@ -394,6 +432,7 @@ weight: 10
                     <li>timeit</li>
                     <li>yappi</li>
                     <li>CProfile</li>
+                    <li>line_profiler</li>
                     <li>py-spy</li>
                     <li>custom implementation!</li>
                     <li>...</li>
@@ -410,6 +449,46 @@ weight: 10
                 </ul>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-python">
+                        import yappi
+                        import numpy as np
+
+                        def func():
+                            for ind in range(1_000_000):
+                                x = ind % 69
+                            del x
+
+                        yappi.set_clock_type("cpu")
+                        yappi.start()
+
+                        for index in range(10):
+                            y = np.eye(4) * 49.0
+                            func()
+
+                        yappi.get_func_stats().print_all()
+                        yappi.get_thread_stats().print_all()
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>yappi</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="plaintext">
+                        Clock type: CPU
+                        Ordered by: totaltime, desc
+
+                        name                                  ncall  tsub      ttot      tavg      
+                        ..on-scripts/yappi_example.py:5 func  10     0.200759  0.200759  0.020076
+                        ..y/lib/_twodim_base_impl.py:163 eye  10     0.000056  0.000086  0.000009
+
+                        name           id     tid              ttot      scnt        
+                        _MainThread    0      139949853088704  0.201297  1         
                    </code>
                 </pre>
             </div>
@@ -424,6 +503,7 @@ weight: 10
                     <li>timeit</li>
                     <li>yappi</li>
                     <li>CProfile</li>
+                    <li>line_profiler</li>
                     <li>py-spy</li>
                     <li>custom implementation!</li>
                     <li>...</li>
@@ -438,8 +518,55 @@ weight: 10
                 <ul>
                     <li>CProfile</li>
                 </ul>
-                <pre class="fragment show-code">
+                <pre class="show-code">
                     <code data-line-numbers data-trim class="language-python">
+                        import io
+                        import cProfile
+                        import pstats
+                        import numpy as np
+                        pr = cProfile.Profile()
+                        pr.enable()
+
+                        L = [i for i in range(1000)]
+                        L = []
+                        for i in range(1_000):
+                            L.append(i)
+                        for i in range(10_000):
+                            x = np.eye(3) @ np.ones((3,))
+
+                        pr.disable()
+                        s = io.StringIO()
+                        ps = pstats.Stats(pr, stream=s).sort_stats(pstats.SortKey.CUMULATIVE)
+                        ps.print_stats(20)
+                        print("PROFILING: \n" + s.getvalue())
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>CProfile</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="plaintext">
+                        PROFILING: 
+                                 71001 function calls in 0.031 seconds
+
+                           Ordered by: cumulative time
+
+                           ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+                            10000    0.012    0.000    0.017    0.000 /home/danielk/venvs/basic/lib/python3.13/site-packages/numpy/lib/_twodim_base_impl.py:163(eye)
+                            10000    0.010    0.000    0.014    0.000 /home/danielk/venvs/basic/lib/python3.13/site-packages/numpy/_core/numeric.py:137(ones)
+                            10000    0.003    0.000    0.003    0.000 {built-in method numpy.zeros}
+                            10000    0.003    0.000    0.003    0.000 {built-in method numpy.empty}
+                            20000    0.002    0.000    0.002    0.000 {built-in method _operator.index}
+                            10000    0.001    0.000    0.001    0.000 /home/danielk/venvs/basic/lib/python3.13/site-packages/numpy/_core/multiarray.py:1098(copyto)
+                             1000    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+                                1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
                    </code>
                 </pre>
             </div>
@@ -454,6 +581,7 @@ weight: 10
                     <li>timeit</li>
                     <li>yappi</li>
                     <li>CProfile</li>
+                    <li>line_profiler</li>
                     <li>py-spy</li>
                     <li>custom implementation!</li>
                     <li>...</li>
@@ -466,11 +594,58 @@ weight: 10
                 <h3 class="title">Making it work: logging and profiling</h3>
                 <p class="mark">Profiling</p>
                 <ul>
-                    <li>py-spy</li>
+                    <li>line_profiler</li>
                 </ul>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-python">
+                        from line_profiler import profile
+                        import numpy as np
+
+                        @profile
+                        def func():
+                            L = [i for i in range(1000)]
+                            L = []
+                            for i in range(1_000):
+                                L.append(i)
+                            for i in range(10_000):
+                                x = np.eye(3) @ np.ones((3,))
+                            del x
+
+                        func()
                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>line_profiler</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="plaintext">
+                        $ python -m kernprof -lv code/python-scripts/kernprof_example.py 
+                        Wrote profile results to kernprof_example.py.lprof
+                        Timer unit: 1e-06 s
+
+                        Total time: 0.0465161 s
+                        File: code/python-scripts/kernprof_example.py
+                        Function: func at line 5
+
+                        Line #   Hits     Time  Per Hit   % Time  Line Contents
+                        =======================================================
+                             5                                    @profile
+                             6                                    def func():
+                             7   1001    146.7      0.1      0.3      L = [i for i in range(1000)]
+                             8      1      5.9      5.9      0.0      L = []
+                             9   1001     97.1      0.1      0.2      for i in range(1_000):
+                            10   1000     92.9      0.1      0.2          L.append(i)
+                            11  10001   1170.0      0.1      2.5      for i in range(10_000):
+                            12  10000  45003.3      4.5     96.7          x = np.eye(3) @ np.ones((3,))
+                            13      1      0.2      0.2      0.0      del x
+                    </code>
                 </pre>
             </div>
         </section>
@@ -484,6 +659,67 @@ weight: 10
                     <li>timeit</li>
                     <li>yappi</li>
                     <li>CProfile</li>
+                    <li>line_profiler</li>
+                    <li>py-spy</li>
+                    <li>custom implementation!</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>py-spy</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        from threading import Event, Thread
+                        import numpy as np
+                        import signal
+
+                        def worker(exit_event: Event):
+                            while not exit_event.is_set():
+                                x = np.eye(3) @ np.ones((3,))
+                                x += 3
+
+                        ev = Event()
+                        th = Thread(target=worker, args=(ev,))
+                        th.start()
+                        try:
+                            signal.pause()
+                        except KeyboardInterrupt:
+                            ev.set()
+                            th.join()
+                   </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>py-spy</li>
+                </ul>
+                <video  controls loop style="max-height: 55vh">
+                    <source src="media/py-spy.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </section>
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>(external) time / hyperfine</li>
+                    <li>timeit</li>
+                    <li>yappi</li>
+                    <li>CProfile</li>
+                    <li>line_profiler</li>
                     <li>py-spy</li>
                     <li>custom implementation!</li>
                     <li>...</li>
@@ -499,12 +735,57 @@ weight: 10
                     <li>custom implementation!</li>
                 </ul>
                 <pre class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-python">
+                    <code data-line-numbers data-trim class="language-python" style="height: 55vh;">
+                        import time
+
+                        PROFILES = {}
+
+                        def profile(func):
+                            def timed_func(*args, **kw):
+                                t0 = time.time()
+                                ret = func(*args, **kw)
+                                dt = time.time() - t0
+
+                                if func.__name__ not in PROFILES:
+                                    PROFILES[func.__name__] = [0, 0]
+                                PROFILES[func.__name__][0] += 1
+                                PROFILES[func.__name__][1] += dt
+
+                                return ret
+                            return timed_func
+
+                        @profile
+                        def func():
+                            L = []
+                            for i in range(10_000):
+                                L.append(i)
+
+                        if __name__ == "__main__":
+                            for lop in range(250):
+                                func()
+
+                            for fname, (num, ttot) in PROFILES.items():
+                                print(f"{fname}: called {num} times - total time {ttot:.2e} s (avg {ttot/num:.2e} s)")
                    </code>
                 </pre>
             </div>
         </section>
 
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Making it work: logging and profiling</h3>
+                <p class="mark">Profiling</p>
+                <ul>
+                    <li>custom implementation!</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="plaintext">
+                        $ python code/python-scripts/custom_profile_example.py
+                        func: called 250 times - total time 4.40e-02 s (avg 1.76e-04 s)
+                   </code>
+                </pre>
+            </div>
+        </section>
         <section
         data-auto-animate
         >
