@@ -31,17 +31,19 @@ def run_server():
             conn, addr = s_sock.accept()
             with conn:
                 while True:
-                    msg_len_b = conn.recv(1)
-                    if len(msg_len_b) == 0:
+                    msg_len_b_first = conn.recv(1)
+                    if len(msg_len_b_first) == 0:
                         continue
-                    msg_len = struct.unpack(">B", msg_len_b)[0]
-                    if msg_len == 0:
+                    msg_len_first = struct.unpack(">B", msg_len_b_first)[0]
+                    if msg_len_first == 0:
                         server_running = False
                         conn.send(struct.pack("2s", "OK".encode("UTF8")))
                         break
-                    elif msg_len == 255:
+                    elif msg_len_first == 255:
                         msg_len_b = conn.recv(2)
                         msg_len = struct.unpack(">H", msg_len_b)[0]
+                    else:
+                        msg_len = msg_len_first
                     data = conn.recv(msg_len)
                     conn.send(struct.pack("2s", "OK".encode("UTF8")))
                     msg = struct.unpack(f"{msg_len}s", data)[0].decode("UTF8")
