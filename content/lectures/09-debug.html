@@ -486,18 +486,18 @@ weight: 9
                 <p class="highlight">Compatibility testing</p>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-yaml">
-test_python_3_10:
-  image: python:3.10
-  before_script:
-    - pip install virtualenv
-    - virtualenv venv
-    - source venv/bin/activate
-    - pip install .
-  script:
-    - pip install pytest
-    - pytest
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
+                        test_python_3_10:
+                          image: python:3.10
+                          before_script:
+                            - pip install virtualenv
+                            - virtualenv venv
+                            - source venv/bin/activate
+                            - pip install .
+                          script:
+                            - pip install pytest
+                            - pytest
+                          rules:
+                            - if: $CI_COMMIT_BRANCH == "main"
                     </code>
                 </pre>
             </div>
