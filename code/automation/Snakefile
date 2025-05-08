@@ -1,0 +1,41 @@
+rule all:
+    input:
+        "snake_data/sum.bin"
+
+
+rule make_data:
+    input:
+        "snake_data"
+    output:
+        "snake_data/data.dat",
+        "snake_data/data.txt"
+    script:
+        "make_data.py"
+
+
+rule count:
+    input:
+        "snake_data/data.dat"
+    output: 
+	    "snake_data/counts.dat"
+    shell:
+	    "wc -c {input} > {output}"
+
+
+rule size:
+    input:
+        "snake_data/data.txt"
+    output:
+        "snake_data/size.dat"
+    shell:
+        "du -b {input} > {output}"
+
+
+rule summing: 
+    input:
+        "snake_data/counts.dat",
+        "snake_data/size.dat",
+    output:
+        "snake_data/sum.bin",
+    script:
+        "sum_files.py"
