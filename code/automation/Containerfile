@@ -1,0 +1,8 @@
+FROM alpine:3.21
+MAINTAINER Daniel daniel.kastinen@irf.se
+USER root
+
+RUN apk add --no-cache python3
+ADD test_code.py /root/
+
+CMD python /root/test_code.py

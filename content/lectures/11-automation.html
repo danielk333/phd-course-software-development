@@ -7,14 +7,12 @@ weight: 11
 
 <div class="reveal">
     <div class="slides">
-
         <section
             data-auto-animate
             data-background-image="media/leonid_server.jpg"
             data-background-opacity="1"
         >
-            <div class="centered-container">
-            </div>
+            <div class="centered-container"></div>
         </section>
 
         <section
@@ -24,27 +22,217 @@ weight: 11
         >
             <div class="centered-container">
                 <h3 class="title">Automate away friction</h3>
-                p
+                <ul class="fragment">
+                    <li>What do I mean</li>
+                    <li>Automation tools and patterns</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>What do I mean</li>
+                </ul>
+                <p class="fragment">
+                    <span class="mark">Friction:</span> Manual tasks and
+                    workflows that take time and mental energy but are just a
+                    means to an end
+                </p>
+                <p class="fragment">
+                    <span class="mark">Automate:</span> Minimize the needed
+                    involvement of a human
+                </p>
+                <p class="fragment">
+                    <span class="mark">Trade-off:</span> The time and mental
+                    strain spent doing a task vs the cost of automating it
+                </p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>What do I mean</li>
+                </ul>
+                <img
+                    src="media/automation_2x.png"
+                    class="light"
+                    style="height: 60vh"
+                />
+                <a href="https://xkcd.com/1319/">https://xkcd.com/1319/</a>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>What do I mean</li>
+                </ul>
+                <p class="highlight">Pick your battles!</p>
+                <ul class="fragment">
+                    <p class="mark">
+                        Some examples of good targets for automation
+                    </p>
+                    <li>Data pipelines and workflows</li>
+                    <li>Testing</li>
+                    <li>Deployment</li>
+                    <li>
+                        Building/compiling<br />(code/webpages/documents/...)
+                    </li>
+                    <li>Installations and environments</li>
+                    <li>Publishing and uploading</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>What do I mean</li>
+                    <li>Automation tools and patterns</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Environments</p>
+                <ul class="fragment">
+                    <li>uv</li>
+                    <li>conda</li>
+                    <li>containers</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Environments</p>
+                <ul>
+                    <li>uv</li>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-dockerfile">
+                                # Containerfile
+
+                            </code>
+                        </pre>
+                    <li>poetry</li>
+                    <li>containers</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Environments</p>
+                <ul>
+                    <li>uv</li>
+                    <li>conda</li>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                # automate recreating exact environment
+                                conda env export > environment.yml
+                                conda env create -f environment.yml
+                            </code>
+                        </pre>
+                    <li>containers</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+         
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Environments</p>
+                <ul>
+                    <li>uv</li>
+                    <li>conda</li>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                # automate recreating exact environment
+                                conda env export > environment.yml
+                                conda env create -f environment.yml
+                            </code>
+                        </pre>
+                    <li>containers</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+         
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Environments</p>
+                <ul>
+                    <li>uv</li>
+                    <li>conda</li>
+                    <li>poetry</li>
+                    <li>containers</li>
+                    <li>...</li>
+                </ul>
             </div>
         </section>
 
 
-        
 
 
-       
+
+
+
+
     </div>
 </div>
- 
+
 <!--
 A number of computational steps
   The steps are connected by needed input and outpts
 
+https://manpages.ubuntu.com/manpages/jammy/man5/containers-dockerfile.5.html
+https://www.redhat.com/en/blog/write-your-first-containerfile-podman
+https://ambient.liw.fi/
+https://pixi.sh/dev/workspace/environment/#environment-installation-metadata
+https://lmod.readthedocs.io/en/latest/
+https://snakemake.readthedocs.io/en/stable/tutorial/basics.html
+https://docs.hpc2n.umu.se/software/modules/
+https://docs.easybuild.io/
+https://www.jenkins.io/
 
-        <img src="media/automation_2x.png" alt="">
-        <a href="https://xkcd.com/1319/">https://xkcd.com/1319/</a>
-
-
+<ul>
+                    <li class="fragment">Environments</li>
+                    <p class="fragment">uv, conda, poetry, pdm, docker, ...</p>
+                    <li class="fragment">Installation</li>
+                    <p class="fragment">python package, PKGBUILD, scripts</p>
+                    <li class="fragment">Building/compiling</li>
+                    <p class="fragment">make, cmake, meson</p>
+                </ul>
 
 dont leave critical long tasks to humans!
 https://dougseven.com/2014/04/17/knightmare-a-devops-cautionary-tale/
@@ -79,4 +267,3 @@ else:
 
 setup py check external deps
 -->
-
