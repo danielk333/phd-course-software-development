@@ -1,0 +1,31 @@
+digraph {
+    rankdir="TB";
+    dpi=300;
+    data [
+        label = "Raw data"
+        shape = plain
+    ];
+
+    node [ shape=rect ];
+    proc [ label="Hard target matched filtering" ];
+    db [ label="Catalouge selection and download" ];
+    clust [ label="Event clustering" ];
+    noise [ label="Reciver noise calibration" ];
+    correlation [ label="Catalouge correlation" ];
+    track [ label="Track Calculation" ];
+
+    tracklets [
+        label="Tracklets"
+        shape = plain
+    ];
+    data -> proc;
+    data -> db;
+    db -> correlation;
+    proc -> clust;
+    proc -> noise;
+    clust -> correlation;
+    correlation -> track;
+    clust -> track;
+    noise -> track;
+    track -> tracklets;
+}
