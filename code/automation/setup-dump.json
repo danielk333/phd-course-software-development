@@ -1,0 +1,1676 @@
+{
+    "ansible_all_ipv4_addresses": [
+        "100.64.0.11",
+        "192.168.50.189"
+    ],
+    "ansible_all_ipv6_addresses": [
+        "fe80::fba0:222e:27f3:821b",
+        "fe80::d662:2c36:823:9a67",
+        "fe80::6a34:21ff:fe93:887"
+    ],
+    "ansible_apparmor": {
+        "status": "disabled"
+    },
+    "ansible_architecture": "x86_64",
+    "ansible_bios_date": "09/27/2024",
+    "ansible_bios_vendor": "American Megatrends International, LLC.",
+    "ansible_bios_version": "N.1.13A11",
+    "ansible_board_asset_tag": "Standard",
+    "ansible_board_name": "GXxHRXx",
+    "ansible_board_serial": "NA",
+    "ansible_board_vendor": "NB02",
+    "ansible_board_version": "Standard",
+    "ansible_chassis_asset_tag": "Standard",
+    "ansible_chassis_serial": "NA",
+    "ansible_chassis_vendor": "TUXEDO",
+    "ansible_chassis_version": "Standard",
+    "ansible_check_mode": false,
+    "ansible_cmdline": {
+        "cryptdevice": "PARTUUID=45667f95-925a-413c-8c3e-f8cf899a3548:root",
+        "initrd": "\\initramfs-linux.img",
+        "root": "/dev/mapper/root",
+        "rootfstype": "ext4",
+        "rw": true
+    },
+    "ansible_config_file": null,
+    "ansible_date_time": {
+        "date": "2025-05-08",
+        "day": "08",
+        "epoch": "1746736746",
+        "epoch_int": "1746736746",
+        "hour": "22",
+        "iso8601": "2025-05-08T20:39:06Z",
+        "iso8601_basic": "20250508T223906522513",
+        "iso8601_basic_short": "20250508T223906",
+        "iso8601_micro": "2025-05-08T20:39:06.522513Z",
+        "minute": "39",
+        "month": "05",
+        "second": "06",
+        "time": "22:39:06",
+        "tz": "CEST",
+        "tz_dst": "CEST",
+        "tz_offset": "+0200",
+        "weekday": "Thursday",
+        "weekday_number": "4",
+        "weeknumber": "18",
+        "year": "2025"
+    },
+    "ansible_default_ipv4": {
+        "address": "192.168.50.189",
+        "alias": "wlp3s0",
+        "broadcast": "",
+        "gateway": "192.168.50.1",
+        "interface": "wlp3s0",
+        "macaddress": "68:34:21:93:08:87",
+        "mtu": 1500,
+        "netmask": "255.255.255.0",
+        "network": "192.168.50.0",
+        "prefix": "24",
+        "type": "ether"
+    },
+    "ansible_default_ipv6": {},
+    "ansible_device_links": {
+        "ids": {
+            "dm-0": [
+                "dm-name-root",
+                "dm-uuid-CRYPT-LUKS2-dce63d2f78924874893715afa846c377-root"
+            ],
+            "nvme0n1": [
+                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V",
+                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1",
+                "nvme-eui.0025382141425195"
+            ],
+            "nvme0n1p1": [
+                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part1",
+                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part1",
+                "nvme-eui.0025382141425195-part1"
+            ],
+            "nvme0n1p2": [
+                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part2",
+                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part2",
+                "nvme-eui.0025382141425195-part2"
+            ],
+            "nvme0n1p3": [
+                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part3",
+                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part3",
+                "nvme-eui.0025382141425195-part3"
+            ],
+            "nvme1n1": [
+                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X130915J",
+                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X130915J_1",
+                "nvme-eui.0025382141426f73"
+            ]
+        },
+        "labels": {},
+        "masters": {
+            "nvme0n1p2": [
+                "dm-0"
+            ]
+        },
+        "uuids": {
+            "dm-0": [
+                "428d5484-872d-48b2-99bb-3d546e875ba2"
+            ],
+            "nvme0n1p1": [
+                "10B4-8BF9"
+            ],
+            "nvme0n1p2": [
+                "dce63d2f-7892-4874-8937-15afa846c377"
+            ],
+            "nvme0n1p3": [
+                "bceb2cf0-bc8d-4074-a930-5e2a4824fb5a"
+            ]
+        }
+    },
+    "ansible_devices": {
+        "dm-0": {
+            "holders": [],
+            "host": "",
+            "links": {
+                "ids": [
+                    "dm-name-root",
+                    "dm-uuid-CRYPT-LUKS2-dce63d2f78924874893715afa846c377-root"
+                ],
+                "labels": [],
+                "masters": [],
+                "uuids": [
+                    "428d5484-872d-48b2-99bb-3d546e875ba2"
+                ]
+            },
+            "model": null,
+            "partitions": {},
+            "removable": "0",
+            "rotational": "0",
+            "sas_address": null,
+            "sas_device_handle": null,
+            "scheduler_mode": "",
+            "sectors": 104824832,
+            "sectorsize": "512",
+            "size": "49.98 GB",
+            "support_discard": "0",
+            "vendor": null,
+            "virtual": 1
+        },
+        "nvme0n1": {
+            "holders": [],
+            "host": "Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller PM9C1a (DRAM-less)",
+            "links": {
+                "ids": [
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V",
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1",
+                    "nvme-eui.0025382141425195"
+                ],
+                "labels": [],
+                "masters": [],
+                "uuids": []
+            },
+            "model": "Samsung SSD 990 EVO 2TB",
+            "partitions": {
+                "nvme0n1p1": {
+                    "holders": [],
+                    "links": {
+                        "ids": [
+                            "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part1",
+                            "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part1",
+                            "nvme-eui.0025382141425195-part1"
+                        ],
+                        "labels": [],
+                        "masters": [],
+                        "uuids": [
+                            "10B4-8BF9"
+                        ]
+                    },
+                    "sectors": 2097152,
+                    "sectorsize": 512,
+                    "size": "1.00 GB",
+                    "start": "2048",
+                    "uuid": "10B4-8BF9"
+                },
+                "nvme0n1p2": {
+                    "holders": [
+                        "root"
+                    ],
+                    "links": {
+                        "ids": [
+                            "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part2",
+                            "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part2",
+                            "nvme-eui.0025382141425195-part2"
+                        ],
+                        "labels": [],
+                        "masters": [
+                            "dm-0"
+                        ],
+                        "uuids": [
+                            "dce63d2f-7892-4874-8937-15afa846c377"
+                        ]
+                    },
+                    "sectors": 104857600,
+                    "sectorsize": 512,
+                    "size": "50.00 GB",
+                    "start": "2099200",
+                    "uuid": "dce63d2f-7892-4874-8937-15afa846c377"
+                },
+                "nvme0n1p3": {
+                    "holders": [],
+                    "links": {
+                        "ids": [
+                            "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part3",
+                            "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part3",
+                            "nvme-eui.0025382141425195-part3"
+                        ],
+                        "labels": [],
+                        "masters": [],
+                        "uuids": [
+                            "bceb2cf0-bc8d-4074-a930-5e2a4824fb5a"
+                        ]
+                    },
+                    "sectors": 3800070320,
+                    "sectorsize": 512,
+                    "size": "1.77 TB",
+                    "start": "106956800",
+                    "uuid": "bceb2cf0-bc8d-4074-a930-5e2a4824fb5a"
+                }
+            },
+            "removable": "0",
+            "rotational": "0",
+            "sas_address": null,
+            "sas_device_handle": null,
+            "scheduler_mode": "none",
+            "sectors": 3907029168,
+            "sectorsize": "512",
+            "serial": "S7GDNS0X126236V",
+            "size": "1.82 TB",
+            "support_discard": "512",
+            "vendor": null,
+            "virtual": 1
+        },
+        "nvme1n1": {
+            "holders": [],
+            "host": "Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller PM9C1a (DRAM-less)",
+            "links": {
+                "ids": [
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X130915J",
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X130915J_1",
+                    "nvme-eui.0025382141426f73"
+                ],
+                "labels": [],
+                "masters": [],
+                "uuids": []
+            },
+            "model": "Samsung SSD 990 EVO 2TB",
+            "partitions": {},
+            "removable": "0",
+            "rotational": "0",
+            "sas_address": null,
+            "sas_device_handle": null,
+            "scheduler_mode": "none",
+            "sectors": 3907029168,
+            "sectorsize": "512",
+            "serial": "S7GDNS0X130915J",
+            "size": "1.82 TB",
+            "support_discard": "512",
+            "vendor": null,
+            "virtual": 1
+        }
+    },
+    "ansible_diff_mode": false,
+    "ansible_distribution": "Archlinux",
+    "ansible_distribution_file_path": "/etc/arch-release",
+    "ansible_distribution_file_variety": "Archlinux",
+    "ansible_distribution_major_version": "NA",
+    "ansible_distribution_release": "NA",
+    "ansible_distribution_version": "NA",
+    "ansible_dns": {
+        "nameservers": [
+            "100.100.100.100"
+        ],
+        "search": [
+            "allskymanager.allskyhs.irf.se"
+        ]
+    },
+    "ansible_domain": "",
+    "ansible_effective_group_id": 1000,
+    "ansible_effective_user_id": 1000,
+    "ansible_env": {
+        "COLORTERM": "truecolor",
+        "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
+        "DEBUGINFOD_URLS": "https://debuginfod.archlinux.org ",
+        "DISPLAY": ":0",
+        "EDITOR": "/usr/bin/nvim",
+        "HOME": "/home/danielk",
+        "I3SOCK": "/run/user/1000/sway-ipc.1000.2762.sock",
+        "INVOCATION_ID": "a3fcdb23bc1b45c8931f995ee9d2d1c1",
+        "LANG": "C.UTF-8",
+        "LOGNAME": "danielk",
+        "MAIL": "/var/spool/mail/danielk",
+        "MEMORY_PRESSURE_WATCH": "/sys/fs/cgroup/system.slice/ly.service/memory.pressure",
+        "MEMORY_PRESSURE_WRITE": "c29tZSAyMDAwMDAgMjAwMDAwMAA=",
+        "MOTD_SHOWN": "pam",
+        "PATH": "/home/danielk/venvs/basic/bin:/home/danielk/.cargo/bin:/home/danielk/.local/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin",
+        "PWD": "/home/danielk/git/phd-course-software-development/code/automation",
+        "SHELL": "/usr/bin/fish",
+        "SHLVL": "3",
+        "SWAYSOCK": "/run/user/1000/sway-ipc.1000.2762.sock",
+        "SYSTEMD_EXEC_PID": "2208",
+        "TEMP": "/home/danielk/tmp",
+        "TERM": "foot",
+        "TMP": "/home/danielk/tmp",
+        "TMPDIR": "/home/danielk/tmp",
+        "USER": "danielk",
+        "VIRTUAL_ENV": "/home/danielk/venvs/basic",
+        "VIRTUAL_ENV_PROMPT": "basic",
+        "VISUAL": "/usr/bin/nvim",
+        "WAYLAND_DISPLAY": "wayland-1",
+        "XCURSOR_SIZE": "24",
+        "XDG_RUNTIME_DIR": "/run/user/1000",
+        "XDG_SEAT": "seat0",
+        "XDG_SESSION_CLASS": "user",
+        "XDG_SESSION_DESKTOP": "sway",
+        "XDG_SESSION_ID": "1",
+        "XDG_SESSION_TYPE": "wayland",
+        "XDG_VTNR": "2",
+        "_": "/home/danielk/venvs/basic/bin/python3.13",
+        "_OLD_FISH_PROMPT_OVERRIDE": "/home/danielk/venvs/basic",
+        "_OLD_VIRTUAL_PATH": "/home/danielk/.cargo/bin:/home/danielk/.local/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin"
+    },
+    "ansible_eth0": {
+        "active": false,
+        "device": "eth0",
+        "macaddress": "80:3f:5d:fc:e5:fc",
+        "module": "r8152",
+        "mtu": 1500,
+        "pciid": "8-1.4.4:1.0",
+        "promisc": false,
+        "speed": -1,
+        "type": "ether"
+    },
+    "ansible_facts": {
+        "_ansible_facts_gathered": true,
+        "all_ipv4_addresses": [
+            "100.64.0.11",
+            "192.168.50.189"
+        ],
+        "all_ipv6_addresses": [
+            "fe80::fba0:222e:27f3:821b",
+            "fe80::d662:2c36:823:9a67",
+            "fe80::6a34:21ff:fe93:887"
+        ],
+        "ansible_local": {},
+        "apparmor": {
+            "status": "disabled"
+        },
+        "architecture": "x86_64",
+        "bios_date": "09/27/2024",
+        "bios_vendor": "American Megatrends International, LLC.",
+        "bios_version": "N.1.13A11",
+        "board_asset_tag": "Standard",
+        "board_name": "GXxHRXx",
+        "board_serial": "NA",
+        "board_vendor": "NB02",
+        "board_version": "Standard",
+        "chassis_asset_tag": "Standard",
+        "chassis_serial": "NA",
+        "chassis_vendor": "TUXEDO",
+        "chassis_version": "Standard",
+        "cmdline": {
+            "cryptdevice": "PARTUUID=45667f95-925a-413c-8c3e-f8cf899a3548:root",
+            "initrd": "\\initramfs-linux.img",
+            "root": "/dev/mapper/root",
+            "rootfstype": "ext4",
+            "rw": true
+        },
+        "date_time": {
+            "date": "2025-05-08",
+            "day": "08",
+            "epoch": "1746736746",
+            "epoch_int": "1746736746",
+            "hour": "22",
+            "iso8601": "2025-05-08T20:39:06Z",
+            "iso8601_basic": "20250508T223906522513",
+            "iso8601_basic_short": "20250508T223906",
+            "iso8601_micro": "2025-05-08T20:39:06.522513Z",
+            "minute": "39",
+            "month": "05",
+            "second": "06",
+            "time": "22:39:06",
+            "tz": "CEST",
+            "tz_dst": "CEST",
+            "tz_offset": "+0200",
+            "weekday": "Thursday",
+            "weekday_number": "4",
+            "weeknumber": "18",
+            "year": "2025"
+        },
+        "default_ipv4": {
+            "address": "192.168.50.189",
+            "alias": "wlp3s0",
+            "broadcast": "",
+            "gateway": "192.168.50.1",
+            "interface": "wlp3s0",
+            "macaddress": "68:34:21:93:08:87",
+            "mtu": 1500,
+            "netmask": "255.255.255.0",
+            "network": "192.168.50.0",
+            "prefix": "24",
+            "type": "ether"
+        },
+        "default_ipv6": {},
+        "device_links": {
+            "ids": {
+                "dm-0": [
+                    "dm-name-root",
+                    "dm-uuid-CRYPT-LUKS2-dce63d2f78924874893715afa846c377-root"
+                ],
+                "nvme0n1": [
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V",
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1",
+                    "nvme-eui.0025382141425195"
+                ],
+                "nvme0n1p1": [
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part1",
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part1",
+                    "nvme-eui.0025382141425195-part1"
+                ],
+                "nvme0n1p2": [
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part2",
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part2",
+                    "nvme-eui.0025382141425195-part2"
+                ],
+                "nvme0n1p3": [
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part3",
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part3",
+                    "nvme-eui.0025382141425195-part3"
+                ],
+                "nvme1n1": [
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X130915J",
+                    "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X130915J_1",
+                    "nvme-eui.0025382141426f73"
+                ]
+            },
+            "labels": {},
+            "masters": {
+                "nvme0n1p2": [
+                    "dm-0"
+                ]
+            },
+            "uuids": {
+                "dm-0": [
+                    "428d5484-872d-48b2-99bb-3d546e875ba2"
+                ],
+                "nvme0n1p1": [
+                    "10B4-8BF9"
+                ],
+                "nvme0n1p2": [
+                    "dce63d2f-7892-4874-8937-15afa846c377"
+                ],
+                "nvme0n1p3": [
+                    "bceb2cf0-bc8d-4074-a930-5e2a4824fb5a"
+                ]
+            }
+        },
+        "devices": {
+            "dm-0": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [
+                        "dm-name-root",
+                        "dm-uuid-CRYPT-LUKS2-dce63d2f78924874893715afa846c377-root"
+                    ],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": [
+                        "428d5484-872d-48b2-99bb-3d546e875ba2"
+                    ]
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": 104824832,
+                "sectorsize": "512",
+                "size": "49.98 GB",
+                "support_discard": "0",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nvme0n1": {
+                "holders": [],
+                "host": "Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller PM9C1a (DRAM-less)",
+                "links": {
+                    "ids": [
+                        "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V",
+                        "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1",
+                        "nvme-eui.0025382141425195"
+                    ],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "Samsung SSD 990 EVO 2TB",
+                "partitions": {
+                    "nvme0n1p1": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part1",
+                                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part1",
+                                "nvme-eui.0025382141425195-part1"
+                            ],
+                            "labels": [],
+                            "masters": [],
+                            "uuids": [
+                                "10B4-8BF9"
+                            ]
+                        },
+                        "sectors": 2097152,
+                        "sectorsize": 512,
+                        "size": "1.00 GB",
+                        "start": "2048",
+                        "uuid": "10B4-8BF9"
+                    },
+                    "nvme0n1p2": {
+                        "holders": [
+                            "root"
+                        ],
+                        "links": {
+                            "ids": [
+                                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part2",
+                                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part2",
+                                "nvme-eui.0025382141425195-part2"
+                            ],
+                            "labels": [],
+                            "masters": [
+                                "dm-0"
+                            ],
+                            "uuids": [
+                                "dce63d2f-7892-4874-8937-15afa846c377"
+                            ]
+                        },
+                        "sectors": 104857600,
+                        "sectorsize": 512,
+                        "size": "50.00 GB",
+                        "start": "2099200",
+                        "uuid": "dce63d2f-7892-4874-8937-15afa846c377"
+                    },
+                    "nvme0n1p3": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V-part3",
+                                "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X126236V_1-part3",
+                                "nvme-eui.0025382141425195-part3"
+                            ],
+                            "labels": [],
+                            "masters": [],
+                            "uuids": [
+                                "bceb2cf0-bc8d-4074-a930-5e2a4824fb5a"
+                            ]
+                        },
+                        "sectors": 3800070320,
+                        "sectorsize": 512,
+                        "size": "1.77 TB",
+                        "start": "106956800",
+                        "uuid": "bceb2cf0-bc8d-4074-a930-5e2a4824fb5a"
+                    }
+                },
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "none",
+                "sectors": 3907029168,
+                "sectorsize": "512",
+                "serial": "S7GDNS0X126236V",
+                "size": "1.82 TB",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "nvme1n1": {
+                "holders": [],
+                "host": "Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller PM9C1a (DRAM-less)",
+                "links": {
+                    "ids": [
+                        "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X130915J",
+                        "nvme-Samsung_SSD_990_EVO_2TB_S7GDNS0X130915J_1",
+                        "nvme-eui.0025382141426f73"
+                    ],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "Samsung SSD 990 EVO 2TB",
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "none",
+                "sectors": 3907029168,
+                "sectorsize": "512",
+                "serial": "S7GDNS0X130915J",
+                "size": "1.82 TB",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            }
+        },
+        "discovered_interpreter_python": "/home/danielk/venvs/basic/bin/python3.13",
+        "distribution": "Archlinux",
+        "distribution_file_path": "/etc/arch-release",
+        "distribution_file_variety": "Archlinux",
+        "distribution_major_version": "NA",
+        "distribution_release": "NA",
+        "distribution_version": "NA",
+        "dns": {
+            "nameservers": [
+                "100.100.100.100"
+            ],
+            "search": [
+                "allskymanager.allskyhs.irf.se"
+            ]
+        },
+        "domain": "",
+        "effective_group_id": 1000,
+        "effective_user_id": 1000,
+        "env": {
+            "COLORTERM": "truecolor",
+            "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
+            "DEBUGINFOD_URLS": "https://debuginfod.archlinux.org ",
+            "DISPLAY": ":0",
+            "EDITOR": "/usr/bin/nvim",
+            "HOME": "/home/danielk",
+            "I3SOCK": "/run/user/1000/sway-ipc.1000.2762.sock",
+            "INVOCATION_ID": "a3fcdb23bc1b45c8931f995ee9d2d1c1",
+            "LANG": "C.UTF-8",
+            "LOGNAME": "danielk",
+            "MAIL": "/var/spool/mail/danielk",
+            "MEMORY_PRESSURE_WATCH": "/sys/fs/cgroup/system.slice/ly.service/memory.pressure",
+            "MEMORY_PRESSURE_WRITE": "c29tZSAyMDAwMDAgMjAwMDAwMAA=",
+            "MOTD_SHOWN": "pam",
+            "PATH": "/home/danielk/venvs/basic/bin:/home/danielk/.cargo/bin:/home/danielk/.local/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin",
+            "PWD": "/home/danielk/git/phd-course-software-development/code/automation",
+            "SHELL": "/usr/bin/fish",
+            "SHLVL": "3",
+            "SWAYSOCK": "/run/user/1000/sway-ipc.1000.2762.sock",
+            "SYSTEMD_EXEC_PID": "2208",
+            "TEMP": "/home/danielk/tmp",
+            "TERM": "foot",
+            "TMP": "/home/danielk/tmp",
+            "TMPDIR": "/home/danielk/tmp",
+            "USER": "danielk",
+            "VIRTUAL_ENV": "/home/danielk/venvs/basic",
+            "VIRTUAL_ENV_PROMPT": "basic",
+            "VISUAL": "/usr/bin/nvim",
+            "WAYLAND_DISPLAY": "wayland-1",
+            "XCURSOR_SIZE": "24",
+            "XDG_RUNTIME_DIR": "/run/user/1000",
+            "XDG_SEAT": "seat0",
+            "XDG_SESSION_CLASS": "user",
+            "XDG_SESSION_DESKTOP": "sway",
+            "XDG_SESSION_ID": "1",
+            "XDG_SESSION_TYPE": "wayland",
+            "XDG_VTNR": "2",
+            "_": "/home/danielk/venvs/basic/bin/python3.13",
+            "_OLD_FISH_PROMPT_OVERRIDE": "/home/danielk/venvs/basic",
+            "_OLD_VIRTUAL_PATH": "/home/danielk/.cargo/bin:/home/danielk/.local/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin"
+        },
+        "eth0": {
+            "active": false,
+            "device": "eth0",
+            "macaddress": "80:3f:5d:fc:e5:fc",
+            "module": "r8152",
+            "mtu": 1500,
+            "pciid": "8-1.4.4:1.0",
+            "promisc": false,
+            "speed": -1,
+            "type": "ether"
+        },
+        "fibre_channel_wwn": [],
+        "fips": false,
+        "flags": [
+            "fpu",
+            "vme",
+            "de",
+            "pse",
+            "tsc",
+            "msr",
+            "pae",
+            "mce",
+            "cx8",
+            "apic",
+            "sep",
+            "mtrr",
+            "pge",
+            "mca",
+            "cmov",
+            "pat",
+            "pse36",
+            "clflush",
+            "mmx",
+            "fxsr",
+            "sse",
+            "sse2",
+            "ht",
+            "syscall",
+            "nx",
+            "mmxext",
+            "fxsr_opt",
+            "pdpe1gb",
+            "rdtscp",
+            "lm",
+            "constant_tsc",
+            "rep_good",
+            "amd_lbr_v2",
+            "nopl",
+            "xtopology",
+            "nonstop_tsc",
+            "cpuid",
+            "extd_apicid",
+            "aperfmperf",
+            "rapl",
+            "pni",
+            "pclmulqdq",
+            "monitor",
+            "ssse3",
+            "fma",
+            "cx16",
+            "sse4_1",
+            "sse4_2",
+            "x2apic",
+            "movbe",
+            "popcnt",
+            "aes",
+            "xsave",
+            "avx",
+            "f16c",
+            "rdrand",
+            "lahf_lm",
+            "cmp_legacy",
+            "svm",
+            "extapic",
+            "cr8_legacy",
+            "abm",
+            "sse4a",
+            "misalignsse",
+            "3dnowprefetch",
+            "osvw",
+            "ibs",
+            "skinit",
+            "wdt",
+            "tce",
+            "topoext",
+            "perfctr_core",
+            "perfctr_nb",
+            "bpext",
+            "perfctr_llc",
+            "mwaitx",
+            "cpb",
+            "cat_l3",
+            "cdp_l3",
+            "hw_pstate",
+            "ssbd",
+            "mba",
+            "perfmon_v2",
+            "ibrs",
+            "ibpb",
+            "stibp",
+            "ibrs_enhanced",
+            "vmmcall",
+            "fsgsbase",
+            "bmi1",
+            "avx2",
+            "smep",
+            "bmi2",
+            "erms",
+            "invpcid",
+            "cqm",
+            "rdt_a",
+            "avx512f",
+            "avx512dq",
+            "rdseed",
+            "adx",
+            "smap",
+            "avx512ifma",
+            "clflushopt",
+            "clwb",
+            "avx512cd",
+            "sha_ni",
+            "avx512bw",
+            "avx512vl",
+            "xsaveopt",
+            "xsavec",
+            "xgetbv1",
+            "xsaves",
+            "cqm_llc",
+            "cqm_occup_llc",
+            "cqm_mbm_total",
+            "cqm_mbm_local",
+            "user_shstk",
+            "avx512_bf16",
+            "clzero",
+            "irperf",
+            "xsaveerptr",
+            "rdpru",
+            "wbnoinvd",
+            "cppc",
+            "arat",
+            "npt",
+            "lbrv",
+            "svm_lock",
+            "nrip_save",
+            "tsc_scale",
+            "vmcb_clean",
+            "flushbyasid",
+            "decodeassists",
+            "pausefilter",
+            "pfthreshold",
+            "vgif",
+            "x2avic",
+            "v_spec_ctrl",
+            "vnmi",
+            "avx512vbmi",
+            "umip",
+            "pku",
+            "ospke",
+            "avx512_vbmi2",
+            "gfni",
+            "vaes",
+            "vpclmulqdq",
+            "avx512_vnni",
+            "avx512_bitalg",
+            "avx512_vpopcntdq",
+            "rdpid",
+            "overflow_recov",
+            "succor",
+            "smca",
+            "fsrm",
+            "flush_l1d"
+        ],
+        "form_factor": "Notebook",
+        "fqdn": "IRF081-danielk",
+        "gather_subset": [
+            "all"
+        ],
+        "hostname": "IRF081-danielk",
+        "hostnqn": "",
+        "interfaces": [
+            "wlp3s0",
+            "lo",
+            "tailscale0",
+            "eth0"
+        ],
+        "is_chroot": false,
+        "iscsi_iqn": "",
+        "kernel": "6.14.4-arch1-2",
+        "kernel_version": "#1 SMP PREEMPT_DYNAMIC Tue, 29 Apr 2025 09:23:13 +0000",
+        "lo": {
+            "active": true,
+            "device": "lo",
+            "ipv4": {
+                "address": "127.0.0.1",
+                "broadcast": "",
+                "netmask": "255.0.0.0",
+                "network": "127.0.0.0",
+                "prefix": "8"
+            },
+            "ipv6": [
+                {
+                    "address": "::1",
+                    "prefix": "128",
+                    "scope": "host"
+                }
+            ],
+            "mtu": 65536,
+            "promisc": false,
+            "type": "loopback"
+        },
+        "loadavg": {
+            "15m": 0.27392578125,
+            "1m": 0.2587890625,
+            "5m": 0.3134765625
+        },
+        "locally_reachable_ips": {
+            "ipv4": [
+                "100.64.0.11",
+                "127.0.0.0/8",
+                "127.0.0.1",
+                "192.168.50.189"
+            ],
+            "ipv6": [
+                "::1",
+                "fe80::6a34:21ff:fe93:887",
+                "fe80::d662:2c36:823:9a67",
+                "fe80::fba0:222e:27f3:821b"
+            ]
+        },
+        "lsb": {},
+        "lvm": "N/A",
+        "machine": "x86_64",
+        "machine_id": "77f7c3c94ec848aaa4480c3e80630b4c",
+        "memfree_mb": 54734,
+        "memory_mb": {
+            "nocache": {
+                "free": 58192,
+                "used": 3872
+            },
+            "real": {
+                "free": 54734,
+                "total": 62064,
+                "used": 7330
+            },
+            "swap": {
+                "cached": 0,
+                "free": 0,
+                "total": 0,
+                "used": 0
+            }
+        },
+        "memtotal_mb": 62064,
+        "module_setup": true,
+        "mounts": [
+            {
+                "block_available": 6311495,
+                "block_size": 4096,
+                "block_total": 12818552,
+                "block_used": 6507057,
+                "device": "/dev/mapper/root",
+                "dump": 0,
+                "fstype": "ext4",
+                "inode_available": 3005355,
+                "inode_total": 3276800,
+                "inode_used": 271445,
+                "mount": "/",
+                "options": "rw,relatime",
+                "passno": 0,
+                "size_available": 25851883520,
+                "size_total": 52504788992,
+                "uuid": "428d5484-872d-48b2-99bb-3d546e875ba2"
+            },
+            {
+                "block_available": 217106,
+                "block_size": 4096,
+                "block_total": 261628,
+                "block_used": 44522,
+                "device": "/dev/nvme0n1p1",
+                "dump": 0,
+                "fstype": "vfat",
+                "inode_available": 0,
+                "inode_total": 0,
+                "inode_used": 0,
+                "mount": "/boot",
+                "options": "rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro",
+                "passno": 0,
+                "size_available": 889266176,
+                "size_total": 1071628288,
+                "uuid": "10B4-8BF9"
+            },
+            {
+                "block_available": 424948143,
+                "block_size": 4096,
+                "block_total": 467271400,
+                "block_used": 42323257,
+                "device": "/dev/nvme0n1p3",
+                "dump": 0,
+                "fstype": "ext4",
+                "inode_available": 118387626,
+                "inode_total": 118759424,
+                "inode_used": 371798,
+                "mount": "/home",
+                "options": "rw,relatime",
+                "passno": 0,
+                "size_available": 1740587593728,
+                "size_total": 1913943654400,
+                "uuid": "bceb2cf0-bc8d-4074-a930-5e2a4824fb5a"
+            }
+        ],
+        "nodename": "IRF081-danielk",
+        "os_family": "Archlinux",
+        "pkg_mgr": "pacman",
+        "proc_cmdline": {
+            "cryptdevice": "PARTUUID=45667f95-925a-413c-8c3e-f8cf899a3548:root",
+            "initrd": "\\initramfs-linux.img",
+            "root": "/dev/mapper/root",
+            "rootfstype": "ext4",
+            "rw": true
+        },
+        "processor": [
+            "0",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "1",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "2",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "3",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "4",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "5",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "6",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "7",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "8",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "9",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "10",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "11",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "12",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "13",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "14",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+            "15",
+            "AuthenticAMD",
+            "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics"
+        ],
+        "processor_cores": 8,
+        "processor_count": 1,
+        "processor_nproc": 16,
+        "processor_threads_per_core": 2,
+        "processor_vcpus": 16,
+        "product_name": "TUXEDO InfinityBook Pro AMD Gen9",
+        "product_serial": "NA",
+        "product_uuid": "NA",
+        "product_version": "Standard",
+        "python": {
+            "executable": "/home/danielk/venvs/basic/bin/python3.13",
+            "has_sslcontext": true,
+            "type": "cpython",
+            "version": {
+                "major": 3,
+                "micro": 3,
+                "minor": 13,
+                "releaselevel": "final",
+                "serial": 0
+            },
+            "version_info": [
+                3,
+                13,
+                3,
+                "final",
+                0
+            ]
+        },
+        "python_version": "3.13.3",
+        "real_group_id": 1000,
+        "real_user_id": 1000,
+        "selinux": {
+            "status": "Missing selinux Python library"
+        },
+        "selinux_python_present": false,
+        "service_mgr": "systemd",
+        "swapfree_mb": 0,
+        "swaptotal_mb": 0,
+        "system": "Linux",
+        "system_capabilities": [
+            "i"
+        ],
+        "system_capabilities_enforced": "True",
+        "system_vendor": "TUXEDO",
+        "systemd": {
+            "features": "+PAM +AUDIT -SELINUX -APPARMOR -IMA +IPE +SMACK +SECCOMP +GCRYPT +GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 +PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK +BTF +XKBCOMMON +UTMP -SYSVINIT +LIBARCHIVE",
+            "version": 257
+        },
+        "tailscale0": {
+            "active": true,
+            "device": "tailscale0",
+            "ipv4": {
+                "address": "100.64.0.11",
+                "broadcast": "",
+                "netmask": "255.255.255.255",
+                "network": "100.64.0.11",
+                "prefix": "32"
+            },
+            "ipv6": [
+                {
+                    "address": "fe80::fba0:222e:27f3:821b",
+                    "prefix": "64",
+                    "scope": "link"
+                }
+            ],
+            "mtu": 1280,
+            "promisc": false,
+            "speed": -1,
+            "type": "tunnel"
+        },
+        "uptime_seconds": 49069,
+        "user_dir": "/home/danielk",
+        "user_gecos": "",
+        "user_gid": 1000,
+        "user_id": "danielk",
+        "user_shell": "/usr/bin/fish",
+        "user_uid": 1000,
+        "userspace_architecture": "x86_64",
+        "userspace_bits": "64",
+        "virtualization_role": "host",
+        "virtualization_tech_guest": [],
+        "virtualization_tech_host": [
+            "kvm"
+        ],
+        "virtualization_type": "kvm",
+        "wlp3s0": {
+            "active": true,
+            "device": "wlp3s0",
+            "ipv4": {
+                "address": "192.168.50.189",
+                "broadcast": "",
+                "netmask": "255.255.255.0",
+                "network": "192.168.50.0",
+                "prefix": "24"
+            },
+            "ipv6": [
+                {
+                    "address": "fe80::d662:2c36:823:9a67",
+                    "prefix": "64",
+                    "scope": "link"
+                },
+                {
+                    "address": "fe80::6a34:21ff:fe93:887",
+                    "prefix": "64",
+                    "scope": "link"
+                }
+            ],
+            "macaddress": "68:34:21:93:08:87",
+            "module": "iwlwifi",
+            "mtu": 1500,
+            "pciid": "0000:03:00.0",
+            "promisc": false,
+            "type": "ether"
+        }
+    },
+    "ansible_fibre_channel_wwn": [],
+    "ansible_fips": false,
+    "ansible_flags": [
+        "fpu",
+        "vme",
+        "de",
+        "pse",
+        "tsc",
+        "msr",
+        "pae",
+        "mce",
+        "cx8",
+        "apic",
+        "sep",
+        "mtrr",
+        "pge",
+        "mca",
+        "cmov",
+        "pat",
+        "pse36",
+        "clflush",
+        "mmx",
+        "fxsr",
+        "sse",
+        "sse2",
+        "ht",
+        "syscall",
+        "nx",
+        "mmxext",
+        "fxsr_opt",
+        "pdpe1gb",
+        "rdtscp",
+        "lm",
+        "constant_tsc",
+        "rep_good",
+        "amd_lbr_v2",
+        "nopl",
+        "xtopology",
+        "nonstop_tsc",
+        "cpuid",
+        "extd_apicid",
+        "aperfmperf",
+        "rapl",
+        "pni",
+        "pclmulqdq",
+        "monitor",
+        "ssse3",
+        "fma",
+        "cx16",
+        "sse4_1",
+        "sse4_2",
+        "x2apic",
+        "movbe",
+        "popcnt",
+        "aes",
+        "xsave",
+        "avx",
+        "f16c",
+        "rdrand",
+        "lahf_lm",
+        "cmp_legacy",
+        "svm",
+        "extapic",
+        "cr8_legacy",
+        "abm",
+        "sse4a",
+        "misalignsse",
+        "3dnowprefetch",
+        "osvw",
+        "ibs",
+        "skinit",
+        "wdt",
+        "tce",
+        "topoext",
+        "perfctr_core",
+        "perfctr_nb",
+        "bpext",
+        "perfctr_llc",
+        "mwaitx",
+        "cpb",
+        "cat_l3",
+        "cdp_l3",
+        "hw_pstate",
+        "ssbd",
+        "mba",
+        "perfmon_v2",
+        "ibrs",
+        "ibpb",
+        "stibp",
+        "ibrs_enhanced",
+        "vmmcall",
+        "fsgsbase",
+        "bmi1",
+        "avx2",
+        "smep",
+        "bmi2",
+        "erms",
+        "invpcid",
+        "cqm",
+        "rdt_a",
+        "avx512f",
+        "avx512dq",
+        "rdseed",
+        "adx",
+        "smap",
+        "avx512ifma",
+        "clflushopt",
+        "clwb",
+        "avx512cd",
+        "sha_ni",
+        "avx512bw",
+        "avx512vl",
+        "xsaveopt",
+        "xsavec",
+        "xgetbv1",
+        "xsaves",
+        "cqm_llc",
+        "cqm_occup_llc",
+        "cqm_mbm_total",
+        "cqm_mbm_local",
+        "user_shstk",
+        "avx512_bf16",
+        "clzero",
+        "irperf",
+        "xsaveerptr",
+        "rdpru",
+        "wbnoinvd",
+        "cppc",
+        "arat",
+        "npt",
+        "lbrv",
+        "svm_lock",
+        "nrip_save",
+        "tsc_scale",
+        "vmcb_clean",
+        "flushbyasid",
+        "decodeassists",
+        "pausefilter",
+        "pfthreshold",
+        "vgif",
+        "x2avic",
+        "v_spec_ctrl",
+        "vnmi",
+        "avx512vbmi",
+        "umip",
+        "pku",
+        "ospke",
+        "avx512_vbmi2",
+        "gfni",
+        "vaes",
+        "vpclmulqdq",
+        "avx512_vnni",
+        "avx512_bitalg",
+        "avx512_vpopcntdq",
+        "rdpid",
+        "overflow_recov",
+        "succor",
+        "smca",
+        "fsrm",
+        "flush_l1d"
+    ],
+    "ansible_forks": 5,
+    "ansible_form_factor": "Notebook",
+    "ansible_fqdn": "IRF081-danielk",
+    "ansible_host": "127.0.0.1",
+    "ansible_hostname": "IRF081-danielk",
+    "ansible_hostnqn": "",
+    "ansible_interfaces": [
+        "wlp3s0",
+        "lo",
+        "tailscale0",
+        "eth0"
+    ],
+    "ansible_inventory_sources": [
+        "/home/danielk/git/phd-course-software-development/code/automation/hosts.ini"
+    ],
+    "ansible_is_chroot": false,
+    "ansible_iscsi_iqn": "",
+    "ansible_kernel": "6.14.4-arch1-2",
+    "ansible_kernel_version": "#1 SMP PREEMPT_DYNAMIC Tue, 29 Apr 2025 09:23:13 +0000",
+    "ansible_lo": {
+        "active": true,
+        "device": "lo",
+        "ipv4": {
+            "address": "127.0.0.1",
+            "broadcast": "",
+            "netmask": "255.0.0.0",
+            "network": "127.0.0.0",
+            "prefix": "8"
+        },
+        "ipv6": [
+            {
+                "address": "::1",
+                "prefix": "128",
+                "scope": "host"
+            }
+        ],
+        "mtu": 65536,
+        "promisc": false,
+        "type": "loopback"
+    },
+    "ansible_loadavg": {
+        "15m": 0.27392578125,
+        "1m": 0.2587890625,
+        "5m": 0.3134765625
+    },
+    "ansible_local": {},
+    "ansible_locally_reachable_ips": {
+        "ipv4": [
+            "100.64.0.11",
+            "127.0.0.0/8",
+            "127.0.0.1",
+            "192.168.50.189"
+        ],
+        "ipv6": [
+            "::1",
+            "fe80::6a34:21ff:fe93:887",
+            "fe80::d662:2c36:823:9a67",
+            "fe80::fba0:222e:27f3:821b"
+        ]
+    },
+    "ansible_lsb": {},
+    "ansible_lvm": "N/A",
+    "ansible_machine": "x86_64",
+    "ansible_machine_id": "77f7c3c94ec848aaa4480c3e80630b4c",
+    "ansible_memfree_mb": 54734,
+    "ansible_memory_mb": {
+        "nocache": {
+            "free": 58192,
+            "used": 3872
+        },
+        "real": {
+            "free": 54734,
+            "total": 62064,
+            "used": 7330
+        },
+        "swap": {
+            "cached": 0,
+            "free": 0,
+            "total": 0,
+            "used": 0
+        }
+    },
+    "ansible_memtotal_mb": 62064,
+    "ansible_mounts": [
+        {
+            "block_available": 6311495,
+            "block_size": 4096,
+            "block_total": 12818552,
+            "block_used": 6507057,
+            "device": "/dev/mapper/root",
+            "dump": 0,
+            "fstype": "ext4",
+            "inode_available": 3005355,
+            "inode_total": 3276800,
+            "inode_used": 271445,
+            "mount": "/",
+            "options": "rw,relatime",
+            "passno": 0,
+            "size_available": 25851883520,
+            "size_total": 52504788992,
+            "uuid": "428d5484-872d-48b2-99bb-3d546e875ba2"
+        },
+        {
+            "block_available": 217106,
+            "block_size": 4096,
+            "block_total": 261628,
+            "block_used": 44522,
+            "device": "/dev/nvme0n1p1",
+            "dump": 0,
+            "fstype": "vfat",
+            "inode_available": 0,
+            "inode_total": 0,
+            "inode_used": 0,
+            "mount": "/boot",
+            "options": "rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro",
+            "passno": 0,
+            "size_available": 889266176,
+            "size_total": 1071628288,
+            "uuid": "10B4-8BF9"
+        },
+        {
+            "block_available": 424948143,
+            "block_size": 4096,
+            "block_total": 467271400,
+            "block_used": 42323257,
+            "device": "/dev/nvme0n1p3",
+            "dump": 0,
+            "fstype": "ext4",
+            "inode_available": 118387626,
+            "inode_total": 118759424,
+            "inode_used": 371798,
+            "mount": "/home",
+            "options": "rw,relatime",
+            "passno": 0,
+            "size_available": 1740587593728,
+            "size_total": 1913943654400,
+            "uuid": "bceb2cf0-bc8d-4074-a930-5e2a4824fb5a"
+        }
+    ],
+    "ansible_nodename": "IRF081-danielk",
+    "ansible_os_family": "Archlinux",
+    "ansible_pkg_mgr": "pacman",
+    "ansible_playbook_python": "/usr/bin/python",
+    "ansible_proc_cmdline": {
+        "cryptdevice": "PARTUUID=45667f95-925a-413c-8c3e-f8cf899a3548:root",
+        "initrd": "\\initramfs-linux.img",
+        "root": "/dev/mapper/root",
+        "rootfstype": "ext4",
+        "rw": true
+    },
+    "ansible_processor": [
+        "0",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "1",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "2",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "3",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "4",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "5",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "6",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "7",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "8",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "9",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "10",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "11",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "12",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "13",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "14",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics",
+        "15",
+        "AuthenticAMD",
+        "AMD Ryzen 7 8845HS w/ Radeon 780M Graphics"
+    ],
+    "ansible_processor_cores": 8,
+    "ansible_processor_count": 1,
+    "ansible_processor_nproc": 16,
+    "ansible_processor_threads_per_core": 2,
+    "ansible_processor_vcpus": 16,
+    "ansible_product_name": "TUXEDO InfinityBook Pro AMD Gen9",
+    "ansible_product_serial": "NA",
+    "ansible_product_uuid": "NA",
+    "ansible_product_version": "Standard",
+    "ansible_python": {
+        "executable": "/home/danielk/venvs/basic/bin/python3.13",
+        "has_sslcontext": true,
+        "type": "cpython",
+        "version": {
+            "major": 3,
+            "micro": 3,
+            "minor": 13,
+            "releaselevel": "final",
+            "serial": 0
+        },
+        "version_info": [
+            3,
+            13,
+            3,
+            "final",
+            0
+        ]
+    },
+    "ansible_python_version": "3.13.3",
+    "ansible_real_group_id": 1000,
+    "ansible_real_user_id": 1000,
+    "ansible_run_tags": [
+        "all"
+    ],
+    "ansible_selinux": {
+        "status": "Missing selinux Python library"
+    },
+    "ansible_selinux_python_present": false,
+    "ansible_service_mgr": "systemd",
+    "ansible_skip_tags": [],
+    "ansible_swapfree_mb": 0,
+    "ansible_swaptotal_mb": 0,
+    "ansible_system": "Linux",
+    "ansible_system_capabilities": [
+        "i"
+    ],
+    "ansible_system_capabilities_enforced": "True",
+    "ansible_system_vendor": "TUXEDO",
+    "ansible_systemd": {
+        "features": "+PAM +AUDIT -SELINUX -APPARMOR -IMA +IPE +SMACK +SECCOMP +GCRYPT +GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 +PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK +BTF +XKBCOMMON +UTMP -SYSVINIT +LIBARCHIVE",
+        "version": 257
+    },
+    "ansible_tailscale0": {
+        "active": true,
+        "device": "tailscale0",
+        "ipv4": {
+            "address": "100.64.0.11",
+            "broadcast": "",
+            "netmask": "255.255.255.255",
+            "network": "100.64.0.11",
+            "prefix": "32"
+        },
+        "ipv6": [
+            {
+                "address": "fe80::fba0:222e:27f3:821b",
+                "prefix": "64",
+                "scope": "link"
+            }
+        ],
+        "mtu": 1280,
+        "promisc": false,
+        "speed": -1,
+        "type": "tunnel"
+    },
+    "ansible_uptime_seconds": 49069,
+    "ansible_user_dir": "/home/danielk",
+    "ansible_user_gecos": "",
+    "ansible_user_gid": 1000,
+    "ansible_user_id": "danielk",
+    "ansible_user_shell": "/usr/bin/fish",
+    "ansible_user_uid": 1000,
+    "ansible_userspace_architecture": "x86_64",
+    "ansible_userspace_bits": "64",
+    "ansible_verbosity": 0,
+    "ansible_version": {
+        "full": "2.18.5",
+        "major": 2,
+        "minor": 18,
+        "revision": 5,
+        "string": "2.18.5"
+    },
+    "ansible_virtualization_role": "host",
+    "ansible_virtualization_tech_guest": [],
+    "ansible_virtualization_tech_host": [
+        "kvm"
+    ],
+    "ansible_virtualization_type": "kvm",
+    "ansible_wlp3s0": {
+        "active": true,
+        "device": "wlp3s0",
+        "ipv4": {
+            "address": "192.168.50.189",
+            "broadcast": "",
+            "netmask": "255.255.255.0",
+            "network": "192.168.50.0",
+            "prefix": "24"
+        },
+        "ipv6": [
+            {
+                "address": "fe80::d662:2c36:823:9a67",
+                "prefix": "64",
+                "scope": "link"
+            },
+            {
+                "address": "fe80::6a34:21ff:fe93:887",
+                "prefix": "64",
+                "scope": "link"
+            }
+        ],
+        "macaddress": "68:34:21:93:08:87",
+        "module": "iwlwifi",
+        "mtu": 1500,
+        "pciid": "0000:03:00.0",
+        "promisc": false,
+        "type": "ether"
+    },
+    "discovered_interpreter_python": "/home/danielk/venvs/basic/bin/python3.13",
+    "gather_subset": [
+        "all"
+    ],
+    "group_names": [
+        "computers"
+    ],
+    "groups": {
+        "all": [
+            "this_machine"
+        ],
+        "computers": [
+            "this_machine"
+        ],
+        "ungrouped": []
+    },
+    "inventory_dir": "/home/danielk/git/phd-course-software-development/code/automation",
+    "inventory_file": "/home/danielk/git/phd-course-software-development/code/automation/hosts.ini",
+    "inventory_hostname": "this_machine",
+    "inventory_hostname_short": "this_machine",
+    "module_setup": true,
+    "omit": "__omit_place_holder__25037e9cbaec3a37a1ef053542e8aa07d48ae6f6",
+    "playbook_dir": "/home/danielk/git/phd-course-software-development/code/automation"
+}

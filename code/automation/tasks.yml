@@ -1,0 +1,15 @@
+---
+- name: This is a set of tasks
+  hosts: computers
+  gather_facts: True
+  become: no
+  tasks:
+  - name: save info
+    ansible.builtin.copy:
+      content: "{{ hostvars[inventory_hostname] | to_nice_json }}"
+      dest: ./setup-dump.json
+  - name: check file
+    ansible.builtin.file:
+      path: ./setup-dump.json
+      state: file
+

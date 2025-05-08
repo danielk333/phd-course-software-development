@@ -95,6 +95,22 @@ weight: 11
                 <h3 class="title">Automate away friction</h3>
                 <ul>
                     <li>What do I mean</li>
+                </ul>
+                <p class="highlight">Pick your battles!</p>
+                <p><a
+                    href="https://dougseven.com/2014/04/17/knightmare-a-devops-cautionary-tale/">Knightmare:
+                    A DevOps Cautionary Tale</a> - An interesting read, see handout</p>
+                <p class="fragment">Takeaway: humans are not reliable for critical, long, and
+                    repetitive tasks! (if it cannot be automated - checklists do help)</p>
+            </div>
+        </section>
+
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>What do I mean</li>
                     <li>Automation tools and patterns</li>
                 </ul>
             </div>
@@ -126,13 +142,66 @@ weight: 11
                 <ul>
                     <li>uv</li>
                         <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                # automate recreating exact environment
+                                uv lock
+                                uv sync
+                            </code>
+                        </pre>
+                    <li>conda</li>
+                    <li>containers</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Environments</p>
+                <ul>
+                    <li>uv</li>
+                    <li>conda</li>
+                        <pre class="show-code">
+                            <code data-line-numbers data-trim class="language-bash">
+                                # automate recreating exact environment
+                                conda env export > environment.yml
+                                conda env create -f environment.yml
+                            </code>
+                        </pre>
+                    <li>containers</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+         
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Environments</p>
+                <ul>
+                    <li>uv</li>
+                    <li>conda</li>
+                    <li>containers</li>
+                        <pre class="show-code">
                             <code data-line-numbers data-trim class="language-dockerfile">
                                 # Containerfile
+                                FROM alpine:3.21
+                                MAINTAINER Daniel daniel.kastinen@irf.se
+                                USER root
 
+                                RUN apk add --no-cache python3
+                                ADD test_code.py /root/
+
+                                CMD python /root/test_code.py
                             </code>
                         </pre>
-                    <li>poetry</li>
-                    <li>containers</li>
                     <li>...</li>
                 </ul>
             </div>
@@ -145,22 +214,35 @@ weight: 11
                     <li>Automation tools and patterns</li>
                 </ul>
                 <p class="highlight">Environments</p>
+                <video muted controls loop style="max-height: 55vh">
+                    <source src="media/podman.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
                 <ul>
-                    <li>uv</li>
-                    <li>conda</li>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Environments</p>
+                <p>Managing many system environments (not just Python!)</p>
+                <div class="fragment">
+                    <p><a href="https://lmod.readthedocs.io/en/latest/">Lmod</a> - an environment
+                        module system</p>
                         <pre class="show-code">
-                            <code data-line-numbers data-trim class="language-bash">
-                                # automate recreating exact environment
-                                conda env export > environment.yml
-                                conda env create -f environment.yml
+                            <code data-trim class="language-bash">
+                                $ module avail
+                                $ module load package1 package2 ...
+                                $ module unload package1 package2 ...
                             </code>
                         </pre>
-                    <li>containers</li>
-                    <li>...</li>
-                </ul>
+                    <p>What is used by HPC2N</p>
+                </div>
             </div>
         </section>
-         
+
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Automate away friction</h3>
@@ -168,102 +250,738 @@ weight: 11
                     <li>Automation tools and patterns</li>
                 </ul>
                 <p class="highlight">Environments</p>
-                <ul>
-                    <li>uv</li>
-                    <li>conda</li>
+                <p>Managing many system environments (not just Python!)</p>
+                <div>
+                    <p>It modifies the shell environment</p>
                         <pre class="show-code">
-                            <code data-line-numbers data-trim class="language-bash">
-                                # automate recreating exact environment
-                                conda env export > environment.yml
-                                conda env create -f environment.yml
+                            <code data-trim class="language-bash">
+                            $ env | grep -i ddt
+                            $ module load ddt
+                            $ env | grep -i ddt
+
+                            DDTPATH=/opt/apps/ddt/5.0.1/bin
+                            LD_LIBRARY_PATH=/opt/apps/ddt/5.0.1/lib:...
+                            PATH=/opt/apps/ddt/5.0.1/bin:...
+
+                            $ module unload ddt
+                            $ env | grep -i ddt
                             </code>
                         </pre>
-                    <li>containers</li>
-                    <li>...</li>
-                </ul>
+                </div>
             </div>
         </section>
-         
+
+
         <section data-auto-animate>
             <div class="centered-container">
                 <h3 class="title">Automate away friction</h3>
                 <ul>
                     <li>Automation tools and patterns</li>
                 </ul>
-                <p class="highlight">Environments</p>
+                <p class="highlight">Building</p>
+                <p class="fragment"><code>pip</code> - automates python dependencies and build
+                    system</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-toml" style="height: 40vh;">
+                        <!--
+                        [build-system]
+                        requires = ["setuptools"]
+                        build-backend = "setuptools.build_meta"
+
+                        [project]
+                        requires-python = ">=3.5"
+                        dependencies = [
+                            "numpy >= 1.14.3",
+                            "scipy >= 1.1.0",
+                            "matplotlib >= 3.2.0",
+                        ]
+
+                        [project.scripts]
+                        my_package = "my_package.cli:main"
+                        -->
+
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
                 <ul>
-                    <li>uv</li>
-                    <li>conda</li>
-                    <li>poetry</li>
-                    <li>containers</li>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Building</p>
+                <p><code>pip</code> - automates python dependencies and build
+                    system</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python" style="height: 40vh;">
+                        # setup.py
+                        import setuptools
+                        from distutils.core import Extension
+
+                        clib_beam = Extension(
+                            name='pyant.clibbeam',
+                            sources=[
+                                'src/clibbeam/array.c',
+                                'src/clibbeam/beam.c',
+                            ],
+                            include_dirs=['src/clibbeam/'],
+                        )
+
+                        setuptools.setup(
+                            ext_modules=[clib_beam],
+                        )
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Building</p>
+                <p>Does your Python code have external dependencies?</p>
+                <p>List and check for them somehow! For example</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import setuptools
+                        import shutil
+
+                        class DependencyNotFound(Exception):
+                            pass
+
+                        if shutil.which("ffmpeg") is None:
+                            raise DependencyNotFound("ffmpeg is not installed - aaaaaah!")
+
+                        setuptools.setup()
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Building</p>
+                <p>Other Python build systems</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-toml">
+                        <!--
+                        [build-system]
+                        requires = ["hatchling >= 1.26"]
+                        build-backend = "hatchling.build"
+
+                        [build-system]
+                        requires = ["pdm-backend >= 2.4.0"]
+                        build-backend = "pdm.backend"
+
+                        [build-system]
+                        build-backend = "mesonpy"
+                        requires = ["meson-python>=0.15.0"]
+                        -->
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Building</p>
+                <p><code>make</code> - automate building and whatever else rule-based file-dependant
+                    workflow you have</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-makefile">
+                        # Makefile
+                        source_files := $(wildcard diagrams/*.gv)
+                        output_files_tmp := $(source_files:.gv=.png)
+                        output_files := $(addprefix static/,$(output_files_tmp))
+
+                        all: $(output_files)
+
+                        static/diagrams/%.png : diagrams/%.gv
+                            dot -Tpng -o$@ $<
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Building</p>
+                <video muted controls loop style="max-height: 55vh">
+                    <source src="media/makefile.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Building</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-makefile" style="height: 50vh;">
+                        <!--
+                        # Makefile
+                        CC = gcc
+                        all: CFLAGS = -fPIC -shared
+                        debug: CFLAGS = -fPIC -shared -g
+                        LIBS = -lfftw3f
+                        INSTALL = ../hardtarget/gmf
+
+                        SOURCES=gmf.c
+                        EXT=$(shell python -c "import sysconfig; print(sysconfig.get_config_var('EXT_SUFFIX'))")
+                        OUTLIB=gmfclib$(EXT)
+                        INSTALLLIB=$(INSTALL)/$(OUTLIB)
+
+                        all: $(INSTALLLIB) $(OUTLIB)
+                        debug: $(INSTALLLIB) $(OUTLIB)
+
+                        $(OUTLIB): $(SOURCES)
+                            @echo "gmfclib installation -> Linking shared library $(OUTLIB) ..."
+                            $(CC) $(CFLAGS) $(LIBS) $(SOURCES) -o $(OUTLIB)
+                            @echo "gmfclib installation -> The shared library $(OUTLIB) has been created successfully."
+
+                        $(INSTALLLIB): $(OUTLIB)
+                            @cp $(OUTLIB) $(INSTALLLIB) -v
+                            @echo "gmfclib installation -> done"
+
+                        clean:
+                            @echo "gmfclib clean -> Removing shared library ..."
+                            @-rm -fv $(OUTLIB)
+                            @-rm -fv $(INSTALLLIB)
+                        -->
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Building</p>
+                <p><code>meson</code> - generic open source build system (written in Python)</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        # meson.build
+                        project('tutorial', 'c')
+                        gtkdep = dependency('gtk+-3.0')
+                        executable('demo', 'main.c', dependencies : gtkdep)
+                    </code>
+                </pre>
+                <p class="fragment">what <code>scipy</code> uses</p>
+                <p class="fragment">More links in the handouts</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Installing</p>
+                <p class="fragment">Most software follow something like:</p>
+                <pre class="fragment show-code">
+                    <code data-trim class="language-bash">
+                        $ ./configure
+                        $ make
+                        $ make install
+                    </code>
+                </pre>
+                <p class="fragment">So how does package managers work?</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Installing</p>
+                <p>PKGBUILD example (used by Arch)</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-bash" style="height: 40vh;" >
+                        <!-- # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org> -->
+                        <!-- # Maintainer: Carl Smedstad <carsme@archlinux.org> -->
+                        <!-- # Contributor: Daniel Isenmann <daniel@archlinux.org> -->
+                        <!-- # Contributor: Sergej Pupykin <sergej@aur.archlinux.org> -->
+                        <!-- # Contributor: Douglas Soares de Andrade <dsandrade@gmail.com> -->
+
+                        _name=urwid
+                        pkgname=python-urwid
+                        pkgver=2.6.16
+                        pkgrel=1
+                        pkgdesc='Curses-based user interface library'
+                        arch=('any')
+                        url='https://urwid.org/'
+                        license=('LGPL-2.1-only')
+                        depends=(
+                          'glib2'
+                          'python'
+                          'python-wcwidth'
+                        )
+                        makedepends=(
+                          'python-build'
+                          'python-installer'
+                          'python-setuptools'
+                          'python-setuptools-scm'
+                          'python-wheel'
+                        )
+                        checkdepends=(
+                          'python-gobject'
+                          'python-pytest'
+                          'python-pyzmq'
+                          'python-tornado'
+                          'python-trio'
+                          'python-twisted'
+                        )
+                        optdepends=(
+                          'python-gobject: for gobject integration'
+                          'python-pyserial: for LCD and serial integration'
+                          'python-pyzmq: for zmq integration'
+                          'python-tornado: for tornado integration'
+                          'python-trio: for trio integration'
+                          'python-twisted: for twisted integration'
+                        )
+                        source=("https://github.com/urwid/urwid/archive/$pkgver/${pkgname#python-}-$pkgver.tar.gz")
+                        sha512sums=('7a928fe6e35714b351f99bce025fa2d50873052dac8b33d8b0dc76ffb8784c623cd83dd6314df5c61c11165734919803bd90f17e7aef1dbe032aa30615830ecd')
+                        b2sums=('76304a463491e433c5cd1551c6c94996046a81a0d50e1dcd44a4ad84eaba52358bc352c1e72599e88749c6ac7e3dccfe582d050b34be69a930bcfe5b9df6b932')
+
+                        build() {
+                          cd ${pkgname#python-}-$pkgver
+                          export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+                          python -m build --wheel --no-isolation
+                        }
+
+                        check() {
+                          cd ${pkgname#python-}-$pkgver
+                          # Override addopts as they invoke coverage testing
+                          pytest --override-ini="addopts=-vv --doctest-modules -s" tests
+                        }
+
+                        package() {
+                          cd ${pkgname#python-}-$pkgver
+                          python -m installer --destdir="$pkgdir" dist/*.whl
+                        }
+
+                        # vim: ts=2 sw=2 et:
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Installing</p>
+                <p>PKGBUILD example (used by Arch)</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-bash" >
+                        $ makepkg -si
+                    </code>
+                </pre>
+                <p class="fragment">Then this will install onto your system!</p>
+                <p class="fragment">Links to similar systems for Ubuntu in handouts</p>
+            </div>
+        </section>
+
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <ul class="fragment">
+                    <li>snakemake</li>
+                    <li>make</li>
+                    <li>just scripts!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <ul>
+                    <li>snakemake</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python" style="height: 40vh;">
+                        <!-- 
+                        rule all:
+                            input:
+                                "snake_data/sum.bin"
+
+                        rule make_data:
+                            input:
+                                "snake_data"
+                            output:
+                                "snake_data/data.dat",
+                                "snake_data/data.txt"
+                            script:
+                                "make_data.py"
+
+                        rule count:
+                            input:
+                                "snake_data/data.dat"
+                            output: 
+                               "snake_data/counts.dat"
+                            shell:
+                               "wc -c {input} > {output}"
+
+                        rule size:
+                            input:
+                                "snake_data/data.txt"
+                            output:
+                                "snake_data/size.dat"
+                            shell:
+                                "du -b {input} > {output}"
+
+                        rule summing: 
+                            input:
+                                "snake_data/counts.dat",
+                                "snake_data/size.dat",
+                            output:
+                                "snake_data/sum.bin",
+                            script:
+                                "sum_files.py"
+                         -->
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <ul>
+                    <li>snakemake</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python" style="height: 50vh;">
+                        # make_data.py
+                        from pathlib import Path
+                        import random
+                        import string
+                        from snakemake.script import snakemake
+
+                        def make_file(path, ind, ext):
+                            with open(path / f"{ind}{ext}", "w") as fh:
+                                fh.write("".join(random.choices(
+                                    string.ascii_uppercase + string.digits,
+                                    k=random.randint(1, 257),
+                                )))
+
+                        path = Path(snakemake.input[0])
+                        make_file(path, "data", ".dat")
+                        make_file(path, "data", ".txt")
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <ul>
+                    <li>snakemake</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        # sum_files.py 
+                        from pathlib import Path
+                        from snakemake.script import snakemake
+
+                        total = 0
+                        for file in snakemake.input:
+                            total += Path(file).stat().st_size
+
+                        with open(snakemake.output[0], "wb") as fh:
+                            fh.write(total.to_bytes())
+                    </code>
+                </pre>
+                <p class="fragment"><code>snakemake --dag dot | dot -Tpng > dag.png</code></p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <ul>
+                    <li>snakemake</li>
+                </ul>
+                <p><code>snakemake --dag dot | dot -Tpng > dag.png</code></p>
+                <img src="media/dag.png" class="light" style="height: 40vh;">
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">automate away friction</h3>
+                <ul>
+                    <li>automation tools and patterns</li>
+                </ul>
+                <p class="highlight">workflow automation</p>
+                <video  controls loop style="max-height: 55vh">
+                    <source src="media/snakemake.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <p>Links to more info in the handout</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <p>Next up: <code>ansible</code> "system admin" automation tool</p>
+                <ul class="fragment">
+                    <p class="mark">How it works</p>
+                    <li>hosts</li>
+                    <li>tasks</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <p>Next up: <code>ansible</code> "system admin" automation tool</p>
+                <ul>
+                    <p class="mark">How it works</p>
+                    <li>hosts</li>
+                    <pre class="show-code">
+                        <code data-line-numbers data-trim class="language-ini">
+                            # hosts.ini
+                            [computers]
+                            this_machine ansible_host=127.0.0.1
+                        </code>
+                    </pre>
+                    <li>tasks</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <ul>
+                    <li>tasks</li>
+                    <pre class="show-code">
+                        <code data-line-numbers data-trim class="language-yaml">
+                            # tasks.yml
+                            ---
+                            - name: This is a set of tasks
+                              hosts: computers
+                              gather_facts: True
+                              become: no
+                              tasks:
+                              - name: save info
+                                ansible.builtin.copy:
+                                  content: "{{ hostvars[inventory_hostname] | to_nice_json }}"
+                                  dest: ./setup-dump.json
+                              - name: check file
+                                ansible.builtin.file:
+                                  path: ./setup-dump.json
+                                  state: file
+                        </code>
+                    </pre>
+                </ul>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-bash">
+                        ansible-playbook -i hosts.ini tasks.yml -c local
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <video  controls loop style="max-height: 55vh">
+                    <source src="media/ansible.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </section>
+
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <ul>
+                    <p class="mark">CI - tools</p>
+                    <li>GitLab CI</li>
+                    <li>Github Actions</li>
+                    <li>Jenkins</li>
+                    <li>Ambient</li>
                     <li>...</li>
                 </ul>
             </div>
         </section>
 
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <ul>
+                    <li>GitLab CI</li>
+                </ul>
+                <p class="mark">(IRF hosts this!)</p>
+                <p class="fragment">A system for automatically running tasks in containers on worker machines when
+                    triggered</p>
+                <p class="fragment select">This is what builds this website on every git push!</p>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-yaml">
+                        # .gitlab-ci.yml
+                        image: registry.gitlab.com/pages/hugo/hugo_extended:0.139.3
+
+                        stages:
+                          - deploy
+
+                        pages:
+                          stage: deploy
+                          script:
+                            - apk add --no-cache bash wget iputils tar
+                            - ./install-revealjs
+                            - hugo -b "https://danielk.developer.irf.se/phd-course-software-development"
+                          artifacts:
+                            expire_in: 5 minutes
+                            paths:
+                              - public
+                          rules:
+                            - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <img src="media/gitlab_ci1.png" style="width: 80vw; max-width: none;">
+            </div>
+        </section>
 
 
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <ul>
+                    <li>Automation tools and patterns</li>
+                </ul>
+                <p class="highlight">Workflow automation</p>
+                <img src="media/gitlab_ci2.png" style="width: 80vw; max-width: none;">
+            </div>
+        </section>
 
-
-
-
+        <section data-auto-animate>
+            <div class="centered-container">
+                <h3 class="title">Automate away friction</h3>
+                <p class="highlight">The takeaway:</p>
+                <p>Automate away friction so you can concentrate on the important bits</p>
+                <p class="fragment mark">Lets have a look at the handout</p>
+            </div>
+        </section>
 
     </div>
 </div>
 
-<!--
-A number of computational steps
-  The steps are connected by needed input and outpts
-
-https://manpages.ubuntu.com/manpages/jammy/man5/containers-dockerfile.5.html
-https://www.redhat.com/en/blog/write-your-first-containerfile-podman
-https://ambient.liw.fi/
-https://pixi.sh/dev/workspace/environment/#environment-installation-metadata
-https://lmod.readthedocs.io/en/latest/
-https://snakemake.readthedocs.io/en/stable/tutorial/basics.html
-https://docs.hpc2n.umu.se/software/modules/
-https://docs.easybuild.io/
-https://www.jenkins.io/
-
-<ul>
-                    <li class="fragment">Environments</li>
-                    <p class="fragment">uv, conda, poetry, pdm, docker, ...</p>
-                    <li class="fragment">Installation</li>
-                    <p class="fragment">python package, PKGBUILD, scripts</p>
-                    <li class="fragment">Building/compiling</li>
-                    <p class="fragment">make, cmake, meson</p>
-                </ul>
-
-dont leave critical long tasks to humans!
-https://dougseven.com/2014/04/17/knightmare-a-devops-cautionary-tale/
-
-
-snakemake
-        make
-        meson
-gitlab ci
-        github actions
-        ambient
-ansible
-        jenkins
-
-
-
-        shell env management
-pixi
-easybuild
-        lmod
-
-
-
-
-
-import shutil
-
-if shutil.which("ffmpeg") is None:
-    print("ffmpeg is not installed!")
-else:
-    print("ffmpeg is installed!")
-
-setup py check external deps
--->
