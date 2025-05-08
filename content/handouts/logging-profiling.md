@@ -21,9 +21,15 @@ weight: 10
 - [line_profiler](https://github.com/pyutils/line_profiler)
 - [py-spy](https://github.com/benfred/py-spy)
 
-### Multi-lingual
+### Other
 
-There is a longer list of profiling tools available [here](https://en.wikipedia.org/wiki/List_of_performance_analysis_tools)
+- ([most platforms](https://valgrind.org/info/platforms.html) - Memory profiling) [valgrind](https://valgrind.org/)
+- (gcc toolchain) [gprof](https://ftp.gnu.org/old-gnu/Manuals/gprof-2.9.1/html_mono/gprof.html)
+- (C, C++, Fortran - Threaded and Parallel Code) [DDT](https://www.linaroforge.com/linaro-ddt)
+ 
+There is a longer list of profiling tools available on [wikipedia list of performance analysis
+tools](https://en.wikipedia.org/wiki/List_of_performance_analysis_tools) and on the [hpc2n debugger
+and profiler tools list](https://docs.hpc2n.umu.se/software/debug-prof/).
 
 ## Code-examples
 
