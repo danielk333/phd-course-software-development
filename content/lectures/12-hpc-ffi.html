@@ -74,6 +74,11 @@ $$
 S(n) = \frac{T(1)}{T(n)} = \frac{(1-p)T_0 + npT_0}{T_0} = 1 - p + np = 1 + p(n - 1)
 $$
 
+$$
+T(n) = \sum_{i=1}^{n} s_i(n) T_i
+$$
+
+
 The choose which law to use one must identify if the non-parallelizable part scales together with the problem size or if it is fixed. If it scales with the problem Amdahl's law will correctly predict scalability as no relative gain in $p$ is achieved by increasing the problem size, while if the non-parallelizable part stays constant then Gustafson's law will better predict the speedup achieved with increased processing.
 
 
