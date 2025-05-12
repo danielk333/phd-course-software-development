@@ -1,23 +1,86 @@
 ---
 title: "Advanced concepts: parallelization, foreign function interfaces"
 description: ""
+handout: hpc-ffi
 weight: 12
 ---
 
 <div class="reveal">
     <div class="slides">
 
+        <section
+            data-auto-animate
+            data-background-image="media/c_python_funny.png"
+            data-background-opacity="1"
+        >
+            <div class="centered-container"></div>
+        </section>
+
+        <section
+            data-auto-animate
+            data-background-image="media/c_python_funny.png"
+            data-background-opacity="0.1"
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul class="fragment">
+                    <li>The basics of parallelization</li>
+                    <li>Ways to parallelize</li>
+                    <li>High performance computing</li>
+                    <li>Foreign function interfaces and calling conventions</li>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+            </div>
+        </section>
+
+<!--        
         <section data-auto-animate>
+
             <div class="margin-top">
 https://docs.hpc2n.umu.se/tutorials/clusterguide/
 
 https://en.wikipedia.org/wiki/Slurm_Workload_Manager
 
+# Parallelization
+
+Firstly we need to cover some basic parallelization theory: 
+
+* [Amdahl's law](https://en.wikipedia.org/wiki/Amdahl%27s_law)
+* [Gustafson's law](https://en.wikipedia.org/wiki/Gustafson%27s_law)
+
+To summarize the above two articles, both determine the theoretical speed-up of a program given a number $n$ of concurrent processes performing computations. Here processes can refer to threads/processes on the same machine or nodes on a High Performance Computing (HPC) system. Amdhal assumes the problem size stays constant while Gustafson assumes the parallelizable part of the problem size scales linearly together with the number of processes. 
+
+Amdahl's law is
+
+$$
+S(n) = \frac{1}{1 - p + \frac{p}{n}}
+$$
+
+where $p$ is the fraction of the program that is parallelizable. To better grasp this law we can derive it from the execution time of a fixed size problem. Lets assume the total execution time of the program without parallelization is $T_0$. Then $(1-p)T_0$ is the non-parallelizable execution time and $pT_0$ the parallelizable execution time so that the total is $(1-p)T_0 + pT_0$. We assume that the parallelizable part is trivially parallelizable, hence using $n$ concurrent processes to compute the parallelizable part will take $\frac{pT_0}{n}$ units of time. Hence the new total is $T(n) = (1-p)T_0 + \frac{pT_0}{n}$ Looking at the speedup we divide the execution time without parallelization with that using parallelization:
+
+$$
+S(n) = \frac{T(1)}{T(n)} = \frac{T_0}{(1-p)T_0 + \frac{pT_0}{n}} = \frac{1}{1 - p + \frac{p}{n}}
+$$
+
+Gustafson's law is
+
+$$
+S(n) = 1 + p(n - 1)
+$$
+
+To derive this law we add the additional assumption that the amount of parallelizable parts scales linearly with the number of processes. This way the total computation part will be constant as $T(n) = (1-p)T_0 + n\frac{pT_0}{n} = T_0$. If we want to compare the execution time for two problems of the same size, we set $\frac{pT_0}{n}$ to $pT_0$ as its only one process doing computation but we still perform $n$ of those computations so $T(1) = (1-p)T_0 + npT_0$. Then the speedup will be
+
+$$
+S(n) = \frac{T(1)}{T(n)} = \frac{(1-p)T_0 + npT_0}{T_0} = 1 - p + np = 1 + p(n - 1)
+$$
+
+The choose which law to use one must identify if the non-parallelizable part scales together with the problem size or if it is fixed. If it scales with the problem Amdahl's law will correctly predict scalability as no relative gain in $p$ is achieved by increasing the problem size, while if the non-parallelizable part stays constant then Gustafson's law will better predict the speedup achieved with increased processing.
 
 
 
             </div>
         </section>
+-->
 
     </div>
 </div>
