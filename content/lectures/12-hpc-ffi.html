@@ -41,6 +41,117 @@ weight: 12
                 <ul>
                     <li>The basics of parallelization</li>
                 </ul>
+                <ul>
+                    <p>Two types</p>
+                    <li class="fragment">Trivial parallelization</li>
+                    <li class="fragment">The rest</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <ul>
+                    <li>Trivial parallelization</li>
+                </ul>
+                <p>Independent calculations</p>
+                <p>Node 1: $a+b$</p>
+                <p>Node 2: $x/y$</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <ul>
+                    <li>The rest</li>
+                </ul>
+                <p>Everything between trivial and not possible</p>
+                <p>Can parallelize: $a + b + c + d + e$</p>
+                <p>Can not parallelize: $f(f(f(f(x_0))))$</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <ul>
+                    <li>The rest</li>
+                </ul>
+                <p>$a + b + c + d + e = y$</p>
+                <ul>
+                    <li>Node 1: $a + b = x_1 \mapsto x_1 + x_2 + x_3 = y$ </li>
+                    <li>Node 2: $c + d = x_2 \mapsto$ send $x_2$ to Node 1</li>
+                    <li>Node 3: $e + f = x_3 \mapsto$ send $x_3$ to Node 1</li>
+                </ul>
+                <p class="fragment mark">Not quite $n$ speed improvement</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <ul>
+                    <li>The rest</li>
+                </ul>
+                <p>Any associative binary operator $T$ works!</p>
+                $$
+                    (x T y) T z = x T (y T z) \;\forall\; x,y,z
+                $$
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <ul>
+                    <li>The rest</li>
+                </ul>
+                <p class="highlight">We can also sometimes cheat</p>
+                <p class="fragment">$y = f(f(f(f(x_0))))$</p>
+                <ul class="fragment">
+                    <li>Use trivial parallelization to pre-calculate $f(x)$ table</li>
+                    <li>Then approximate $y$ single threaded REALLY FAST</li>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
                 <div class="fragment">
                     <p>A model of your program execution time</p>
                     $$
@@ -66,7 +177,7 @@ weight: 12
                 <p>Parallelization speedup $s_i(n)$<br>$n$ is core/node count</p>
                 <div class="fragment">
                     $$
-                        T(n) = \sum_{i=1}^{N} \frac{T_i}{s(n)}
+                        T(n) = \sum_{i=1}^{N} \frac{T_i}{s_i(n)}
                     $$
                 </div>
                 <ul class="fragment">
@@ -100,7 +211,7 @@ weight: 12
                 <ul>
                     <li>The basics of parallelization</li>
                 </ul>
-                <img src="media/example_exec_time.png" class="fragment light" style="height: 60vh;">
+                <img src="media/example_exec_time.png" class="fragment light" style="height: 65vh;">
             </div>
         </section>
 
@@ -112,7 +223,24 @@ weight: 12
                 <ul>
                     <li>The basics of parallelization</li>
                 </ul>
-                <p class="highlight">This is what is called Amdahl's law</p>
+                <p>So what is speedup?</p>
+                <div class="fragment">
+                    $$
+                        S(n) = \frac{T(1)}{T(n)}
+                    $$
+                </div>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <p class="highlight">This is what is called Amdahl's law: total speedup $S$ is</p>
                 $$
                 S(n) = \frac{1}{1 - p + \frac{p}{s(n)}}
                 $$
@@ -138,65 +266,246 @@ weight: 12
                 <p>What if problem size scales?</p>
                 <div class="fragment">
                     $$
-                        T(n) = \sum_{i=1}^{N} \frac{M_i T_i}{s(n)}
+                        T(n) = \sum_{i=1}^{N} \frac{M_i(n)}{s_i(n)}T_i
                     $$
                 </div>
                 <ul class="fragment">
-                    <li>$s_1(n) = 1$</li>
-                    <li>$s_2(n) = n$</li>
-                    <li>$s_3(n) = 1$</li>
+                    <li>$\frac{M_1(n)}{s(n)} = 1$</li>
+                    <li>$\frac{M_2(n)}{s(n)} = n$</li>
+                    <li>$\frac{M_3(n)}{s(n)} = 1$</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                $$
+                    T(n) = T_1 + T_3 + n T_2
+                $$
+                <img src="media/example_exec_time_scaling.png" class="fragment light" style="height: 40vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <img src="media/example_exec_time_scaling.png" class="light" style="height: 65vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <p class="highlight">This is what is called Gustafson's law: total speedup $S$ is</p>
+                $$
+                S(n) = 1 + (n - 1) p 
+                $$
+                <ul>
+                    <li>$p$ optimized portion of code</li>
+                    <li>parallel code is trivially parallel and scales with $n$</li>
+                    <li class="fragment">Remember: Scaling problem size!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <p class="highlight">So how to use this?</p>
+                <ul>
+                    <li class="fragment">Determine the trivially parallel part $p$ and its time $T_p$</li>
+                    <li class="fragment">E.g. by fitting measurements or profiling</li>
+                    <li class="fragment">Compute the scaling law you want</li>
+                    <li class="fragment">Make decisions</li>
+                </ul>
+                <p class="fragment">(all scripts for plots and methods in repository)</p>
+                <p class="fragment select">Practical example</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <p class="select">Practical example</p>
+                <ul>
+                    <li>Test particle integration</li>
+                    <li>Max size for local testing 1 000 particles</li>
+                    <li>Target size of 1 000 000 particles</li>
+                    <li>$n$ cores and $N$ particles</li>
+                </ul>
+                <div class="fragment">
+                    $$
+                        T(n) = \frac{n}{n} T_b + T_p \frac{N}{n} = T_b + T_p \frac{N}{n}
+                    $$
+                </div>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <p class="select">Practical example</p>
+                <div>
+                    $$
+                        T(n) = T_b + T_p \frac{N}{1}
+                    $$
+                </div>
+                <p class="highlight">Data!</p>
+                <img src="media/example_T_estimate.png" class="fragment light" style="height: 30vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <img src="media/example_T_estimate.png" class="light" style="height: 60vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                $$
+                    T(n) = T_b + T_p \frac{N}{n}
+                $$
+                <ul>
+                    <li>$T_b$ = 3542 s</li>
+                    <li>$T_p$ = 45 s</li>
+                    <li>$N$ = [100 000, 1 000 000]</li>
+                </ul>
+                <img src="media/example_hpc_estimate.png" class="fragment light" style="height: 30vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <img src="media/example_hpc_estimate.png" class="fragment light" style="height: 55vh;">
+                <p class="fragment highlight">Best trade-off: 700 000 particles at 500 cores ~20
+                    hours</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                    <li>Ways to parallelize</li>
+                    <li>High performance computing</li>
+                    <li>Foreign function interfaces and calling conventions</li>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Ways to parallelize</li>
+                </ul>
+                <div class="fragment row-flex-c" style="align-items: start;">
+                    <ul>
+                        <p class="mark">Languages</p>
+                        <li>Chapel</li>
+                        <p class="mark">Python</p>
+                        <li>Multiprocessing</li>
+                        <li>Threading</li>
+                        <li>Subprocess</li>
+                        <li>dask/...</li>
+                    </ul>
+                    <ul style="padding-left: 2em;">
+                        <p class="mark">Multi-lingual</p>
+                        <li>MPI</li>
+                        <li>Scripting</li>
+                        <li>...</li>
+                        <p class="mark">HPC frameworks</p>
+                        <li>spark</li>
+                        <li>...</li>
+                    </ul>    
+                </div>
+                <p class="fragment">More stuff on: <br><a
+                    href="https://github.com/trevor-vincent/awesome-high-performance-computing">trevor-vincent/awesome-high-performance-computing</a></p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Ways to parallelize</li>
+                </ul>
+                <ul>
+                    <li>Message passing system</li>
+                    <ul>
+                        <li>MPI</li>
+                    </ul>
+                    <li>Threads</li>
+                    <p class="mark">MPI</p>
+                    <li>Multiple independent processes</li>
                 </ul>
             </div>
         </section>
 
 <!--        
-        <section data-auto-animate>
 
-            <div class="margin-top">
 https://docs.hpc2n.umu.se/tutorials/clusterguide/
 
 https://en.wikipedia.org/wiki/Slurm_Workload_Manager
 
-# Parallelization
-
-Firstly we need to cover some basic parallelization theory: 
-
-* [Amdahl's law](https://en.wikipedia.org/wiki/Amdahl%27s_law)
-* [Gustafson's law](https://en.wikipedia.org/wiki/Gustafson%27s_law)
-
-To summarize the above two articles, both determine the theoretical speed-up of a program given a number $n$ of concurrent processes performing computations. Here processes can refer to threads/processes on the same machine or nodes on a High Performance Computing (HPC) system. Amdhal assumes the problem size stays constant while Gustafson assumes the parallelizable part of the problem size scales linearly together with the number of processes. 
-
-Amdahl's law is
-
-where $p$ is the fraction of the program that is parallelizable. To better grasp this law we can derive it from the execution time of a fixed size problem. Lets assume the total execution time of the program without parallelization is $T_0$. Then $(1-p)T_0$ is the non-parallelizable execution time and $pT_0$ the parallelizable execution time so that the total is $(1-p)T_0 + pT_0$. We assume that the parallelizable part is trivially parallelizable, hence using $n$ concurrent processes to compute the parallelizable part will take $\frac{pT_0}{n}$ units of time. Hence the new total is $T(n) = (1-p)T_0 + \frac{pT_0}{n}$ Looking at the speedup we divide the execution time without parallelization with that using parallelization:
-
-$$
-S(n) = \frac{T(1)}{T(n)} = \frac{T_0}{(1-p)T_0 + \frac{pT_0}{n}} = \frac{1}{1 - p + \frac{p}{n}}
-$$
-
-Gustafson's law is
-
-$$
-S(n) = 1 + p(n - 1)
-$$
-
-To derive this law we add the additional assumption that the amount of parallelizable parts scales linearly with the number of processes. This way the total computation part will be constant as $T(n) = (1-p)T_0 + n\frac{pT_0}{n} = T_0$. If we want to compare the execution time for two problems of the same size, we set $\frac{pT_0}{n}$ to $pT_0$ as its only one process doing computation but we still perform $n$ of those computations so $T(1) = (1-p)T_0 + npT_0$. Then the speedup will be
-
-$$
-S(n) = \frac{T(1)}{T(n)} = \frac{(1-p)T_0 + npT_0}{T_0} = 1 - p + np = 1 + p(n - 1)
-$$
-
-$$
-T(n) = \sum_{i=1}^{n} s_i(n) T_i
-$$
-
-
-The choose which law to use one must identify if the non-parallelizable part scales together with the problem size or if it is fixed. If it scales with the problem Amdahl's law will correctly predict scalability as no relative gain in $p$ is achieved by increasing the problem size, while if the non-parallelizable part stays constant then Gustafson's law will better predict the speedup achieved with increased processing.
-
-
-
-            </div>
-        </section>
 -->
 
     </div>
