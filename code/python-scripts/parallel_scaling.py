@@ -56,7 +56,7 @@ def test():
     plt.show()
 
 
-if __name__ == "__main__":
+def cli():
     parser = argparse.ArgumentParser()
     parser.add_argument("command")
     parser.add_argument("nums", type=int)
@@ -84,3 +84,7 @@ if __name__ == "__main__":
     ax.set_xlabel("Parallelization number")
     ax.set_ylabel("Execution time")
     plt.show()
+
+
+if __name__ == "__main__":
+    test()
