@@ -100,7 +100,7 @@ weight: 12
                     <li>Node 2: $c + d = x_2 \mapsto$ send $x_2$ to Node 1</li>
                     <li>Node 3: $e + f = x_3 \mapsto$ send $x_3$ to Node 1</li>
                 </ul>
-                <p class="fragment mark">Not quite $n$ speed improvement</p>
+                <p class="fragment mark">Not quite $n$ speed improvement ($log_2$)</p>
             </div>
         </section>
 
@@ -488,14 +488,508 @@ weight: 12
                 <ul>
                     <li>Ways to parallelize</li>
                 </ul>
+                <div>
+                    <ul>
+                        <li>Chapel</li>
+                    </ul>
+                </div>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-plaintext">
+                        <!--
+                        // print a message per compute node
+                        coforall loc in Locales do
+                          on loc do
+                            writeln("Hello from locale ", loc.id);
+
+                        // print a message per core per compute node
+                        coforall loc in Locales do
+                          on loc do
+                            coforall tid in 0..<here.maxTaskPar do
+                              writeln("Hello from task ", tid, " on locale ", loc.id);
+
+                        // print 1,000 messages in parallel using all nodes and cores
+                        use BlockDist;
+                        const Inds = blockDist.createDomain(1..1000);
+                        forall i in Inds do
+                          writeln("Hello from iteration ", i, " running on locale ", here.id);
+                        -->
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
                 <ul>
-                    <li>Message passing system</li>
+                    <li>Ways to parallelize</li>
+                </ul>
+                <div>
+                    <ul>
+                        <li>Threading</li>
+                    </ul>
+                </div>
+                <p>Single node - same interpreter (GIL) - shared memory</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        from threading import Thread
+
+                        def worker(index):
+                            print(f"Worker doing {index}")
+
+                        th = []
+                        for ind in range(6):
+                            t = Thread(target=worker, args=(ind,))
+                            th.append(t)
+                            t.start()
+
+                        for t in th:
+                            t.join()
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Ways to parallelize</li>
+                </ul>
+                <div>
+                    <ul>
+                        <li>Multiprocessing</li>
+                    </ul>
+                </div>
+                <p>Single node - multiple cores - shared memory possible</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        from multiprocessing import Process
+
+                        def worker(index):
+                            print(f"Worker doing {index}")
+
+                        ps = []
+                        for ind in range(6):
+                            p = Process(target=worker, args=(ind,))
+                            ps.append(p)
+                            p.start()
+
+                        for p in ps:
+                            p.join()
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Ways to parallelize</li>
+                </ul>
+                <div>
+                    <ul>
+                        <li>Multiprocessing</li>
+                    </ul>
+                </div>
+                <p>Single node - multiple cores - shared memory possible</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        from multiprocessing import Pool
+
+                        def f(x):
+                            return x * x
+
+                        with Pool(5) as p:
+                            par_computed_map = p.map(f, range(100))
+                            print(par_computed_map)
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Ways to parallelize</li>
+                </ul>
+                <div>
+                    <ul>
+                        <li>Multiprocessing</li>
+                    </ul>
+                </div>
+                <p>Single node - multiple cores - shared memory possible</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python" style="height: 45vh;">
+                        import multiprocessing as mp
+                        import numpy as np
+                        import time
+
+
+                        def worker(q, r, pid):
+                            num = 0
+                            while True:
+                                data = q.get()
+                                if data is None:
+                                    print("Stopping worker now...")
+                                    break
+                                print(f"{pid=} doing task={num}")
+                                for ind in range(1_000):
+                                    res = np.mean(data)
+                                r.put(res)
+                                q.task_done()
+                                num += 1
+
+
+                        tasks = mp.JoinableQueue()
+                        results = mp.Queue()
+
+                        # create workers
+                        ps = []
+                        for i in range(6):
+                            p = mp.Process(target=worker, args=(tasks, results, i))
+                            ps.append(p)
+                            p.start()
+
+                        task_n = 500
+
+                        t0 = time.time()
+
+                        # queue tasks
+                        for i in range(task_n):
+                            tasks.put(np.random.randn(10_000) + i**2)
+
+                        tasks.join()  # complete tasks
+
+                        # get results
+                        means = np.empty(task_n)
+                        for i in range(task_n):
+                            means[i] = results.get()
+
+                        t1 = time.time() - t0
+                        print(f"EXECUTION: {t1:.4f}")
+
+                        # stop workers
+                        for i in range(len(ps)):
+                            tasks.put(None)
+                        for p in ps:
+                            p.join()
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Ways to parallelize</li>
+                </ul>
+                <div>
+                    <ul>
+                        <li>Subprocess</li>
+                    </ul>
+                </div>
+                <p>Launches other programs - single node - multiple cores</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import subprocess
+
+                        addrs = "192.167.0.{:d}"
+                        prog = "ping "
+                        opts = "-c 1 "
+
+                        processes = []
+                        for ind in range(256):
+                            cmd = " ".join(["ping", f"192.167.0.{ind:d}", "-c", "1"])
+                            print(f"starting '{cmd}'")
+                            p = subprocess.Popen(cmd, cwd="/", shell=True)
+                            processes.append(p)
+
+                        for p in processes:
+                            p.wait()
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Ways to parallelize</li>
+                </ul>
+                <div>
                     <ul>
                         <li>MPI</li>
                     </ul>
-                    <li>Threads</li>
-                    <p class="mark">MPI</p>
-                    <li>Multiple independent processes</li>
+                </div>
+                <p>Multi-node / local / multi-core - inter-process communication</p>
+                <ul class="fragment">
+                    <li><code>pacman -S openmpi</code></li>
+                    <li><code>pip install mpi4py</code></li>
+                    <li><code>mpirun -np 6 python code/python-scripts/mpi_hello.py</code></li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        #!/usr/bin/env python
+                        from mpi4py import MPI
+
+                        comm = MPI.COMM_WORLD
+                        name = MPI.Get_processor_name()
+                        print(f"hello! name: {name}, my rank is {comm.rank}")
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Ways to parallelize</li>
+                </ul>
+                <div>
+                    <ul>
+                        <li>MPI</li>
+                    </ul>
+                </div>
+                <p>Multi-node / local / multi-core - inter-process communication</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python" style="height: 45vh;">
+                        #!/usr/bin/env python
+                        import time
+                        from mpi4py import MPI
+                        import numpy as np
+
+                        comm = MPI.COMM_WORLD
+
+                        t0_all = time.time()
+                        print(f"rank-{comm.rank}/{comm.size} starting")
+
+                        if comm.rank == 0:
+                            items = [np.random.random(1000) + x for x in range(10000)]
+                        else:
+                            items = None
+
+                        items = comm.bcast(items, root=0)
+                        t0 = time.time()
+
+                        for ind in range(comm.rank, len(items), comm.size):
+                            items[ind] = items[ind] - np.mean(items[ind])
+
+                        dt = time.time() - t0
+
+                        if comm.rank == 0:
+                            for rank in range(1, comm.size):
+                                for ind in range(rank, len(items), comm.size):
+                                    items[ind] = comm.recv(source=rank, tag=ind)
+                        else:
+                            for ind in range(comm.rank, len(items), comm.size):
+                                comm.send(items[ind], dest=0, tag=ind)
+
+                        if comm.rank == 0:
+                            su = 0
+                            for dat in items:
+                                su += np.mean(dat)
+
+                        dt_all = time.time() - t0_all
+                        print(f"rank-{comm.rank}/{comm.size}: work time {dt} s (total {dt_all} s)")
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Ways to parallelize</li>
+                </ul>
+                <div>
+                    <ul>
+                        <li>Scripting</li>
+                    </ul>
+                </div>
+                <ul>
+                    <li>snakemake</li>
+                    <li>make</li>
+                    <li>bash</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Ways to parallelize</li>
+                </ul>
+                <p class="mark">What about this GIL?</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python" style="height: 45vh;">
+                        import time
+                        from threading import Thread
+                        from multiprocessing import Pool
+
+                        iter_num = 60000000
+
+                        def counter(num):
+                            while num != 0:
+                                num -= 1
+
+                        t1 = Thread(target=counter, args=(iter_num // 2,))
+                        t2 = Thread(target=counter, args=(iter_num // 2,))
+
+                        start = time.time()
+                        t1.start()
+                        t2.start()
+                        t1.join()
+                        t2.join()
+                        end = time.time()
+
+                        print("threading exec time -", end - start)
+
+
+                        start = time.time()
+                        counter(iter_num)
+                        end = time.time()
+
+                        print("linear exec time -", end - start)
+
+                        pool = Pool(2)
+
+                        start = time.time()
+
+                        r1 = pool.apply_async(counter, [iter_num // 2])
+                        r2 = pool.apply_async(counter, [iter_num // 2])
+                        pool.close()
+                        pool.join()
+
+                        end = time.time()
+
+                        print("multiprocessing exec time -", end - start)
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                    <li>Ways to parallelize</li>
+                    <li>High performance computing</li>
+                    <li>Foreign function interfaces and calling conventions</li>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>High performance computing</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                    <li>Ways to parallelize</li>
+                    <li>High performance computing</li>
+                    <li>Foreign function interfaces and calling conventions</li>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Foreign function interfaces and calling conventions</li>
+                </ul>
+                <p class="mark">Foreign function interfaces</p>
+                <p>stuff</p>
+                <p class="mark">Calling conventions</p>
+                <p>stuff</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Foreign function interfaces and calling conventions</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import ctypes
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                    <li>Ways to parallelize</li>
+                    <li>High performance computing</li>
+                    <li>Foreign function interfaces and calling conventions</li>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C and C++ from Python</li>
                 </ul>
             </div>
         </section>
