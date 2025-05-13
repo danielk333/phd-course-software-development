@@ -1,5 +1,5 @@
 ---
-title: "Advanced concepts: parallelization, foreign function interfaces"
+title: "Parallelization and foreign function interfaces"
 lecture: "12-hpc-ffi"
 weight: 12
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Advanced concepts: parallelization, foreign function interfaces"
+title: "Parallelization and foreign function interfaces"
 description: ""
 handout: hpc-ffi
 weight: 12
@@ -33,6 +33,122 @@ weight: 12
             </div>
         </section>
 
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <div class="fragment">
+                    <p>A model of your program execution time</p>
+                    $$
+                        T = \sum_{i=1}^{N} T_i
+                    $$
+                    <ul class="fragment">
+                        <li>$T_1 = 1.1$ sec - load the data</li>
+                        <li>$T_2 = 123.9$ sec - process the data</li>
+                        <li>$T_3 = 0.2$ sec - save the results</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <p>Parallelization speedup $s_i(n)$<br>$n$ is core/node count</p>
+                <div class="fragment">
+                    $$
+                        T(n) = \sum_{i=1}^{N} \frac{T_i}{s(n)}
+                    $$
+                </div>
+                <ul class="fragment">
+                    <li>$s_1(n) = 1$</li>
+                    <li>$s_2(n) = n$</li>
+                    <li>$s_3(n) = 1$</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                $$
+                    T(n) = T_1 + T_3 + \frac{T_2}{n}
+                $$
+                <img src="media/example_exec_time.png" class="fragment light" style="height: 40vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <img src="media/example_exec_time.png" class="fragment light" style="height: 60vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <p class="highlight">This is what is called Amdahl's law</p>
+                $$
+                S(n) = \frac{1}{1 - p + \frac{p}{s(n)}}
+                $$
+                <ul>
+                    <li>$p$ optimized portion of code</li>
+                    <li>$s$ speedup of optimized portion of code</li>
+                    <li class="fragment">Remember: Fixed problem size!</li>
+                    <li class="fragment">Remember: Parallelization is not always $n^{-1}$!</li>
+                    <li class="fragment">Remember: Not just parallelization!<br>can also estimate gain
+                    from other optimizations</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <p>What if problem size scales?</p>
+                <div class="fragment">
+                    $$
+                        T(n) = \sum_{i=1}^{N} \frac{M_i T_i}{s(n)}
+                    $$
+                </div>
+                <ul class="fragment">
+                    <li>$s_1(n) = 1$</li>
+                    <li>$s_2(n) = n$</li>
+                    <li>$s_3(n) = 1$</li>
+                </ul>
+            </div>
+        </section>
+
 <!--        
         <section data-auto-animate>
 
@@ -51,10 +167,6 @@ Firstly we need to cover some basic parallelization theory:
 To summarize the above two articles, both determine the theoretical speed-up of a program given a number $n$ of concurrent processes performing computations. Here processes can refer to threads/processes on the same machine or nodes on a High Performance Computing (HPC) system. Amdhal assumes the problem size stays constant while Gustafson assumes the parallelizable part of the problem size scales linearly together with the number of processes. 
 
 Amdahl's law is
-
-$$
-S(n) = \frac{1}{1 - p + \frac{p}{n}}
-$$
 
 where $p$ is the fraction of the program that is parallelizable. To better grasp this law we can derive it from the execution time of a fixed size problem. Lets assume the total execution time of the program without parallelization is $T_0$. Then $(1-p)T_0$ is the non-parallelizable execution time and $pT_0$ the parallelizable execution time so that the total is $(1-p)T_0 + pT_0$. We assume that the parallelizable part is trivially parallelizable, hence using $n$ concurrent processes to compute the parallelizable part will take $\frac{pT_0}{n}$ units of time. Hence the new total is $T(n) = (1-p)T_0 + \frac{pT_0}{n}$ Looking at the speedup we divide the execution time without parallelization with that using parallelization:
 
