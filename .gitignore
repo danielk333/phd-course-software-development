@@ -16,6 +16,7 @@ tmp/**
 public/
 *.lock
 resources/
+.mypy_cache
 
 # Revealjs installation
 static/revealjs/dist
