@@ -43,7 +43,6 @@ https://github.com/pybind/pybind11
 https://numpy.org/doc/stable/f2py/
 
 
-
 ## Homework
 
 ### Parallelization

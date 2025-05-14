@@ -16,7 +16,10 @@ tmp/**
 public/
 *.lock
 resources/
+
+# code side-effects
 .mypy_cache
+*.so
 
 # Revealjs installation
 static/revealjs/dist

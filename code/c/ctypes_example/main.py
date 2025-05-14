@@ -1,6 +1,7 @@
 import ctypes
 
 import numpy as np
+import numpy.typing as npt
 import numpy.ctypeslib as npct
 
 lib = ctypes.cdll.LoadLibrary("./main.so")
@@ -17,7 +18,7 @@ lib.twice.argtypes = [
 ]
 
 
-def twice(values):
+def twice(values: npt.NDArray[np.float64]):
     result = np.empty_like(values)
     length = ctypes.c_int(len(values))
 
@@ -27,17 +28,10 @@ def twice(values):
 
 
 if __name__ == "__main__":
-    x = np.arange(num, dtype=np.float64)
+    x = np.arange(10, dtype=np.float64)
 
-    y = foo(x)
-
-    print(f"INPUT : {x}")
-    print(f"OUTPUT: {y}")
-
-    print("\nRUNNING COMPLEX-FOO")
-    x = (np.arange(num) + 1j * np.arange(num)[::-1]).astype(np.complex64)
-
-    y = foo(x)
+    print("running c-twice")
+    y = twice(x)
 
     print(f"INPUT : {x}")
     print(f"OUTPUT: {y}")

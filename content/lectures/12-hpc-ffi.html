@@ -1514,7 +1514,7 @@ weight: 12
                     <li>Python.h</li>
                     <li>cython</li>
                     <li>f2py</li>
-                    <li>pybind11</li>
+                    <li>...</li>
                 </ul>
             </div>
         </section>
@@ -1532,9 +1532,266 @@ weight: 12
                 </ul>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-c">
-                        
+                        void twice(double* in_array, double* out_array, int length) {
+                            int i;
+                            for(i = 0; i&lt;length; i++) {
+                                out_array[i] = in_array[i]*2;
+                            }
+                        }
                     </code>
                 </pre>
+                <p class="fragment"><code>gcc main.c -fPIC -shared -o main.so</code></p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+                <ul>
+                    <li>ctypes</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-c" style="height: 10vh;">
+                        void twice(double* in_array, double* out_array, int length) {
+                            int i;
+                            for(i = 0; i&lt;length; i++) {
+                                out_array[i] = in_array[i]*2;
+                            }
+                        }
+                    </code>
+                </pre>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python" style="height: 40vh;">
+                        import ctypes
+
+                        import numpy as np
+                        import numpy.typing as npt
+                        import numpy.ctypeslib as npct
+
+                        lib = ctypes.cdll.LoadLibrary("./main.so")
+                        # Define the data types we need
+                        ro_f8_vec = npct.ndpointer(np.float64, ndim=1, flags="aligned, contiguous")
+                        rw_f8_vec = npct.ndpointer(np.float64, ndim=1, flags="aligned, contiguous, writeable")
+
+                        # Define the C-interface
+                        lib.twice.restype = None
+                        lib.twice.argtypes = [
+                            ro_f8_vec,
+                            rw_f8_vec,
+                            ctypes.c_int,
+                        ]
+
+
+                        def twice(values: npt.NDArray[np.float64]):
+                            result = np.empty_like(values)
+                            length = ctypes.c_int(len(values))
+
+                            lib.twice(values, result, length)
+
+                            return result
+
+
+                        if __name__ == "__main__":
+                            x = np.arange(10, dtype=np.float64)
+
+                            print("running c-twice")
+                            y = twice(x)
+
+                            print(f"INPUT : {x}")
+                            print(f"OUTPUT: {y}")
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+                <ul>
+                    <li>ctypes</li>
+                    <li>Python.h</li>
+                    <li>cython</li>
+                    <li>f2py</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+                <ul>
+                    <li>Python.h</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+                <ul>
+                    <li>ctypes</li>
+                    <li>Python.h</li>
+                    <li>cython</li>
+                    <li>f2py</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+                <ul>
+                    <li>cython</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+                <ul>
+                    <li>ctypes</li>
+                    <li>Python.h</li>
+                    <li>cython</li>
+                    <li>f2py</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+                <ul>
+                    <li>f2py</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-fortran">
+                        C FILE: FIB1.F
+                              SUBROUTINE FIB(A,N)
+                        C
+                        C     CALCULATE FIRST N FIBONACCI NUMBERS
+                        C
+                              INTEGER N
+                              REAL*8 A(N)
+                              DO I=1,N
+                                 IF (I.EQ.1) THEN
+                                    A(I) = 0.0D0
+                                 ELSEIF (I.EQ.2) THEN
+                                    A(I) = 1.0D0
+                                 ELSE 
+                                    A(I) = A(I-1) + A(I-2)
+                                 ENDIF
+                              ENDDO
+                              END
+                        C END FILE FIB1.F
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+                <ul>
+                    <li>f2py</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-fortran" style="height: 20vh;">
+                        subroutine fib(a,n)
+                          integer, intent(in) :: n
+                          integer, intent(out), dimension(1:n) :: a
+                          
+                          do i=1,n
+                            if (i.eq.1) then
+                               a(i) = 0
+                            elseif (i.eq.2) then
+                               a(i) = 1
+                            else 
+                               a(i) = a(i-1) + a(i-2)
+                            endif
+                          enddo
+                        end
+                    </code>
+                </pre>
+                <p><code>sudo pacman -S gcc-fortran meson</code></p>
+                <p><code>python -m numpy.f2py -c fib.f90 -m fiblib</code></p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+                <ul>
+                    <li>f2py</li>
+                </ul>
+                <p><code>python -m numpy.f2py -c fib.f -m fiblib</code></p>
+                <p class="fragment">creates <code>fiblib.cpython-313-x86_64-linux-gnu.so</code></p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import fiblib
+                        print(fiblib.fib.__doc__)
+
+                        n = fiblib.fib(10)
+                        print(f"{n=}")
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <p class="select">Let's check out the handout!</p>
             </div>
         </section>
 
