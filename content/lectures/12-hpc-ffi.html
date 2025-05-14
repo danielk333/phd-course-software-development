@@ -94,13 +94,93 @@ weight: 12
                 <ul>
                     <li>The rest</li>
                 </ul>
-                <p>$a + b + c + d + e = y$</p>
+                <p>$a + b + c + d + e + f + g + h = y$</p>
+                <img src="media/Binomial_tree_1.png" class="fragment" style="height: 50vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
                 <ul>
-                    <li>Node 1: $a + b = x_1 \mapsto x_1 + x_2 + x_3 = y$ </li>
-                    <li>Node 2: $c + d = x_2 \mapsto$ send $x_2$ to Node 1</li>
-                    <li>Node 3: $e + f = x_3 \mapsto$ send $x_3$ to Node 1</li>
+                    <li>The basics of parallelization</li>
                 </ul>
-                <p class="fragment mark">Not quite $n$ speed improvement ($log_2$)</p>
+                <ul>
+                    <li>The rest</li>
+                </ul>
+                <p>$2 + 3 + 5 + 1 + 7 + 6 + 8 + 4 = y$</p>
+                <img src="media/Binomial_tree_2.png" style="height: 50vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <ul>
+                    <li>The rest</li>
+                </ul>
+                <p>$2 + 3 + 5 + 1 + 7 + 6 + 8 + 4 = y$</p>
+                <img src="media/Binomial_tree_3.png" style="height: 50vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <ul>
+                    <li>The rest</li>
+                </ul>
+                <p>$2 + 3 + 5 + 1 + 7 + 6 + 8 + 4 = 36$</p>
+                <img src="media/Binomial_tree_4.png" style="height: 50vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <ul>
+                    <li>The rest</li>
+                </ul>
+                <p class="mark">This is called a Binomial tree</p>
+                <p class="mark">Not quite $n$ speedup, rather</p>
+                <div class="fragment">
+                    $$
+                    T = \frac{N}{n} + 2 \log_2{n}
+                    $$
+                </div>
+                <img src="media/example_binom_tree.png" class="fragment light" style="height: 30vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>The basics of parallelization</li>
+                </ul>
+                <ul>
+                    <li>The rest</li>
+                </ul>
+                <img src="media/example_binom_tree.png" class="fragment light" style="height: 60vh;">
             </div>
         </section>
 
@@ -317,7 +397,7 @@ weight: 12
                 S(n) = 1 + (n - 1) p 
                 $$
                 <ul>
-                    <li>$p$ optimized portion of code</li>
+                    <li>$p$ parallel portion of code</li>
                     <li>parallel code is trivially parallel and scales with $n$</li>
                     <li class="fragment">Remember: Scaling problem size!</li>
                 </ul>
@@ -515,6 +595,7 @@ weight: 12
                         -->
                     </code>
                 </pre>
+                <p>No highlighting yet so lets go to: <a href="https://chapel-lang.org/">chapel-lang.org</a></p>
             </div>
         </section>
 
@@ -531,7 +612,7 @@ weight: 12
                         <li>Threading</li>
                     </ul>
                 </div>
-                <p>Single node - same interpreter (GIL) - shared memory</p>
+                <p>Single node - same interpreter (and GIL) - shared memory</p>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-python">
                         from threading import Thread
@@ -846,7 +927,7 @@ weight: 12
                 <ul>
                     <li>Ways to parallelize</li>
                 </ul>
-                <p class="mark">What about this GIL?</p>
+                <p class="mark">What about this Global Interpreter Lock (GIL)?</p>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-python" style="height: 45vh;">
                         import time
@@ -918,8 +999,149 @@ weight: 12
                 <ul>
                     <li>High performance computing</li>
                 </ul>
+                <ul class="fragment">
+                    <li>Virtual/shared file systems</li>
+                    <li>Resource manager</li>
+                    <li>HPC and IRF</li>
+                </ul>
             </div>
         </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>High performance computing</li>
+                </ul>
+                <ul>
+                    <li>Virtual/shared file systems</li>
+                </ul>
+                <img src="media/RAID_0.png" style="height: 50vh;">
+                <p class="figure-credit">Wikimedia:User:Cburnett CC-BY-SA-3.0</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>High performance computing</li>
+                </ul>
+                <ul>
+                    <li>Virtual/shared file systems</li>
+                </ul>
+                <img src="media/RAID_1.png" style="height: 50vh;">
+                <p class="figure-credit">Wikimedia:User:Cburnett CC-BY-SA-3.0</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>High performance computing</li>
+                </ul>
+                <ul>
+                    <li>Virtual/shared file systems</li>
+                </ul>
+                <img src="media/RAID_3.png" style="height: 50vh;">
+                <p class="figure-credit">Wikimedia:User:Cburnett CC-BY-SA-3.0</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>High performance computing</li>
+                </ul>
+                <ul>
+                    <li>Virtual/shared file systems</li>
+                </ul>
+                <p>You can also do it in software! For example ZFS</p>
+                <img src="media/zfs.png" class="light" style="height: 50vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>High performance computing</li>
+                </ul>
+                <ul>
+                    <li>Virtual/shared file systems</li>
+                </ul>
+                <p class="mark">Special file systems for HPC's</p>
+                <ul>
+                    <li>lustre (used by HPC2N)</li>
+                    <li>HDFS (Hadoop Distributed File System)</li>
+                    <li>DAOS (Distributed Asynchronous Object Storage)</li>
+                    <li>BeeGFS</li>
+                    <li>...</li>
+                </ul>
+                <p class="fragment highlight">What they do:<br>distribute large amounts of data over
+                    distributed storage and makes sure your code and data is available at the
+                    correct compute node</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>High performance computing</li>
+                </ul>
+                <ul>
+                    <li>Resource manager</li>
+                </ul>
+                <p class="mark">Special managers for HPC's</p>
+                <ul>
+                    <li>Slurm (used by HPC2N)</li>
+                    <li>Hadoop YARN</li>
+                    <li>..</li>
+                </ul>
+                <p class="fragment highlight">What they do:<br>Makes sure everyone gets their job
+                    run when the cluster is available and with the correct setup</p>
+                <p class="fragment">You need to learn your system! How do you submit jobs, how do
+                    you make batches, is MPI supported, which catalogues are distributed, etc.</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>High performance computing</li>
+                </ul>
+                <ul>
+                    <li>HPC and IRF</li>
+                </ul>
+                <p>HPC2N (High Performance Computing Center
+                    North)</p>
+                <ul class="list-sep">
+                    <li class="fragment">IRF is a partner in HPC2N witch means we are allotted special access</li>
+                    <li class="fragment">Loads of info on: <a href="https://www.hpc2n.umu.se/">hpc2n.umu.se</a></li>
+                    <li class="fragment">HPC2N contact person at IRF: <span class="highlight">Mats Holmström</span></li>
+                    <li class="fragment">Anyone can register an account at: <a href="https://supr.snic.se/">supr.snic.se</a></li>
+                </ul>
+            </div>
+        </section>
+
 
         <section
             data-auto-animate
@@ -944,10 +1166,10 @@ weight: 12
                 <ul>
                     <li>Foreign function interfaces and calling conventions</li>
                 </ul>
-                <p class="mark">Foreign function interfaces</p>
-                <p>stuff</p>
-                <p class="mark">Calling conventions</p>
-                <p>stuff</p>
+                <ul>
+                    <li>Foreign function interfaces</li>
+                    <li>Calling conventions</li>
+                </ul>
             </div>
         </section>
 
@@ -959,9 +1181,305 @@ weight: 12
                 <ul>
                     <li>Foreign function interfaces and calling conventions</li>
                 </ul>
+                <ul>
+                    <li>Foreign function interfaces</li>
+                </ul>
+                <p>A system by which a programming language can call functions from a
+                    library/package/compiled binary from another programming language</p>
+                <p class="fragment mark">For example: pretty much every language has to have a C FFI <br>(blog post in
+                    handout)</p>
+                <p class="fragment">Python developers want to implement the <code>open</code> a file
+                    on disk function... how do they do that?</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Foreign function interfaces and calling conventions</li>
+                </ul>
+                <ul>
+                    <li>Foreign function interfaces</li>
+                </ul>
+                <p class="fragment">Python developers want to implement the <code>open</code> a file
+                    on disk function... how do they do that?</p>
+                <p class="mark">Lets look at the Linux System Calls Manual</p>
                 <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-plaintext" style="height: 40vh;">
+                        open(2)                     System Calls Manual                    open(2)
+
+                        NAME
+                               open, openat, creat - open and possibly create a file
+
+                        LIBRARY
+                               Standard C library (libc, -lc)
+
+                        SYNOPSIS
+                               #include <fcntl.h>
+
+                               int open(const char *pathname, int flags, ...
+                                          /* mode_t mode */ );
+
+                               int creat(const char *pathname, mode_t mode);
+
+                               int openat(int dirfd, const char *pathname, int flags, ...
+                                          /* mode_t mode */ );
+
+                               /* Documented separately, in openat2(2): */
+                               int openat2(int dirfd, const char *pathname,
+                                          const struct open_how *how, size_t size);
+
+                        DESCRIPTION
+                               The  open()  system  call opens the file specified by pathname.  If
+                               the specified file does not exist, it may optionally (if O_CREAT is
+                               specified in flags) be created by open().
+
+                               The return value of open() is a file descriptor, a small,  nonnega‐
+                               tive integer that is an index to an entry in the process's table of
+                               open  file  descriptors.  The file descriptor is used in subsequent
+                               system calls (read(2), write(2), lseek(2), fcntl(2), etc.)  to  re‐
+                               fer to the open file.  The file descriptor returned by a successful
+                               call will be the lowest-numbered file descriptor not currently open
+                               for the process.
+                            ...
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Foreign function interfaces and calling conventions</li>
+                </ul>
+                <ul>
+                    <li>Foreign function interfaces</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-plaintext" style="height: 20vh;">
+                        open(2)                     System Calls Manual                    open(2)
+
+                        NAME
+                               open, openat, creat - open and possibly create a file
+
+                        LIBRARY
+                               Standard C library (libc, -lc)
+
+                        SYNOPSIS
+                               #include <fcntl.h>
+
+                               int open(const char *pathname, int flags, ...
+                                          /* mode_t mode */ );
+
+                               int creat(const char *pathname, mode_t mode);
+
+                               int openat(int dirfd, const char *pathname, int flags, ...
+                                          /* mode_t mode */ );
+
+                               /* Documented separately, in openat2(2): */
+                               int openat2(int dirfd, const char *pathname,
+                                          const struct open_how *how, size_t size);
+
+                        DESCRIPTION
+                               The  open()  system  call opens the file specified by pathname.  If
+                               the specified file does not exist, it may optionally (if O_CREAT is
+                               specified in flags) be created by open().
+
+                               The return value of open() is a file descriptor, a small,  nonnega‐
+                               tive integer that is an index to an entry in the process's table of
+                               open  file  descriptors.  The file descriptor is used in subsequent
+                               system calls (read(2), write(2), lseek(2), fcntl(2), etc.)  to  re‐
+                               fer to the open file.  The file descriptor returned by a successful
+                               call will be the lowest-numbered file descriptor not currently open
+                               for the process.
+                            ...
+                    </code>
+                </pre>
+                <p>The language is Python not C - so cannot include</p>
+                <p class="fragment">Code and maintain a direct Linux kernel interface (setting
+                    correct registers ect)<br>... or</p>
+                <p class="fragment">Somehow call the <code>open</code> symbol from libc</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Foreign function interfaces and calling conventions</li>
+                </ul>
+                <ul>
+                    <li>Calling conventions</li>
+                </ul>
+                <p>Somehow call the <code>open</code> symbol from libc</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-c">
+                        int func(int a, int b) {
+                            return a + b;
+                        }
+
+                        int main(void)
+                        {
+                            return func(1, 2);
+                        }
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-x86asm" style="height: 30vh;">
+                        _Z4funcii:
+                                push    rbp
+                                mov     rbp, rsp
+                                mov     DWORD PTR [rbp-4], edi
+                                mov     DWORD PTR [rbp-8], esi
+                                mov     edx, DWORD PTR [rbp-4]
+                                mov     eax, DWORD PTR [rbp-8]
+                                add     eax, edx
+                                pop     rbp
+                                ret
+                        main:
+                                push    rbp
+                                mov     rbp, rsp
+                                mov     esi, 2
+                                mov     edi, 1
+                                call    _Z4funcii
+                                nop
+                                pop     rbp
+                                ret
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-c">
+                        int func(int a, int b) {
+                            return a + b;
+                        }
+
+                        int main(void)
+                        {
+                            return func(1, 2);
+                        }
+                    </code>
+                </pre>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-x86asm">
+                        _Z4funcii:
+                                push    rbp
+                                mov     rbp, rsp
+                                mov     DWORD PTR [rbp-4], edi
+                                mov     DWORD PTR [rbp-8], esi
+                                mov     edx, DWORD PTR [rbp-4]
+                                mov     eax, DWORD PTR [rbp-8]
+                                add     eax, edx
+                                pop     rbp
+                                ret
+                        main:
+                                push    rbp
+                                mov     rbp, rsp
+                                mov     esi, 2
+                                mov     edi, 1
+                                call    _Z4funcii
+                                nop
+                                pop     rbp
+                                ret
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Foreign function interfaces and calling conventions</li>
+                </ul>
+                <ul>
+                    <li>Calling conventions</li>
+                </ul>
+                <p>Somehow call the <code>open</code> symbol from libc</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-c" style="height: 10vh;">
+                        int func(int a, int b) {
+                            return a + b;
+                        }
+
+                        int main(void)
+                        {
+                            return func(1, 2);
+                        }
+                    </code>
+                </pre>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-x86asm" style="height: 10vh;">
+                        _Z4funcii:
+                                push    rbp
+                                mov     rbp, rsp
+                                mov     DWORD PTR [rbp-4], edi
+                                mov     DWORD PTR [rbp-8], esi
+                                mov     edx, DWORD PTR [rbp-4]
+                                mov     eax, DWORD PTR [rbp-8]
+                                add     eax, edx
+                                pop     rbp
+                                ret
+                        main:
+                                push    rbp
+                                mov     rbp, rsp
+                                mov     esi, 2
+                                mov     edi, 1
+                                call    _Z4funcii
+                                nop
+                                pop     rbp
+                                ret
+                    </code>
+                </pre>
+                <p class="fragment select">If you want to know more, have a look at the handout</p>
+                <p class="fragment">For now: be glad all this is behind the Python implementation and...</p>
+            </div>
+        </section>
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Foreign function interfaces and calling conventions</li>
+                </ul>
+                <p>For now: be glad all this is behind the Python implementation and...</p>
+                <pre class="show-code">
                     <code data-line-numbers data-trim class="language-python">
+                        # The standard Python c-FFI!
                         import ctypes
+                    </code>
+                </pre>
+                <p class="fragment">Now - if anything can talk C - we can talk to it!</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-c">
+                        package main
+
+                        import "core:c"
+                        import "core:fmt"
+                        import "base:runtime"
+
+                        @export
+                        logistic :: proc "c" (r, x: f64) -> f64 {
+                            return r * x * (1 - x)
+                        }
                     </code>
                 </pre>
             </div>
@@ -991,16 +1509,34 @@ weight: 12
                 <ul>
                     <li>Calling C and C++ from Python</li>
                 </ul>
+                <ul>
+                    <li>ctypes</li>
+                    <li>Python.h</li>
+                    <li>cython</li>
+                    <li>f2py</li>
+                    <li>pybind11</li>
+                </ul>
             </div>
         </section>
 
-<!--        
-
-https://docs.hpc2n.umu.se/tutorials/clusterguide/
-
-https://en.wikipedia.org/wiki/Slurm_Workload_Manager
-
--->
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C and C++ from Python</li>
+                </ul>
+                <ul>
+                    <li>ctypes</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-c">
+                        
+                    </code>
+                </pre>
+            </div>
+        </section>
 
     </div>
 </div>
