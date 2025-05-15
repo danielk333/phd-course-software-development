@@ -28,7 +28,7 @@ weight: 12
                     <li>Ways to parallelize</li>
                     <li>High performance computing</li>
                     <li>Foreign function interfaces and calling conventions</li>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
             </div>
         </section>
@@ -522,7 +522,7 @@ weight: 12
                     <li>Ways to parallelize</li>
                     <li>High performance computing</li>
                     <li>Foreign function interfaces and calling conventions</li>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
             </div>
         </section>
@@ -986,7 +986,7 @@ weight: 12
                     <li>Ways to parallelize</li>
                     <li>High performance computing</li>
                     <li>Foreign function interfaces and calling conventions</li>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
             </div>
         </section>
@@ -1153,7 +1153,7 @@ weight: 12
                     <li>Ways to parallelize</li>
                     <li>High performance computing</li>
                     <li>Foreign function interfaces and calling conventions</li>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
             </div>
         </section>
@@ -1495,7 +1495,7 @@ weight: 12
                     <li>Ways to parallelize</li>
                     <li>High performance computing</li>
                     <li>Foreign function interfaces and calling conventions</li>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
             </div>
         </section>
@@ -1507,7 +1507,7 @@ weight: 12
             <div class="centered-container">
                 <h3 class="title">Parallelization and foreign function interfaces</h3>
                 <ul>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
                 <ul>
                     <li>ctypes</li>
@@ -1525,7 +1525,7 @@ weight: 12
             <div class="centered-container">
                 <h3 class="title">Parallelization and foreign function interfaces</h3>
                 <ul>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
                 <ul>
                     <li>ctypes</li>
@@ -1550,7 +1550,7 @@ weight: 12
             <div class="centered-container">
                 <h3 class="title">Parallelization and foreign function interfaces</h3>
                 <ul>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
                 <ul>
                     <li>ctypes</li>
@@ -1615,7 +1615,7 @@ weight: 12
             <div class="centered-container">
                 <h3 class="title">Parallelization and foreign function interfaces</h3>
                 <ul>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
                 <ul>
                     <li>ctypes</li>
@@ -1633,11 +1633,21 @@ weight: 12
             <div class="centered-container">
                 <h3 class="title">Parallelization and foreign function interfaces</h3>
                 <ul>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
                 <ul>
                     <li>Python.h</li>
                 </ul>
+                <p class="fragment">Let's say I wanted something like</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        import bar
+
+                        print("bar content: ", dir(bar))
+                        print(bar.hello("Daniel"))
+                    </code>
+                </pre>
+                <p class="fragment">But without <code>ctypes</code> while interfacing to a complicated C/C++ library</p>
             </div>
         </section>
 
@@ -1647,81 +1657,63 @@ weight: 12
             <div class="centered-container">
                 <h3 class="title">Parallelization and foreign function interfaces</h3>
                 <ul>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
                 <ul>
-                    <li>ctypes</li>
                     <li>Python.h</li>
-                    <li>cython</li>
-                    <li>f2py</li>
-                    <li>...</li>
-                </ul>
-            </div>
-        </section>
-
-        <section
-            data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Parallelization and foreign function interfaces</h3>
-                <ul>
-                    <li>Calling C and C++ from Python</li>
-                </ul>
-                <ul>
-                    <li>cython</li>
-                </ul>
-            </div>
-        </section>
-
-        <section
-            data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Parallelization and foreign function interfaces</h3>
-                <ul>
-                    <li>Calling C and C++ from Python</li>
-                </ul>
-                <ul>
-                    <li>ctypes</li>
-                    <li>Python.h</li>
-                    <li>cython</li>
-                    <li>f2py</li>
-                    <li>...</li>
-                </ul>
-            </div>
-        </section>
-
-        <section
-            data-auto-animate
-        >
-            <div class="centered-container">
-                <h3 class="title">Parallelization and foreign function interfaces</h3>
-                <ul>
-                    <li>Calling C and C++ from Python</li>
-                </ul>
-                <ul>
-                    <li>f2py</li>
                 </ul>
                 <pre class="fragment show-code">
-                    <code data-line-numbers data-trim class="language-fortran">
-                        C FILE: FIB1.F
-                              SUBROUTINE FIB(A,N)
-                        C
-                        C     CALCULATE FIRST N FIBONACCI NUMBERS
-                        C
-                              INTEGER N
-                              REAL*8 A(N)
-                              DO I=1,N
-                                 IF (I.EQ.1) THEN
-                                    A(I) = 0.0D0
-                                 ELSEIF (I.EQ.2) THEN
-                                    A(I) = 1.0D0
-                                 ELSE 
-                                    A(I) = A(I-1) + A(I-2)
-                                 ENDIF
-                              ENDDO
-                              END
-                        C END FILE FIB1.F
+                    <code data-line-numbers data-trim class="language-c" style="height: 40vh;">
+                        #define PY_SSIZE_T_CLEAN
+                        #include <Python.h>
+                        #include <string.h>
+
+                        static PyObject* say_hello(PyObject *self, PyObject *args)
+                        {
+                            const char *name;
+                            if (!PyArg_ParseTuple(args, "s", &name)) 
+                            {
+                                return NULL;
+                            }
+                            
+                            size_t n = strlen(name);
+                            size_t response_len = 7 + n + 1;
+                            char *response = (char *)malloc(response_len);
+                            if (!response) {
+                                return PyErr_NoMemory();
+                            }
+
+                            strcpy(response, "Hello, ");
+                            strcat(response, name);
+
+                            PyObject *ret = Py_BuildValue("s", response);
+                            free(response);
+                            return ret;
+                        }
+
+                        /* Table of what is in this modeule*/
+                        static PyMethodDef BarMethods[] = 
+                        {
+                            {"hello", say_hello, METH_VARARGS,
+                             "Greets you!"},
+                            {NULL, NULL, 0, NULL}        /* Sentinel */
+                        };
+
+                        /* Definition of the module */
+                        static struct PyModuleDef barmodule = {
+                            PyModuleDef_HEAD_INIT,
+                            "bar",    /* name of module */
+                            NULL,     /* module documentation, may be NULL */
+                            -1,       /* size of per-interpreter state of the module,
+                                         or -1 if the module keeps state in global variables. */
+                            BarMethods
+                        };
+
+                        /* This actually creates the module using the module definition */
+                        PyMODINIT_FUNC PyInit_bar(void)
+                        {
+                            return PyModule_Create(&barmodule);
+                        }
                     </code>
                 </pre>
             </div>
@@ -1733,7 +1725,113 @@ weight: 12
             <div class="centered-container">
                 <h3 class="title">Parallelization and foreign function interfaces</h3>
                 <ul>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
+                </ul>
+                <ul>
+                    <li>Python.h</li>
+                </ul>
+                <p>This can be directly compiled versus Python</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-make">
+                        CFLAGS=$(shell python-config --cflags) -fPIC -shared
+                        INCLUDES=$(shell python-config --includes)
+
+                        build:
+                            gcc $(INCLUDES) $(CFLAGS) bar.c -o bar.so
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C/C++/Fortran from Python</li>
+                </ul>
+                <ul>
+                    <li>ctypes</li>
+                    <li>Python.h</li>
+                    <li>cython</li>
+                    <li>f2py</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C/C++/Fortran from Python</li>
+                </ul>
+                <ul>
+                    <li>cython</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C/C++/Fortran from Python</li>
+                </ul>
+                <ul>
+                    <li>ctypes</li>
+                    <li>Python.h</li>
+                    <li>cython</li>
+                    <li>f2py</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C/C++/Fortran from Python</li>
+                </ul>
+                <ul>
+                    <li>f2py</li>
+                </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-fortran">
+                        subroutine fib(a,n)
+                          integer, intent(in) :: n
+                          integer, intent(out), dimension(1:n) :: a
+                          
+                          do i=1,n
+                            if (i.eq.1) then
+                               a(i) = 0
+                            elseif (i.eq.2) then
+                               a(i) = 1
+                            else 
+                               a(i) = a(i-1) + a(i-2)
+                            endif
+                          enddo
+                        end
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
                 <ul>
                     <li>f2py</li>
@@ -1767,12 +1865,12 @@ weight: 12
             <div class="centered-container">
                 <h3 class="title">Parallelization and foreign function interfaces</h3>
                 <ul>
-                    <li>Calling C and C++ from Python</li>
+                    <li>Calling C/C++/Fortran from Python</li>
                 </ul>
                 <ul>
                     <li>f2py</li>
                 </ul>
-                <p><code>python -m numpy.f2py -c fib.f -m fiblib</code></p>
+                <p><code>python -m numpy.f2py -c fib.f90 -m fiblib</code></p>
                 <p class="fragment">creates <code>fiblib.cpython-313-x86_64-linux-gnu.so</code></p>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-python">
