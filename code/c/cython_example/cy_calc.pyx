@@ -1,12 +1,21 @@
-def calc(vec, mat):
-    cdef int n, m, val
+def calc(vec, mat, repeat):
+    cdef int n, m
+    cdef float val
 
     n = len(vec)
     m = len(mat)
     ret = [0] * m
+    tmp = [0] * m
+
     for row in range(m):
-        val = 0
-        for col in range(n):
-            val += vec[col] * mat[row][col]
-        ret[row] = val
+        ret[row] = vec[row]
+    for ind in range(repeat):
+        for row in range(m):
+            val = 0
+            for col in range(n):
+                val += ret[col] * mat[row][col]
+            tmp[row] = val
+        for row in range(m):
+            ret[row] = tmp[row]
+
     return ret

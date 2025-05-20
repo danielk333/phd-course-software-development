@@ -1204,8 +1204,6 @@ weight: 12
                 <ul>
                     <li>Foreign function interfaces</li>
                 </ul>
-                <p class="fragment">Python developers want to implement the <code>open</code> a file
-                    on disk function... how do they do that?</p>
                 <p class="mark">Lets look at the Linux System Calls Manual</p>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-plaintext" style="height: 40vh;">
@@ -1302,7 +1300,7 @@ weight: 12
                     </code>
                 </pre>
                 <p>The language is Python not C - so cannot include</p>
-                <p class="fragment">Code and maintain a direct Linux kernel interface (setting
+                <p class="fragment">Either code and maintain a direct Linux kernel interface<br>(setting
                     correct registers ect)<br>... or</p>
                 <p class="fragment">Somehow call the <code>open</code> symbol from libc</p>
             </div>
@@ -1772,6 +1770,139 @@ weight: 12
                 <ul>
                     <li>cython</li>
                 </ul>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        def calc(vec, mat, repeat):
+                            n = len(vec)
+                            m = len(mat)
+                            ret = [0] * m
+                            tmp = [0] * m
+
+                            for row in range(m):
+                                ret[row] = vec[row]
+                            for ind in range(repeat):
+                                for row in range(m):
+                                    val = 0
+                                    for col in range(n):
+                                        val += ret[col] * mat[row][col]
+                                    tmp[row] = val
+                                for row in range(m):
+                                    ret[row] = tmp[row]
+
+                            return ret
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C/C++/Fortran from Python</li>
+                </ul>
+                <ul>
+                    <li>cython</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python" style="height: 10vh;">
+                        def calc(vec, mat, repeat):
+                            n = len(vec)
+                            m = len(mat)
+                            ret = [0] * m
+                            tmp = [0] * m
+
+                            for row in range(m):
+                                ret[row] = vec[row]
+                            for ind in range(repeat):
+                                for row in range(m):
+                                    val = 0
+                                    for col in range(n):
+                                        val += ret[col] * mat[row][col]
+                                    tmp[row] = val
+                                for row in range(m):
+                                    ret[row] = tmp[row]
+
+                            return ret
+                    </code>
+                </pre>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python" style="height: 40vh;">
+                        def calc(vec, mat, repeat):
+                            cdef int n, m
+                            cdef float val
+
+                            n = len(vec)
+                            m = len(mat)
+                            ret = [0] * m
+                            tmp = [0] * m
+
+                            for row in range(m):
+                                ret[row] = vec[row]
+                            for ind in range(repeat):
+                                for row in range(m):
+                                    val = 0
+                                    for col in range(n):
+                                        val += ret[col] * mat[row][col]
+                                    tmp[row] = val
+                                for row in range(m):
+                                    ret[row] = tmp[row]
+
+                            return ret
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Parallelization and foreign function interfaces</h3>
+                <ul>
+                    <li>Calling C/C++/Fortran from Python</li>
+                </ul>
+                <ul>
+                    <li>cython</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python" style="height: 10vh;">
+                        def calc(vec, mat, repeat):
+                            n = len(vec)
+                            m = len(mat)
+                            ret = [0] * m
+                            tmp = [0] * m
+
+                            for row in range(m):
+                                ret[row] = vec[row]
+                            for ind in range(repeat):
+                                for row in range(m):
+                                    val = 0
+                                    for col in range(n):
+                                        val += ret[col] * mat[row][col]
+                                    tmp[row] = val
+                                for row in range(m):
+                                    ret[row] = tmp[row]
+
+                            return ret
+                    </code>
+                </pre>
+                <p><code>py_calc.py, compiled_py_calc.py, cy_calc.pyx</code></p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        from setuptools import setup
+                        from Cython.Build import cythonize
+
+                        sources = [
+                            "compiled_py_calc.py",
+                            "cy_calc.pyx",
+                        ]
+
+                        setup(ext_modules=cythonize(sources))
+                    </code>
+                </pre>
             </div>
         </section>
 

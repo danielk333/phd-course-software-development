@@ -1,16 +1,27 @@
 import py_calc
 import compiled_py_calc
 import cy_calc
-import timeit
+import time
+import random
 
-samples = 100
-vec = list(range(2000))
-mat = [[int(col == row) for row in range(2000)] for col in range(100)]
 
-py_dt = timeit.timeit(lambda: py_calc.calc(vec, mat), number=samples) / samples
-cpy_dt = timeit.timeit(lambda: compiled_py_calc.calc(vec, mat), number=samples) / samples
-cy_dt = timeit.timeit(lambda: cy_calc.calc(vec, mat), number=samples) / samples
+def test_func(func):
+    random.seed(3245)
+    vec = [float(x) for x in range(500)]
+    mat = [[random.random() for row in range(500)] for col in range(500)]
+    repeat = 50
 
-print(f"  python: {py_dt} s")
-print(f"compiled: {cpy_dt} s")
-print(f"  cython: {cy_dt} s")
+    t0 = time.process_time()
+    func(vec, mat, repeat)
+    dt = time.process_time() - t0
+
+    return dt
+
+
+py_dt = test_func(py_calc.calc)
+cpy_dt = test_func(compiled_py_calc.calc)
+cy_dt = test_func(cy_calc.calc)
+
+print(f"  python: {py_dt:.2e} s (speedup: {py_dt/py_dt:.2f})")
+print(f"compiled: {cpy_dt:.2e} s (speedup: {py_dt/cpy_dt:.2f})")
+print(f"  cython: {cy_dt:.2e} s (speedup: {py_dt/cy_dt:.2f})")
