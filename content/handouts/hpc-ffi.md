@@ -4,49 +4,81 @@ lecture: "12-hpc-ffi"
 weight: 12
 ---
 
-<!-- todo -->
-<!---->
-<!-- https://mesonbuild.com/index.html -->
-<!-- https://setuptools.pypa.io/en/stable/userguide/ext_modules.html -->
-<!---->
-<!-- https://danielk.developer.irf.se/software_contribution_guide/mixed_coding_arts.html -->
-
-https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html
-https://spark.apache.org/docs/latest/api/python/index.html
-
-https://slurm.schedmd.com/documentation.html
 
 
-https://github.com/trevor-vincent/awesome-high-performance-computing
+https://danielk.developer.irf.se/software_contribution_guide/mixed_coding_arts.html
 
-https://chapel-lang.org/
+## Extensions in other languages
 
-https://www.youtube.com/watch?v=7Qk8T7_bevo
+The most common way to build extensions to your Python package in other languages is trough a
+[setuptools Extension](https://setuptools.pypa.io/en/stable/userguide/ext_modules.html). This system
+can e.g. compile C code as a part of the installation and building process of your package. However
+there are other methods, such as using [meson](https://mesonbuild.com/index.html).
 
+There are also systems for automatically creating interfaces such as [pybind11](https://github.com/pybind/pybind11) or the numpy [f2py](https://numpy.org/doc/stable/f2py/).
 
-https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html
+## Increasing performance
 
-
-https://en.wikipedia.org/wiki/Application_binary_interface
-https://faultlore.com/blah/c-isnt-a-language/
-https://www.youtube.com/watch?v=gqKyP2hXFoA
-
-
-https://github.com/dCache/dcache
-https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html
-https://www.lustre.org/
-https://daos.io/
-https://www.beegfs.io/c/
+The [The Computer Language Benchmarks Game](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html) is a quite fun website that micro-benchmarks languages. Remember, this is of course no-where near a real metric for if a language is more performant than another (for that you need a real domain-specific example with actual throughput), but it does show some things about its basic functionality and its compiler/interpreter.
 
 
-https://github.com/pybind/pybind11
-https://numpy.org/doc/stable/f2py/
+## High-performance computing system tools
+
+### Languages
+
+So far I have only found one programming language that is specifically designed to be used for
+parallel or high-performance computing. That language is [Chapel](https://chapel-lang.org/). So far
+it seems very interesting and I'm keeping my eye on it!
+
+Hewlett Packard Enterprise - Chapel: Making parallel computing as easy as Py(thon), from laptops to supercomputers
+{{< youtube 7Qk8T7_bevo >}}
+
+
+### Schedulers
+
+- [apache YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)
+- [slurm](https://slurm.schedmd.com/documentation.html)
+
+### Data systems
+
+- [dCache](https://github.com/dCache/dcache)
+- [apache hdfs](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)
+- [lustre](https://www.lustre.org/)
+- [daos](https://daos.io/)
+- [BeeGFS](https://www.beegfs.io/c/)
+
+### Map-reduce systems
+
+- [apache spark](https://spark.apache.org/docs/latest/api/python/index.html)
+
+### More stuff
+
+There are more links to HPC tooling at [awesome-high-performance-computing](https://github.com/trevor-vincent/awesome-high-performance-computing).
+
+
+## Application binary interface
+
+An [application binary interface](https://en.wikipedia.org/wiki/Application_binary_interface) is a
+interface for accessing in-process machine code, e.g. calling a function from a compiled binary from
+a process.
+
+The blog post mentioned in the lecture can be found
+[here](https://faultlore.com/blah/c-isnt-a-language/). Again, if you are not much for reading, there
+is a reaction video for the post.
+
+ThePrimeTime - C Is Not A Language Anymore
+{{< youtube gqKyP2hXFoA >}}
 
 
 ## Homework
 
 ### Parallelization
 
+Parallelize some piece of software you have written, either during the course or elsewhere. The
+important part is that this software should theoretically benefit from parallelization (you don't
+have to fit your portion coefficients if you know most of the program you can trivially parallelize). You
+will then show the code before and after so that we can discuss it, as well as show benchmarks of before and after.
+
 ### Python as glue
 
-
+Choose some small function from a software you have written, either during the course or elsewhere. The function should be doing mostly "Python things", not just be one line of numpy. Then implement this function in C and create an extension for your code. Benchmark the performance before and after. We will review the C code and the Python code before and after.
