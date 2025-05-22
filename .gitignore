@@ -20,6 +20,7 @@ resources/
 # code side-effects
 .mypy_cache
 *.so
+*.o
 
 # Revealjs installation
 static/revealjs/dist
