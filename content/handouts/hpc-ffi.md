@@ -4,10 +4,6 @@ lecture: "12-hpc-ffi"
 weight: 12
 ---
 
-
-
-https://danielk.developer.irf.se/software_contribution_guide/mixed_coding_arts.html
-
 ## Extensions in other languages
 
 The most common way to build extensions to your Python package in other languages is trough a
@@ -81,4 +77,4 @@ will then show the code before and after so that we can discuss it, as well as s
 
 ### Python as glue
 
-Choose some small function from a software you have written, either during the course or elsewhere. The function should be doing mostly "Python things", not just be one line of numpy. Then implement this function in C and create an extension for your code. Benchmark the performance before and after. We will review the C code and the Python code before and after.
+Choose some small function from a software you have written, either during the course or elsewhere. The function should be doing mostly "Python things", not just be one line of numpy. Then implement this function in C or another low level language of your choice and create an extension for your code. You should be able to call the function via your Python code without using something like `subprocess`, rather it should use `ctypes` or something like the `Python.h` and `f2py` approach. Benchmark the performance before and after. We will review the compiled low level code and the Python code before and after.
