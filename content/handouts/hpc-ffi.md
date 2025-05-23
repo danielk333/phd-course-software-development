@@ -4,6 +4,47 @@ lecture: "12-hpc-ffi"
 weight: 12
 ---
 
+## Code examples
+
+### MPI
+
+Dependencies
+
+- Arch: `pacman -S base-devel openmpi`
+- Ubuntu: `apt install build-essential openmpi-bin openmpi-common libopenmpi-dev`
+
+Then install [mpi4py](https://mpi4py.readthedocs.io/en/stable/) with `pip install mpi4py`. If the
+installation process fails, probably you are lacking some basic build dependency, have a look at the
+docs to see what is missing.
+
+{{< details summary="The typical hello world example - but in parallel!" >}}
+{{< include-code "python" "code/python-scripts/mpi_hello.py" "">}}
+{{< /details >}}
+
+{{< details summary="A more involved example with actual communication and processing logic" >}}
+{{< include-code "python" "code/python-scripts/mpi_example.py" "">}}
+{{< /details >}}
+
+### Threading
+
+{{< details summary="A threading/multiprocessing example highlighting the Global interpreter lock" >}}
+{{< include-code "python" "code/python-scripts/gil_example.py" "">}}
+{{< /details >}}
+
+### Ctypes
+
+{{< details summary="A more involved example with actual communication and processing logic" >}}
+{{< include-code "python" "code/python-scripts/mpi_example.py" "">}}
+{{< /details >}}
+
+
+### Ctypes
+
+{{< details summary="A more involved example with actual communication and processing logic" >}}
+{{< include-code "python" "code/python-scripts/mpi_example.py" "">}}
+{{< /details >}}
+
+
 ## Extensions in other languages
 
 The most common way to build extensions to your Python package in other languages is trough a
@@ -28,6 +69,16 @@ it seems very interesting and I'm keeping my eye on it!
 
 Hewlett Packard Enterprise - Chapel: Making parallel computing as easy as Py(thon), from laptops to supercomputers
 {{< youtube 7Qk8T7_bevo >}}
+
+Also, Chapel does support
+[interoperability](https://chapel-lang.org/docs/language/spec/interoperability.html) with other
+languages trough C, which means you could probably interface to a chapel program trough `ctypes`
+from Python and similarly parallelize your existing C code by calling the functions from a shared
+library in chapel.
+
+One example of using Chapel to implement HPC calculations is
+[arkouda](https://github.com/Bears-R-Us/arkouda), a Python package for executing data processing on
+a cluster where the cluster server is written in Chapel.
 
 
 ### Schedulers

@@ -24,6 +24,19 @@ Code Refinery together with Aalto Scientific Computing also has some crash cours
 {{< youtube xbTTDLA3txI >}}
 
 
+## Python version lifetimes
+
+It is easy to be tempted to just keep your system as it is and never update because its not broken
+right? Well, what this causes is a pileup of issues that need to be fixed all at once. At some point
+you will change computer, you will re-install, you will get a collaborator that keeps up to date,
+there will be some bug fixes you need. When that happens you will need to update. To keep the pain
+minimal, its better to take the pain a litle bit here and there, i.e. keep up to date!
+
+A good way, besides running regular system updates and fixing issues as the emerge, is to keep track
+of [python versions devguide](https://devguide.python.org/versions/). This lists which versions are
+currently being updated and maintained while which versions are nearing end of life and you should
+consider making sure your software and your environment is compatible with a newer version.
+
 ## Don't know which editor to choose?
 
 {{< tutorial editor "For a short guide on choosing an editor, see" >}}
