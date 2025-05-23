@@ -6,8 +6,12 @@ import numpy.ctypeslib as npct
 
 lib = ctypes.cdll.LoadLibrary("./main.so")
 # Define the data types we need
-ro_f8_vec = npct.ndpointer(np.float64, ndim=1, flags="aligned, contiguous")
-rw_f8_vec = npct.ndpointer(np.float64, ndim=1, flags="aligned, contiguous, writeable")
+ro_f8_vec = npct.ndpointer(
+    np.float64, ndim=1, flags="aligned, contiguous",
+)
+rw_f8_vec = npct.ndpointer(
+    np.float64, ndim=1, flags="aligned, contiguous, writeable",
+)
 
 # Define the C-interface
 lib.twice.restype = None

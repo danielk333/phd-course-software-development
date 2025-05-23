@@ -33,15 +33,66 @@ docs to see what is missing.
 
 ### Ctypes
 
-{{< details summary="A more involved example with actual communication and processing logic" >}}
-{{< include-code "python" "code/python-scripts/mpi_example.py" "">}}
+{{< details summary="A minimalist example of ctypes loading compiled C code and numpy arrays" >}}
+
+<code>main.py</code> 
+{{< include-code "python" "code/c/ctypes_example/main.py" "">}}
+
+
+<code>main.c</code> 
+{{< include-code "c" "code/c/ctypes_example/main.c" "">}}
+
+
+<code>Makefile</code> 
+{{< include-code "makefile" "code/c/ctypes_example/Makefile" "">}}
+
 {{< /details >}}
 
 
-### Ctypes
+### `Python.h`
 
-{{< details summary="A more involved example with actual communication and processing logic" >}}
-{{< include-code "python" "code/python-scripts/mpi_example.py" "">}}
+{{< details summary="A minimalist example of building a Python module in C/C++" >}}
+
+<code>bar.c</code>
+{{< include-code "c" "code/c/python_header_example/bar.c" "">}}
+
+
+<code>main.py</code> 
+{{< include-code "python" "code/c/python_header_example/main.py" "">}}
+
+
+<code>Makefile</code> 
+{{< include-code "makefile" "code/c/python_header_example/Makefile" "">}}
+
+{{< /details >}}
+
+
+### Cython
+
+
+{{< details summary="An examples of using Cython to transpile Python to compiled C" >}}
+
+<code>py_calc.py</code>
+{{< include-code "python" "code/c/cython_example/py_calc.py" "">}}
+
+<code>compiled_py_calc.py</code>
+{{< include-code "python" "code/c/cython_example/compiled_py_calc.py" "">}}
+
+<code>cy_calc.py</code>
+{{< include-code "python" "code/c/cython_example/cy_calc.pyx" "">}}
+
+
+<code>main.py</code> 
+{{< include-code "python" "code/c/cython_example/main.py" "">}}
+
+
+<code>setup.py</code> 
+{{< include-code "python" "code/c/cython_example/setup.py" "">}}
+
+
+<code>Makefile</code> 
+{{< include-code "makefile" "code/c/cython_example/Makefile" "">}}
+
 {{< /details >}}
 
 
@@ -116,6 +167,13 @@ is a reaction video for the post.
 ThePrimeTime - C Is Not A Language Anymore
 {{< youtube gqKyP2hXFoA >}}
 
+
+## IRF and HPC2N
+
+- IRF is a [partner of HPC2N](https://www.hpc2n.umu.se/partners)
+- Loads of info on: [hpc2n.umu.se](https://www.hpc2n.umu.se/)
+- HPC2N contact person at IRF: [Mats Holmström](https://www.irf.se/medarbetare/mats_holmstrom/)
+- Anyone can register an account at: [supr.snic.se](https://supr.naiss.se/)
 
 ## Homework
 
