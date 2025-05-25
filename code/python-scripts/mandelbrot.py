@@ -38,6 +38,7 @@ def mandelbrot_set(C_mat, max_num, limit):
 
 if __name__ == "__main__":
     zoom_n = 2
+    # n_base = 600
     n_base = 300
 
     if zoom_n == 1:
@@ -80,4 +81,5 @@ if __name__ == "__main__":
     cbar = plt.colorbar(im)
     cbar.ax.set_ylabel("Iterations until diverged", rotation=270)
 
+    # fig.savefig("mandelbrot.png", dpi=300)
     plt.show()
