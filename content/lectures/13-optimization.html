@@ -26,11 +26,12 @@ weight: 13
                 <p class="fragment">This topic is way too vast to cover in one lecture</p>
                 <p class="fragment">So today we will cover:</p>
                 <ul class="fragment">
+                    <li>When to optimize</li>
                     <li>Computer architecture</li>
                     <li>Vectorization vs Vectorization</li>
-                    <li>Shaving operations</li>
-                    <li>Choosing the correct algorithm</li>
                     <li>Compiled languages and automatic optimizers</li>
+                    <li>Shaving operations</li>
+                    <li>Algorithms and data representation</li>
                     <li>Approximations</li>
                     <li>Digging deep (compiled assembly)</li>
                 </ul>
@@ -43,10 +44,82 @@ weight: 13
             <div class="centered-container">
                 <h3 class="title">Optimization</h3>
                 <ul>
+                    <li>When to optimize</li>
+                </ul>
+                <p class="mark">Donald Knuth 1974 - "Structured Programming With Go To Statements"</p>
+                <blockquote class="fragment" cite="https://dl.acm.org/doi/abs/10.1145/356635.356640"
+                style="width: 75vw;">
+                    We should forget about small efficiencies, say about 97% of the time:
+                    <span class="highlight">premature optimization is the root of all evil.</span>Yet we should not pass up
+                    our opportunities in that critical 3%.
+                </blockquote>
+                <p class="fragment">Takeaway?</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>When to optimize</li>
+                </ul>
+                <p class="select">Takeaway?</p>
+                <ul class="list-sep-small">
+                    <li>Optimize when you ACTUALLY need to</li>
+                    <li class="fragment">Then optimize the important parts <br> - use profiling, don't
+                        guess!</li>
+                    <li class="fragment">Highly optimized code: usually harder to read and slower to write</li>
+                    <li class="fragment">Instead learn to write performant enough code by default<br> - not fully optimized
+                        code</li>
+                    <li class="fragment">But write your code to allow for future optimization <br> - don't
+                        paint yourself into a corner</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>When to optimize</li>
+                    <li>Computer architecture</li>
+                    <li>Vectorization vs Vectorization</li>
+                    <li>Compiled languages and automatic optimizers</li>
+                    <li>Shaving operations</li>
+                    <li>Algorithms and data representation</li>
+                    <li>Approximations</li>
+                    <li>Digging deep (compiled assembly)</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
                     <li>Computer architecture</li>
                 </ul>
-                <p class="mark">CPU data access</p>
-                <img src="media/ComputerMemoryHierarchy.png" class="light">
+                <p class="mark fragment">CPU data access</p>
+                <img src="media/computer_arch.png" class="fragment" style="height:
+                50vh;">
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <img src="media/computer_arch.png" class="fragment" style="height:
+                80vh;">
             </div>
         </section>
 
@@ -58,10 +131,36 @@ weight: 13
                 <ul>
                     <li>Computer architecture</li>
                 </ul>
-                <p class="mark">CPU data access</p>
-                <img src="media/Hwloc.png" class="light">
-                <p><a href="https://commons.wikimedia.org/wiki/File:Hwloc.png">The Portable Hardware
-                    Locality (hwloc) Project (BSD licence)</a></p>
+                <ul>
+                    <p class="mark">Typical Intel Xeon</p>
+                    <li>L1 cache - Up to 80 KB per core</li>
+                    <li>L2 cache - Up to 2 MB per core</li>
+                    <li>L3 cache - Up to 320 MB per socket</li>
+                </ul>
+                <p class="fragment">Example:</p>
+            </div>
+        </section>
+        
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Computer architecture</li>
+                </ul>
+                <p>Example:</p>
+                <ol>
+                    <li>CPU needs data</li>
+                    <li>looks in L1</li>
+                    <li>does not find</li>
+                    <li>looks in L2</li>
+                    <li>finds data</li>
+                    <li>loads data from L2 to L1</li>
+                    <li>CPU uses data</li>
+                </ol>
+                <p class="fragment select">This is what is called a "cache miss"!</p>
+                <p class="fragment highlight">So how do you choose what goes to which cache?</p>
             </div>
         </section>
 
@@ -73,9 +172,10 @@ weight: 13
                 <ul>
                     <li>Computer architecture</li>
                 </ul>
-                <p class="mark">CPU data access</p>
-                <img src="media/" class="light">
-                <p>Bikker, J. (2012), Improving Data Locality for Efficient In-Core Path Tracing. Computer Graphics Forum</p>
+                <p class="highlight">So how do you choose what goes to which cache?</p>
+                <p>Well, you don't, the CPU/Motherboard does</p>
+                <p class="fragment">But you can help it along - contiguous memory and frequent use!</p>
+                <p class="fragment highlight">For more info - see videos in handout!</p>
             </div>
         </section>
 
@@ -87,11 +187,54 @@ weight: 13
                 <ul>
                     <li>Computer architecture</li>
                 </ul>
-                <p class="mark">CPU data access</p>
-                <ul class="fragment">
+                <p class="highlight">Also - the same way memory usage is "predicted"</p>
+                <p class="fragment">so are "branches"!</p>
+                <p class="fragment mark">(for more see video in handout!)</p>
+            </div>
+        </section>
+
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Computer architecture</li>
+                </ul>
+                <ul>
+                    <p class="mark">Takeaways</p>
+                    <li>If you can load working data into RAM - do it</li>
+                    <li class="fragment">Work with the CPU optimizer rather than against it</li>
+                    <ul class="fragment">
+                        <li>Use contiguous memory</li>
+                        <li>Process data all at once</li>
+                        <li>Try to not have the CPU wait for work</li>
+                        <li>Avoid branching</li>
+                        <li>...</li>
+                    </ul>
                 </ul>
             </div>
         </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>When to optimize</li>
+                    <li>Computer architecture</li>
+                    <li>Vectorization vs Vectorization</li>
+                    <li>Compiled languages and automatic optimizers</li>
+                    <li>Shaving operations</li>
+                    <li>Algorithms and data representation</li>
+                    <li>Approximations</li>
+                    <li>Digging deep (compiled assembly)</li>
+                </ul>
+            </div>
+        </section>
+
 
         <section
             data-auto-animate
@@ -344,6 +487,291 @@ weight: 13
         >
             <div class="centered-container">
                 <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Vectorization vs Vectorization</li>
+                </ul>
+                <p class="mark">What about the second vectorization?</p>
+                <p class="fragment">Single instruction, multiple data (SIMD)!</p>
+                <p class="fragment">Usually these are done for you!</p>
+                <ul class="fragment">
+                    <li><code>numpy</code> automatically uses simd</li>
+                    <li><code>-O3</code> and <code>-march</code> in <code>gcc</code> also does it</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Vectorization vs Vectorization</li>
+                </ul>
+                <p>Usually these are done for you!</p>
+                <p class="highlight">Anyway here is an example!</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-c" style="height: 50vh;">
+                        void add_float_arrays(float* a, float* b, float* result, int size) {
+                            for (int i = 0; i &lt; size; ++i) {
+                                result[i] = a[i] + b[i];
+                            }
+                        }
+
+                        int main() {
+                            int size = 100000;
+                            int steps = 1000;
+                            float x[size], y[size], res[size];
+
+                            for (int i = 0; i &lt; size; i++) {
+                                x[i] = (float)i;
+                                y[i] = x[i] + 1;
+                            }
+
+                            add_float_arrays(x, y, res, size);
+                            for (int i = 0; i &lt; steps; i++) {
+                                add_float_arrays(res, y, res, size);
+                            }
+                            return 0;
+                        }
+                    </code>
+                </pre>
+
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Vectorization vs Vectorization</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-c" style="height: 65vh;">
+                        void add_float_arrays(float* a, float* b, float* result, int size) {
+                            for (int i = 0; i &lt; size; ++i) {
+                                result[i] = a[i] + b[i];
+                            }
+                        }
+
+                        int main() {
+                            int size = 100000;
+                            int steps = 1000;
+                            float x[size], y[size], res[size];
+
+                            for (int i = 0; i &lt; size; i++) {
+                                x[i] = (float)i;
+                                y[i] = x[i] + 1;
+                            }
+
+                            add_float_arrays(x, y, res, size);
+                            for (int i = 0; i &lt; steps; i++) {
+                                add_float_arrays(res, y, res, size);
+                            }
+                            return 0;
+                        }
+                    </code>
+                </pre>
+
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Vectorization vs Vectorization</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-c" style="height: 65vh;">
+                        #include &lt;stdio.h&gt;
+                        #include &lt;immintrin.h&gt;
+
+                        void add_float_arrays_avx512(const float* a, const float* b, float* result, int size) {
+                            int i;
+                            for (i = 0; i &lt;= size - 16; i += 16) {
+                                __m512 va = _mm512_loadu_ps(&a[i]);
+                                __m512 vb = _mm512_loadu_ps(&b[i]);
+                                __m512 vsum = _mm512_add_ps(va, vb);
+                                _mm512_storeu_ps(&result[i], vsum);
+                            }
+                            for (; i &lt; size; ++i) {
+                                result[i] = a[i] + b[i];
+                            }
+                        }
+
+                        int main() {
+                            int size = 100000;
+                            int steps = 1000;
+                            float x[size], y[size], res[size];
+
+                            for (int i = 0; i &lt; size; i++) {
+                                x[i] = (float)i;
+                                y[i] = x[i] + 1;
+                            }
+
+                            add_float_arrays_avx512(x, y, res, size);
+                            for (int i = 0; i &lt; steps; i++) {
+                                add_float_arrays_avx512(res, y, res, size);
+                            }
+                            return 0;
+                        }
+                    </code>
+                </pre>
+
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Vectorization vs Vectorization</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-plaintext">
+                        $ hyperfine -N ./without_simd.o 
+                        Benchmark 1: ./without_simd.o
+                          Time (mean ± σ):     120.5 ms ±   1.7 ms    [User: 118.8 ms, System: 1.0 ms]
+                          Range (min … max):   118.3 ms … 124.2 ms    24 runs
+                         
+                        $ hyperfine -N ./with_simd.o 
+                        Benchmark 1: ./with_simd.o
+                          Time (mean ± σ):      36.6 ms ±   2.4 ms    [User: 35.2 ms, System: 1.1 ms]
+                          Range (min … max):    33.1 ms …  43.9 ms    78 runs
+                    </code>
+                </pre>
+                <p class="fragment mark">But this is not fair, lets have a look at compiler
+                    optimization</p>
+            </div>
+        </section>
+
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>When to optimize</li>
+                    <li>Computer architecture</li>
+                    <li>Vectorization vs Vectorization</li>
+                    <li>Compiled languages and automatic optimizers</li>
+                    <li>Shaving operations</li>
+                    <li>Algorithms and data representation</li>
+                    <li>Approximations</li>
+                    <li>Digging deep (compiled assembly)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Compiled languages and automatic optimizers</li>
+                </ul>
+                <p class="mark">So there is a reason most examples today are in C</p>
+                <ul class="fragment list-sep-small">
+                    <li>Usually you need to go to a "low-level" compiled language to optimize</li>
+                    <li>Full control over memory and CPU instructions</li>
+                    <li>When the language is compiled - automatic optimization is easier!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Compiled languages and automatic optimizers</li>
+                </ul>
+                <p>last example: lets try <code>-O3</code></p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-plaintext">
+                        $ hyperfine -N ./without_simd_o3.o 
+                        Benchmark 1: ./without_simd_o3.o
+                          Time (mean ± σ):     498.4 µs ± 107.0 µs    [User: 266.8 µs, System: 183.2 µs]
+                          Range (min … max):   236.5 µs … 2306.9 µs    2866 runs
+                         
+                        $ hyperfine -N ./with_simd_o3.o
+                        Benchmark 1: ./with_simd_o3.o
+                          Time (mean ± σ):     499.1 µs ±  91.7 µs    [User: 267.6 µs, System: 181.9 µs]
+                          Range (min … max):   239.2 µs … 1698.2 µs    3592 runs
+                    </code>
+                </pre>
+                <p class="fragment mark">So usually you do not need to hand-roll these, only in
+                    extreme scenarios</p>
+                <p class="fragment">But now you know it exists and is a thing!</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Compiled languages and automatic optimizers</li>
+                </ul>
+                <p>Throughout the lecture today - compiled with and without <code>-O</code></p>
+                <p class="fragment">and more detail at the end</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>When to optimize</li>
+                    <li>Computer architecture</li>
+                    <li>Vectorization vs Vectorization</li>
+                    <li>Compiled languages and automatic optimizers</li>
+                    <li>Shaving operations</li>
+                    <li>Algorithms and data representation</li>
+                    <li>Approximations</li>
+                    <li>Digging deep (compiled assembly)</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Shaving operations</li>
+                </ul>
+                <p class="highlight">This is a quick one:</p>
+                <ul>
+                    <li class="fragment">Some operations take many cycles</li>
+                    <li class="fragment">Some operations can be skipped</li>
+                    <li class="fragment">Some operations can be exchanged to faster ones</li>
+                </ul>
+                <p class="fragment mark">An example!</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
                 <pre data-id="code-animation1" class="fragment show-code">
                     <code data-line-numbers data-trim class="language-c" style="height: 65vh;">
                         #include &lt;stdio.h&gt;
@@ -463,7 +891,10 @@ weight: 13
         >
             <div class="centered-container">
                 <h3 class="title">Optimization</h3>
-                <pre class="fragment show-code">
+                <ul>
+                    <li>Shaving operations</li>
+                </ul>
+                <pre class="show-code">
                     <code data-line-numbers data-trim class="language-plaintext">
                         $ hyperfine ./shaving_op_with_o0.o -N -r 5
                         Benchmark 1: ./shaving_op_with_o0.o
@@ -485,18 +916,44 @@ weight: 13
         >
             <div class="centered-container">
                 <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Shaving operations</li>
+                </ul>
                 <pre class="fragment show-code">
                     <code data-line-numbers data-trim class="language-plaintext">
-                        $ hyperfine ./shaving_op_without_o3.o -N -r 100
+                        $ hyperfine -N ./shaving_op_with_o3.o
+                        Benchmark 1: ./shaving_op_with_o3.o
+                          Time (mean ± σ):      96.4 ms ±   1.4 ms    [User: 94.6 ms, System: 0.9 ms]
+                          Range (min … max):    93.7 ms …  99.9 ms    30 runs
+                         
+                        $ hyperfine -N ./shaving_op_without_o3.o
                         Benchmark 1: ./shaving_op_without_o3.o
                           Time (mean ± σ):      27.7 ms ±   1.1 ms    [User: 26.7 ms, System: 0.7 ms]
-                          Range (min … max):    26.2 ms …  31.3 ms    100 runs
+                          Range (min … max):    26.2 ms …  30.9 ms    98 runs
                     </code>
                 </pre>
-                <p class="fragment">21.3 speedup?!?</p>
-                <p class="fragment mark">The compiler seeing everything allows for optimizations!</p>
+                <p class="fragment">21.3 speedup from no <code>-O</code> and 3.48 vs with <code>sqrt</code>!</p>
             </div>
         </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>When to optimize</li>
+                    <li>Computer architecture</li>
+                    <li>Vectorization vs Vectorization</li>
+                    <li>Compiled languages and automatic optimizers</li>
+                    <li>Shaving operations</li>
+                    <li>Algorithms and data representation</li>
+                    <li>Approximations</li>
+                    <li>Digging deep (compiled assembly)</li>
+                </ul>
+            </div>
+        </section>
+
 
     </div>
 </div>

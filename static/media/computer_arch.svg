@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="284mm"
+   height="213mm"
+   viewBox="0 0 284 213"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="computer_arch.svg"
+   inkscape:export-filename="computer_arch.png"
+   inkscape:export-xdpi="200"
+   inkscape:export-ydpi="200"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#000000"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.77415123"
+     inkscape:cx="462.44194"
+     inkscape:cy="384.29184"
+     inkscape:window-width="1920"
+     inkscape:window-height="1004"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="648.51129"
+       y="227.43565"
+       width="103.21377"
+       height="144.3166"
+       id="rect8" />
+    <rect
+       x="651.03558"
+       y="388.81293"
+       width="251.88876"
+       height="165.34238"
+       id="rect6" />
+    <rect
+       x="166.63411"
+       y="320.35083"
+       width="109.79767"
+       height="86.546394"
+       id="rect4" />
+    <rect
+       x="187.3019"
+       y="326.80954"
+       width="86.546394"
+       height="71.045547"
+       id="rect3" />
+    <rect
+       x="342.31039"
+       y="458.56674"
+       width="147.25806"
+       height="43.919067"
+       id="rect2" />
+    <rect
+       x="342.31039"
+       y="458.56674"
+       width="147.25806"
+       height="43.919067"
+       id="rect2-5" />
+    <rect
+       x="166.63411"
+       y="320.35083"
+       width="109.79767"
+       height="86.546394"
+       id="rect4-2" />
+    <rect
+       x="342.31039"
+       y="458.56674"
+       width="147.25806"
+       height="43.919067"
+       id="rect2-5-7" />
+    <rect
+       x="166.63411"
+       y="320.35083"
+       width="170.50932"
+       height="80.087708"
+       id="rect4-2-8" />
+    <rect
+       x="342.31039"
+       y="458.56674"
+       width="147.25806"
+       height="43.919067"
+       id="rect2-5-7-1" />
+    <rect
+       x="166.63411"
+       y="320.35083"
+       width="170.50932"
+       height="80.087708"
+       id="rect4-2-8-1" />
+    <rect
+       x="651.03558"
+       y="388.81293"
+       width="282.94424"
+       height="164.42899"
+       id="rect6-1" />
+    <rect
+       x="342.31039"
+       y="458.56674"
+       width="147.25806"
+       height="43.919067"
+       id="rect2-5-7-1-0" />
+    <rect
+       x="166.63411"
+       y="320.35083"
+       width="250.59703"
+       height="80.087708"
+       id="rect4-2-8-1-4" />
+    <rect
+       x="342.31039"
+       y="458.56674"
+       width="325.37033"
+       height="38.43869"
+       id="rect2-5-7-1-0-6" />
+    <rect
+       x="166.63411"
+       y="320.35083"
+       width="304.85"
+       height="85.254657"
+       id="rect4-2-8-1-4-2" />
+    <rect
+       x="342.31039"
+       y="458.56674"
+       width="147.25806"
+       height="43.919067"
+       id="rect2-5-7-1-0-9" />
+    <rect
+       x="166.63411"
+       y="320.35083"
+       width="298.3913"
+       height="80.087708"
+       id="rect4-2-8-1-4-7" />
+    <rect
+       x="651.03558"
+       y="388.81293"
+       width="301.21216"
+       height="163.51559"
+       id="rect6-1-3" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g12"
+       transform="translate(40.3526,-7.1379493)">
+      <rect
+         style="fill:#ffffff;stroke-width:0.226289"
+         id="rect1"
+         width="46"
+         height="15.721519"
+         x="77.139229"
+         y="15.721503" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-9.3364918,-102.07603)"
+         id="text1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2);display:inline;fill:#000000;fill-opacity:1"><tspan
+           x="342.31055"
+           y="485.19565"
+           id="tspan5">L1 cache</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,44.494554,-73.544724)"
+       id="text3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4);display:inline;fill:#ffffff;fill-opacity:1"
+       inkscape:label="text3"><tspan
+         x="166.63477"
+         y="346.98081"
+         id="tspan8">~1 ns</tspan></text>
+    <g
+       id="g13"
+       transform="translate(43.974839,-1.2151812)">
+      <rect
+         style="fill:#ffffff;stroke-width:0.254097"
+         id="rect1-7"
+         width="58"
+         height="15.721519"
+         x="67.516991"
+         y="33.564133" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-12.958735,-84.233399)"
+         id="text1-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-5);display:inline;fill:#000000;fill-opacity:1"><tspan
+           x="342.31055"
+           y="485.19565"
+           id="tspan9">L2 cache</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,36.124487,-49.922218)"
+       id="text3-4"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4-2);display:inline;fill:#ffffff;fill-opacity:1"
+       inkscape:label="text3"><tspan
+         x="166.63477"
+         y="346.98081"
+         id="tspan10">~10 ns</tspan></text>
+    <g
+       id="g14"
+       transform="translate(39.635338,3.9303242)">
+      <rect
+         style="fill:#ffffff;stroke-width:0.279147"
+         id="rect1-7-8"
+         width="70"
+         height="15.721519"
+         x="65.856491"
+         y="52.184025" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-8.619233,-65.613509)"
+         id="text1-4-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-5-7);display:inline;fill:#000000;fill-opacity:1"><tspan
+           x="342.31055"
+           y="485.19565"
+           id="tspan11">L3 cache</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,14.880996,-26.299713)"
+       id="text3-4-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4-2-8);display:inline;fill:#ffffff;fill-opacity:1"
+       inkscape:label="text3"><tspan
+         x="166.63477"
+         y="346.98081"
+         id="tspan13">~20-40 ns</tspan></text>
+    <g
+       id="g15"
+       transform="translate(40.205143,-6.692107)">
+      <rect
+         style="fill:#ffffff;stroke-width:0.302128"
+         id="rect1-7-8-7"
+         width="82"
+         height="15.721519"
+         x="59.286686"
+         y="86.571854" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,2.6233692,-31.396424)"
+         id="text1-4-4-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-5-7-1);display:inline;fill:#000000;fill-opacity:1"><tspan
+           x="342.31055"
+           y="485.19565"
+           id="tspan14">RAM</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,16.637627,-2.6772062)"
+       id="text3-4-3-7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4-2-8-1);display:inline;fill:#ffffff;fill-opacity:1"
+       inkscape:label="text3"><tspan
+         x="166.63477"
+         y="346.98081"
+         id="tspan15">~100 ns</tspan></text>
+    <g
+       id="g16"
+       transform="translate(40.404515,-7.6049502)">
+      <rect
+         style="fill:#ffffff;stroke-width:0.32348"
+         id="rect1-7-8-7-4"
+         width="94"
+         height="15.721519"
+         x="53.087315"
+         y="117.40199" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-9.008109,-0.3955505)"
+         id="text1-4-4-7-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-5-7-1-0);display:inline;fill:#000000;fill-opacity:1"><tspan
+           x="342.31055"
+           y="485.19565"
+           id="tspan16">SSD read</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-15.054195,23.679475)"
+       id="text3-4-3-7-1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:center;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4-2-8-1-4);display:inline;fill:#ffffff;fill-opacity:1"
+       inkscape:label="text3"
+       x="101.43461"
+       y="0"><tspan
+         x="230.33265"
+         y="346.98081"
+         id="tspan17">~100 μs
+</tspan><tspan
+         x="186.33267"
+         y="383.64743"
+         id="tspan18">(100 000 ns)</tspan></text>
+    <g
+       id="g17"
+       transform="translate(41.973057,-3.4230027)">
+      <rect
+         style="fill:#ffffff;stroke-width:0.343508"
+         id="rect1-7-8-7-4-88"
+         width="106"
+         height="15.721519"
+         x="45.518772"
+         y="136.98544" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-10.623223,19.187907)"
+         id="text1-4-4-7-7-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-5-7-1-0-9);display:inline;fill:#000000;fill-opacity:1"><tspan
+           x="342.31055"
+           y="485.19565"
+           id="tspan19">HDD read</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-35.193195,46.60955)"
+       id="text3-4-3-7-1-8"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:center;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4-2-8-1-4-7);display:inline;fill:#ffffff;fill-opacity:1"
+       inkscape:label="text3"
+       x="136.6346"
+       y="0"><tspan
+         x="245.43011"
+         y="346.98081"
+         id="tspan20">~2-20 ms
+</tspan><tspan
+         x="183.83015"
+         y="383.64743"
+         id="tspan21">(20 000 000 ns)</tspan></text>
+    <g
+       id="g18"
+       transform="translate(36.777581,8.2417973)">
+      <rect
+         style="fill:#ffffff;stroke-width:0.36243"
+         id="rect1-7-8-7-4-8"
+         width="118"
+         height="15.721519"
+         x="44.714249"
+         y="158.31389" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-29.184489,39.767399)"
+         id="text1-4-4-7-7-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-5-7-1-0-6);display:inline;fill:#000000;fill-opacity:1"><tspan
+           x="342.31055"
+           y="485.19565"
+           id="tspan22">Local Gbps Network</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-41.895865,79.801675)"
+       id="text3-4-3-7-1-4"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:center;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect4-2-8-1-4-2);display:inline;fill:#ffffff;fill-opacity:1"
+       inkscape:label="text3"
+       x="145.43459"
+       y="0"><tspan
+         x="239.85961"
+         y="346.98081"
+         id="tspan23">~1-100 ms
+</tspan><tspan
+         x="178.25964"
+         y="383.64743"
+         id="tspan24">(100 000 000 ns)</tspan></text>
+    <path
+       id="path6"
+       style="fill:none;fill-opacity:1;stroke:#6c69ff;stroke-width:1.365;stroke-dasharray:none;stroke-opacity:1"
+       d="m 180.26256,12.628398 h 8.20258 v 53.316459 h -8.20258" />
+    <path
+       id="path6-9"
+       style="fill:none;fill-opacity:1;stroke:#6c69ff;stroke-width:1.365;stroke-dasharray:none;stroke-opacity:1"
+       d="m 183.97863,78.969373 h 8.20258 v 17.516063 h -8.20258"
+       sodipodi:nodetypes="cccc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,16.498052,-82.567294)"
+       id="text6"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;line-height:1;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect6);display:inline;fill:none;fill-opacity:1;stroke:#6c69ff;stroke-width:5.15906;stroke-dasharray:none;stroke-opacity:1"
+       x="121.05588"
+       y="0"><tspan
+         x="680.97958"
+         y="411.77508"
+         id="tspan27"><tspan
+           style="font-weight:bold;-inkscape-font-specification:'SauceCodePro Nerd Font Mono Bold'"
+           id="tspan25">processor cache</tspan><tspan
+           style="font-size:21.3333px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none"
+           id="tspan26">
+</tspan></tspan><tspan
+         x="719.37955"
+         y="441.1084"
+         id="tspan29"><tspan
+           style="font-size:21.3333px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none"
+           id="tspan28">very fast
+</tspan></tspan><tspan
+         x="687.37958"
+         y="470.44171"
+         id="tspan31"><tspan
+           style="font-size:21.3333px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none"
+           id="tspan30">very expensive
+</tspan></tspan><tspan
+         x="687.37958"
+         y="499.77502"
+         id="tspan33"><tspan
+           style="font-size:21.3333px;text-align:center;text-anchor:middle;fill:#ffffff;stroke:none"
+           id="tspan32">small capacity</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,22.107379,-31.388842)"
+       id="text6-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;line-height:1;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:center;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect6-1);display:inline;fill:none;fill-opacity:1;stroke:#6c69ff;stroke-width:5.15906;stroke-dasharray:none;stroke-opacity:1"
+       x="248.43709"
+       y="0"><tspan
+         x="664.50793"
+         y="411.77508"
+         id="tspan36"><tspan
+           style="font-weight:bold;font-size:21.3333px;-inkscape-font-specification:'SauceCodePro Nerd Font Mono Bold';fill:#ffffff;stroke:none"
+           id="tspan34">random access memory</tspan><tspan
+           style="font-size:21.3333px;fill:#ffffff;stroke:none"
+           id="tspan35">
+</tspan></tspan><tspan
+         x="766.90784"
+         y="441.1084"
+         id="tspan38"><tspan
+           style="font-size:21.3333px;fill:#ffffff;stroke:none"
+           id="tspan37">fast
+</tspan></tspan><tspan
+         x="728.50787"
+         y="470.44171"
+         id="tspan40"><tspan
+           style="font-size:21.3333px;fill:#ffffff;stroke:none"
+           id="tspan39">affordable
+</tspan></tspan><tspan
+         x="696.5079"
+         y="499.77502"
+         id="tspan42"><tspan
+           style="font-size:21.3333px;fill:#ffffff;stroke:none"
+           id="tspan41">medium capacity</tspan></tspan></text>
+    <path
+       id="path6-9-6"
+       style="fill:none;fill-opacity:1;stroke:#6c69ff;stroke-width:1.365;stroke-dasharray:none;stroke-opacity:1"
+       d="m 196.73174,110.73116 h 8.20258 V 148.347 h -8.20258"
+       sodipodi:nodetypes="cccc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,31.311259,10.257105)"
+       id="text6-3-0"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;line-height:1;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono';text-align:center;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect6-1-3);display:inline;fill:none;fill-opacity:1;stroke:#6c69ff;stroke-width:5.15906;stroke-dasharray:none;stroke-opacity:1"
+       x="248.43709"
+       y="0"><tspan
+         x="731.24167"
+         y="411.77508"
+         id="tspan45"><tspan
+           style="font-weight:bold;font-size:21.3333px;-inkscape-font-specification:'SauceCodePro Nerd Font Mono Bold';fill:#ffffff;stroke:none"
+           id="tspan43">data drives</tspan><tspan
+           style="font-size:21.3333px;fill:#ffffff;stroke:none"
+           id="tspan44">
+</tspan></tspan><tspan
+         x="776.04163"
+         y="441.1084"
+         id="tspan47"><tspan
+           style="font-size:21.3333px;fill:#ffffff;stroke:none"
+           id="tspan46">slow
+</tspan></tspan><tspan
+         x="737.64166"
+         y="470.44171"
+         id="tspan49"><tspan
+           style="font-size:21.3333px;fill:#ffffff;stroke:none"
+           id="tspan48">very cheap
+</tspan></tspan><tspan
+         x="680.04172"
+         y="499.77502"
+         id="tspan51"><tspan
+           style="font-size:21.3333px;fill:#ffffff;stroke:none"
+           id="tspan50">very large capacity</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text8"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.3333px;line-height:1;font-family:'SauceCodePro Nerd Font Mono';-inkscape-font-specification:'SauceCodePro Nerd Font Mono Bold';text-align:center;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect8);display:inline;fill:none;fill-opacity:1;stroke:none;stroke-width:5.15906;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+</svg>

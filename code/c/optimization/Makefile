@@ -1,18 +1,14 @@
-CFLAGS=-lm
-
-SRC=$(wildcard *_o0.c)
-SRC_OPT=$(wildcard *_o3.c)
-OUT=$(patsubst %.c,%.o,$(SRC))
-OUT_OPT=$(patsubst %.c,%.o,$(SRC_OPT))
-
-
-all: $(OUT) $(OUT_OPT)
-
-%_o0.o : %_o0.c
-	$(CC) $(CFLAGS) $< -o $@
-
-%_o3.o : %_o3.c
-	$(CC) -O3 $(CFLAGS) $< -o $@
+all:
+	$(CC) -lm shaving_op_without.c -o shaving_op_without.o
+	$(CC) -lm shaving_op_with.c -o shaving_op_with.o
+	$(CC) -O3 -lm shaving_op_with.c -o shaving_op_with_o3.o
+	$(CC) -O3 -lm shaving_op_without.c -o shaving_op_without_o3.o
+	$(CC) -mavx512f with_simd.c -o with_simd.o
+	$(CC) -O3 -mavx512f with_simd.c -o with_simd_o3.o
+	$(CC) without_simd.c -o without_simd.o
+	$(CC) -O3 without_simd.c -o without_simd_o3.o
+	$(CC) branch_miss.c -o branch_miss.o
+	$(CC) no_branch_miss.c -o no_branch_miss.o
 
 clean:
-	rm -v $(OUT) $(OUT_OPT)
+	rm -v *.o

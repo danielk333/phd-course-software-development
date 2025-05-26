@@ -17,4 +17,26 @@ TODO
 https://corecursive.com/hatetris-with-david-and-felipe/
 
 
-https://www.youtube.com/watch?v=c33AZBnRHks
+Actually, the entire [playlist with Matt Godbolt on
+Computerphile](https://www.youtube.com/playlist?list=PLzH6n4zXuckpwdGMHgRH5N9xNHzVGCxwf) is
+fantastic and I can really recommend watching trough it at some point. And yes, that is *the*
+legendary Godbolt that created [Compiler Explorer](https://godbolt.org/).
+
+Computer Timescales Mapped onto Human Timescales - Computerphile
+{{< youtube PpaQrzoDW2I >}}
+
+
+Stand-up Maths - Someone improved my code by 40,832,277,770%
+{{< youtube c33AZBnRHks >}}
+
+
+How Branch Prediction Works in CPUs - Computerphile
+{{< youtube nczJ58WvtYo >}}
+
+
+Theo - I finally know how CPUs work (w/ Casey Muratori)
+{{< youtube jC_z1vL1OCI >}}
+
+
+How CPU Memory & Caches Work - Computerphile
+{{< youtube SAk-6gVkio0 >}}
