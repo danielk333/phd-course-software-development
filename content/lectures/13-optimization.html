@@ -188,11 +188,185 @@ weight: 13
                     <li>Computer architecture</li>
                 </ul>
                 <p class="highlight">Also - the same way memory usage is "predicted"</p>
-                <p class="fragment">so are "branches"!</p>
-                <p class="fragment mark">(for more see video in handout!)</p>
+                <p class="fragment">so are code "branches"!</p>
+                <p class="fragment mark">(for more, see video in handout!)</p>
+                <p class="fragment">For example</p>
             </div>
         </section>
 
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Computer architecture</li>
+                </ul>
+                <p>For example</p>
+                <pre data-id="code-animation" class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-c">
+                        #include &lt;stdio.h&gt;
+                        #include &lt;stdlib.h&gt;
+
+                        #define SIZE 1000000
+
+                        int main() {
+                            int *arr = malloc(SIZE * sizeof(int));
+                            if (!arr) return 1;
+                            srand(1234);
+                            for (int i = 0; i &lt; SIZE; ++i) {
+                                arr[i] = rand() % 100;
+                            }
+
+                            int count = 0;
+                            for (int i = 0; i &lt; SIZE; ++i) {
+                                if (arr[i] &gt; 50) { // unpredictable branch
+                                    count++;
+                                }
+                            }
+
+                            printf("Count: %d\n", count);
+                            free(arr);
+                            return 0;
+                        }
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Computer architecture</li>
+                </ul>
+                <p>For example</p>
+                <pre data-id="code-animation" class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-c">
+                        #include &lt;stdio.h&gt;
+                        #include &lt;stdlib.h&gt;
+
+                        #define SIZE 1000000
+
+                        int main() {
+                            int *arr = malloc(SIZE * sizeof(int));
+                            if (!arr) return 1;
+                            srand(1234);
+                            for (int i = 0; i &lt; SIZE; ++i) {
+                                arr[i] = rand() % 100;
+                            }
+
+                            int count = 0;
+                            for (int i = 0; i &lt; SIZE; ++i) {
+                                count += (arr[i] > 50);  // no actual branch
+                            }
+
+                            printf("Count: %d\n", count);
+                            free(arr);
+                            return 0;
+                        }
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Computer architecture</li>
+                </ul>
+                <p>For example</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-plaintext">
+                        $ hyperfine -N ./branch_miss.o
+                        Benchmark 1: ./branch_miss.o
+                          Time (mean ± σ):      20.1 ms ±   1.1 ms    [User: 19.0 ms, System: 0.8 ms]
+                          Range (min … max):    19.0 ms …  28.4 ms    143 runs
+                         
+                        $ hyperfine -N ./no_branch_miss.o
+                        Benchmark 1: ./no_branch_miss.o
+                          Time (mean ± σ):      15.5 ms ±   0.8 ms    [User: 14.5 ms, System: 0.8 ms]
+                          Range (min … max):    14.7 ms …  23.3 ms    190 runs
+                    </code>
+                </pre>
+                <p class="fragment mark">1.3 speedup just from that!</p>
+                <p class="fragment">Why? Lets try <code>perf stat</code></p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Computer architecture</li>
+                </ul>
+                <p>Why? Lets try <code>perf stat</code></p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-plaintext">
+                    $ perf stat ./branch_miss.o
+                    Count: 489858
+
+                     Performance counter stats for './branch_miss.o':
+
+                                 19,08 msec task-clock:u                     #    0,982 CPUs utilized             
+                                     0      context-switches:u               #    0,000 /sec                      
+                                     0      cpu-migrations:u                 #    0,000 /sec                      
+                                   527      page-faults:u                    #   27,627 K/sec                     
+                            89 598 854      instructions:u                   #    1,08  insn per cycle            
+                            83 305 829      cycles:u                         #    4,367 GHz                       
+                            18 029 879      branches:u                       #  945,179 M/sec                     
+                               537 691      branch-misses:u                  #    2,98% of all branches           
+
+                           0,019415949 seconds time elapsed
+
+                           0,019496000 seconds user
+                           0,000000000 seconds sys
+                    </code>
+                </pre>
+            </div>
+        </section>
+
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Computer architecture</li>
+                </ul>
+                <p>Why? Lets try <code>perf stat</code></p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-plaintext">
+                    $  perf stat ./no_branch_miss.o 
+                    Count: 489858
+
+                     Performance counter stats for './no_branch_miss.o':
+
+                                 15,18 msec task-clock:u                     #    0,979 CPUs utilized             
+                                     0      context-switches:u               #    0,000 /sec                      
+                                     0      cpu-migrations:u                 #    0,000 /sec                      
+                                   527      page-faults:u                    #   34,717 K/sec                     
+                            91 108 993      instructions:u                   #    1,40  insn per cycle            
+                            64 947 318      cycles:u                         #    4,279 GHz                       
+                            17 029 876      branches:u                       #    1,122 G/sec                     
+                                34 884      branch-misses:u                  #    0,20% of all branches           
+
+                           0,015498122 seconds time elapsed
+
+                           0,015587000 seconds user
+                           0,000000000 seconds sys
+                    </code>
+                </pre>
+            </div>
+        </section>
 
         <section
             data-auto-animate
@@ -213,6 +387,7 @@ weight: 13
                         <li>Avoid branching</li>
                         <li>...</li>
                     </ul>
+                    <li class="fragment">We don't have time to cover GPU now - links in handout</li>
                 </ul>
             </div>
         </section>
@@ -932,7 +1107,101 @@ weight: 13
                           Range (min … max):    26.2 ms …  30.9 ms    98 runs
                     </code>
                 </pre>
-                <p class="fragment">21.3 speedup from no <code>-O</code> and 3.48 vs with <code>sqrt</code>!</p>
+                <p class="fragment">21.3 speedup from <code>-O3</code> and 3.48 vs with <code>sqrt</code>!</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Algorithms and data representation</li>
+                </ul>
+                <ul>
+                    <li class="fragment">Are you noticing almost all time is spend in one algorithm?</li>
+                    <li class="fragment">Have a look if that one is optimal - maybe there are faster
+                    ones!</li>
+                </ul>
+                <p class="fragment">Example: <a href="https://www.youtube.com/watch?v=kPRA0W1kECg">15 Sorting Algorithms in 6 Minutes</a></p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Algorithms and data representation</li>
+                </ul>
+                <p class="fragment highlight">Data representation we already covered a bit</p>
+                <p class="fragment">As a recap example:</p>
+                <p class="fragment">Algorithms on a chess board - board representation?</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Algorithms and data representation</li>
+                </ul>
+                <p>Algorithms on a chess board - board representation?</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-python">
+                        class Board:
+                            pieces: list[PlacedPiece]
+
+                        class PlacedPiece:
+                            kind: Piece
+                            position: tuple[int, int]
+
+                        class Piece(Enum):
+                            rook = 1
+                        ...
+                    </code>
+                </pre>
+                <p class="fragment">VS.</p>
+                <pre class="fragment show-code">
+                    <code data-line-numbers data-trim class="language-c">
+                        uint64_t board[N_PIECES];
+                    </code>
+                </pre>
+                <p class="fragment">How?</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Algorithms and data representation</li>
+                </ul>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-c">
+                        uint64_t board[N_PIECES];
+                    </code>
+                </pre>
+                <p>How?</p>
+                <pre class="show-code">
+                    <code data-line-numbers data-trim class="language-plaintext">
+                        0 0 1 0 0 0 0 0
+                        0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0
+                        0 0 0 0 0 0 0 0
+                    </code>
+                </pre>
+                <p class="fragment"><code>= 1152921504606846976</code></p>
             </div>
         </section>
 
@@ -953,6 +1222,79 @@ weight: 13
                 </ul>
             </div>
         </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Approximations</li>
+                </ul>
+                <p>This you already know:</p>
+                <ul class="fragment">
+                    <li>Find out the accuracy you need</li>
+                    <li>Can you use an approximation that's faster and sufficient?</li>
+                </ul>
+                <p class="fragment mark">For example:</p>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Approximations</li>
+                </ul>
+                <p class="mark">For example:</p>
+                $$
+                Ei(x) = \int_{-x}^{\infty} \frac{e^{-t}}{t} \mathrm{d}t
+                $$
+                <p>VS.</p>
+                $$
+                Ei(x) \approx -(A^{-7.7} + B)^{-0.13} \\
+                A = \ln \left ( \left ( \frac{0.56146}{-x} + 0.65 \right )( 1 - x) \right ) \\
+                B = (-x)^4 e^{-7.7x} (2 - x)^{3.7}
+                $$
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>When to optimize</li>
+                    <li>Computer architecture</li>
+                    <li>Vectorization vs Vectorization</li>
+                    <li>Compiled languages and automatic optimizers</li>
+                    <li>Shaving operations</li>
+                    <li>Algorithms and data representation</li>
+                    <li>Approximations</li>
+                    <li>Digging deep (compiled assembly)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            data-auto-animate
+        >
+            <div class="centered-container">
+                <h3 class="title">Optimization</h3>
+                <ul>
+                    <li>Digging deep (compiled assembly)</li>
+                </ul>
+                <p class="fragment select">Again - do not optimize prematurely - but write performant code</p>
+                <p class="fragment">To optimize you usually need to try A LOT of approaches</p>
+                <p class="fragment">For digging deep, there is really only one recommendation I have:</p>
+                <p class="fragment"><a href="https://godbolt.org/">https://godbolt.org/</a> - let's
+                    have a look</p>
+            </div>
+        </section>
+
 
 
     </div>

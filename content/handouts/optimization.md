@@ -40,3 +40,10 @@ Theo - I finally know how CPUs work (w/ Casey Muratori)
 
 How CPU Memory & Caches Work - Computerphile
 {{< youtube SAk-6gVkio0 >}}
+
+
+Timo Bingmann - 15 Sorting Algorithms in 6 Minutes
+{{< youtube kPRA0W1kECg >}}
+
+Coding with Tom - I Coded a Chess Engine in 7 Languages to test Performance!
+{{< youtube cFNBIYwht8o >}}
