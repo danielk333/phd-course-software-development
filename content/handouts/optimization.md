@@ -32,6 +32,18 @@ Computerphile](https://www.youtube.com/playlist?list=PLzH6n4zXuckpwdGMHgRH5N9xNH
 fantastic and I can really recommend watching trough it at some point. And yes, that is *the*
 legendary Godbolt that created [Compiler Explorer](https://godbolt.org/).
 
+
+## todo
+
+I still have a few things to write about:
+
+https://flatassembler.net/
+https://www.cs.virginia.edu/~evans/cs216/guides/x86.html
+https://www.agner.org/optimize/optimizing_assembly.pdf
+https://www.agner.org/optimize/#manual_instr_tab
+https://stackoverflow.com/a/50328447
+
+
 ## Optimization
 
 Casey Muratori is a well known proponent of writing performant code by default and he has a wealth
