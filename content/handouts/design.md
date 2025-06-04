@@ -24,8 +24,6 @@ function of your software:
 - State diagrams
 - [Sequence diagrams](https://en.wikipedia.org/wiki/Sequence_diagram)
 
-**TODO: add links to good descriptions of the above and more diagram types**
-
 ### Code
 
 Documentation can do a great deal to communicate design and architecture, especially package and
@@ -220,9 +218,10 @@ In our `hardtarget` package mentioned above we also provide a option to download
 EISCAT radar data from the EISCAT portal page, using either `requests` or `wget` as a subprocess.
 The relevant implementation of this can be found in the [download.py file](https://github.com/danielk333/hardtarget/blob/main/src/hardtarget/radars/eiscat/download.py)
 
-### TODO
+### More
 
-*TODO: add a bunch of more repositories*
+If any reader has suggestions for more repositories or projects to look for inspiration in, please
+contact me with the recommendation and I will check it out and probably add it here!
 
 ## Design and architecture experience
 

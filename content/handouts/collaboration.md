@@ -154,6 +154,15 @@ not sure about so here are those explained/corrected:
 using the job-name is now a deprecated method (!) and one should instead use `pages: true`.
 
 
+## Fun detour
+
+On the topic of collaboration, for a funny break from studying you can watch someone run random
+peoples code on his programmable Christmas tree!
+
+I run untested, viewer-submitted code on my 500-LED christmas tree.
+{{< youtube v7eHTNm1YtU >}}
+
+
 ## Homework
 
 ### Recommended listening
