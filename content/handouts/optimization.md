@@ -42,7 +42,14 @@ linked below which is about his take on the subject.
 Molly Rocket - Refterm Lecture Part 1 - Philosophies of Optimization
 {{< youtube pgoetgxecw8 >}}
 
-Below are two very entertaining stores about optimization that I can recommend watching/listening
+In one of the previous lectures I linked a video about optimizing hash maps. In case you did not
+watch it that time, I would recommend giving it a go for this lecture as now with this context
+in mind it might make a lot of sense!
+
+strager - Faster than Rust and C++: the PERFECT hash table
+{{< youtube DMQ_HcNSOAI >}}
+
+Lastly, below are two very entertaining stores about optimization that I can recommend watching/listening
 to.
 
 First is the story of [hatetris](https://qntm.org/hatetris) on the episode [CORECURSIVE #109: HATETRIS - Obsession, Friendship, and World Records](https://corecursive.com/hatetris-with-david-and-felipe/). Hatetris is a version of Tetris where you always get the worst piece, and how people beat world records by both algorithmic advances but also optimization.

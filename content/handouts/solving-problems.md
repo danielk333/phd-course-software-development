@@ -123,6 +123,7 @@ NeetCode - 8 Design Patterns EVERY Developer Should Know
 
 Last lecture one of the homework assignments were to find duplicate files in a folder. One of the best ways to solve this problem is using hashes and hash maps (or dictionaries as they are called in Python). To build on the solution to that problem, below is a video that goes into detail on how hash maps work and how to optimize them:
 
+strager - Faster than Rust and C++: the PERFECT hash table
 {{< youtube DMQ_HcNSOAI >}}
 
 ## Building your own tools
