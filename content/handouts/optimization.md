@@ -33,15 +33,26 @@ fantastic and I can really recommend watching trough it at some point. And yes, 
 legendary Godbolt that created [Compiler Explorer](https://godbolt.org/).
 
 
-## todo
+If you want to try writing some assembly yourself just to experiment, I have played around with
+[fasm](https://flatassembler.net/) before which you can install a compiler for.
 
-I still have a few things to write about:
+Additionally, while trying to figure out if my compiler actually managed to properly optimize my
+code and while reading the output assembly I used these resources:
 
-https://flatassembler.net/
-https://www.cs.virginia.edu/~evans/cs216/guides/x86.html
-https://www.agner.org/optimize/optimizing_assembly.pdf
-https://www.agner.org/optimize/#manual_instr_tab
-https://stackoverflow.com/a/50328447
+- [University of Virginia Computer Science - x86 Assembly Guide](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
+- [Agner Fog. Technical University of Denmark - Software optimization resources](https://www.agner.org/optimize/?e=0#0)
+- [Agner Fog. Technical University of Denmark - Optimizing subroutines in assembly language](https://www.agner.org/optimize/optimizing_assembly.pdf)
+
+## Comments to lecture
+
+During the lecture we noticed the "page faults" statistic from `perf`. As we discussed, we assumed
+it is quite close to cache misses (see [CPU cache](https://en.wikipedia.org/wiki/CPU_cache)).
+However, it turns out the answer is both yes and no, looking at definition of a [page
+fault](https://en.wikipedia.org/wiki/Page_fault), it is actually due to the much more complicated
+layout of modern CPU's which now has a memory management unit (MMU). So far I have not found good
+documentation that details the relation between page faults and cache misses but it seems that in
+most cases, a page fault is triggered by a cache miss, see [this stackoverflow
+post](https://stackoverflow.com/a/50328447). 
 
 
 ## Optimization
