@@ -40,9 +40,10 @@ with software in our research. Over the years my experience added up and after a
 of sense to create a PhD course out of the material.
 
 I spend a lot of my free time refining this material and maintaining it, so if you want to show that
-you have used it or find it useful, please leave a star on [the github mirror](https://github.com/danielk333/phd-course-software-development) so I know if it is being used! And if you want to help keep my coffee stores filled you can
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="danielk333" data-color="#BD5FFF" data-emoji=""  data-font="Inter" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
-since it might be very far to do so in person :P
+you have used it or find it useful, please leave a star on [the github
+mirror](https://github.com/danielk333/phd-course-software-development) so I know if it is being
+used! And if you want to help keep my coffee stores filled as thanks, you can [buy me a coffee by
+remote](https://buymeacoffee.com/danielk333) since it might be very far to do so in person :P
 
 ## Software development for researchers
 
